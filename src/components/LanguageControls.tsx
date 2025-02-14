@@ -1,9 +1,16 @@
 
 import { useState } from 'react';
 import { Globe } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const LanguageControls = () => {
-  const [language, setLanguage] = useState('pt');
+  const { language, setLanguage, translate } = useLanguage();
   const [fontSize, setFontSize] = useState(16);
 
   const increaseFontSize = () => {
@@ -17,28 +24,60 @@ const LanguageControls = () => {
   };
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'pt' ? 'en' : 'pt'));
+    setLanguage(language === 'pt' ? 'en' : 'pt');
   };
 
   return (
-    <div className="fixed top-0 right-4 z-[60] flex items-center space-x-4 pt-2">
-      <button
-        onClick={toggleLanguage}
-        className="flex items-center space-x-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white/20 transition-colors"
-      >
-        <Globe size={20} />
-        <span>{language.toUpperCase()}</span>
-      </button>
-      <div className="flex items-center space-x-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md text-white">
-        <button onClick={decreaseFontSize} className="hover:text-gray-300 transition-colors w-6 h-6 flex items-center justify-center">
-          <span className="text-lg font-bold">-</span>
-        </button>
-        <span className="mx-1">|</span>
-        <button onClick={increaseFontSize} className="hover:text-gray-300 transition-colors w-6 h-6 flex items-center justify-center">
-          <span className="text-lg font-bold">+</span>
-        </button>
+    <TooltipProvider>
+      <div className="fixed top-0 right-4 z-[60] flex items-center space-x-4 pt-2">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white/20 transition-colors"
+            >
+              <Globe size={20} />
+              <span>{language.toUpperCase()}</span>
+            </button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{translate('trocarIdioma')}</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <div className="flex items-center space-x-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md text-white">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button 
+                onClick={decreaseFontSize} 
+                className="hover:text-gray-300 transition-colors w-6 h-6 flex items-center justify-center"
+              >
+                <span className="text-lg font-bold">-</span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{translate('diminuirFonte')}</p>
+            </TooltipContent>
+          </Tooltip>
+
+          <span className="mx-1">|</span>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button 
+                onClick={increaseFontSize} 
+                className="hover:text-gray-300 transition-colors w-6 h-6 flex items-center justify-center"
+              >
+                <span className="text-lg font-bold">+</span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{translate('aumentarFonte')}</p>
+            </TooltipContent>
+          </Tooltip>
+        </div>
       </div>
-    </div>
+    </TooltipProvider>
   );
 };
 

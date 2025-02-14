@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { translate } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,12 +36,12 @@ const Navigation = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`nav-link ${linkClass}`}>Início</Link>
-            <Link to="/projetos" className={`nav-link ${linkClass}`}>Projetos</Link>
-            <Link to="/sobre" className={`nav-link ${linkClass}`}>Sobre</Link>
-            <Link to="/noticias" className={`nav-link ${linkClass}`}>Notícias</Link>
-            <Link to="/revistas" className={`nav-link ${linkClass}`}>Revistas</Link>
-            <Link to="/eventos" className={`nav-link ${linkClass}`}>Eventos</Link>
+            <Link to="/" className={`nav-link ${linkClass}`}>{translate('inicio')}</Link>
+            <Link to="/projetos" className={`nav-link ${linkClass}`}>{translate('projetos')}</Link>
+            <Link to="/sobre" className={`nav-link ${linkClass}`}>{translate('sobre')}</Link>
+            <Link to="/noticias" className={`nav-link ${linkClass}`}>{translate('noticias')}</Link>
+            <Link to="/revistas" className={`nav-link ${linkClass}`}>{translate('revistas')}</Link>
+            <Link to="/eventos" className={`nav-link ${linkClass}`}>{translate('eventos')}</Link>
           </div>
 
           <div className="md:hidden">
@@ -57,12 +59,12 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-20 inset-x-0 bg-white/95 backdrop-blur-lg">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">Início</Link>
-            <Link to="/projetos" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">Projetos</Link>
-            <Link to="/sobre" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">Sobre</Link>
-            <Link to="/noticias" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">Notícias</Link>
-            <Link to="/revistas" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">Revistas</Link>
-            <Link to="/eventos" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">Eventos</Link>
+            <Link to="/" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('inicio')}</Link>
+            <Link to="/projetos" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('projetos')}</Link>
+            <Link to="/sobre" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('sobre')}</Link>
+            <Link to="/noticias" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('noticias')}</Link>
+            <Link to="/revistas" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('revistas')}</Link>
+            <Link to="/eventos" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('eventos')}</Link>
           </div>
         </div>
       )}
