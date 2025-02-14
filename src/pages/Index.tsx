@@ -10,17 +10,17 @@ const Index = () => {
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-10" />
-        <div className="absolute inset-0 w-full h-full">
-          <div className="absolute inset-0 animate-slide-up">
-            {/* First image */}
+        <div className="absolute inset-0 w-full h-full grid grid-cols-2">
+          {/* First image */}
+          <div className="relative h-full animate-slide-up">
             <img
               src="/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png"
               alt="Plumas e Paetês Cultural Event"
               className="w-full h-full object-cover"
             />
           </div>
-          {/* Second image overlay with fade effect */}
-          <div className="absolute inset-0 opacity-0 animate-fade-in delay-[5s]">
+          {/* Second image */}
+          <div className="relative h-full animate-slide-up">
             <img
               src="/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png"
               alt="Plumas e Paetês Cultural Performance"
