@@ -44,6 +44,34 @@ const translations: Translations = {
   trocarIdioma: {
     pt: "Trocar idioma",
     en: "Change language"
+  },
+  faleConosco: {
+    pt: "Fale Conosco",
+    en: "Contact Us"
+  },
+  projetosDesc: {
+    pt: "Conheça nossas iniciativas culturais",
+    en: "Discover our cultural initiatives"
+  },
+  nossaMissao: {
+    pt: "Nossa Missão",
+    en: "Our Mission"
+  },
+  missaoDesc: {
+    pt: "Democratizar o acesso à cultura e arte, promovendo a transformação social através de projetos inovadores e inclusivos que valorizam a diversidade e a criatividade em todas as suas formas.",
+    en: "To democratize access to culture and art, promoting social transformation through innovative and inclusive projects that value diversity and creativity in all its forms."
+  },
+  ultimasNoticias: {
+    pt: "Últimas Notícias",
+    en: "Latest News"
+  },
+  lerMais: {
+    pt: "Ler mais",
+    en: "Read more"
+  },
+  enviarMensagem: {
+    pt: "Enviar Mensagem",
+    en: "Send Message"
   }
 };
 
