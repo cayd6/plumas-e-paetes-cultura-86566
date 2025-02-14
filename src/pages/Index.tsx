@@ -1,6 +1,5 @@
-
 import Navigation from "@/components/Navigation";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Instagram, Facebook } from "lucide-react";
 
 const Index = () => {
   return (
@@ -8,14 +7,24 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section id="inicio" className="relative min-h-screen flex items-center">
-        <div className="absolute inset-0 hero-gradient opacity-10" />
-        <div className="container mx-auto px-4 pt-20">
+      <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 animate-slide-up">
+            <img
+              src="https://source.unsplash.com/random/1920x1080/?carnival,brazil"
+              alt="Carnival"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        
+        <div className="container mx-auto px-4 pt-20 relative z-20">
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
               Plumas e Paetês Cultural
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8">
+            <p className="text-xl md:text-2xl text-white/90 mb-8">
               Transformando vidas através da arte e cultura
             </p>
             <a
@@ -27,7 +36,7 @@ const Index = () => {
             </a>
           </div>
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="h-8 w-8 text-gray-400" />
+            <ChevronDown className="h-8 w-8 text-white" />
           </div>
         </div>
       </section>
@@ -154,6 +163,24 @@ const Index = () => {
               <p className="text-gray-400">
                 Transformando vidas através da arte e cultura
               </p>
+              <div className="flex space-x-4 mt-4">
+                <a 
+                  href="https://www.instagram.com/plumasepaetescultural/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <Instagram size={24} />
+                </a>
+                <a 
+                  href="https://www.facebook.com/plumasepaetescultural" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <Facebook size={24} />
+                </a>
+              </div>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
@@ -170,6 +197,11 @@ const Index = () => {
                 Email: contato@plumaspaetes.cultural.br<br />
                 Tel: (11) 1234-5678
               </p>
+              <div className="mt-4">
+                <p className="text-gray-400">
+                  Siga-nos nas redes sociais para ficar por dentro das novidades!
+                </p>
+              </div>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">

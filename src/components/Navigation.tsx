@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Instagram, Facebook } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,12 +28,30 @@ const Navigation = () => {
             />
           </div>
           
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             <a href="#inicio" className="nav-link">Início</a>
             <a href="#projetos" className="nav-link">Projetos</a>
             <a href="#sobre" className="nav-link">Sobre</a>
             <a href="#noticias" className="nav-link">Notícias</a>
             <a href="#contato" className="nav-link">Contato</a>
+            <div className="flex items-center space-x-4 ml-4">
+              <a 
+                href="https://www.instagram.com/plumasepaetescultural/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-ppc-purple transition-colors"
+              >
+                <Instagram size={24} />
+              </a>
+              <a 
+                href="https://www.facebook.com/plumasepaetescultural" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-ppc-purple transition-colors"
+              >
+                <Facebook size={24} />
+              </a>
+            </div>
           </div>
 
           <div className="md:hidden">
@@ -56,6 +74,24 @@ const Navigation = () => {
             <a href="#sobre" className="block px-3 py-2 nav-link">Sobre</a>
             <a href="#noticias" className="block px-3 py-2 nav-link">Notícias</a>
             <a href="#contato" className="block px-3 py-2 nav-link">Contato</a>
+            <div className="flex items-center space-x-4 px-3 py-2">
+              <a 
+                href="https://www.instagram.com/plumasepaetescultural/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-ppc-purple transition-colors"
+              >
+                <Instagram size={24} />
+              </a>
+              <a 
+                href="https://www.facebook.com/plumasepaetescultural" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-ppc-purple transition-colors"
+              >
+                <Facebook size={24} />
+              </a>
+            </div>
           </div>
         </div>
       )}
