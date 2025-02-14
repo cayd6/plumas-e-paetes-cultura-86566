@@ -1,11 +1,13 @@
 
 import Navigation from "@/components/Navigation";
+import LanguageControls from "@/components/LanguageControls";
 import { ArrowRight, ChevronDown, Instagram, Facebook } from "lucide-react";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
+      <LanguageControls />
       
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">

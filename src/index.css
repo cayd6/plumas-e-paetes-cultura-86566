@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -50,11 +51,19 @@
   }
 
   .nav-link {
-    @apply relative text-gray-700 hover:text-ppc-purple transition-colors;
+    @apply relative transition-colors duration-300;
   }
 
   .nav-link::after {
-    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-ppc-purple transition-all duration-300;
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300;
+  }
+
+  .nav-link.text-white::after {
+    @apply bg-white;
+  }
+
+  .nav-link.text-gray-700::after {
+    @apply bg-ppc-purple;
   }
 
   .nav-link:hover::after {
