@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/Navigation";
 import { ArrowRight, ChevronDown, Instagram, Facebook } from "lucide-react";
 
@@ -11,9 +12,18 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="absolute inset-0 w-full h-full">
           <div className="absolute inset-0 animate-slide-up">
+            {/* First image */}
             <img
-              src="https://source.unsplash.com/random/1920x1080/?carnival,brazil,parade"
-              alt="Carnival"
+              src="/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png"
+              alt="Plumas e Paetês Cultural Event"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* Second image overlay with fade effect */}
+          <div className="absolute inset-0 opacity-0 animate-fade-in delay-[5s]">
+            <img
+              src="/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png"
+              alt="Plumas e Paetês Cultural Performance"
               className="w-full h-full object-cover"
             />
           </div>
@@ -156,9 +166,9 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <img 
-                src="/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png" 
+                src="/lovable-uploads/7d37df1b-46e4-421f-a18a-3e24655fdf28.png" 
                 alt="Plumas e Paetês Cultural"
-                className="h-12 w-auto mb-4"
+                className="h-16 w-auto mb-4"
               />
               <p className="text-gray-400">
                 Transformando vidas através da arte e cultura

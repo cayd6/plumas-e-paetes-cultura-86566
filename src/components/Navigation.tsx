@@ -24,7 +24,7 @@ const Navigation = () => {
           <div className="flex-shrink-0">
             <Link to="/">
               <img 
-                src="/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png" 
+                src="/lovable-uploads/7d37df1b-46e4-421f-a18a-3e24655fdf28.png" 
                 alt="Plumas e Paetês Cultural"
                 className="h-12 w-auto"
               />
