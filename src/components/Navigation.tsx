@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Instagram, Facebook } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,37 +22,22 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <img 
-              src="/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png" 
-              alt="Plumas e Paetês Cultural"
-              className="h-12 w-auto"
-            />
+            <Link to="/">
+              <img 
+                src="/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png" 
+                alt="Plumas e Paetês Cultural"
+                className="h-12 w-auto"
+              />
+            </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="nav-link">Início</a>
-            <a href="#projetos" className="nav-link">Projetos</a>
-            <a href="#sobre" className="nav-link">Sobre</a>
-            <a href="#noticias" className="nav-link">Notícias</a>
-            <a href="#contato" className="nav-link">Contato</a>
-            <div className="flex items-center space-x-4 ml-4">
-              <a 
-                href="https://www.instagram.com/plumasepaetescultural/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-ppc-purple transition-colors"
-              >
-                <Instagram size={24} />
-              </a>
-              <a 
-                href="https://www.facebook.com/plumasepaetescultural" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-ppc-purple transition-colors"
-              >
-                <Facebook size={24} />
-              </a>
-            </div>
+            <Link to="/" className="nav-link">Início</Link>
+            <Link to="/projetos" className="nav-link">Projetos</Link>
+            <Link to="/sobre" className="nav-link">Sobre</Link>
+            <Link to="/noticias" className="nav-link">Notícias</Link>
+            <Link to="/revistas" className="nav-link">Revistas</Link>
+            <Link to="/eventos" className="nav-link">Eventos</Link>
           </div>
 
           <div className="md:hidden">
@@ -69,29 +55,12 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-16 inset-x-0 bg-white/95 backdrop-blur-lg">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <a href="#inicio" className="block px-3 py-2 nav-link">Início</a>
-            <a href="#projetos" className="block px-3 py-2 nav-link">Projetos</a>
-            <a href="#sobre" className="block px-3 py-2 nav-link">Sobre</a>
-            <a href="#noticias" className="block px-3 py-2 nav-link">Notícias</a>
-            <a href="#contato" className="block px-3 py-2 nav-link">Contato</a>
-            <div className="flex items-center space-x-4 px-3 py-2">
-              <a 
-                href="https://www.instagram.com/plumasepaetescultural/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-ppc-purple transition-colors"
-              >
-                <Instagram size={24} />
-              </a>
-              <a 
-                href="https://www.facebook.com/plumasepaetescultural" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-ppc-purple transition-colors"
-              >
-                <Facebook size={24} />
-              </a>
-            </div>
+            <Link to="/" className="block px-3 py-2 nav-link">Início</Link>
+            <Link to="/projetos" className="block px-3 py-2 nav-link">Projetos</Link>
+            <Link to="/sobre" className="block px-3 py-2 nav-link">Sobre</Link>
+            <Link to="/noticias" className="block px-3 py-2 nav-link">Notícias</Link>
+            <Link to="/revistas" className="block px-3 py-2 nav-link">Revistas</Link>
+            <Link to="/eventos" className="block px-3 py-2 nav-link">Eventos</Link>
           </div>
         </div>
       )}

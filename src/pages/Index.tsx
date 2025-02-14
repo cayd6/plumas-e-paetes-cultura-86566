@@ -12,7 +12,7 @@ const Index = () => {
         <div className="absolute inset-0 w-full h-full">
           <div className="absolute inset-0 animate-slide-up">
             <img
-              src="https://source.unsplash.com/random/1920x1080/?carnival,brazil"
+              src="https://source.unsplash.com/random/1920x1080/?carnival,brazil,parade"
               alt="Carnival"
               className="w-full h-full object-cover"
             />
