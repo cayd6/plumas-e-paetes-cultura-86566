@@ -25,23 +25,26 @@ const Navigation = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0">
-            <Link to="/">
+          <div className="flex items-center space-x-4">
+            <Link to="/" className="flex items-center space-x-4">
               <img 
                 src="/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png"
                 alt="Plumas e Paetês Cultural"
                 className="h-16 w-auto"
               />
+              <div className={`hidden sm:block font-semibold text-xl ${linkClass} transition-colors duration-300`}>
+                Instituto Plumas e Paetês
+              </div>
             </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`nav-link ${linkClass}`}>{translate('inicio')}</Link>
-            <Link to="/projetos" className={`nav-link ${linkClass}`}>{translate('projetos')}</Link>
-            <Link to="/sobre" className={`nav-link ${linkClass}`}>{translate('sobre')}</Link>
-            <Link to="/noticias" className={`nav-link ${linkClass}`}>{translate('noticias')}</Link>
-            <Link to="/revistas" className={`nav-link ${linkClass}`}>{translate('revistas')}</Link>
-            <Link to="/eventos" className={`nav-link ${linkClass}`}>{translate('eventos')}</Link>
+            <Link to="/" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('inicio')}</Link>
+            <Link to="/projetos" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('projetos')}</Link>
+            <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('sobre')}</Link>
+            <Link to="/noticias" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('noticias')}</Link>
+            <Link to="/revistas" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('revistas')}</Link>
+            <Link to="/eventos" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('eventos')}</Link>
           </div>
 
           <div className="md:hidden">
