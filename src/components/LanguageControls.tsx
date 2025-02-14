@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Globe, TextSize } from 'lucide-react';
+import { Globe, Type } from 'lucide-react';
 
 const LanguageControls = () => {
   const [language, setLanguage] = useState('pt');
@@ -31,11 +31,11 @@ const LanguageControls = () => {
       </button>
       <div className="flex items-center space-x-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md text-white">
         <button onClick={decreaseFontSize} className="hover:text-gray-300 transition-colors">
-          <TextSize size={16} />
+          <Type size={16} />
         </button>
         <span className="mx-1">|</span>
         <button onClick={increaseFontSize} className="hover:text-gray-300 transition-colors">
-          <TextSize size={20} />
+          <Type size={20} />
         </button>
       </div>
     </div>
