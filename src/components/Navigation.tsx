@@ -18,7 +18,7 @@ const Navigation = () => {
   const linkClass = isScrolled ? 'text-gray-700' : 'text-white';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed w-full z-50 transition-all duration-300 mt-12 ${
       isScrolled ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
