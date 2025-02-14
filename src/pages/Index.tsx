@@ -1,12 +1,182 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import Navigation from "@/components/Navigation";
+import { ArrowRight, ChevronDown } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section id="inicio" className="relative min-h-screen flex items-center">
+        <div className="absolute inset-0 hero-gradient opacity-10" />
+        <div className="container mx-auto px-4 pt-20">
+          <div className="max-w-4xl mx-auto text-center animate-slide-up">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient">
+              Plumas e Paetês Cultural
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 mb-8">
+              Transformando vidas através da arte e cultura
+            </p>
+            <a
+              href="#projetos"
+              className="inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-ppc-purple rounded-full hover:bg-ppc-purple/90 transition-colors"
+            >
+              Conheça nossos projetos
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+          </div>
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <ChevronDown className="h-8 w-8 text-gray-400" />
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projetos" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Nossos Projetos</h2>
+            <p className="text-xl text-gray-600">Conheça nossas iniciativas culturais</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="glass-card rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
+              >
+                <div className="aspect-video bg-gray-200 animate-pulse" />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">Projeto Cultural {i}</h3>
+                  <p className="text-gray-600">
+                    Uma breve descrição do projeto e seus objetivos principais para a comunidade.
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="sobre" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-8">Nossa Missão</h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Democratizar o acesso à cultura e arte, promovendo a transformação social
+              através de projetos inovadores e inclusivos que valorizam a diversidade
+              e a criatividade em todas as suas formas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* News Section */}
+      <section id="noticias" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16">Últimas Notícias</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <article
+                key={i}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              >
+                <div className="aspect-video bg-gray-200 animate-pulse" />
+                <div className="p-6">
+                  <div className="text-sm text-gray-500 mb-2">12 de Março, 2024</div>
+                  <h3 className="text-xl font-semibold mb-2">Notícia Importante {i}</h3>
+                  <p className="text-gray-600 mb-4">
+                    Um breve resumo da notícia e seus impactos para nossa comunidade cultural.
+                  </p>
+                  <a
+                    href="#"
+                    className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors"
+                  >
+                    Ler mais <ArrowRight className="ml-1 h-4 w-4" />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contato" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-8">Entre em Contato</h2>
+            <p className="text-xl text-gray-600 mb-12">
+              Estamos sempre abertos para novas parcerias e sugestões
+            </p>
+            <div className="glass-card rounded-2xl p-8">
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <input
+                    type="text"
+                    placeholder="Nome"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ppc-purple focus:border-transparent"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ppc-purple focus:border-transparent"
+                  />
+                </div>
+                <textarea
+                  placeholder="Mensagem"
+                  rows={4}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ppc-purple focus:border-transparent"
+                />
+                <button
+                  type="submit"
+                  className="px-8 py-3 bg-ppc-purple text-white rounded-full hover:bg-ppc-purple/90 transition-colors"
+                >
+                  Enviar Mensagem
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <img 
+                src="/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png" 
+                alt="Plumas e Paetês Cultural"
+                className="h-12 w-auto mb-4"
+              />
+              <p className="text-gray-400">
+                Transformando vidas através da arte e cultura
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
+              <ul className="space-y-2">
+                <li><a href="#inicio" className="text-gray-400 hover:text-white transition-colors">Início</a></li>
+                <li><a href="#projetos" className="text-gray-400 hover:text-white transition-colors">Projetos</a></li>
+                <li><a href="#sobre" className="text-gray-400 hover:text-white transition-colors">Sobre</a></li>
+                <li><a href="#noticias" className="text-gray-400 hover:text-white transition-colors">Notícias</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contato</h3>
+              <p className="text-gray-400">
+                Email: contato@plumaspaetes.cultural.br<br />
+                Tel: (11) 1234-5678
+              </p>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Plumas e Paetês Cultural. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
