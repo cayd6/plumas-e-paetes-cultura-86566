@@ -1,9 +1,11 @@
-
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import { ArrowRight, ChevronDown, Instagram, Facebook } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
+  const { translate } = useLanguage();
+  
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -13,7 +15,6 @@ const Index = () => {
       <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="absolute inset-0 w-full h-full grid grid-cols-2">
-          {/* First image */}
           <div className="relative h-full animate-slide-up">
             <img
               src="/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png"
@@ -21,7 +22,6 @@ const Index = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          {/* Second image */}
           <div className="relative h-full animate-slide-up">
             <img
               src="/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png"
@@ -37,13 +37,13 @@ const Index = () => {
               Plumas e Paetês Cultural
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8">
-              Transformando vidas através da arte e cultura
+              {translate("projetosDesc")}
             </p>
             <a
               href="#projetos"
               className="inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-ppc-purple rounded-full hover:bg-ppc-purple/90 transition-colors"
             >
-              Conheça nossos projetos
+              {translate("projetos")}
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </div>
@@ -57,8 +57,8 @@ const Index = () => {
       <section id="projetos" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Nossos Projetos</h2>
-            <p className="text-xl text-gray-600">Conheça nossas iniciativas culturais</p>
+            <h2 className="text-4xl font-bold mb-4">{translate("projetos")}</h2>
+            <p className="text-xl text-gray-600">{translate("projetosDesc")}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
@@ -83,11 +83,9 @@ const Index = () => {
       <section id="sobre" className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8">Nossa Missão</h2>
+            <h2 className="text-4xl font-bold mb-8">{translate("nossaMissao")}</h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Democratizar o acesso à cultura e arte, promovendo a transformação social
-              através de projetos inovadores e inclusivos que valorizam a diversidade
-              e a criatividade em todas as suas formas.
+              {translate("missaoDesc")}
             </p>
           </div>
         </div>
@@ -96,7 +94,7 @@ const Index = () => {
       {/* News Section */}
       <section id="noticias" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">Últimas Notícias</h2>
+          <h2 className="text-4xl font-bold text-center mb-16">{translate("ultimasNoticias")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
               <article
@@ -114,7 +112,7 @@ const Index = () => {
                     href="#"
                     className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors"
                   >
-                    Ler mais <ArrowRight className="ml-1 h-4 w-4" />
+                    {translate("lerMais")} <ArrowRight className="ml-1 h-4 w-4" />
                   </a>
                 </div>
               </article>
@@ -127,7 +125,7 @@ const Index = () => {
       <section id="contato" className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8">Entre em Contato</h2>
+            <h2 className="text-4xl font-bold mb-8">{translate("faleConosco")}</h2>
             <p className="text-xl text-gray-600 mb-12">
               Estamos sempre abertos para novas parcerias e sugestões
             </p>
@@ -154,7 +152,7 @@ const Index = () => {
                   type="submit"
                   className="px-8 py-3 bg-ppc-purple text-white rounded-full hover:bg-ppc-purple/90 transition-colors"
                 >
-                  Enviar Mensagem
+                  {translate("enviarMensagem")}
                 </button>
               </form>
             </div>

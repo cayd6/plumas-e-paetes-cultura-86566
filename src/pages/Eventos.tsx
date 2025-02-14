@@ -1,7 +1,10 @@
+
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Eventos = () => {
+  const { translate } = useLanguage();
   const eventos = [
     {
       id: 1,
@@ -18,7 +21,6 @@ const Eventos = () => {
       imagem: "https://source.unsplash.com/random/1200x800/?carnival,festival",
       descricao: "Festival de música e dança que celebra nossa cultura.",
     },
-    // Add more events as needed
   ];
 
   return (
@@ -27,7 +29,7 @@ const Eventos = () => {
       <LanguageControls />
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-12">Nossos Eventos</h1>
+          <h1 className="text-4xl font-bold text-center mb-12">{translate("eventos")}</h1>
           <div className="space-y-12">
             {eventos.map((evento) => (
               <div key={evento.id} className="bg-white rounded-xl shadow-lg overflow-hidden">
