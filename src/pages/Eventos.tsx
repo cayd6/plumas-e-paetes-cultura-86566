@@ -8,18 +8,18 @@ const Eventos = () => {
   const eventos = [
     {
       id: 1,
-      titulo: "Carnaval 2024",
+      titulo: translate("carnaval2024"),
       data: "10-13 Fevereiro, 2024",
       imagem: "https://source.unsplash.com/random/1200x800/?carnival,parade",
-      descricao: "O maior carnaval cultural da região, com mais de 1000 participantes.",
+      descricao: translate("descricaoCarnaval"),
       video: "https://www.youtube.com/embed/your-video-id"
     },
     {
       id: 2,
-      titulo: "Festival Cultural",
+      titulo: translate("festivalCultural"),
       data: "15 Janeiro, 2024",
       imagem: "https://source.unsplash.com/random/1200x800/?carnival,festival",
-      descricao: "Festival de música e dança que celebra nossa cultura.",
+      descricao: translate("descricaoFestival"),
     },
   ];
 

@@ -72,6 +72,44 @@ const translations: Translations = {
   enviarMensagem: {
     pt: "Enviar Mensagem",
     en: "Send Message"
+  },
+  // Additional translations for magazine content
+  edicao2024: {
+    pt: "Edição 2024",
+    en: "2024 Edition"
+  },
+  especialCarnaval: {
+    pt: "Especial de Carnaval 2024",
+    en: "2024 Carnival Special"
+  },
+  edicao2023: {
+    pt: "Edição 2023",
+    en: "2023 Edition"
+  },
+  retrospectivaCultural: {
+    pt: "Retrospectiva Cultural",
+    en: "Cultural Retrospective"
+  },
+  // Additional translations for events content
+  carnaval2024: {
+    pt: "Carnaval 2024",
+    en: "Carnival 2024"
+  },
+  festivalCultural: {
+    pt: "Festival Cultural",
+    en: "Cultural Festival"
+  },
+  descricaoCarnaval: {
+    pt: "O maior carnaval cultural da região, com mais de 1000 participantes.",
+    en: "The largest cultural carnival in the region, with over 1000 participants."
+  },
+  descricaoFestival: {
+    pt: "Festival de música e dança que celebra nossa cultura.",
+    en: "Music and dance festival celebrating our culture."
+  },
+  mensagemSucesso: {
+    pt: "Mensagem enviada com sucesso!",
+    en: "Message sent successfully!"
   }
 };
 

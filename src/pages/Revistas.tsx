@@ -9,15 +9,15 @@ const Revistas = () => {
   const revistas = [
     {
       id: 1,
-      titulo: "Edição 2024",
+      titulo: translate("edicao2024"),
       capa: "https://source.unsplash.com/random/800x1000/?carnival,magazine",
-      descricao: "Especial de Carnaval 2024"
+      descricao: translate("especialCarnaval")
     },
     {
       id: 2,
-      titulo: "Edição 2023",
+      titulo: translate("edicao2023"),
       capa: "https://source.unsplash.com/random/800x1000/?carnival,culture",
-      descricao: "Retrospectiva Cultural"
+      descricao: translate("retrospectivaCultural")
     },
   ];
 
