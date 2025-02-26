@@ -24,7 +24,7 @@ const Edicoes = () => {
                 <img 
                   src="/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png"
                   alt="19º Prêmio Plumas & Paetês Cultural"
-                  className="w-full h-[400px] object-cover"
+                  className="w-full object-contain"
                 />
                 <div className="absolute top-4 left-4 bg-ppc-purple text-white px-4 py-2 rounded-full">
                   {translate("dataEvento")}
