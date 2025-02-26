@@ -11,6 +11,8 @@ import Edicoes from "./pages/Edicoes";
 import EdicaoDetalhe from "./pages/EdicaoDetalhe";
 import Revistas from "./pages/Revistas";
 import Eventos from "./pages/Eventos";
+import Noticias from "./pages/Noticias";
+import Sobre from "./pages/Sobre";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
             <Route path="/edicoes/:id" element={<EdicaoDetalhe />} />
             <Route path="/revistas" element={<Revistas />} />
             <Route path="/eventos" element={<Eventos />} />
+            <Route path="/noticias" element={<Noticias />} />
+            <Route path="/sobre" element={<Sobre />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <WhatsAppButton />
