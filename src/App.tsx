@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
 import Edicoes from "./pages/Edicoes";
+import EdicaoDetalhe from "./pages/EdicaoDetalhe";
 import Revistas from "./pages/Revistas";
 import Eventos from "./pages/Eventos";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/edicoes" element={<Edicoes />} />
+            <Route path="/edicoes/:id" element={<EdicaoDetalhe />} />
             <Route path="/revistas" element={<Revistas />} />
             <Route path="/eventos" element={<Eventos />} />
             <Route path="*" element={<NotFound />} />
