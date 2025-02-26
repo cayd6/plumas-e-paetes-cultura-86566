@@ -40,11 +40,11 @@ const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('inicio')}</Link>
-            <Link to="/projetos" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('projetos')}</Link>
-            <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('sobre')}</Link>
-            <Link to="/noticias" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('noticias')}</Link>
+            <Link to="/edicoes" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('edicoes')}</Link>
             <Link to="/revistas" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('revistas')}</Link>
             <Link to="/eventos" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('eventos')}</Link>
+            <Link to="/noticias" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('noticias')}</Link>
+            <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('sobre')}</Link>
           </div>
 
           <div className="md:hidden">
@@ -63,11 +63,11 @@ const Navigation = () => {
         <div className="md:hidden absolute top-20 inset-x-0 bg-white/95 backdrop-blur-lg">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link to="/" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('inicio')}</Link>
-            <Link to="/projetos" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('projetos')}</Link>
-            <Link to="/sobre" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('sobre')}</Link>
-            <Link to="/noticias" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('noticias')}</Link>
+            <Link to="/edicoes" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('edicoes')}</Link>
             <Link to="/revistas" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('revistas')}</Link>
             <Link to="/eventos" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('eventos')}</Link>
+            <Link to="/noticias" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('noticias')}</Link>
+            <Link to="/sobre" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('sobre')}</Link>
           </div>
         </div>
       )}

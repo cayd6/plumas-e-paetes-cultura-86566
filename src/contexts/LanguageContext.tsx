@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState } from 'react';
 
 type Translations = {
@@ -73,7 +72,6 @@ const translations: Translations = {
     pt: "Enviar Mensagem",
     en: "Send Message"
   },
-  // Additional translations for magazine content
   edicao2024: {
     pt: "Edição 2024",
     en: "2024 Edition"
@@ -90,26 +88,25 @@ const translations: Translations = {
     pt: "Retrospectiva Cultural",
     en: "Cultural Retrospective"
   },
-  // Additional translations for events content
-  carnaval2024: {
-    pt: "Carnaval 2024",
-    en: "Carnival 2024"
+  edicoes: {
+    pt: "Edições",
+    en: "Editions"
   },
-  festivalCultural: {
-    pt: "Festival Cultural",
-    en: "Cultural Festival"
+  premioPlumas19: {
+    pt: "19º Prêmio Plumas & Paetês Cultural",
+    en: "19th Plumas & Paetês Cultural Award"
   },
-  descricaoCarnaval: {
-    pt: "O maior carnaval cultural da região, com mais de 1000 participantes.",
-    en: "The largest cultural carnival in the region, with over 1000 participants."
+  dataEvento: {
+    pt: "20 de Novembro",
+    en: "November 20th"
   },
-  descricaoFestival: {
-    pt: "Festival de música e dança que celebra nossa cultura.",
-    en: "Music and dance festival celebrating our culture."
+  sobreEvento: {
+    pt: "Primeira premiação de carnaval voltada aos profissionais dos bastidores do carnaval, o Plumas & Paetês Cultural chega à sua 19ª edição, que será realizada na Cidade do Samba.",
+    en: "The first carnival award focused on carnival backstage professionals, Plumas & Paetês Cultural reaches its 19th edition, to be held at Cidade do Samba."
   },
-  mensagemSucesso: {
-    pt: "Mensagem enviada com sucesso!",
-    en: "Message sent successfully!"
+  lerMaisEdicao: {
+    pt: "Ler mais sobre esta edição",
+    en: "Read more about this edition"
   }
 };
 

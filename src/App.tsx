@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
+import Edicoes from "./pages/Edicoes";
 import Revistas from "./pages/Revistas";
 import Eventos from "./pages/Eventos";
 import NotFound from "./pages/NotFound";
@@ -22,6 +23,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/edicoes" element={<Edicoes />} />
             <Route path="/revistas" element={<Revistas />} />
             <Route path="/eventos" element={<Eventos />} />
             <Route path="*" element={<NotFound />} />
