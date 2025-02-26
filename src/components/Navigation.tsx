@@ -1,13 +1,14 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { translate } = useLanguage();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +18,10 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const linkClass = isScrolled ? 'text-gray-700' : 'text-white';
+  // Special color for Edicoes page
+  const linkClass = location.pathname === '/edicoes' 
+    ? 'text-ppc-purple'  // Purple text for Edicoes page
+    : (isScrolled ? 'text-gray-700' : 'text-white'); // Default colors for other pages
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 mt-12 ${
@@ -50,7 +54,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-ppc-purple transition-colors`}
+              className={`${linkClass} hover:text-ppc-purple transition-colors`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
