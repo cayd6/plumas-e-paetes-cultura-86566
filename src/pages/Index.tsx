@@ -1,10 +1,11 @@
+
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
-import { ArrowRight, ChevronDown, Instagram, Facebook } from "lucide-react";
+import { ArrowRight, ChevronDown, Instagram, Facebook, Mail, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
-  const { translate } = useLanguage();
+  const { translate, language } = useLanguage();
   
   return (
     <div className="min-h-screen">
@@ -171,7 +172,10 @@ const Index = () => {
                 className="h-16 w-auto mb-4"
               />
               <p className="text-gray-400">
-                Transformando vidas através da arte e cultura
+                {translate("transformandoVidas")}
+              </p>
+              <p className="text-gray-400 mt-2">
+                {translate("cnpj")}: 11.985.110/0001-76
               </p>
               <div className="flex space-x-4 mt-4">
                 <a 
@@ -193,29 +197,47 @@ const Index = () => {
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
+              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
               <ul className="space-y-2">
-                <li><a href="#inicio" className="text-gray-400 hover:text-white transition-colors">Início</a></li>
-                <li><a href="#projetos" className="text-gray-400 hover:text-white transition-colors">Projetos</a></li>
-                <li><a href="#sobre" className="text-gray-400 hover:text-white transition-colors">Sobre</a></li>
-                <li><a href="#noticias" className="text-gray-400 hover:text-white transition-colors">Notícias</a></li>
+                <li><a href="#inicio" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
+                <li><a href="#projetos" className="text-gray-400 hover:text-white transition-colors">{translate("projetos")}</a></li>
+                <li><a href="#sobre" className="text-gray-400 hover:text-white transition-colors">{translate("sobre")}</a></li>
+                <li><a href="#noticias" className="text-gray-400 hover:text-white transition-colors">{translate("noticias")}</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Contato</h3>
-              <p className="text-gray-400">
-                Email: contato@plumaspaetes.cultural.br<br />
-                Tel: (11) 1234-5678
-              </p>
+              <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
+              <div className="space-y-2 text-gray-400">
+                <p className="flex items-center">
+                  <Mail size={18} className="mr-2" />
+                  <a 
+                    href="mailto:contato@institutoplumasepaetescultural.com" 
+                    className="hover:text-white transition-colors"
+                  >
+                    contato@institutoplumasepaetescultural.com
+                  </a>
+                </p>
+                <p className="flex items-center">
+                  <Phone size={18} className="mr-2" />
+                  <a 
+                    href="https://wa.me/5521989392920" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    +55 21 98939-2920
+                  </a>
+                </p>
+              </div>
               <div className="mt-4">
                 <p className="text-gray-400">
-                  Siga-nos nas redes sociais para ficar por dentro das novidades!
+                  {translate("seguirRedes")}
                 </p>
               </div>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Plumas e Paetês Cultural. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
           </div>
         </div>
       </footer>

@@ -107,6 +107,38 @@ const translations: Translations = {
   lerMaisEdicao: {
     pt: "Ler mais sobre esta edição",
     en: "Read more about this edition"
+  },
+  cnpj: {
+    pt: "CNPJ",
+    en: "Registration Number"
+  },
+  contatoEmail: {
+    pt: "Email",
+    en: "Email"
+  },
+  contatoTelefone: {
+    pt: "Telefone",
+    en: "Phone"
+  },
+  linksRapidos: {
+    pt: "Links Rápidos",
+    en: "Quick Links"
+  },
+  contato: {
+    pt: "Contato",
+    en: "Contact"
+  },
+  seguirRedes: {
+    pt: "Siga-nos nas redes sociais para ficar por dentro das novidades!",
+    en: "Follow us on social media to stay up to date with the latest news!"
+  },
+  direitosReservados: {
+    pt: "Todos os direitos reservados.",
+    en: "All rights reserved."
+  },
+  transformandoVidas: {
+    pt: "Transformando vidas através da arte e cultura",
+    en: "Transforming lives through art and culture"
   }
 };
 

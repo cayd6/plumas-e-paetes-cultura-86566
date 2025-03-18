@@ -10,7 +10,7 @@ import {
 
 const WhatsAppButton = () => {
   const { translate } = useLanguage();
-  const phoneNumber = "5511999999999"; // Replace with your actual WhatsApp number
+  const phoneNumber = "5521989392920"; // Updated with the correct WhatsApp number
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
   return (
