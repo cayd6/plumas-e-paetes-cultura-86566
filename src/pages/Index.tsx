@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import { ArrowRight, ChevronDown, Instagram, Facebook, Mail, Phone } from "lucide-react";
@@ -166,18 +165,22 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <img 
-                src="/lovable-uploads/7d37df1b-46e4-421f-a18a-3e24655fdf28.png" 
-                alt="Plumas e Paetês Cultural"
-                className="h-16 w-auto mb-4"
-              />
-              <p className="text-gray-400">
+              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
+              <ul className="space-y-2">
+                <li><a href="#inicio" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
+                <li><a href="#projetos" className="text-gray-400 hover:text-white transition-colors">{translate("projetos")}</a></li>
+                <li><a href="#sobre" className="text-gray-400 hover:text-white transition-colors">{translate("sobre")}</a></li>
+                <li><a href="#noticias" className="text-gray-400 hover:text-white transition-colors">{translate("noticias")}</a></li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-gray-400 text-center mb-4">
                 {translate("transformandoVidas")}
               </p>
-              <p className="text-gray-400 mt-2">
+              <p className="text-gray-400 text-center mb-4">
                 {translate("cnpj")}: 11.985.110/0001-76
               </p>
-              <div className="flex space-x-4 mt-4">
+              <div className="flex justify-center space-x-4">
                 <a 
                   href="https://www.instagram.com/plumasepaetescultural/" 
                   target="_blank" 
@@ -195,15 +198,6 @@ const Index = () => {
                   <Facebook size={24} />
                 </a>
               </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
-              <ul className="space-y-2">
-                <li><a href="#inicio" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
-                <li><a href="#projetos" className="text-gray-400 hover:text-white transition-colors">{translate("projetos")}</a></li>
-                <li><a href="#sobre" className="text-gray-400 hover:text-white transition-colors">{translate("sobre")}</a></li>
-                <li><a href="#noticias" className="text-gray-400 hover:text-white transition-colors">{translate("noticias")}</a></li>
-              </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
