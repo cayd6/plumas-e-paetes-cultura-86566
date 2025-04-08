@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import { ArrowRight, ChevronDown, Instagram, Facebook, Mail, Phone } from "lucide-react";
@@ -198,6 +199,9 @@ const Index = () => {
                   <Facebook size={24} />
                 </a>
               </div>
+              <p className="text-gray-400 text-center mt-2">
+                Siga-nos nas redes sociais para ficar por dentro das novidades!
+              </p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
