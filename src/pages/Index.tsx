@@ -180,9 +180,6 @@ const Index = () => {
               <p className="text-gray-400 text-center mb-4">
                 {translate("cnpj")}: 11.985.110/0001-76
               </p>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("seguirRedes")}
-              </p>
               <div className="flex justify-center space-x-4">
                 <a 
                   href="https://www.instagram.com/plumasepaetescultural/" 
