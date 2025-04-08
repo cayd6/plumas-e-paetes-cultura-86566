@@ -180,6 +180,9 @@ const Index = () => {
               <p className="text-gray-400 text-center mb-4">
                 {translate("cnpj")}: 11.985.110/0001-76
               </p>
+              <p className="text-gray-400 text-center mb-4">
+                {translate("seguirRedes")}
+              </p>
               <div className="flex justify-center space-x-4">
                 <a 
                   href="https://www.instagram.com/plumasepaetescultural/" 
@@ -190,7 +193,7 @@ const Index = () => {
                   <Instagram size={24} />
                 </a>
                 <a 
-                  href="https://www.facebook.com/plumasepaetescultural" 
+                  href="https://www.facebook.com/plumasepaetescultural/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
