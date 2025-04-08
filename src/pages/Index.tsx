@@ -224,9 +224,7 @@ const Index = () => {
                 </p>
               </div>
               <div className="mt-4">
-                <p className="text-gray-400">
-                  {translate("seguirRedes")}
-                </p>
+                
               </div>
             </div>
           </div>
