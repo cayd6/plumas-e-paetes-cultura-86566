@@ -61,6 +61,9 @@ const Noticias = () => {
                   <Facebook size={24} />
                 </a>
               </div>
+              <p className="text-gray-400 text-center mt-2">
+                Siga-nos nas redes sociais para ficar por dentro das novidades!
+              </p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
@@ -68,10 +71,10 @@ const Noticias = () => {
                 <p className="flex items-center">
                   <Mail size={18} className="mr-2" />
                   <a 
-                    href="mailto:contato@institutoplumasepaetescultural.com" 
+                    href="mailto:contato@plumasepaetescultural.com" 
                     className="hover:text-white transition-colors"
                   >
-                    contato@institutoplumasepaetescultural.com
+                    contato@plumasepaetescultural.com
                   </a>
                 </p>
                 <p className="flex items-center">

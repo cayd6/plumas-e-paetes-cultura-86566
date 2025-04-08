@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import { ArrowRight, ChevronDown, Instagram, Facebook, Mail, Phone } from "lucide-react";
