@@ -139,22 +139,6 @@ const translations: Translations = {
   transformandoVidas: {
     pt: "Transformando vidas através da arte e cultura",
     en: "Transforming lives through art and culture"
-  },
-  aniversario20Anos: {
-    pt: "20 anos",
-    en: "20 years"
-  },
-  celebrando20Anos: {
-    pt: "Celebrando 20 anos de arte e cultura",
-    en: "Celebrating 20 years of art and culture"
-  },
-  saibaMais: {
-    pt: "Saiba mais sobre os 20 anos",
-    en: "Learn more about the 20 years"
-  },
-  parabens20Anos: {
-    pt: "Parabéns pelos 20 anos de história!",
-    en: "Congratulations on 20 years of history!"
   }
 };
 

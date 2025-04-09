@@ -1,9 +1,7 @@
-
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import { ArrowRight, ChevronDown, Instagram, Facebook, Mail, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import AnniversaryBanner from "@/components/AnniversaryBanner";
 
 const Index = () => {
   const { translate, language } = useLanguage();
@@ -34,8 +32,6 @@ const Index = () => {
         </div>
         
         <div className="container mx-auto px-4 pt-20 relative z-20">
-          <AnniversaryBanner />
-          
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
               Plumas e Paetês Cultural
