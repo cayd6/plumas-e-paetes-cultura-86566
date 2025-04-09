@@ -1,7 +1,5 @@
-
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
-import AnniversaryBanner from "@/components/AnniversaryBanner";
 import { ArrowRight, ChevronDown, Instagram, Facebook, Mail, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -35,10 +33,7 @@ const Index = () => {
         
         <div className="container mx-auto px-4 pt-20 relative z-20">
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
-            {/* Anniversary banner positioned prominently */}
-            <AnniversaryBanner />
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white mt-6">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
               Plumas e Paetês Cultural
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8">
