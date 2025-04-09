@@ -24,7 +24,7 @@ const AnniversaryButton = () => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-50">
+    <div className="fixed bottom-8 left-8 z-50">
       {showParticles && (
         <Particles
           id="anniversary-particles"
@@ -81,7 +81,7 @@ const AnniversaryButton = () => {
               },
             },
           }}
-          className="w-40 h-40 absolute bottom-0 right-0"
+          className="w-40 h-40 absolute bottom-0 left-0"
         />
       )}
 
@@ -91,14 +91,14 @@ const AnniversaryButton = () => {
         aria-label="20 anos Prêmio Plumas & Paetês Cultural"
       >
         <img
-          src="/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png"
+          src="/lovable-uploads/e503bf0a-dd4f-43bb-83e9-ce8c063c0282.png"
           alt="20 anos Prêmio Plumas & Paetês Cultural"
           className="w-full h-full object-contain"
         />
       </button>
 
       {showMessage && (
-        <div className="absolute bottom-32 right-0 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center w-60 transform translate-y-2 animate-fade-in">
+        <div className="absolute bottom-32 left-0 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center w-60 transform translate-y-2 animate-fade-in">
           <p className="text-lg font-bold mb-2">{translate("parabens20Anos")}</p>
           <a
             href="/edicoes/20-anos"
