@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import AnniversaryButton from "@/components/AnniversaryButton";
 import Index from "./pages/Index";
 import Edicoes from "./pages/Edicoes";
 import EdicaoDetalhe from "./pages/EdicaoDetalhe";
@@ -36,7 +35,6 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <WhatsAppButton />
-          <AnniversaryButton />
         </BrowserRouter>
       </LanguageProvider>
     </TooltipProvider>
