@@ -64,20 +64,20 @@ const AnniversaryBanner = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center max-w-xl mx-auto animate-slide-up">
+    <div className="flex justify-center items-center w-full">
       <div 
-        className="cursor-pointer transform hover:scale-105 transition-transform duration-300"
+        className="cursor-pointer transform hover:scale-105 transition-transform duration-300 max-w-xs"
         onClick={launchConfetti}
       >
         <img
-          src="/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png"
+          src="/lovable-uploads/2f3ac4c5-4b19-4824-844f-58a4e3f24a02.png"
           alt="20 Anos do Prêmio Plumas e Paetês Cultural"
-          className="max-h-72 w-auto object-contain"
+          className="w-full h-auto"
         />
       </div>
       
       {showButton && (
-        <div className="mt-6 animate-fade-in">
+        <div className="mt-6 animate-fade-in absolute -bottom-16">
           <Button
             variant="outline"
             className="bg-white/80 border-ppc-purple text-ppc-purple hover:bg-ppc-purple hover:text-white transition-all"
