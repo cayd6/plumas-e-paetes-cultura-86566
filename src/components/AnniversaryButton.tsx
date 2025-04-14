@@ -42,7 +42,7 @@ const AnniversaryButton = () => {
             },
             emitters: {
               direction: "top",
-              position: { x: 50, y: 100 },
+              position: { x: "50%", y: "100%" }, // Changed to string percentage
               rate: { quantity: 20, delay: 0.2 },
               size: { width: 0, height: 0 },
               life: { duration: 0.5, count: 1 },
