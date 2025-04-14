@@ -19,6 +19,12 @@ const Revistas = () => {
       capa: "https://source.unsplash.com/random/800x1000/?carnival,culture",
       descricao: translate("retrospectivaCultural")
     },
+    {
+      id: 3,
+      titulo: "Edição 2010",
+      capa: "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png",
+      descricao: "Prêmio Plumas e Paetês: Homenagem aos artífices e profissionais do carnaval carioca."
+    },
   ];
 
   return (

@@ -24,7 +24,7 @@ const Navigation = () => {
     : (isScrolled ? 'text-gray-700' : 'text-white'); // Default colors for other pages
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 mt-12 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,14 +64,14 @@ const Navigation = () => {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 inset-x-0 bg-white/95 backdrop-blur-lg">
+        <div className="md:hidden fixed top-20 left-0 right-0 bg-white/95 backdrop-blur-lg shadow-lg z-50">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('inicio')}</Link>
-            <Link to="/edicoes" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('edicoes')}</Link>
-            <Link to="/revistas" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('revistas')}</Link>
-            <Link to="/eventos" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('eventos')}</Link>
-            <Link to="/noticias" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('noticias')}</Link>
-            <Link to="/sobre" className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('sobre')}</Link>
+            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('inicio')}</Link>
+            <Link to="/edicoes" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('edicoes')}</Link>
+            <Link to="/revistas" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('revistas')}</Link>
+            <Link to="/eventos" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('eventos')}</Link>
+            <Link to="/noticias" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('noticias')}</Link>
+            <Link to="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('sobre')}</Link>
           </div>
         </div>
       )}
