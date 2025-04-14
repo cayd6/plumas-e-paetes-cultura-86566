@@ -10,7 +10,7 @@ const AnniversaryBanner = () => {
 
   const launchConfetti = () => {
     const colors = ['#FCD34D', '#EF4444', '#3B82F6', '#10B981', '#8B5CF6', '#F97316'];
-    const shapes = ['square', 'circle'];
+    const shapes: confetti.Shape[] = ['square', 'circle'];
     
     // First burst
     confetti({
@@ -66,7 +66,7 @@ const AnniversaryBanner = () => {
   return (
     <div className="flex justify-center items-center w-full">
       <div 
-        className="cursor-pointer transform hover:scale-105 transition-transform duration-300 max-w-xs"
+        className="cursor-pointer transform hover:scale-105 transition-transform duration-300 max-w-[192px]"
         onClick={launchConfetti}
       >
         <img
