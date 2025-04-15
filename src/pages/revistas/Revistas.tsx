@@ -68,7 +68,7 @@ const Revistas = () => {
                           <Link to="/revista/2010" className="block">
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
                             <img
-                              src={revista.capa}
+                              src={revista.capa.replace("/src", "")}
                               alt={revista.titulo}
                               className="w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105"
                             />

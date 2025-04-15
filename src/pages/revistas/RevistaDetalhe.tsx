@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
@@ -20,28 +19,28 @@ const RevistaDetalhe = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showPagination, setShowPagination] = useState(false);
   
-  // Using the actual magazine images from the src/pages/revistas/2010 folder
+  // Using the actual magazine images from the src/pages/revistas/2010 folder with corrected paths
   const paginas2010 = [
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg", // capa
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0002.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0003.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0004.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0005.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0006.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0007.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0008.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0009.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0010.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0011.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0012.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0013.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0014.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0015.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0016.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0017.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0018.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0019.jpg",
-    "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0020.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg", // capa
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0002.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0003.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0004.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0005.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0006.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0007.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0008.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0009.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0010.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0011.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0012.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0013.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0014.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0015.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0016.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0017.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0018.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0019.jpg",
+    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0020.jpg",
   ];
 
   const handlePreviousPage = () => {
