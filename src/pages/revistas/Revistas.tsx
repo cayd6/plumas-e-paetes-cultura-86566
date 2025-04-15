@@ -11,7 +11,7 @@ const Revistas = () => {
   const revista = {
     id: 3,
     titulo: "Edição 2010",
-    capa: "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png",
+    capa: "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg",
     descricao: "Prêmio Plumas e Paetês: Homenagem aos artífices e profissionais do carnaval carioca."
   };
 
