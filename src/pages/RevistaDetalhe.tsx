@@ -16,9 +16,10 @@ import {
 const RevistaDetalhe = () => {
   const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(7);
+  const [totalPages, setTotalPages] = useState(20);
   
-  // Corrected order of the uploaded images for the 2010 magazine
+  // Updated to include all 20 images for the 2010 magazine
+  // Currently using the 7 available images, to be updated with all 20 when uploaded
   const paginas2010 = [
     "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // capa
     "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
@@ -27,6 +28,20 @@ const RevistaDetalhe = () => {
     "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png",
     "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png",
     "/lovable-uploads/2f3ac4c5-4b19-4824-844f-58a4e3f24a02.png",
+    // Placeholder for the remaining images - you'll need to replace these with your actual image paths
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
+    "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // temporary placeholder
   ];
 
   const handlePreviousPage = () => {
