@@ -28,7 +28,7 @@ const Revistas = () => {
   const revista = {
     id: 3,
     titulo: "Edição 2010",
-    capa: "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg",
+    capa: "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg",
     descricao: "Prêmio Plumas e Paetês: Homenagem aos artífices e profissionais do carnaval carioca."
   };
 
@@ -68,7 +68,7 @@ const Revistas = () => {
                           <Link to="/revista/2010" className="block">
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
                             <img
-                              src={revista.capa.replace("/src", "")}
+                              src={revista.capa}
                               alt={revista.titulo}
                               className="w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105"
                             />

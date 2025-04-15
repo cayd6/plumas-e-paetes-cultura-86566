@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
@@ -19,29 +20,11 @@ const RevistaDetalhe = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showPagination, setShowPagination] = useState(false);
   
-  // Using the actual magazine images from the src/pages/revistas/2010 folder with corrected paths
-  const paginas2010 = [
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg", // capa
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0002.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0003.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0004.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0005.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0006.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0007.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0008.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0009.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0010.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0011.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0012.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0013.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0014.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0015.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0016.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0017.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0018.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0019.jpg",
-    "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0020.jpg",
-  ];
+  // Images with correct paths for actual display
+  const paginas2010 = Array.from({ length: 20 }, (_, i) => {
+    const pageNum = i + 1;
+    return `/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-${pageNum.toString().padStart(4, '0')}.jpg`;
+  });
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -88,6 +71,9 @@ const RevistaDetalhe = () => {
   if (id !== "2010") {
     return <div>Revista não encontrada</div>;
   }
+
+  // Log the image path being used for debugging
+  console.log("Current image path:", paginas2010[currentPage - 1]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
