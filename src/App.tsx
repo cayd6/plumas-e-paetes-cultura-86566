@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Edicoes from "./pages/Edicoes";
 import EdicaoDetalhe from "./pages/EdicaoDetalhe";
 import Revistas from "./pages/Revistas";
+import RevistaDetalhe from "./pages/RevistaDetalhe";
 import Eventos from "./pages/Eventos";
 import Noticias from "./pages/Noticias";
 import Sobre from "./pages/Sobre";
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/edicoes" element={<Edicoes />} />
             <Route path="/edicoes/:id" element={<EdicaoDetalhe />} />
             <Route path="/revistas" element={<Revistas />} />
+            <Route path="/revista/:id" element={<RevistaDetalhe />} />
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/noticias" element={<Noticias />} />
             <Route path="/sobre" element={<Sobre />} />
