@@ -16,9 +16,9 @@ import {
 const RevistaDetalhe = () => {
   const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(20);
+  const [totalPages, setTotalPages] = useState(7);
   
-  // Updated correct order of the uploaded images for the 2010 magazine
+  // Corrected order of the uploaded images for the 2010 magazine
   const paginas2010 = [
     "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // capa
     "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
