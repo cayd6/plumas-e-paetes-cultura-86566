@@ -18,6 +18,7 @@ const RevistaDetalhe = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(20);
   
+  // Updated correct order of the uploaded images for the 2010 magazine
   const paginas2010 = [
     "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", // capa
     "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
@@ -26,7 +27,6 @@ const RevistaDetalhe = () => {
     "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png",
     "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png",
     "/lovable-uploads/2f3ac4c5-4b19-4824-844f-58a4e3f24a02.png",
-    // Os 20 arquivos na ordem enviada seriam listados aqui
   ];
 
   const handlePreviousPage = () => {
