@@ -12,6 +12,8 @@ import {
   PaginationNext, 
   PaginationPrevious 
 } from "@/components/ui/pagination";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Progress } from "@/components/ui/progress";
 
 const RevistaDetalhe = () => {
   const { id } = useParams();
@@ -19,16 +21,21 @@ const RevistaDetalhe = () => {
   const [totalPages, setTotalPages] = useState(20);
   const [isLoading, setIsLoading] = useState(true);
   const [showPagination, setShowPagination] = useState(false);
+  const [currentImageLoaded, setCurrentImageLoaded] = useState(false);
+  const [preloadedImages, setPreloadedImages] = useState<Set<number>>(new Set([1])); // Start with first page
+  const [preloadProgress, setPreloadProgress] = useState(5); // Start with 5% progress
   
-  // Images with correct paths for actual display
+  // Define the image paths
   const paginas2010 = Array.from({ length: 20 }, (_, i) => {
     const pageNum = i + 1;
-    return `/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-${pageNum.toString().padStart(4, '0')}.jpg`;
+    return `/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-${pageNum.toString().padStart(4, '0')}.jpg`;
   });
 
+  // Handle navigation actions
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+      setCurrentImageLoaded(preloadedImages.has(currentPage - 1));
       window.scrollTo(0, 0);
     }
   };
@@ -36,20 +43,85 @@ const RevistaDetalhe = () => {
   const handleNextPage = () => {
     if (currentPage < paginas2010.length) {
       setCurrentPage(currentPage + 1);
+      setCurrentImageLoaded(preloadedImages.has(currentPage + 1));
       window.scrollTo(0, 0);
     }
   };
 
+  // Preload images in the background
+  useEffect(() => {
+    // Function to preload a single image and update state
+    const preloadImage = (pageNumber: number) => {
+      if (preloadedImages.has(pageNumber) || pageNumber < 1 || pageNumber > totalPages) return;
+      
+      const img = new Image();
+      img.src = paginas2010[pageNumber - 1];
+      img.onload = () => {
+        setPreloadedImages(prev => {
+          const newSet = new Set(prev);
+          newSet.add(pageNumber);
+          return newSet;
+        });
+        
+        // Update progress based on how many images are loaded
+        const newProgress = Math.min(100, Math.round((preloadedImages.size + 1) / paginas2010.length * 100));
+        setPreloadProgress(newProgress);
+      };
+    };
+
+    // First preload current page (if not already loaded)
+    if (!preloadedImages.has(currentPage)) {
+      preloadImage(currentPage);
+    }
+    
+    // Then preload adjacent pages (next page first, then previous)
+    if (currentPage < totalPages) {
+      preloadImage(currentPage + 1);
+    }
+    if (currentPage > 1) {
+      preloadImage(currentPage - 1);
+    }
+    
+    // After that, preload a few more pages in both directions
+    setTimeout(() => {
+      if (currentPage < totalPages - 1) preloadImage(currentPage + 2);
+      if (currentPage < totalPages - 2) preloadImage(currentPage + 3);
+    }, 1000);
+    
+    setTimeout(() => {
+      if (currentPage > 2) preloadImage(currentPage - 2);
+      if (currentPage > 3) preloadImage(currentPage - 3);
+    }, 2000);
+    
+  }, [currentPage, preloadedImages, paginas2010, totalPages]);
+
+  // Initial setup
   useEffect(() => {
     setTotalPages(paginas2010.length);
     
-    // Simulate loading for a smoother experience
+    // Show loader with a minimum time to prevent flashing
     const timer = setTimeout(() => {
       setIsLoading(false);
       setTimeout(() => {
         setShowPagination(true);
       }, 500);
     }, 800);
+    
+    // Preload the first few pages
+    const preloadInitialPages = async () => {
+      const img = new Image();
+      img.src = paginas2010[0];
+      img.onload = () => {
+        setCurrentImageLoaded(true);
+        setPreloadedImages(prev => {
+          const newSet = new Set(prev);
+          newSet.add(1);
+          return newSet;
+        });
+      };
+    };
+    
+    preloadInitialPages();
     
     return () => clearTimeout(timer);
   }, []);
@@ -72,9 +144,6 @@ const RevistaDetalhe = () => {
     return <div>Revista não encontrada</div>;
   }
 
-  // Log the image path being used for debugging
-  console.log("Current image path:", paginas2010[currentPage - 1]);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
       <Navigation />
@@ -96,6 +165,17 @@ const RevistaDetalhe = () => {
               Homenagem aos artífices e profissionais do carnaval carioca
             </p>
           </header>
+
+          {/* Loading progress indicator */}
+          {preloadProgress < 100 && (
+            <div className="mb-4 max-w-md mx-auto">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-500">Carregando revista</span>
+                <span className="text-sm font-medium text-ppc-purple">{preloadProgress}%</span>
+              </div>
+              <Progress value={preloadProgress} className="h-2" />
+            </div>
+          )}
 
           <div className={`bg-white rounded-xl shadow-xl p-4 mb-8 transition-all duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
             <div className="relative">
@@ -126,8 +206,10 @@ const RevistaDetalhe = () => {
               
               {/* Magazine page */}
               <div className="flex justify-center">
-                {isLoading ? (
-                  <div className="w-full max-w-3xl h-[700px] rounded-lg bg-gray-200 animate-pulse"></div>
+                {isLoading || !preloadedImages.has(currentPage) ? (
+                  <div className="w-full max-w-3xl h-[700px] rounded-lg bg-gray-100 flex items-center justify-center">
+                    <Skeleton className="w-full h-full rounded-lg" />
+                  </div>
                 ) : (
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-ppc-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg pointer-events-none"></div>
@@ -135,6 +217,17 @@ const RevistaDetalhe = () => {
                       src={paginas2010[currentPage - 1]}
                       alt={`Página ${currentPage}`}
                       className="max-h-[700px] w-full object-contain rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg"
+                      loading="eager"
+                      onLoad={() => {
+                        setCurrentImageLoaded(true);
+                        if (!preloadedImages.has(currentPage)) {
+                          setPreloadedImages(prev => {
+                            const newSet = new Set(prev);
+                            newSet.add(currentPage);
+                            return newSet;
+                          });
+                        }
+                      }}
                     />
                     <div className="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
                       Página {currentPage} de {totalPages}

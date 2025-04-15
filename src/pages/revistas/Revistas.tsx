@@ -20,10 +20,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Revistas = () => {
   const { translate } = useLanguage();
   const [isHovered, setIsHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   const revista = {
     id: 3,
@@ -40,6 +42,13 @@ const Revistas = () => {
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
+  // Preload the cover image
+  useEffect(() => {
+    const img = new Image();
+    img.src = revista.capa;
+    img.onload = () => setImageLoaded(true);
+  }, [revista.capa]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
@@ -67,11 +76,21 @@ const Revistas = () => {
                         <div className="relative overflow-hidden rounded-l-xl">
                           <Link to="/revista/2010" className="block">
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
+                            
+                            {!imageLoaded && (
+                              <div className="w-full h-[500px] flex items-center justify-center">
+                                <Skeleton className="w-full h-full" />
+                              </div>
+                            )}
+                            
                             <img
                               src={revista.capa}
                               alt={revista.titulo}
-                              className="w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105"
+                              className={`w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                              loading="eager"
+                              onLoad={() => setImageLoaded(true)}
                             />
+                            
                             <div className="absolute bottom-6 right-6 bg-purple-700 text-white px-4 py-2 rounded-full font-semibold z-20 transform rotate-[-8deg] shadow-lg">
                               {revista.titulo}
                             </div>
