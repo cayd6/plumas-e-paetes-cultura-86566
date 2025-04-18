@@ -21,16 +21,18 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useToast } from "@/components/ui/use-toast";
 
 const Revistas = () => {
   const { translate } = useLanguage();
+  const { toast } = useToast();
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   
   const revista = {
     id: 3,
     titulo: "Edição 2010",
-    capa: "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg",
+    capa: new URL("/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg", import.meta.url).href,
     descricao: "Prêmio Plumas e Paetês: Homenagem aos artífices e profissionais do carnaval carioca."
   };
 
@@ -43,36 +45,22 @@ const Revistas = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Debug the image path
+  // Load the cover image
   useEffect(() => {
-    console.log("Loading image from:", revista.capa);
-    
-    // Try with import.meta.url for Vite
-    const baseUrl = import.meta.url.split('/src/')[0];
-    console.log("Base URL:", baseUrl);
-    console.log("Resolved path:", new URL(revista.capa.substring(1), baseUrl).href);
-    
-    // Test if image exists
-    fetch(revista.capa)
-      .then(response => {
-        if (!response.ok) {
-          console.error("Image not found:", revista.capa, response.status);
-        } else {
-          console.log("Image found!", revista.capa);
-        }
-      })
-      .catch(error => {
-        console.error("Error fetching image:", error);
-      });
-      
     const img = new Image();
     img.src = revista.capa;
     img.onload = () => {
-      console.log("Image loaded successfully");
       setImageLoaded(true);
     };
-    img.onerror = (e) => console.error("Error loading image:", e);
-  }, [revista.capa]);
+    img.onerror = () => {
+      console.error("Error loading cover image:", revista.capa);
+      toast({
+        title: "Erro ao carregar a imagem",
+        description: "Não foi possível carregar a capa da revista",
+        variant: "destructive",
+      });
+    };
+  }, [revista.capa, toast]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
@@ -102,14 +90,13 @@ const Revistas = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
                             
                             {!imageLoaded && (
-                              <div className="w-full h-[500px] flex items-center justify-center">
+                              <div className="w-full h-[500px] flex items-center justify-center bg-gray-100">
                                 <Skeleton className="w-full h-full" />
                               </div>
                             )}
                             
-                            {/* Use import for Vite properly */}
                             <img
-                              src={import.meta.env.DEV ? revista.capa : revista.capa.replace('/src', '')}
+                              src={revista.capa}
                               alt={revista.titulo}
                               className={`w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                               loading="eager"

@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import { ChevronLeft, ChevronRight, ArrowLeftCircle, BookOpen } from "lucide-react";
@@ -13,9 +14,12 @@ import {
 } from "@/components/ui/pagination";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@/components/ui/progress";
+import { useToast } from "@/components/ui/use-toast";
 
 const RevistaDetalhe = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(20);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,23 +29,24 @@ const RevistaDetalhe = () => {
   const [preloadProgress, setPreloadProgress] = useState(5); // Start with 5% progress
   const [imageError, setImageError] = useState(false);
   
-  // Define the image paths with proper Vite path handling
+  // Redirect to magazines page if ID is invalid
+  useEffect(() => {
+    if (id !== "2010") {
+      toast({
+        title: "Revista não encontrada",
+        description: "Redirecionando para a página de revistas",
+        variant: "destructive",
+      });
+      navigate("/revistas");
+    }
+  }, [id, navigate, toast]);
+
+  // Define the image paths with improved path resolution
   const getPagePath = (pageNum: number) => {
     const formattedPageNum = pageNum.toString().padStart(4, '0');
-    return `/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-${formattedPageNum}.jpg`;
+    // Use a path that works in both dev and production
+    return new URL(`/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-${formattedPageNum}.jpg`, import.meta.url).href;
   };
-
-  // Debug logging for image paths
-  useEffect(() => {
-    console.log("Current page path:", getPagePath(currentPage));
-    const img = new Image();
-    img.src = getPagePath(currentPage);
-    img.onload = () => console.log("Test image loaded successfully");
-    img.onerror = (e) => console.error("Test image failed to load:", e);
-    
-    // List all available pages for debugging
-    console.log("All available pages:", Array.from({length: 20}, (_, i) => getPagePath(i+1)));
-  }, []);
 
   // Handle navigation actions
   const handlePreviousPage = () => {
@@ -131,9 +136,9 @@ const RevistaDetalhe = () => {
           return newSet;
         });
       };
-      img.onerror = () => {
+      img.onerror = (error) => {
+        console.error("Failed to load first image:", error);
         setImageError(true);
-        console.error("Failed to load first image");
       };
     };
     
@@ -155,10 +160,6 @@ const RevistaDetalhe = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currentPage]);
-
-  if (id !== "2010") {
-    return <div>Revista não encontrada</div>;
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
@@ -185,7 +186,7 @@ const RevistaDetalhe = () => {
           {/* Debug info */}
           {imageError && (
             <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
-              <p className="text-red-600">Erro ao carregar imagens. Caminho atual: {getPagePath(currentPage)}</p>
+              <p className="text-red-600">Erro ao carregar imagens. Tente atualizar a página ou voltar mais tarde.</p>
             </div>
           )}
 
@@ -211,6 +212,7 @@ const RevistaDetalhe = () => {
                     ? 'opacity-20 cursor-not-allowed' 
                     : 'bg-white/30 backdrop-blur-md hover:bg-white/50 transition-all'
                 }`}
+                aria-label="Página anterior"
               >
                 <ChevronLeft className="h-8 w-8 text-ppc-purple" />
               </button>
@@ -223,6 +225,7 @@ const RevistaDetalhe = () => {
                     ? 'opacity-20 cursor-not-allowed' 
                     : 'bg-white/30 backdrop-blur-md hover:bg-white/50 transition-all'
                 }`}
+                aria-label="Próxima página"
               >
                 <ChevronRight className="h-8 w-8 text-ppc-purple" />
               </button>
@@ -237,7 +240,7 @@ const RevistaDetalhe = () => {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-ppc-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg pointer-events-none"></div>
                     <img
-                      src={import.meta.env.DEV ? getPagePath(currentPage) : getPagePath(currentPage).replace('/src', '')}
+                      src={getPagePath(currentPage)}
                       alt={`Página ${currentPage}`}
                       className="max-h-[700px] w-full object-contain rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg"
                       loading="eager"
