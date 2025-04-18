@@ -18,10 +18,10 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Special color for Edicoes page
+  // Special color for Edicoes page, dark color for other pages
   const linkClass = location.pathname === '/edicoes' 
     ? 'text-ppc-purple'  // Purple text for Edicoes page
-    : (isScrolled ? 'text-gray-700' : 'text-white'); // Default colors for other pages
+    : (isScrolled ? 'text-black' : 'text-white'); // Dark color or white based on scroll
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -66,12 +66,12 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden fixed top-20 left-0 right-0 bg-white/95 backdrop-blur-lg shadow-lg z-50">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('inicio')}</Link>
-            <Link to="/edicoes" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('edicoes')}</Link>
-            <Link to="/revistas" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('revistas')}</Link>
-            <Link to="/eventos" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('eventos')}</Link>
-            <Link to="/noticias" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('noticias')}</Link>
-            <Link to="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-ppc-purple">{translate('sobre')}</Link>
+            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('inicio')}</Link>
+            <Link to="/edicoes" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('edicoes')}</Link>
+            <Link to="/revistas" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('revistas')}</Link>
+            <Link to="/eventos" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('eventos')}</Link>
+            <Link to="/noticias" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('noticias')}</Link>
+            <Link to="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('sobre')}</Link>
           </div>
         </div>
       )}
