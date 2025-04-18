@@ -21,17 +21,17 @@ const EdicaoDetalhe = () => {
             <div className="mb-8">
               <img 
                 src="/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png"
-                alt="19º Prêmio Plumas & Paetês Cultural"
+                alt="19º Prêmio Instituto Plumas e Paetês Cultural"
                 className="w-full object-contain rounded-xl"
               />
             </div>
             
-            <h1 className="text-4xl font-bold mb-6">19º Prêmio Plumas & Paetês Cultural</h1>
+            <h1 className="text-4xl font-bold mb-6">19º Prêmio Instituto Plumas e Paetês Cultural</h1>
             
             <div className="prose prose-lg max-w-none">
               <p className="text-xl mb-6">
                 Primeira premiação de carnaval voltada aos profissionais dos bastidores do carnaval, 
-                o Plumas & Paetês Cultural chega à sua 19ª edição, que será realizada na Cidade do Samba, 
+                o Instituto Plumas e Paetês Cultural chega à sua 19ª edição, que será realizada na Cidade do Samba, 
                 com apresentação do projeto Flores em Vida - Volume 01 - Noca da Portela, do cantor e 
                 produtor musical Ciraninho.
               </p>
@@ -40,7 +40,7 @@ const EdicaoDetalhe = () => {
                 Os preparativos para o Carnaval 2025 estão a todo vapor e, enquanto nas quadras o samba pulsa, 
                 nos barracões, o ritmo começa a acelerar. Criado há 19 anos com o objetivo de reconhecer e 
                 valorizar o trabalho de quem atua nos bastidores da criação, produção, realização e cobertura 
-                do carnaval carioca, o Prêmio Plumas e Paetês Cultural já contemplou mais de mil profissionais 
+                do carnaval carioca, o Prêmio Instituto Plumas e Paetês Cultural já contemplou mais de mil profissionais 
                 de 51 categorias, em uma grande celebração em torno da Economia Criativa do Carnaval.
               </p>
 
@@ -74,13 +74,13 @@ const EdicaoDetalhe = () => {
               <h2 className="text-2xl font-bold mt-8 mb-4">Sobre o Prêmio</h2>
 
               <p className="mb-4">
-                A produtora, Plumas & Paetês Produções Culturais, chancelada, desde 2012, pela Organização 
+                A produtora, Instituto Plumas e Paetês Produções Culturais, chancelada, desde 2012, pela Organização 
                 dos Estados Ibero-americanos – (OEI) e diplomada pela Comissão de Cultura da ALERJ, com o 
                 Diploma Heloneida Studart em 2015, por considerarem a sua relevante contribuição exercida 
                 com excelência no contexto da produção cultural há quase duas décadas, tem como missão a 
                 valorização e o reconhecimento dos trabalhadores e artífices da economia criativa do carnaval 
                 carioca, que em sua maioria ainda atua na informalidade. Tem como principais projetos 
-                idealizados: O Prêmio e a Revista Plumas & Paetês Cultural, cuja edição anual é totalmente 
+                idealizados: O Prêmio e a Revista Instituto Plumas e Paetês Cultural, cuja edição anual é totalmente 
                 gratuita e retrata os bastidores da maior festa cultural do país.
               </p>
 
@@ -91,7 +91,7 @@ const EdicaoDetalhe = () => {
               </p>
 
               <p className="mb-4">
-                Ao longo de suas 19 edições, o Plumas e Paetês totalizou 1344 premiados, em 51 categorias 
+                Ao longo de suas 19 edições, o Instituto Plumas e Paetês Cultural totalizou 1344 premiados, em 51 categorias 
                 diferentes contemplando escolas de samba do Grupo Especial, Séries Ouro e Prata, que fazem 
                 parte deste universo criativo com inúmeros prestadores de serviços diretos e indiretos.
               </p>

@@ -92,7 +92,7 @@ const Noticias = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
+            <p>&copy; 2024 Instituto Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
           </div>
         </div>
       </footer>

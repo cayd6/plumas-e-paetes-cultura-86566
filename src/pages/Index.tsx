@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import AnniversaryBanner from "@/components/AnniversaryBanner";
@@ -39,7 +38,7 @@ const Index = () => {
             <AnniversaryBanner />
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white mt-6">
-              Plumas e Paetês Cultural
+              Instituto Plumas e Paetês Cultural
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8">
               {translate("projetosDesc")}

@@ -33,7 +33,7 @@ const Navigation = () => {
             <Link to="/" className="flex items-center space-x-4">
               <img 
                 src="/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png"
-                alt="Plumas e Paetês Cultural"
+                alt="Instituto Plumas e Paetês Cultural"
                 className="h-16 w-auto"
               />
               <div className={`hidden sm:block font-semibold text-xl ${linkClass} transition-colors duration-300`}>
