@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
@@ -24,12 +23,25 @@ const RevistaDetalhe = () => {
   const [currentImageLoaded, setCurrentImageLoaded] = useState(false);
   const [preloadedImages, setPreloadedImages] = useState<Set<number>>(new Set([1])); // Start with first page
   const [preloadProgress, setPreloadProgress] = useState(5); // Start with 5% progress
+  const [imageError, setImageError] = useState(false);
   
-  // Define the image paths
-  const paginas2010 = Array.from({ length: 20 }, (_, i) => {
-    const pageNum = i + 1;
-    return `/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-${pageNum.toString().padStart(4, '0')}.jpg`;
-  });
+  // Define the image paths with proper Vite path handling
+  const getPagePath = (pageNum: number) => {
+    const formattedPageNum = pageNum.toString().padStart(4, '0');
+    return `/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-${formattedPageNum}.jpg`;
+  };
+
+  // Debug logging for image paths
+  useEffect(() => {
+    console.log("Current page path:", getPagePath(currentPage));
+    const img = new Image();
+    img.src = getPagePath(currentPage);
+    img.onload = () => console.log("Test image loaded successfully");
+    img.onerror = (e) => console.error("Test image failed to load:", e);
+    
+    // List all available pages for debugging
+    console.log("All available pages:", Array.from({length: 20}, (_, i) => getPagePath(i+1)));
+  }, []);
 
   // Handle navigation actions
   const handlePreviousPage = () => {
@@ -41,7 +53,7 @@ const RevistaDetalhe = () => {
   };
 
   const handleNextPage = () => {
-    if (currentPage < paginas2010.length) {
+    if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
       setCurrentImageLoaded(preloadedImages.has(currentPage + 1));
       window.scrollTo(0, 0);
@@ -55,7 +67,7 @@ const RevistaDetalhe = () => {
       if (preloadedImages.has(pageNumber) || pageNumber < 1 || pageNumber > totalPages) return;
       
       const img = new Image();
-      img.src = paginas2010[pageNumber - 1];
+      img.src = getPagePath(pageNumber);
       img.onload = () => {
         setPreloadedImages(prev => {
           const newSet = new Set(prev);
@@ -64,7 +76,7 @@ const RevistaDetalhe = () => {
         });
         
         // Update progress based on how many images are loaded
-        const newProgress = Math.min(100, Math.round((preloadedImages.size + 1) / paginas2010.length * 100));
+        const newProgress = Math.min(100, Math.round((preloadedImages.size + 1) / totalPages * 100));
         setPreloadProgress(newProgress);
       };
     };
@@ -93,11 +105,11 @@ const RevistaDetalhe = () => {
       if (currentPage > 3) preloadImage(currentPage - 3);
     }, 2000);
     
-  }, [currentPage, preloadedImages, paginas2010, totalPages]);
+  }, [currentPage, preloadedImages, totalPages]);
 
   // Initial setup
   useEffect(() => {
-    setTotalPages(paginas2010.length);
+    setTotalPages(20); // Fixed number of pages
     
     // Show loader with a minimum time to prevent flashing
     const timer = setTimeout(() => {
@@ -110,7 +122,7 @@ const RevistaDetalhe = () => {
     // Preload the first few pages
     const preloadInitialPages = async () => {
       const img = new Image();
-      img.src = paginas2010[0];
+      img.src = getPagePath(1);
       img.onload = () => {
         setCurrentImageLoaded(true);
         setPreloadedImages(prev => {
@@ -118,6 +130,10 @@ const RevistaDetalhe = () => {
           newSet.add(1);
           return newSet;
         });
+      };
+      img.onerror = () => {
+        setImageError(true);
+        console.error("Failed to load first image");
       };
     };
     
@@ -165,6 +181,13 @@ const RevistaDetalhe = () => {
               Homenagem aos artífices e profissionais do carnaval carioca
             </p>
           </header>
+
+          {/* Debug info */}
+          {imageError && (
+            <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
+              <p className="text-red-600">Erro ao carregar imagens. Caminho atual: {getPagePath(currentPage)}</p>
+            </div>
+          )}
 
           {/* Loading progress indicator */}
           {preloadProgress < 100 && (
@@ -214,7 +237,7 @@ const RevistaDetalhe = () => {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-ppc-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg pointer-events-none"></div>
                     <img
-                      src={paginas2010[currentPage - 1]}
+                      src={import.meta.env.DEV ? getPagePath(currentPage) : getPagePath(currentPage).replace('/src', '')}
                       alt={`Página ${currentPage}`}
                       className="max-h-[700px] w-full object-contain rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg"
                       loading="eager"
@@ -227,6 +250,12 @@ const RevistaDetalhe = () => {
                             return newSet;
                           });
                         }
+                      }}
+                      onError={(e) => {
+                        console.error(`Failed to load image for page ${currentPage}`);
+                        setImageError(true);
+                        // Fallback to placeholder
+                        (e.target as HTMLImageElement).src = "/placeholder.svg";
                       }}
                     />
                     <div className="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">

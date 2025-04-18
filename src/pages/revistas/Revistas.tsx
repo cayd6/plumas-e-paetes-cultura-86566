@@ -30,7 +30,7 @@ const Revistas = () => {
   const revista = {
     id: 3,
     titulo: "Edição 2010",
-    capa: "/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg",
+    capa: "/src/pages/revistas/2010/Revista_Plumas_e_Paetes-2010_page-0001.jpg",
     descricao: "Prêmio Plumas e Paetês: Homenagem aos artífices e profissionais do carnaval carioca."
   };
 
@@ -43,11 +43,35 @@ const Revistas = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Preload the cover image
+  // Debug the image path
   useEffect(() => {
+    console.log("Loading image from:", revista.capa);
+    
+    // Try with import.meta.url for Vite
+    const baseUrl = import.meta.url.split('/src/')[0];
+    console.log("Base URL:", baseUrl);
+    console.log("Resolved path:", new URL(revista.capa.substring(1), baseUrl).href);
+    
+    // Test if image exists
+    fetch(revista.capa)
+      .then(response => {
+        if (!response.ok) {
+          console.error("Image not found:", revista.capa, response.status);
+        } else {
+          console.log("Image found!", revista.capa);
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching image:", error);
+      });
+      
     const img = new Image();
     img.src = revista.capa;
-    img.onload = () => setImageLoaded(true);
+    img.onload = () => {
+      console.log("Image loaded successfully");
+      setImageLoaded(true);
+    };
+    img.onerror = (e) => console.error("Error loading image:", e);
   }, [revista.capa]);
 
   return (
@@ -83,12 +107,18 @@ const Revistas = () => {
                               </div>
                             )}
                             
+                            {/* Use import for Vite properly */}
                             <img
-                              src={revista.capa}
+                              src={import.meta.env.DEV ? revista.capa : revista.capa.replace('/src', '')}
                               alt={revista.titulo}
                               className={`w-full h-[500px] object-cover transition-transform duration-700 hover:scale-105 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                               loading="eager"
                               onLoad={() => setImageLoaded(true)}
+                              onError={(e) => {
+                                console.error("Image failed to load");
+                                // Fallback image
+                                (e.target as HTMLImageElement).src = "/placeholder.svg";
+                              }}
                             />
                             
                             <div className="absolute bottom-6 right-6 bg-purple-700 text-white px-4 py-2 rounded-full font-semibold z-20 transform rotate-[-8deg] shadow-lg">
