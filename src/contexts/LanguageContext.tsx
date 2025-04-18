@@ -36,7 +36,10 @@ const translations: Translations = {
     direitosReservados: "Todos os direitos reservados.",
     lerMais: "Ler mais",
     saibaMais: "Saiba mais",
-    saibaMais20Anos: "Saiba mais sobre os 20 anos"
+    saibaMais20Anos: "Saiba mais sobre os 20 anos",
+    trocarIdioma: "Trocar idioma",
+    diminuirFonte: "Diminuir tamanho da fonte",
+    aumentarFonte: "Aumentar tamanho da fonte"
   },
   en: {
     inicio: "Home",
@@ -62,7 +65,10 @@ const translations: Translations = {
     direitosReservados: "All rights reserved.",
     lerMais: "Read more",
     saibaMais: "Learn more",
-    saibaMais20Anos: "Learn more about the 20 years"
+    saibaMais20Anos: "Learn more about the 20 years",
+    trocarIdioma: "Switch language",
+    diminuirFonte: "Decrease font size",
+    aumentarFonte: "Increase font size"
   },
 };
 

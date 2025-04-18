@@ -13,7 +13,7 @@ const Index = () => {
       <LanguageControls />
       
       {/* Hero Section */}
-      <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
+      <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden pt-8">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="absolute inset-0 w-full h-full grid grid-cols-2">
           <div className="relative h-full animate-slide-up">

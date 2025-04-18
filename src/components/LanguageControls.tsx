@@ -29,12 +29,12 @@ const LanguageControls = () => {
 
   return (
     <TooltipProvider>
-      <div className="fixed top-0 right-4 z-[60] flex items-center space-x-4 pt-2">
+      <div className="fixed top-24 right-4 z-[40] flex items-center space-x-4 pt-2">
         <Tooltip>
           <TooltipTrigger asChild>
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white/20 transition-colors"
+              className="flex items-center space-x-2 px-3 py-2 rounded-full bg-gray-800/80 backdrop-blur-md text-white hover:bg-gray-700/90 transition-colors"
             >
               <Globe size={20} />
               <span>{language.toUpperCase()}</span>
@@ -45,7 +45,7 @@ const LanguageControls = () => {
           </TooltipContent>
         </Tooltip>
 
-        <div className="flex items-center space-x-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md text-white">
+        <div className="flex items-center space-x-2 px-3 py-2 rounded-full bg-gray-800/80 backdrop-blur-md text-white">
           <Tooltip>
             <TooltipTrigger asChild>
               <button 
