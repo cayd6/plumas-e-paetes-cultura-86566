@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -36,7 +37,7 @@ const Navigation = () => {
                 className="h-16 w-auto"
               />
               <div className={`hidden sm:block font-semibold text-xl ${linkClass} transition-colors duration-300`}>
-                Instituto Plumas e Paetês
+                Instituto Plumas e Paetês Cultural
               </div>
             </Link>
           </div>
