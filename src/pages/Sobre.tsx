@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navigation from "@/components/Navigation";
@@ -43,6 +42,8 @@ const Sobre = () => {
 
   // Animation for sections when they enter viewport
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -67,12 +68,7 @@ const Sobre = () => {
 
     return () => {
       clearTimeout(timer);
-      const sections = document.querySelectorAll('section[id]');
-      if (sections.length > 0) {
-        sections.forEach(section => {
-          observer.unobserve(section);
-        });
-      }
+      observer.disconnect(); // Properly disconnect the observer
     };
   }, []);
 
