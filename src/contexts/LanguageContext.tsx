@@ -39,7 +39,17 @@ const translations: Translations = {
     saibaMais20Anos: "Saiba mais sobre os 20 anos",
     trocarIdioma: "Trocar idioma",
     diminuirFonte: "Diminuir tamanho da fonte",
-    aumentarFonte: "Aumentar tamanho da fonte"
+    aumentarFonte: "Aumentar tamanho da fonte",
+    conhecaNossosProjetos: "Conheça Nossos Projetos",
+    sobreNos: "Sobre Nós",
+    quemSomos: "Quem Somos",
+    missaoVisaoValores: "Missão, Visão e Valores",
+    ondeAtuamos: "Onde Atuamos",
+    reconhecimentos: "Reconhecimentos",
+    nossaHistoria: "Nossa História",
+    conecteConosco: "Conecte-se Conosco",
+    seguirInstagram: "Seguir no Instagram",
+    seguirFacebook: "Seguir no Facebook"
   },
   en: {
     inicio: "Home",
@@ -68,7 +78,17 @@ const translations: Translations = {
     saibaMais20Anos: "Learn more about the 20 years",
     trocarIdioma: "Switch language",
     diminuirFonte: "Decrease font size",
-    aumentarFonte: "Increase font size"
+    aumentarFonte: "Increase font size",
+    conhecaNossosProjetos: "Discover Our Projects",
+    sobreNos: "About Us",
+    quemSomos: "Who We Are",
+    missaoVisaoValores: "Mission, Vision and Values",
+    ondeAtuamos: "Where We Operate",
+    reconhecimentos: "Recognitions",
+    nossaHistoria: "Our History",
+    conecteConosco: "Connect With Us",
+    seguirInstagram: "Follow on Instagram",
+    seguirFacebook: "Follow on Facebook"
   },
 };
 
