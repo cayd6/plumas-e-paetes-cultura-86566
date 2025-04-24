@@ -65,6 +65,10 @@
   .nav-link.text-gray-700::after {
     @apply bg-ppc-purple;
   }
+  
+  .nav-link.text-black::after {
+    @apply bg-ppc-purple;
+  }
 
   .nav-link:hover::after {
     @apply w-full;

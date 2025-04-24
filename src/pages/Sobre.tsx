@@ -46,19 +46,33 @@ const Sobre = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setVisibleSections(prev => [...prev, entry.target.id]);
+          setVisibleSections(prev => {
+            // Prevent duplicate entries
+            if (prev.includes(entry.target.id)) return prev;
+            return [...prev, entry.target.id];
+          });
         }
       });
     }, { threshold: 0.3 });
 
-    document.querySelectorAll('section[id]').forEach(section => {
-      observer.observe(section);
-    });
+    // Add a small delay to ensure DOM elements are rendered
+    const timer = setTimeout(() => {
+      const sections = document.querySelectorAll('section[id]');
+      if (sections.length > 0) {
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+      }
+    }, 100);
 
     return () => {
-      document.querySelectorAll('section[id]').forEach(section => {
-        observer.unobserve(section);
-      });
+      clearTimeout(timer);
+      const sections = document.querySelectorAll('section[id]');
+      if (sections.length > 0) {
+        sections.forEach(section => {
+          observer.unobserve(section);
+        });
+      }
     };
   }, []);
 
@@ -68,12 +82,14 @@ const Sobre = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
-      <LanguageControls />
+      <div className="pt-20">
+        <LanguageControls />
+      </div>
       
       {/* Hero Section */}
       <section 
         id="hero" 
-        className={`relative min-h-[80vh] flex flex-col items-center justify-center pt-20 overflow-hidden bg-gradient-to-br from-ppc-purple via-ppc-magenta to-ppc-orange`}
+        className="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-ppc-purple via-ppc-magenta to-ppc-orange"
       >
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="container mx-auto px-4 z-20 text-center">
