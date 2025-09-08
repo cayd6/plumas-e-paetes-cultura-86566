@@ -3,6 +3,12 @@ import LanguageControls from "@/components/LanguageControls";
 import AnniversaryBanner from "@/components/AnniversaryBanner";
 import { ArrowRight, ChevronDown, Instagram, Facebook, Mail, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import danceWorkshop from "@/assets/dance-workshop.jpg";
+import costumeWorkshop from "@/assets/costume-workshop.jpg";
+import percussionClass from "@/assets/percussion-class.jpg";
+import awardCeremony from "@/assets/award-ceremony-news.jpg";
+import communityParade from "@/assets/community-parade.jpg";
+import elderlyWorkshop from "@/assets/elderly-workshop.jpg";
 
 const Index = () => {
   const { translate, language } = useLanguage();
@@ -65,20 +71,74 @@ const Index = () => {
             <p className="text-xl text-gray-600">{translate("projetosDesc")}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="glass-card rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
-              >
-                <div className="aspect-video bg-gray-200 animate-pulse" />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">Projeto Cultural {i}</h3>
-                  <p className="text-gray-600">
-                    Uma breve descrição do projeto e seus objetivos principais para a comunidade.
-                  </p>
-                </div>
+            <div className="glass-card rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group">
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={danceWorkshop} 
+                  alt="Oficina de Dança - Crianças e adultos aprendendo passos de samba"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
-            ))}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Oficinas de Dança Afro-Brasileira</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Transformamos vidas através da dança! Nossas oficinas de samba, frevo e danças afro-brasileiras 
+                  atendem crianças, jovens e adultos, promovendo inclusão social e resgate cultural.
+                </p>
+                <a
+                  href="/projetos"
+                  className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors font-medium"
+                >
+                  {translate("lerMais")} <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            <div className="glass-card rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group">
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={costumeWorkshop} 
+                  alt="Confecção de Fantasias - Artesãos criando fantasias coloridas"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Ateliê de Fantasias Criativas</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  Da imaginação à realidade! Ensinamos técnicas tradicionais de confecção de fantasias de carnaval,
+                  gerando renda e preservando a arte da costura criativa em nossa comunidade.
+                </p>
+                <a
+                  href="/projetos"
+                  className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors font-medium"
+                >
+                  {translate("lerMais")} <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            <div className="glass-card rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group">
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={percussionClass} 
+                  alt="Aulas de Percussão - Crianças tocando instrumentos brasileiros"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Escola de Percussão Popular</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  O ritmo que une corações! Nossa escola oferece aulas gratuitas de percussão, formando 
+                  novos talentos e mantendo viva a tradição musical brasileira.
+                </p>
+                <a
+                  href="/projetos"
+                  className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors font-medium"
+                >
+                  {translate("lerMais")} <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -100,27 +160,77 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">{translate("ultimasNoticias")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <article
-                key={i}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-              >
-                <div className="aspect-video bg-gray-200 animate-pulse" />
-                <div className="p-6">
-                  <div className="text-sm text-gray-500 mb-2">12 de Março, 2024</div>
-                  <h3 className="text-xl font-semibold mb-2">Notícia Importante {i}</h3>
-                  <p className="text-gray-600 mb-4">
-                    Um breve resumo da notícia e seus impactos para nossa comunidade cultural.
-                  </p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors"
-                  >
-                    {translate("lerMais")} <ArrowRight className="ml-1 h-4 w-4" />
-                  </a>
-                </div>
-              </article>
-            ))}
+            <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={awardCeremony} 
+                  alt="Cerimônia de Premiação - Instituto recebendo reconhecimento cultural"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-ppc-purple font-medium mb-2">15 de Janeiro, 2025</div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Instituto recebe Prêmio de Cultura Popular</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Nosso trabalho foi reconhecido pela Secretaria de Cultura com o prêmio "Guardiões da Tradição" 
+                  por nossa dedicação em preservar e difundir a cultura afro-brasileira.
+                </p>
+                <a
+                  href="/noticias"
+                  className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors font-medium"
+                >
+                  {translate("lerMais")} <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+              </div>
+            </article>
+
+            <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={communityParade} 
+                  alt="Desfile Comunitário - Participantes em fantasias coloridas"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-ppc-purple font-medium mb-2">08 de Janeiro, 2025</div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Grande Desfile Comunitário reúne 500 pessoas</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  O tradicional Desfile de Reis mobilizou toda a comunidade com apresentações de dança, 
+                  música e as mais belas fantasias criadas em nossos ateliês culturais.
+                </p>
+                <a
+                  href="/noticias"
+                  className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors font-medium"
+                >
+                  {translate("lerMais")} <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+              </div>
+            </article>
+
+            <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={elderlyWorkshop} 
+                  alt="Oficina para Idosos - Compartilhamento de saberes tradicionais"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-ppc-purple font-medium mb-2">20 de Dezembro, 2024</div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Projeto "Mestres da Tradição" forma nova turma</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Idosos da comunidade compartilham seus conhecimentos tradicionais em oficinas intergeracionais, 
+                  fortalecendo laços e preservando nossa memória cultural.
+                </p>
+                <a
+                  href="/noticias"
+                  className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/80 transition-colors font-medium"
+                >
+                  {translate("lerMais")} <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
