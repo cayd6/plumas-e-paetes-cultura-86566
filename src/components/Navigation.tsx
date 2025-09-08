@@ -44,10 +44,27 @@ const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('inicio')}</Link>
-            <Link to="/edicoes" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('edicoes')}</Link>
-            <Link to="/revistas" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('revistas')}</Link>
-            <Link to="/eventos" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('eventos')}</Link>
-            <Link to="/noticias" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('noticias')}</Link>
+            
+            {/* Highlighted Priority Sections */}
+            <Link to="/edicoes" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
+              {translate('edicoes')}
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-orange rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
+            </Link>
+            
+            <Link to="/revistas" className={`nav-link ${linkClass} transition-colors duration-300`}>
+              {translate('revistas')}
+            </Link>
+            
+            <Link to="/eventos" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
+              {translate('eventos')}
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-magenta rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
+            </Link>
+            
+            <Link to="/noticias" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
+              {translate('noticias')}
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-purple rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
+            </Link>
+            
             <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('sobre')}</Link>
           </div>
 

@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import carnivalHeroBg from "@/assets/carnival-hero-bg.jpg";
+import carnivalArtisan from "@/assets/carnival-artisan.jpg";
+import awardsCeremony from "@/assets/awards-ceremony.jpg";
+import carnivalPattern from "@/assets/carnival-pattern.jpg";
 import { 
   Users, 
   Star, 
@@ -85,18 +89,54 @@ const Sobre = () => {
       {/* Hero Section */}
       <section 
         id="hero" 
-        className="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-ppc-purple via-ppc-magenta to-ppc-orange"
+        className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(123, 44, 191, 0.8), rgba(219, 39, 119, 0.8)), url(${carnivalHeroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
       >
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 z-10" />
         <div className="container mx-auto px-4 z-20 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-slide-up">
-            {language === 'pt' ? 'Transformando a sociedade pela economia criativa' : 'Transforming society through creative economy'}
+          <div className="mb-8 animate-fade-in">
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-md rounded-full px-6 py-2 text-white/90 text-sm font-medium">
+              <span className="w-2 h-2 bg-ppc-yellow rounded-full mr-2 animate-pulse"></span>
+              {language === 'pt' ? '20 Anos de História' : '20 Years of History'}
+            </div>
+          </div>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 animate-slide-up leading-tight">
+            {language === 'pt' ? (
+              <>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-yellow to-ppc-orange">Transformando</span>
+                <br />
+                <span className="text-white">a sociedade pela</span>
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-magenta to-ppc-purple">economia criativa</span>
+              </>
+            ) : (
+              <>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-yellow to-ppc-orange">Transforming</span>
+                <br />
+                <span className="text-white">society through</span>
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-magenta to-ppc-purple">creative economy</span>
+              </>
+            )}
           </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto animate-fade-in">
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in font-light">
             {language === 'pt' 
-              ? 'Desde 2005 valorizando os artistas e a cultura brasileira' 
-              : 'Since 2005 valuing Brazilian artists and culture'}
+              ? 'Desde 2005 valorizando os artistas e a riqueza cultural brasileira através do carnaval e da arte popular' 
+              : 'Since 2005 valuing Brazilian artists and cultural richness through carnival and popular art'}
           </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+            <button className="px-8 py-4 bg-gradient-to-r from-ppc-purple to-ppc-magenta text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-ppc-purple/50 transition-all duration-300 transform hover:-translate-y-1">
+              {language === 'pt' ? 'Nossos Projetos' : 'Our Projects'}
+            </button>
+            <button className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full backdrop-blur-md hover:bg-white/10 transition-all duration-300">
+              {language === 'pt' ? 'Entre em Contato' : 'Get in Touch'}
+            </button>
+          </div>
         </div>
         
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
@@ -116,47 +156,64 @@ const Sobre = () => {
       {/* Missão, Visão e Valores Section */}
       <section 
         id="mission" 
-        className={`py-20 px-4 transition-all duration-1000 ${
+        className={`py-24 px-4 relative transition-all duration-1000 ${
           isVisible('mission') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 250, 251, 0.9)), url(${carnivalPattern})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
       >
-        <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gradient">
-            {language === 'pt' ? 'Missão, Visão e Valores' : 'Mission, Vision and Values'}
-          </h2>
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center bg-gradient-to-r from-ppc-purple/10 to-ppc-magenta/10 rounded-full px-6 py-2 text-ppc-purple text-sm font-medium mb-4">
+              {language === 'pt' ? 'Nossos Fundamentos' : 'Our Foundation'}
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold text-center text-gradient mb-6">
+              {language === 'pt' ? 'Missão, Visão e Valores' : 'Mission, Vision and Values'}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {language === 'pt' 
+                ? 'Os pilares que guiam nossa jornada na transformação cultural do Brasil' 
+                : 'The pillars that guide our journey in Brazil\'s cultural transformation'}
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {/* Missão */}
-            <Card className="hover:shadow-lg transition-all hover:-translate-y-1 backdrop-blur-md bg-white/90">
-              <CardHeader className="pb-2">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-ppc-purple to-ppc-magenta flex items-center justify-center mb-4">
-                  <Star size={28} className="text-white" />
+            <Card className="group hover:shadow-2xl hover:shadow-ppc-purple/20 transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-md border-0 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-ppc-purple/5 to-ppc-magenta/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="pb-4 relative z-10">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-ppc-purple to-ppc-magenta flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Star size={32} className="text-white" />
                 </div>
-                <CardTitle className="text-2xl">
+                <CardTitle className="text-2xl font-bold text-gray-800 group-hover:text-ppc-purple transition-colors">
                   {language === 'pt' ? 'Missão' : 'Mission'}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-700">
+              <CardContent className="relative z-10">
+                <p className="text-gray-700 text-lg leading-relaxed">
                   {language === 'pt' 
-                    ? 'Transformar a sociedade brasileira por meio da economia criativa.' 
-                    : 'Transform Brazilian society through the creative economy.'}
+                    ? 'Transformar a sociedade brasileira por meio da economia criativa, valorizando artistas e promovendo a cultura popular.' 
+                    : 'Transform Brazilian society through the creative economy, valuing artists and promoting popular culture.'}
                 </p>
               </CardContent>
             </Card>
             
             {/* Visão */}
-            <Card className="hover:shadow-lg transition-all hover:-translate-y-1 backdrop-blur-md bg-white/90">
-              <CardHeader className="pb-2">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-ppc-orange to-ppc-yellow flex items-center justify-center mb-4">
-                  <Star size={28} className="text-white" />
+            <Card className="group hover:shadow-2xl hover:shadow-ppc-orange/20 transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-md border-0 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-ppc-orange/5 to-ppc-yellow/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="pb-4 relative z-10">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-ppc-orange to-ppc-yellow flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Globe size={32} className="text-white" />
                 </div>
-                <CardTitle className="text-2xl">
+                <CardTitle className="text-2xl font-bold text-gray-800 group-hover:text-ppc-orange transition-colors">
                   {language === 'pt' ? 'Visão' : 'Vision'}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-700">
+              <CardContent className="relative z-10">
+                <p className="text-gray-700 text-lg leading-relaxed">
                   {language === 'pt' 
                     ? 'Ser um agente amplificador da riqueza cultural do país, iluminando a arte de seus fazedores e promovendo a democratização do seu acesso.' 
                     : 'To be an amplifying agent of the country\'s cultural wealth, illuminating the art of its creators and promoting the democratization of its access.'}
@@ -165,22 +222,30 @@ const Sobre = () => {
             </Card>
             
             {/* Valores */}
-            <Card className="hover:shadow-lg transition-all hover:-translate-y-1 backdrop-blur-md bg-white/90">
-              <CardHeader className="pb-2">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-ppc-green to-ppc-yellow flex items-center justify-center mb-4">
-                  <Star size={28} className="text-white" />
+            <Card className="group hover:shadow-2xl hover:shadow-ppc-green/20 transition-all duration-500 hover:-translate-y-2 bg-white/80 backdrop-blur-md border-0 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-ppc-green/5 to-ppc-yellow/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="pb-4 relative z-10">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-ppc-green to-ppc-yellow flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Users size={32} className="text-white" />
                 </div>
-                <CardTitle className="text-2xl">
+                <CardTitle className="text-2xl font-bold text-gray-800 group-hover:text-ppc-green transition-colors">
                   {language === 'pt' ? 'Valores' : 'Values'}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <ul className="list-disc list-inside text-gray-700 space-y-2">
-                  <li>{language === 'pt' ? 'Criatividade' : 'Creativity'}</li>
-                  <li>{language === 'pt' ? 'Diversidade' : 'Diversity'}</li>
-                  <li>{language === 'pt' ? 'Acessibilidade' : 'Accessibility'}</li>
-                  <li>{language === 'pt' ? 'Sustentabilidade' : 'Sustainability'}</li>
-                </ul>
+              <CardContent className="relative z-10">
+                <div className="space-y-3 text-gray-700">
+                  {[
+                    { pt: 'Criatividade', en: 'Creativity' },
+                    { pt: 'Diversidade', en: 'Diversity' },
+                    { pt: 'Acessibilidade', en: 'Accessibility' },
+                    { pt: 'Sustentabilidade', en: 'Sustainability' }
+                  ].map((value, index) => (
+                    <div key={index} className="flex items-center text-lg">
+                      <div className="w-2 h-2 bg-gradient-to-r from-ppc-green to-ppc-yellow rounded-full mr-3"></div>
+                      {language === 'pt' ? value.pt : value.en}
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -195,8 +260,8 @@ const Sobre = () => {
         }`}
       >
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <div className="md:w-1/2 order-2 md:order-1">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 order-2 lg:order-1">
               <div className="flex items-center mb-6">
                 <Users size={28} className="text-ppc-purple mr-3" />
                 <h2 className="text-3xl md:text-4xl font-bold text-gradient">
@@ -248,17 +313,32 @@ const Sobre = () => {
               </div>
             </div>
             
-            <div className="md:w-1/2 order-1 md:order-2 relative">
-              <div className="shadow-2xl rounded-lg overflow-hidden">
-                <img
-                  src="/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png"
-                  alt="Instituto Plumas e Paetês Cultural"
-                  className="w-full h-auto object-cover rounded-lg transition-transform duration-700 hover:scale-105"
-                />
+            <div className="lg:w-1/2 order-1 lg:order-2 relative">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="shadow-xl rounded-2xl overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <img
+                    src="/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png"
+                    alt="Instituto Plumas e Paetês Cultural"
+                    className="w-full h-48 object-cover transition-transform duration-700 hover:scale-110"
+                  />
+                </div>
+                <div className="shadow-xl rounded-2xl overflow-hidden transform -rotate-2 hover:rotate-0 transition-transform duration-500 mt-8">
+                  <img
+                    src={carnivalArtisan}
+                    alt="Artesão trabalhando com plumas e paetês"
+                    className="w-full h-48 object-cover transition-transform duration-700 hover:scale-110"
+                  />
+                </div>
               </div>
-              <div className="absolute -bottom-8 -right-8 hidden md:block">
-                <div className="w-24 h-24 rounded-full bg-ppc-magenta/20 backdrop-blur-sm flex items-center justify-center animate-float">
-                  <span className="text-ppc-magenta font-bold">20 Anos</span>
+              <div className="absolute -bottom-6 -right-6 hidden lg:block">
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-ppc-purple to-ppc-magenta/80 backdrop-blur-sm flex flex-col items-center justify-center animate-float shadow-lg">
+                  <span className="text-white font-bold text-2xl">20</span>
+                  <span className="text-white/90 text-sm">Anos</span>
+                </div>
+              </div>
+              <div className="absolute -top-4 -left-4 hidden lg:block">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-ppc-orange to-ppc-yellow/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                  <Star size={24} className="text-white animate-spin-slow" />
                 </div>
               </div>
             </div>
@@ -357,42 +437,61 @@ const Sobre = () => {
         }`}
       >
         <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gradient">
-            {language === 'pt' ? 'Reconhecimentos e Parcerias' : 'Recognition and Partnerships'}
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all">
-              <h3 className="text-xl font-semibold mb-2 text-ppc-purple">
-                {language === 'pt' ? 'Parceria com OEI' : 'Partnership with OEI'}
-              </h3>
-              <p className="text-gray-700">
-                {language === 'pt' 
-                  ? 'Desde 2012, parceria com a Organização dos Estados Ibero-americanos.' 
-                  : 'Since 2012, partnership with the Organization of Ibero-American States.'}
-              </p>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-gradient-to-r from-ppc-purple/10 to-ppc-magenta/10 rounded-full px-6 py-2 text-ppc-purple text-sm font-medium mb-4">
+              {language === 'pt' ? 'Conquistas e Parcerias' : 'Achievements and Partnerships'}
             </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all">
-              <h3 className="text-xl font-semibold mb-2 text-ppc-orange">
-                {language === 'pt' ? 'Diploma Heloneida Studart (2015)' : 'Heloneida Studart Diploma (2015)'}
-              </h3>
-              <p className="text-gray-700">
-                {language === 'pt' 
-                  ? 'Reconhecimento pela contribuição à cultura brasileira.' 
-                  : 'Recognition for the contribution to Brazilian culture.'}
-              </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-center text-gradient mb-6">
+              {language === 'pt' ? 'Reconhecimentos e Parcerias' : 'Recognition and Partnerships'}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {language === 'pt' 
+                ? 'Nosso trabalho reconhecido por instituições nacionais e internacionais' 
+                : 'Our work recognized by national and international institutions'}
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
+            <div className="lg:w-1/2">
+              <img
+                src={awardsCeremony}
+                alt="Cerimônia de premiação"
+                className="w-full h-80 object-cover rounded-2xl shadow-2xl"
+              />
             </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all">
-              <h3 className="text-xl font-semibold mb-2 text-ppc-green">
-                {language === 'pt' ? 'Outros Reconhecimentos' : 'Other Recognitions'}
-              </h3>
-              <p className="text-gray-700">
-                {language === 'pt' 
-                  ? 'Diversos prêmios e reconhecimentos pela atuação cultural.' 
-                  : 'Various awards and recognitions for cultural activities.'}
-              </p>
+            <div className="lg:w-1/2 space-y-8">
+              <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-ppc-purple">
+                <h3 className="text-2xl font-bold mb-3 text-ppc-purple">
+                  {language === 'pt' ? 'Parceria com OEI' : 'Partnership with OEI'}
+                </h3>
+                <p className="text-gray-700 text-lg">
+                  {language === 'pt' 
+                    ? 'Desde 2012, parceria estratégica com a Organização dos Estados Ibero-americanos para promover a cultura e educação.' 
+                    : 'Since 2012, strategic partnership with the Organization of Ibero-American States to promote culture and education.'}
+                </p>
+              </div>
+              
+              <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-ppc-orange">
+                <h3 className="text-2xl font-bold mb-3 text-ppc-orange">
+                  {language === 'pt' ? 'Diploma Heloneida Studart (2015)' : 'Heloneida Studart Diploma (2015)'}
+                </h3>
+                <p className="text-gray-700 text-lg">
+                  {language === 'pt' 
+                    ? 'Reconhecimento oficial pela valorização da mulher na cultura brasileira e promoção da igualdade de gênero.' 
+                    : 'Official recognition for valuing women in Brazilian culture and promoting gender equality.'}
+                </p>
+              </div>
+              
+              <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-4 border-ppc-green">
+                <h3 className="text-2xl font-bold mb-3 text-ppc-green">
+                  {language === 'pt' ? 'Prêmios Culturais' : 'Cultural Awards'}
+                </h3>
+                <p className="text-gray-700 text-lg">
+                  {language === 'pt' 
+                    ? 'Múltiplos reconhecimentos por projetos culturais inovadores e impacto social na comunidade artística.' 
+                    : 'Multiple recognitions for innovative cultural projects and social impact in the artistic community.'}
+                </p>
+              </div>
             </div>
           </div>
         </div>
