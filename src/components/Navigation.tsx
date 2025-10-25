@@ -24,49 +24,86 @@ const Navigation = () => {
     : (isScrolled ? 'text-black' : 'text-white'); // Dark color or white based on scroll
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200' 
+        : 'bg-gradient-to-b from-black/50 to-transparent backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center space-x-4">
-            <Link to="/" className="flex items-center space-x-4">
-              <img 
-                src="/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png"
-                alt="Instituto Plumas e Paetês Cultural"
-                className="h-16 w-auto"
-              />
-              <div className={`hidden sm:block font-semibold text-xl ${linkClass} transition-colors duration-300`}>
-                Instituto Plumas e Paetês Cultural
+        <div className="flex justify-between items-center py-4">
+          {/* Logo e Nome */}
+          <Link to="/" className="flex items-center space-x-3 group">
+            <img 
+              src="/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png"
+              alt="Instituto Plumas e Paetês Cultural"
+              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="hidden lg:block">
+              <div className={`font-bold text-lg leading-tight ${linkClass} transition-colors duration-300`}>
+                Instituto Plumas & Paetês
               </div>
-            </Link>
-          </div>
+              <div className={`text-xs font-medium ${isScrolled ? 'text-gray-600' : 'text-white/80'} transition-colors duration-300`}>
+                Cultural
+              </div>
+            </div>
+          </Link>
           
-          <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('inicio')}</Link>
-            <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('quemSomos')}</Link>
-            <Link to="/edicoes" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
-              {translate('premioPlumas')}
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-carnival-gold rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
+            <Link 
+              to="/" 
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+            >
+              {translate('inicio')}
             </Link>
-            <Link to="/revista" className={`nav-link ${linkClass} transition-colors duration-300`}>
+            <Link 
+              to="/sobre" 
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+            >
+              {translate('quemSomos')}
+            </Link>
+            <Link 
+              to="/edicoes" 
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200 relative group`}
+            >
+              {translate('premioPlumas')}
+              <span className="absolute top-1 right-1 w-2 h-2 bg-carnival-gold rounded-full animate-pulse"></span>
+            </Link>
+            <Link 
+              to="/revista" 
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+            >
               {translate('revista')}
             </Link>
-            <Link to="/producao" className={`nav-link ${linkClass} transition-colors duration-300`}>
+            <Link 
+              to="/producao" 
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+            >
               {translate('producaoEventos')}
             </Link>
-            <Link to="/galeria" className={`nav-link ${linkClass} transition-colors duration-300`}>
+            <Link 
+              to="/galeria" 
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+            >
               {translate('galeria')}
             </Link>
-            <Link to="/blog" className={`nav-link ${linkClass} transition-colors duration-300`}>
+            <Link 
+              to="/blog" 
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+            >
               {translate('blog')}
             </Link>
-            <Link to="/contato" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('contato')}</Link>
+            
+            {/* Separador */}
+            <div className={`h-8 w-px mx-2 ${isScrolled ? 'bg-gray-300' : 'bg-white/30'}`}></div>
+            
+            {/* Botão de Contato destacado */}
             <Link 
               to="/contato" 
-              className="px-6 py-2.5 bg-carnival-purple text-white rounded-full hover:bg-carnival-purple/90 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105"
+              className="ml-2 px-6 py-2.5 bg-gradient-to-r from-carnival-purple to-carnival-magenta text-white rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-sm flex items-center gap-2"
             >
               {translate('entrarContato')}
+              <span className="text-lg">→</span>
             </Link>
           </div>
 

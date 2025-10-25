@@ -67,17 +67,17 @@ const Index = () => {
       <ConfettiFalling />
       
       {/* Hero Section - Clean and Modern */}
-      <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gray-100">
+      <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 w-full h-full"
           style={{
             backgroundImage: `url('/lovable-uploads/hero-background.jpg?v=${Date.now()}')`,
-            backgroundSize: 'contain',
+            backgroundSize: 'cover',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
