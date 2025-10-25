@@ -25,21 +25,13 @@ const ConfettiFalling = () => {
           y: Math.random() * skew - 0.2,
         },
         colors: [
-          '#FFD700', // Gold
-          '#FF1493', // Deep Pink/Magenta
-          '#00FF00', // Bright Green
-          '#9370DB', // Purple
-          '#FF4500', // Orange Red
-          '#00CED1', // Turquoise
-          '#FF69B4', // Hot Pink
-          '#32CD32', // Lime Green
-          '#8A2BE2', // Blue Violet
-          '#FF6347', // Tomato Red
-          '#00BFFF', // Deep Sky Blue
-          '#FFD700', // Yellow Gold
+          '#FF1493', '#00FF00', '#FFD700', '#9370DB',
+          '#FF4500', '#00CED1', '#FF69B4', '#32CD32',
+          '#8A2BE2', '#FF6347', '#00BFFF', '#FFD700',
+          '#FF1493', '#7FFF00', '#FF00FF', '#00FA9A'
         ],
         shapes: ['circle', 'square'],
-        gravity: randomInRange(0.3, 0.5),
+        gravity: randomInRange(0.28, 0.36),
         scalar: randomInRange(0.5, 1.2),
         drift: randomInRange(-0.4, 0.4),
       });
