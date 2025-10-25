@@ -34,30 +34,28 @@ const Index = () => {
       <BackToTop />
       
       {/* Hero Section */}
-      <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-carnival-purple/40 to-black/60 z-10" />
-        <div className="absolute inset-0 w-full h-full">
-          <img
-            src="/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png"
-            alt="Plumas e Paetês Cultural - Celebrando a Cultura do Carnaval"
-            className="w-full h-full object-cover opacity-80"
-          />
-        </div>
+      <section id="inicio" className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50 z-10" />
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center'
+          }}
+        />
         
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-5xl mx-auto text-center">
-            <div className="mb-8 animate-fade-in">
+            <div className="mb-6 animate-fade-in">
               <AnniversaryBanner />
             </div>
             
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-white animate-slide-up leading-tight">
-              Instituto <span className="text-carnival-gold">Plumas e Paetês</span> Cultural
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white animate-slide-up leading-tight">
+              Celebrando a <span className="text-carnival-gold">Cultura do Carnaval</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-white/95 mb-4 animate-slide-up font-medium">
-              Produção Cultural • Economia Criativa • Prêmio aos Artífices do Carnaval
-            </p>
-            <p className="text-lg md:text-xl text-white/90 mb-12 animate-fade-in max-w-3xl mx-auto">
-              Transformando vidas através da cultura, celebrando a arte do carnaval e valorizando os mestres e artífices que fazem a maior festa popular do mundo
+            <p className="text-xl md:text-2xl text-white/95 mb-8 animate-slide-up font-medium max-w-3xl mx-auto">
+              Transformando vidas através da arte e economia criativa
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
@@ -65,36 +63,21 @@ const Index = () => {
                 href="/sobre"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-carnival-purple rounded-full hover:bg-carnival-purple/90 transition-all duration-300 hover:scale-105 shadow-lg"
               >
-                Conheça o Instituto
+                Conheça Nosso Trabalho
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
               <a
                 href="/revista"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-carnival-purple bg-white rounded-full hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg"
               >
-                Revista Digital
+                Apoie Projetos
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </div>
-
-            <div className="mt-12 flex flex-wrap justify-center gap-8 text-white animate-fade-in">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-carnival-gold">19.6k+</div>
-                <div className="text-sm text-white/80">Seguidores</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-carnival-gold">878+</div>
-                <div className="text-sm text-white/80">Publicações</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-carnival-gold">15+</div>
-                <div className="text-sm text-white/80">Anos de História</div>
-              </div>
-            </div>
           </div>
           
-          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="h-10 w-10 text-white" />
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <ChevronDown className="h-8 w-8 text-white/80" />
           </div>
         </div>
       </section>
@@ -103,13 +86,13 @@ const Index = () => {
       <MissionCards />
 
       {/* Projects Section */}
-      <section id="projetos" className="py-20 bg-gray-50">
+      <section id="projetos" className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">{translate("projetos")}</h2>
-            <p className="text-xl text-gray-600">{translate("projetosDesc")}</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">{translate("projetos")}</h2>
+            <p className="text-lg text-gray-600">{translate("projetosDesc")}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="glass-card rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group">
               <div className="aspect-video overflow-hidden">
                 <img 
@@ -183,25 +166,23 @@ const Index = () => {
       </section>
 
       {/* Impact Section - Transformando Vidas */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
             <div className="order-2 lg:order-1 animate-fade-in">
-              <div className="inline-block px-4 py-2 bg-carnival-purple/10 text-carnival-purple rounded-full text-sm font-semibold mb-4">
+              <div className="inline-block px-4 py-2 bg-carnival-purple/10 text-carnival-purple rounded-full text-sm font-semibold mb-3">
                 NOSSO IMPACTO
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
                 Transformando Vidas, <span className="text-carnival-magenta">Construindo Futuros</span>
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              <p className="text-base text-gray-600 leading-relaxed mb-4">
                 Há mais de 15 anos, o Instituto Plumas e Paetês Cultural atua na valorização da cultura popular brasileira, 
-                com foco especial no carnaval e na economia criativa. Através do nosso trabalho, reconhecemos e celebramos 
-                os artífices, mestres e profissionais que dedicam suas vidas à maior manifestação cultural do Brasil.
+                com foco especial no carnaval e na economia criativa.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-base text-gray-600 leading-relaxed mb-6">
                 Nossa atuação vai além da premiação: promovemos workshops, oficinas, publicações especializadas e eventos 
-                que fortalecem a cadeia produtiva do carnaval, gerando oportunidades de trabalho e renda para centenas de 
-                famílias em todo o país.
+                que fortalecem a cadeia produtiva do carnaval, gerando oportunidades de trabalho e renda.
               </p>
               <a
                 href="/sobre"
@@ -231,10 +212,10 @@ const Index = () => {
       <PartnersCarousel />
 
       {/* News Section */}
-      <section id="noticias" className="py-20 bg-white">
+      <section id="noticias" className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">{translate("ultimasNoticias")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">{translate("ultimasNoticias")}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
               <div className="aspect-video overflow-hidden">
                 <img 
@@ -311,14 +292,14 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 carnival-gradient">
+      <section className="py-16 md:py-20 carnival-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-white">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Faça Parte da Transformação Cultural
             </h2>
-            <p className="text-xl md:text-2xl mb-8 text-white/95">
-              Junte-se a nós na missão de valorizar a cultura popular brasileira e transformar vidas através do carnaval
+            <p className="text-lg md:text-xl mb-6 text-white/95">
+              Junte-se a nós na missão de valorizar a cultura popular brasileira
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -341,10 +322,10 @@ const Index = () => {
       </section>
 
       {/* Instagram Feed Section */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-12 md:py-16 bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center text-white mb-12">
-            <h2 className="text-4xl font-bold mb-4">{translate("sigaNosInstagram")}</h2>
+          <div className="text-center text-white mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">{translate("sigaNosInstagram")}</h2>
             <p className="text-xl text-white/90 mb-6">
               Acompanhe nossos eventos, projetos e bastidores
             </p>
@@ -399,7 +380,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-950 text-white py-16">
+      <footer className="bg-gray-950 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             {/* Column 1: About */}
