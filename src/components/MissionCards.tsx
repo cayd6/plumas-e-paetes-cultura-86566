@@ -49,21 +49,21 @@ const MissionCards = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card
             icon={<Target className="h-12 w-12" />}
-            title="Nossa Missão"
-            description="Promover a cultura do carnaval brasileiro, valorizando os artífices e mestres que preservam as tradições e inovam na arte carnavalesca."
-            expandedContent="Através de eventos, premiações e publicações, criamos oportunidades para que talentos sejam reconhecidos e a economia criativa floresça em nossa comunidade."
+            title="Missão"
+            description="Transformar a sociedade brasileira por meio da economia criativa."
+            expandedContent="Iluminamos os bastidores da economia criativa, estimulando a renda de seus fazedores e democratizando o acesso à arte por eles produzida."
           />
           <Card
             icon={<Eye className="h-12 w-12" />}
-            title="Nossa Visão"
-            description="Ser referência nacional na produção cultural de carnaval, reconhecidos pela excelência e compromisso com a preservação das tradições populares."
-            expandedContent="Buscamos expandir nossa atuação, fortalecendo parcerias estratégicas e criando novos espaços para a expressão cultural brasileira."
+            title="Visão"
+            description="Ser um agente amplificador da riqueza cultural do país, iluminando a arte de seus fazedores e promovendo a democratização do seu acesso."
+            expandedContent="Expandimos constantemente nossa atuação, desenvolvendo eventos e projetos culturais em diversas regiões do país."
           />
           <Card
             icon={<Heart className="h-12 w-12" />}
-            title="Nossos Valores"
-            description="Autenticidade cultural, respeito às tradições, inclusão social, excelência artística e transparência em todas as nossas ações."
-            expandedContent="Acreditamos no poder transformador da cultura e na importância de valorizar cada pessoa que dedica sua vida à arte do carnaval."
+            title="Valores"
+            description="Criatividade, diversidade, acessibilidade e sustentabilidade."
+            expandedContent="Incansáveis em nossa missão de transformar a sociedade brasileira por meio da cultura e economia criativa."
           />
         </div>
       </div>
