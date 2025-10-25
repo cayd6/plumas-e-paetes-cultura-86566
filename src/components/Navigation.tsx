@@ -42,33 +42,32 @@ const Navigation = () => {
             </Link>
           </div>
           
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('inicio')}</Link>
-            <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('sobre')}</Link>
-            
-            {/* Highlighted Priority Sections */}
+            <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('quemSomos')}</Link>
             <Link to="/edicoes" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
-              {translate('edicoes')}
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-gold rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
+              {translate('premioPlumas')}
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-carnival-gold rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
             </Link>
-            
             <Link to="/revista" className={`nav-link ${linkClass} transition-colors duration-300`}>
               {translate('revista')}
             </Link>
-            
             <Link to="/producao" className={`nav-link ${linkClass} transition-colors duration-300`}>
               {translate('producaoEventos')}
             </Link>
-            
             <Link to="/galeria" className={`nav-link ${linkClass} transition-colors duration-300`}>
               {translate('galeria')}
             </Link>
-            
             <Link to="/blog" className={`nav-link ${linkClass} transition-colors duration-300`}>
               {translate('blog')}
             </Link>
-            
-            <Link to="/contato" className={`nav-link ${linkClass} transition-colors duration-300 font-semibold`}>{translate('contato')}</Link>
+            <Link to="/contato" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('contato')}</Link>
+            <Link 
+              to="/contato" 
+              className="px-6 py-2.5 bg-carnival-purple text-white rounded-full hover:bg-carnival-purple/90 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:scale-105"
+            >
+              {translate('entrarContato')}
+            </Link>
           </div>
 
           <div className="md:hidden">
@@ -83,20 +82,27 @@ const Navigation = () => {
       </div>
 
       {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed top-20 left-0 right-0 bg-white/95 backdrop-blur-lg shadow-lg z-50">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('inicio')}</Link>
-            <Link to="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('sobre')}</Link>
-            <Link to="/edicoes" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('edicoes')}</Link>
-            <Link to="/revista" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('revista')}</Link>
-            <Link to="/producao" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('producaoEventos')}</Link>
-            <Link to="/galeria" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('galeria')}</Link>
-            <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('blog')}</Link>
-            <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple font-semibold">{translate('contato')}</Link>
-          </div>
+      <div className={`md:hidden fixed top-20 left-0 right-0 bg-white/98 backdrop-blur-lg shadow-2xl z-50 transition-all duration-300 ${
+        isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+      }`}>
+        <div className="px-4 pt-4 pb-6 space-y-3 max-h-[calc(100vh-5rem)] overflow-y-auto">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-gray-800 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium">{translate('inicio')}</Link>
+          <Link to="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-gray-800 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium">{translate('quemSomos')}</Link>
+          <Link to="/edicoes" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-gray-800 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium">{translate('premioPlumas')}</Link>
+          <Link to="/revista" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-gray-800 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium">{translate('revista')}</Link>
+          <Link to="/producao" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-gray-800 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium">{translate('producaoEventos')}</Link>
+          <Link to="/galeria" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-gray-800 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium">{translate('galeria')}</Link>
+          <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-gray-800 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium">{translate('blog')}</Link>
+          <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-gray-800 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium">{translate('contato')}</Link>
+          <Link 
+            to="/contato" 
+            onClick={() => setIsMobileMenuOpen(false)} 
+            className="block px-4 py-3 bg-carnival-purple text-white rounded-lg hover:bg-carnival-purple/90 transition-all duration-200 font-semibold text-center mt-4"
+          >
+            {translate('entrarContato')}
+          </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

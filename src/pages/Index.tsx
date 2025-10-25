@@ -1,8 +1,13 @@
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import AnniversaryBanner from "@/components/AnniversaryBanner";
+import MissionCards from "@/components/MissionCards";
+import StatsCounter from "@/components/StatsCounter";
+import PartnersCarousel from "@/components/PartnersCarousel";
+import BackToTop from "@/components/BackToTop";
 import { ArrowRight, ChevronDown, Instagram, Facebook, Mail, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useEffect, useState } from "react";
 import danceWorkshop from "@/assets/dance-workshop.jpg";
 import costumeWorkshop from "@/assets/costume-workshop.jpg";
 import percussionClass from "@/assets/percussion-class.jpg";
@@ -11,57 +16,91 @@ import communityParade from "@/assets/community-parade.jpg";
 import elderlyWorkshop from "@/assets/elderly-workshop.jpg";
 
 const Index = () => {
-  const { translate, language } = useLanguage();
+  const { translate } = useLanguage();
+  const [headerBg, setHeaderBg] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHeaderBg(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   
   return (
     <div className="min-h-screen">
       <Navigation />
       <LanguageControls />
+      <BackToTop />
       
       {/* Hero Section */}
-      <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden pt-8">
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <div className="absolute inset-0 w-full h-full grid grid-cols-2">
-          <div className="relative h-full animate-slide-up">
-            <img
-              src="/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png"
-              alt="Plumas e Paetês Cultural Event"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="relative h-full animate-slide-up">
-            <img
-              src="/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png"
-              alt="Plumas e Paetês Cultural Performance"
-              className="w-full h-full object-cover"
-            />
-          </div>
+      <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-carnival-purple/40 to-black/60 z-10" />
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png"
+            alt="Plumas e Paetês Cultural - Celebrando a Cultura do Carnaval"
+            className="w-full h-full object-cover opacity-80"
+          />
         </div>
         
-        <div className="container mx-auto px-4 pt-20 relative z-20">
-          <div className="max-w-4xl mx-auto text-center animate-slide-up">
-            {/* Anniversary banner positioned prominently */}
-            <AnniversaryBanner />
+        <div className="container mx-auto px-4 relative z-20">
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="mb-8 animate-fade-in">
+              <AnniversaryBanner />
+            </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white mt-6">
-              Instituto Plumas e Paetês Cultural
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-white animate-slide-up leading-tight">
+              Instituto <span className="text-carnival-gold">Plumas e Paetês</span> Cultural
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
-              {translate("projetosDesc")}
+            <p className="text-2xl md:text-3xl text-white/95 mb-4 animate-slide-up font-medium">
+              Produção Cultural • Economia Criativa • Prêmio aos Artífices do Carnaval
             </p>
-            <a
-              href="#projetos"
-              className="inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-ppc-purple rounded-full hover:bg-ppc-purple/90 transition-colors"
-            >
-              {translate("projetos")}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+            <p className="text-lg md:text-xl text-white/90 mb-12 animate-fade-in max-w-3xl mx-auto">
+              Transformando vidas através da cultura, celebrando a arte do carnaval e valorizando os mestres e artífices que fazem a maior festa popular do mundo
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+              <a
+                href="/sobre"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-carnival-purple rounded-full hover:bg-carnival-purple/90 transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                Conheça o Instituto
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+              <a
+                href="/revista"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-carnival-purple bg-white rounded-full hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                Revista Digital
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+            </div>
+
+            <div className="mt-12 flex flex-wrap justify-center gap-8 text-white animate-fade-in">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-carnival-gold">19.6k+</div>
+                <div className="text-sm text-white/80">Seguidores</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-carnival-gold">878+</div>
+                <div className="text-sm text-white/80">Publicações</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-carnival-gold">15+</div>
+                <div className="text-sm text-white/80">Anos de História</div>
+              </div>
+            </div>
           </div>
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="h-8 w-8 text-white" />
+          
+          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <ChevronDown className="h-10 w-10 text-white" />
           </div>
         </div>
       </section>
+
+      {/* Mission/Vision/Values Section */}
+      <MissionCards />
 
       {/* Projects Section */}
       <section id="projetos" className="py-20 bg-gray-50">
@@ -143,27 +182,56 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="sobre" className="py-20">
+      {/* Impact Section - Transformando Vidas */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8">{translate("nossaMissao")}</h2>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              {translate("missaoDesc")}
-            </p>
-            <a
-              href="/sobre"
-              className="inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-ppc-purple rounded-full hover:bg-ppc-purple/90 transition-colors"
-            >
-              {translate("saibaMais")}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1 animate-fade-in">
+              <div className="inline-block px-4 py-2 bg-carnival-purple/10 text-carnival-purple rounded-full text-sm font-semibold mb-4">
+                NOSSO IMPACTO
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Transformando Vidas, <span className="text-carnival-magenta">Construindo Futuros</span>
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Há mais de 15 anos, o Instituto Plumas e Paetês Cultural atua na valorização da cultura popular brasileira, 
+                com foco especial no carnaval e na economia criativa. Através do nosso trabalho, reconhecemos e celebramos 
+                os artífices, mestres e profissionais que dedicam suas vidas à maior manifestação cultural do Brasil.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Nossa atuação vai além da premiação: promovemos workshops, oficinas, publicações especializadas e eventos 
+                que fortalecem a cadeia produtiva do carnaval, gerando oportunidades de trabalho e renda para centenas de 
+                famílias em todo o país.
+              </p>
+              <a
+                href="/sobre"
+                className="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-carnival-purple rounded-full hover:bg-carnival-purple/90 transition-all duration-300 hover:scale-105"
+              >
+                Conheça Nossa História
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+            </div>
+            <div className="order-1 lg:order-2 animate-fade-in">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src={awardCeremony}
+                  alt="Cerimônia de premiação Plumas e Paetês - Celebrando os artífices do carnaval"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Statistics Counter Section */}
+      <StatsCounter />
+
+      {/* Strategic Partnerships */}
+      <PartnersCarousel />
+
       {/* News Section */}
-      <section id="noticias" className="py-20 bg-gray-50">
+      <section id="noticias" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">{translate("ultimasNoticias")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -242,8 +310,38 @@ const Index = () => {
         </div>
       </section>
 
+      {/* CTA Section */}
+      <section className="py-24 carnival-gradient">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Faça Parte da Transformação Cultural
+            </h2>
+            <p className="text-xl md:text-2xl mb-8 text-white/95">
+              Junte-se a nós na missão de valorizar a cultura popular brasileira e transformar vidas através do carnaval
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contato"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-carnival-purple bg-white rounded-full hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                Entre em Contato
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+              <a
+                href="/sobre"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-105 border-2 border-white"
+              >
+                Trabalhe Conosco
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Instagram Feed Section */}
-      <section className="py-20 bg-gradient-to-br from-ppc-purple via-ppc-magenta to-ppc-orange">
+      <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center text-white mb-12">
             <h2 className="text-4xl font-bold mb-4">{translate("sigaNosInstagram")}</h2>
@@ -301,31 +399,70 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-950 text-white py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            {/* Column 1: About */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
-              <ul className="space-y-2">
-                <li><a href="#inicio" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
-                <li><a href="#projetos" className="text-gray-400 hover:text-white transition-colors">{translate("projetos")}</a></li>
-                <li><a href="#sobre" className="text-gray-400 hover:text-white transition-colors">{translate("sobre")}</a></li>
-                <li><a href="#noticias" className="text-gray-400 hover:text-white transition-colors">{translate("noticias")}</a></li>
+              <h3 className="text-2xl font-bold mb-4 text-carnival-gold">Plumas e Paetês</h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Instituto cultural dedicado à valorização do carnaval brasileiro e dos artífices que mantêm viva nossa maior manifestação popular.
+              </p>
+              <p className="text-gray-400 text-sm">
+                CNPJ: 11.985.110/0001-76
+              </p>
+            </div>
+
+            {/* Column 2: Quick Links */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
+              <ul className="space-y-3">
+                <li><a href="/sobre" className="text-gray-400 hover:text-carnival-gold transition-colors">Quem Somos</a></li>
+                <li><a href="/edicoes" className="text-gray-400 hover:text-carnival-gold transition-colors">Prêmio Plumas & Paetês</a></li>
+                <li><a href="/revista" className="text-gray-400 hover:text-carnival-gold transition-colors">Revista Digital</a></li>
+                <li><a href="/galeria" className="text-gray-400 hover:text-carnival-gold transition-colors">Galeria</a></li>
+                <li><a href="/blog" className="text-gray-400 hover:text-carnival-gold transition-colors">Blog</a></li>
+                <li><a href="/contato" className="text-gray-400 hover:text-carnival-gold transition-colors">Contato</a></li>
               </ul>
             </div>
+
+            {/* Column 3: Contact */}
             <div>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("transformandoVidas")}
-              </p>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("cnpj")}: 11.985.110/0001-76
-              </p>
-              <div className="flex justify-center space-x-4">
+              <h3 className="text-lg font-semibold mb-4">Contato</h3>
+              <div className="space-y-3 text-gray-400">
+                <p className="flex items-start">
+                  <Mail size={18} className="mr-2 mt-1 flex-shrink-0" />
+                  <a 
+                    href="mailto:contato@institutoplumasepaetescultural.com" 
+                    className="hover:text-carnival-gold transition-colors break-all"
+                  >
+                    contato@institutoplumasepaetescultural.com
+                  </a>
+                </p>
+                <p className="flex items-center">
+                  <Phone size={18} className="mr-2 flex-shrink-0" />
+                  <a 
+                    href="https://wa.me/5521989392920" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-carnival-gold transition-colors"
+                  >
+                    +55 21 98939-2920
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            {/* Column 4: Social Media */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Siga-nos</h3>
+              <div className="flex gap-4 mb-6">
                 <a 
                   href="https://www.instagram.com/plumasepaetescultural/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="p-3 bg-white/10 rounded-full hover:bg-carnival-magenta transition-colors"
+                  aria-label="Instagram"
                 >
                   <Instagram size={24} />
                 </a>
@@ -333,46 +470,33 @@ const Index = () => {
                   href="https://www.facebook.com/plumasepaetescultural/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="p-3 bg-white/10 rounded-full hover:bg-carnival-purple transition-colors"
+                  aria-label="Facebook"
                 >
                   <Facebook size={24} />
                 </a>
               </div>
-              <p className="text-gray-400 text-center mt-2">
-                Siga-nos nas redes sociais para ficar por dentro das novidades!
+              <p className="text-gray-400 text-sm mb-4">
+                Acompanhe nossos eventos e bastidores nas redes sociais
               </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
-              <div className="space-y-2 text-gray-400">
-                <p className="flex items-center">
-                  <Mail size={18} className="mr-2" />
-                  <a 
-                    href="mailto:contato@institutoplumasepaetescultural.com" 
-                    className="hover:text-white transition-colors"
-                  >
-                    contato@institutoplumasepaetescultural.com
-                  </a>
-                </p>
-                <p className="flex items-center">
-                  <Phone size={18} className="mr-2" />
-                  <a 
-                    href="https://wa.me/5521989392920" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    +55 21 98939-2920
-                  </a>
-                </p>
-              </div>
-              <div className="mt-4">
-                
+              <div className="text-sm text-gray-500">
+                <p>19.6k+ seguidores</p>
+                <p>878+ publicações</p>
               </div>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Instituto Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-800 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-gray-400 text-sm">
+                &copy; 2025 Instituto Plumas e Paetês Cultural. Todos os direitos reservados.
+              </p>
+              <div className="flex gap-6 text-sm text-gray-400">
+                <a href="#" className="hover:text-carnival-gold transition-colors">Política de Privacidade</a>
+                <a href="#" className="hover:text-carnival-gold transition-colors">Termos de Uso</a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
