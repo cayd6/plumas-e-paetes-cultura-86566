@@ -71,7 +71,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: "url('/lovable-uploads/hero-background.jpg')",
+            backgroundImage: `url('/lovable-uploads/hero-background.jpg?v=${Date.now()}')`,
             backgroundSize: 'contain',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat'
