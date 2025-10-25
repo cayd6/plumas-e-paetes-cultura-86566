@@ -7,13 +7,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
-import Edicoes from "./pages/Edicoes";
+import EdicoesEnhanced from "./pages/EdicoesEnhanced";
 import EdicaoDetalhe from "./pages/EdicaoDetalhe";
 import Revistas from "./pages/revistas/Revistas";
 import RevistaDetalhe from "./pages/revistas/RevistaDetalhe";
 import Eventos from "./pages/Eventos";
 import Noticias from "./pages/Noticias";
 import Sobre from "./pages/Sobre";
+import Galeria from "./pages/Galeria";
+import Contato from "./pages/Contato";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,13 +29,15 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/edicoes" element={<Edicoes />} />
+            <Route path="/edicoes" element={<EdicoesEnhanced />} />
             <Route path="/edicoes/:id" element={<EdicaoDetalhe />} />
             <Route path="/revistas" element={<Revistas />} />
             <Route path="/revista/:id" element={<RevistaDetalhe />} />
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/noticias" element={<Noticias />} />
             <Route path="/sobre" element={<Sobre />} />
+            <Route path="/galeria" element={<Galeria />} />
+            <Route path="/contato" element={<Contato />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <WhatsAppButton />

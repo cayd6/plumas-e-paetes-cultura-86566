@@ -148,9 +148,16 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-8">{translate("nossaMissao")}</h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-600 leading-relaxed mb-8">
               {translate("missaoDesc")}
             </p>
+            <a
+              href="/sobre"
+              className="inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-ppc-purple rounded-full hover:bg-ppc-purple/90 transition-colors"
+            >
+              {translate("saibaMais")}
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </div>
         </div>
       </section>
@@ -235,41 +242,60 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contato" className="py-20">
+      {/* Instagram Feed Section */}
+      <section className="py-20 bg-gradient-to-br from-ppc-purple via-ppc-magenta to-ppc-orange">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8">{translate("faleConosco")}</h2>
-            <p className="text-xl text-gray-600 mb-12">
-              Estamos sempre abertos para novas parcerias e sugestões
+          <div className="text-center text-white mb-12">
+            <h2 className="text-4xl font-bold mb-4">{translate("sigaNosInstagram")}</h2>
+            <p className="text-xl text-white/90 mb-6">
+              Acompanhe nossos eventos, projetos e bastidores
             </p>
-            <div className="glass-card rounded-2xl p-8">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input
-                    type="text"
-                    placeholder="Nome"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ppc-purple focus:border-transparent"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ppc-purple focus:border-transparent"
-                  />
-                </div>
-                <textarea
-                  placeholder="Mensagem"
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ppc-purple focus:border-transparent"
-                />
-                <button
-                  type="submit"
-                  className="px-8 py-3 bg-ppc-purple text-white rounded-full hover:bg-ppc-purple/90 transition-colors"
-                >
-                  {translate("enviarMensagem")}
-                </button>
-              </form>
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="text-center">
+                <p className="text-3xl font-bold">19.6k</p>
+                <p className="text-white/80">{translate("seguidores")}</p>
+              </div>
+              <div className="w-px h-12 bg-white/30" />
+              <div className="text-center">
+                <p className="text-3xl font-bold">878</p>
+                <p className="text-white/80">{translate("publicacoes")}</p>
+              </div>
             </div>
+            <a
+              href="https://www.instagram.com/plumasepaetescultural/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-ppc-magenta rounded-full hover:bg-white/90 transition-colors font-semibold text-lg"
+            >
+              <Instagram size={24} />
+              {translate("seguirInstagram")}
+            </a>
+          </div>
+          
+          {/* Instagram Grid Preview */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+            {[
+              "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png",
+              "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
+              "/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png",
+              "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png",
+              "/lovable-uploads/2f3ac4c5-4b19-4824-844f-58a4e3f24a02.png",
+              "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png",
+            ].map((img, index) => (
+              <a
+                key={index}
+                href="https://www.instagram.com/plumasepaetescultural/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="aspect-square overflow-hidden rounded-lg group cursor-pointer"
+              >
+                <img
+                  src={img}
+                  alt={`Instagram post ${index + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+              </a>
+            ))}
           </div>
         </div>
       </section>

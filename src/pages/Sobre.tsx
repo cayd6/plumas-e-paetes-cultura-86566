@@ -346,6 +346,86 @@ const Sobre = () => {
         </div>
       </section>
 
+      {/* Team Section */}
+      <section 
+        id="team" 
+        className={`py-20 px-4 transition-all duration-1000 ${
+          isVisible('team') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+              {translate("equipe")}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {language === 'pt' 
+                ? 'Conheça quem faz o Instituto Plumas & Paetês acontecer'
+                : 'Meet the people who make Instituto Plumas & Paetês happen'}
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 border-0">
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative h-64 md:h-auto">
+                  <img
+                    src="/lovable-uploads/7d37df1b-46e4-421f-a18a-3e24655fdf28.png"
+                    alt="José Antonio Rodrigues Filho"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                <CardContent className="p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-white to-gray-50">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                    José Antonio Rodrigues Filho
+                  </h3>
+                  <div className="space-y-2 mb-6">
+                    <p className="text-lg text-ppc-purple font-semibold">
+                      {translate("fundador")}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-ppc-purple/10 text-ppc-purple rounded-full text-sm font-medium">
+                        {translate("produtor")}
+                      </span>
+                      <span className="px-3 py-1 bg-ppc-magenta/10 text-ppc-magenta rounded-full text-sm font-medium">
+                        {translate("estilista")}
+                      </span>
+                      <span className="px-3 py-1 bg-ppc-orange/10 text-ppc-orange rounded-full text-sm font-medium">
+                        {translate("criadorPremio")}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed mb-6">
+                    {language === 'pt' 
+                      ? 'Visionário e apaixonado pela cultura popular brasileira, José Antonio fundou o Instituto em 2005 com o objetivo de dar visibilidade aos artífices anônimos do carnaval carioca. Sua dedicação transformou o Prêmio Plumas & Paetês em uma das premiações mais respeitadas do segmento carnavalesco.'
+                      : 'Visionary and passionate about Brazilian popular culture, José Antonio founded the Institute in 2005 with the goal of giving visibility to the anonymous artisans of Rio\'s carnival. His dedication transformed the Plumas & Paetês Award into one of the most respected awards in the carnival segment.'}
+                  </p>
+                  <div className="flex gap-4">
+                    <a
+                      href="https://www.instagram.com/plumasepaetescultural/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-10 h-10 rounded-full bg-ppc-purple hover:bg-ppc-purple/80 text-white transition-colors"
+                    >
+                      <Instagram size={20} />
+                    </a>
+                    <a
+                      href="https://www.facebook.com/plumasepaetescultural/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-10 h-10 rounded-full bg-ppc-magenta hover:bg-ppc-magenta/80 text-white transition-colors"
+                    >
+                      <Facebook size={20} />
+                    </a>
+                  </div>
+                </CardContent>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Linha do Tempo / Projetos Section */}
       <section 
         id="timeline" 

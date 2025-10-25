@@ -51,21 +51,16 @@ const Navigation = () => {
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-orange rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
             </Link>
             
-            <Link to="/revistas" className={`nav-link ${linkClass} transition-colors duration-300`}>
-              {translate('revistas')}
-            </Link>
-            
             <Link to="/eventos" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
               {translate('eventos')}
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-magenta rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
             </Link>
             
-            <Link to="/noticias" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
-              {translate('noticias')}
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-purple rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
+            <Link to="/galeria" className={`nav-link ${linkClass} transition-colors duration-300`}>
+              {translate('galeria')}
             </Link>
             
-            <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('sobre')}</Link>
+            <Link to="/contato" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('contato')}</Link>
           </div>
 
           <div className="md:hidden">
@@ -85,10 +80,9 @@ const Navigation = () => {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('inicio')}</Link>
             <Link to="/edicoes" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('edicoes')}</Link>
-            <Link to="/revistas" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('revistas')}</Link>
             <Link to="/eventos" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('eventos')}</Link>
-            <Link to="/noticias" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('noticias')}</Link>
-            <Link to="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('sobre')}</Link>
+            <Link to="/galeria" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('galeria')}</Link>
+            <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('contato')}</Link>
           </div>
         </div>
       )}
