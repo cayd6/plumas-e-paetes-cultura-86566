@@ -11,6 +11,9 @@ import EdicoesEnhanced from "./pages/EdicoesEnhanced";
 import EdicaoDetalhe from "./pages/EdicaoDetalhe";
 import Revistas from "./pages/revistas/Revistas";
 import RevistaDetalhe from "./pages/revistas/RevistaDetalhe";
+import Revista from "./pages/Revista";
+import Producao from "./pages/Producao";
+import Blog from "./pages/Blog";
 import Eventos from "./pages/Eventos";
 import Noticias from "./pages/Noticias";
 import Sobre from "./pages/Sobre";
@@ -29,14 +32,17 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/sobre" element={<Sobre />} />
             <Route path="/edicoes" element={<EdicoesEnhanced />} />
             <Route path="/edicoes/:id" element={<EdicaoDetalhe />} />
+            <Route path="/revista" element={<Revista />} />
             <Route path="/revistas" element={<Revistas />} />
             <Route path="/revista/:id" element={<RevistaDetalhe />} />
+            <Route path="/producao" element={<Producao />} />
+            <Route path="/galeria" element={<Galeria />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/noticias" element={<Noticias />} />
-            <Route path="/sobre" element={<Sobre />} />
-            <Route path="/galeria" element={<Galeria />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

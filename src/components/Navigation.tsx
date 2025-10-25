@@ -44,23 +44,31 @@ const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('inicio')}</Link>
+            <Link to="/sobre" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('sobre')}</Link>
             
             {/* Highlighted Priority Sections */}
             <Link to="/edicoes" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
               {translate('edicoes')}
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-orange rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-gold rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
             </Link>
             
-            <Link to="/eventos" className={`nav-link ${linkClass} transition-colors duration-300 relative group`}>
-              {translate('eventos')}
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-ppc-magenta rounded-full opacity-75 group-hover:opacity-100 transition-opacity"></span>
+            <Link to="/revista" className={`nav-link ${linkClass} transition-colors duration-300`}>
+              {translate('revista')}
+            </Link>
+            
+            <Link to="/producao" className={`nav-link ${linkClass} transition-colors duration-300`}>
+              {translate('producaoEventos')}
             </Link>
             
             <Link to="/galeria" className={`nav-link ${linkClass} transition-colors duration-300`}>
               {translate('galeria')}
             </Link>
             
-            <Link to="/contato" className={`nav-link ${linkClass} transition-colors duration-300`}>{translate('contato')}</Link>
+            <Link to="/blog" className={`nav-link ${linkClass} transition-colors duration-300`}>
+              {translate('blog')}
+            </Link>
+            
+            <Link to="/contato" className={`nav-link ${linkClass} transition-colors duration-300 font-semibold`}>{translate('contato')}</Link>
           </div>
 
           <div className="md:hidden">
@@ -79,10 +87,13 @@ const Navigation = () => {
         <div className="md:hidden fixed top-20 left-0 right-0 bg-white/95 backdrop-blur-lg shadow-lg z-50">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('inicio')}</Link>
+            <Link to="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('sobre')}</Link>
             <Link to="/edicoes" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('edicoes')}</Link>
-            <Link to="/eventos" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('eventos')}</Link>
+            <Link to="/revista" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('revista')}</Link>
+            <Link to="/producao" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('producaoEventos')}</Link>
             <Link to="/galeria" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('galeria')}</Link>
-            <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('contato')}</Link>
+            <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple">{translate('blog')}</Link>
+            <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-black hover:text-ppc-purple font-semibold">{translate('contato')}</Link>
           </div>
         </div>
       )}

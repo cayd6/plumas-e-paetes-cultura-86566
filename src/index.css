@@ -8,25 +8,32 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 0 0% 10%;
+    
+    /* Carnival Color System */
+    --carnival-gold: 45 100% 51%;
+    --carnival-magenta: 328 85% 58%;
+    --carnival-green: 142 76% 36%;
+    --carnival-purple: 271 76% 53%;
+    
+    --primary: 271 76% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 100% 51%;
+    --secondary-foreground: 0 0% 10%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 328 85% 58%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
+    --ring: 271 76% 53%;
+    --radius: 0.75rem;
   }
 
   * {
@@ -43,11 +50,20 @@
   }
 
   .hero-gradient {
-    background: linear-gradient(135deg, #D946EF 0%, #F97316 50%, #22C55E 100%);
+    background: linear-gradient(135deg, hsl(var(--carnival-purple)) 0%, hsl(var(--carnival-magenta)) 50%, hsl(var(--carnival-gold)) 100%);
+  }
+
+  .carnival-gradient {
+    background: linear-gradient(135deg, hsl(var(--carnival-gold)) 0%, hsl(var(--carnival-magenta)) 50%, hsl(var(--carnival-purple)) 100%);
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-ppc-purple via-ppc-magenta to-ppc-orange;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-ppc-purple via-ppc-magenta to-ppc-gold;
+  }
+  
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
   }
 
   .nav-link {

@@ -21,11 +21,17 @@ export default {
     extend: {
       colors: {
         ppc: {
-          magenta: "#D946EF",
-          orange: "#F97316",
-          green: "#22C55E",
-          purple: "#8B5CF6",
-          yellow: "#FCD34D",
+          gold: "#FFD700",
+          magenta: "#E91E63",
+          green: "#00C853",
+          purple: "#7B1FA2",
+          orange: "#FF6D00",
+        },
+        carnival: {
+          gold: "hsl(var(--carnival-gold))",
+          magenta: "hsl(var(--carnival-magenta))",
+          green: "hsl(var(--carnival-green))",
+          purple: "hsl(var(--carnival-purple))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -75,9 +81,16 @@ export default {
           '50%': { transform: 'translateY(-10px)' },
         },
         shimmer: {
-          '100%': {
-            transform: 'translateX(100%)',
-          },
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        'bounce-slow': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-25px)' },
+        },
+        'slide-in': {
+          '0%': { transform: 'translateX(-100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
         },
       },
       animation: {
@@ -85,6 +98,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         float: 'float 6s ease-in-out infinite',
         shimmer: 'shimmer 2s infinite',
+        'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
+        'slide-in': 'slide-in 0.5s ease-out',
       },
     },
   },
