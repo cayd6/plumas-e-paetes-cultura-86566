@@ -67,7 +67,7 @@ const Index = () => {
       <ConfettiFalling />
       
       {/* Hero Section - Clean and Modern */}
-      <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="inicio" className="relative min-h-screen lg:min-h-[110vh] xl:min-h-[120vh] flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 w-full h-full"
           style={{
@@ -77,7 +77,7 @@ const Index = () => {
             backgroundRepeat: 'no-repeat'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/50" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">

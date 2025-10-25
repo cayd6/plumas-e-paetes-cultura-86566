@@ -18,17 +18,11 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Special color for Edicoes page, dark color for other pages
-  const linkClass = location.pathname === '/edicoes' 
-    ? 'text-ppc-purple'  // Purple text for Edicoes page
-    : (isScrolled ? 'text-black' : 'text-white'); // Dark color or white based on scroll
+  // Padrão institucional: links sempre com cor do tema (escuro sobre fundo claro)
+  const linkClass = 'text-foreground';
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200' 
-        : 'bg-gradient-to-b from-black/50 to-transparent backdrop-blur-sm'
-    }`}>
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo e Nome */}
@@ -42,7 +36,7 @@ const Navigation = () => {
               <div className={`font-bold text-lg leading-tight ${linkClass} transition-colors duration-300`}>
                 Instituto Plumas & Paetês
               </div>
-              <div className={`text-xs font-medium ${isScrolled ? 'text-gray-600' : 'text-white/80'} transition-colors duration-300`}>
+              <div className="text-xs font-medium text-muted-foreground transition-colors duration-300">
                 Cultural
               </div>
             </div>
@@ -52,50 +46,50 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-1">
             <Link 
               to="/" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
             >
               {translate('inicio')}
             </Link>
             <Link 
               to="/sobre" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
             >
               {translate('quemSomos')}
             </Link>
             <Link 
               to="/edicoes" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200 relative group`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200 relative group`}
             >
               {translate('premioPlumas')}
               <span className="absolute top-1 right-1 w-2 h-2 bg-carnival-gold rounded-full animate-pulse"></span>
             </Link>
             <Link 
               to="/revista" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
             >
               {translate('revista')}
             </Link>
             <Link 
               to="/producao" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
             >
               {translate('producaoEventos')}
             </Link>
             <Link 
               to="/galeria" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
             >
               {translate('galeria')}
             </Link>
             <Link 
               to="/blog" 
-              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-white/10 ${isScrolled ? 'hover:bg-gray-100' : ''} transition-all duration-200`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
             >
               {translate('blog')}
             </Link>
             
             {/* Separador */}
-            <div className={`h-8 w-px mx-2 ${isScrolled ? 'bg-gray-300' : 'bg-white/30'}`}></div>
+            <div className="h-8 w-px mx-2 bg-gray-200"></div>
             
             {/* Botão de Contato destacado */}
             <Link 
@@ -110,7 +104,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`${linkClass} hover:text-ppc-purple transition-colors`}
+              className={`text-foreground hover:text-carnival-purple transition-colors`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
