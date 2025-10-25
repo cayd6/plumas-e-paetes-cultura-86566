@@ -1,14 +1,17 @@
 import { Target, Eye, Heart } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
   expandedContent: string;
+  readMoreText: string;
+  readLessText: string;
 }
 
-const Card = ({ icon, title, description, expandedContent }: CardProps) => {
+const Card = ({ icon, title, description, expandedContent, readMoreText, readLessText }: CardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -29,41 +32,49 @@ const Card = ({ icon, title, description, expandedContent }: CardProps) => {
         onClick={() => setIsExpanded(!isExpanded)}
         className="text-carnival-purple hover:text-carnival-purple/80 font-medium transition-colors"
       >
-        {isExpanded ? "Ver Menos" : "Ler Mais"}
+        {isExpanded ? readLessText : readMoreText}
       </button>
     </div>
   );
 };
 
 const MissionCards = () => {
+  const { translate } = useLanguage();
+  
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold mb-4">Nossos Pilares</h2>
+          <h2 className="text-4xl font-bold mb-4">{translate('nossosPilares')}</h2>
           <p className="text-xl text-gray-600">
-            Transformando vidas através da cultura e do carnaval
+            {translate('nossosPilaresDesc')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card
             icon={<Target className="h-12 w-12" />}
-            title="Missão"
-            description="Transformar a sociedade brasileira por meio da economia criativa."
-            expandedContent="Iluminamos os bastidores da economia criativa, estimulando a renda de seus fazedores e democratizando o acesso à arte por eles produzida."
+            title={translate('missaoTitle')}
+            description={translate('missaoCardDesc')}
+            expandedContent={translate('missaoCardExpanded')}
+            readMoreText={translate('lerMais')}
+            readLessText={translate('verMenos')}
           />
           <Card
             icon={<Eye className="h-12 w-12" />}
-            title="Visão"
-            description="Ser um agente amplificador da riqueza cultural do país, iluminando a arte de seus fazedores e promovendo a democratização do seu acesso."
-            expandedContent="Expandimos constantemente nossa atuação, desenvolvendo eventos e projetos culturais em diversas regiões do país."
+            title={translate('visaoCardTitle')}
+            description={translate('visaoCardDesc')}
+            expandedContent={translate('visaoCardExpanded')}
+            readMoreText={translate('lerMais')}
+            readLessText={translate('verMenos')}
           />
           <Card
             icon={<Heart className="h-12 w-12" />}
-            title="Valores"
-            description="Criatividade, diversidade, acessibilidade e sustentabilidade."
-            expandedContent="Incansáveis em nossa missão de transformar a sociedade brasileira por meio da cultura e economia criativa."
+            title={translate('valoresCardTitle')}
+            description={translate('valoresCardDesc')}
+            expandedContent={translate('valoresCardExpanded')}
+            readMoreText={translate('lerMais')}
+            readLessText={translate('verMenos')}
           />
         </div>
       </div>

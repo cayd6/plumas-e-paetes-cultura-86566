@@ -114,10 +114,10 @@ const Index = () => {
                 {translate('quemSomosTexto2')}
               </p>
               <p>
-                Incansável em sua missão de transformar a sociedade brasileira por meio da cultura, o Instituto desenvolveu, ao longo das duas últimas décadas, uma série de ações, dentre as quais se destacam a coordenação de eventos artísticos e de promoção da diversidade cultural (realizados no Museu do Amanhã, no Hotel Vila Galé, na Cidade do Samba, etc.), a elaboração de livro e revistas, o desenvolvimento de Oficinas de Capacitação e Gestão Artística, a Produção de espetáculos teatrais/musicais, a Coordenação de corpo de jurados dos desfiles das escolas de samba do Rio de Janeiro (RJ) e Vitória (ES), a confecção da coroa de Rei Momo e demais acessórios da Corte Momesca das cidades do Rio de Janeiro, Niterói, Maricá e Cruz Alta (RS) e a atuação na elaboração de projetos de lei voltados à economia criativa.
+                {translate('quemSomosTexto3')}
               </p>
               <p>
-                Empreendido por um experiente e diverso grupo de produtores, o Plumas & Paetês Cultural se tornou uma das mais importantes referências do seu segmento, sendo chancelado, desde 2012, pela Organização dos Estados Ibero-americanos – (OEI) e outorgado, em 2015, pela Comissão de Cultura da ALERJ, com o Diploma Heloneida Studart, em virtude do seu destaque na promoção da cultura no estado.
+                {translate('quemSomosTexto4')}
               </p>
             </div>
           </div>
