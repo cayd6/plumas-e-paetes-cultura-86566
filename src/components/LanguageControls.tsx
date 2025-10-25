@@ -29,15 +29,15 @@ const LanguageControls = () => {
 
   return (
     <TooltipProvider>
-      <div className="fixed top-24 right-4 z-[40] flex items-center space-x-4 pt-2">
+      <div className="fixed top-24 right-4 z-[40] flex items-center gap-3 pt-2">
         <Tooltip>
           <TooltipTrigger asChild>
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-2 px-3 py-2 rounded-full bg-gray-800/80 backdrop-blur-md text-white hover:bg-gray-700/90 transition-colors"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white border-2 border-gray-200 text-gray-900 hover:bg-gray-50 hover:border-carnival-purple transition-all duration-200 shadow-md font-semibold"
             >
               <Globe size={20} />
-              <span>{language.toUpperCase()}</span>
+              <span className="text-base">{language.toUpperCase()}</span>
             </button>
           </TooltipTrigger>
           <TooltipContent>
@@ -45,14 +45,14 @@ const LanguageControls = () => {
           </TooltipContent>
         </Tooltip>
 
-        <div className="flex items-center space-x-2 px-3 py-2 rounded-full bg-gray-800/80 backdrop-blur-md text-white">
+        <div className="flex items-center gap-1 px-3 py-2.5 rounded-lg bg-white border-2 border-gray-200 shadow-md">
           <Tooltip>
             <TooltipTrigger asChild>
               <button 
                 onClick={decreaseFontSize} 
-                className="hover:text-gray-300 transition-colors w-6 h-6 flex items-center justify-center"
+                className="hover:bg-gray-100 rounded px-2 py-1 transition-colors w-8 h-8 flex items-center justify-center text-gray-900"
               >
-                <span className="text-lg font-bold">-</span>
+                <span className="text-xl font-bold">-</span>
               </button>
             </TooltipTrigger>
             <TooltipContent>
@@ -60,15 +60,15 @@ const LanguageControls = () => {
             </TooltipContent>
           </Tooltip>
 
-          <span className="mx-1">|</span>
+          <span className="mx-1 text-gray-400">|</span>
 
           <Tooltip>
             <TooltipTrigger asChild>
               <button 
                 onClick={increaseFontSize} 
-                className="hover:text-gray-300 transition-colors w-6 h-6 flex items-center justify-center"
+                className="hover:bg-gray-100 rounded px-2 py-1 transition-colors w-8 h-8 flex items-center justify-center text-gray-900"
               >
-                <span className="text-lg font-bold">+</span>
+                <span className="text-xl font-bold">+</span>
               </button>
             </TooltipTrigger>
             <TooltipContent>
