@@ -29,7 +29,7 @@ const LanguageControls = () => {
 
   return (
     <TooltipProvider>
-      <div className="fixed top-[120px] right-4 z-[60] flex items-center gap-3 pt-2">
+      <div className="fixed top-16 right-4 z-[60] flex items-center gap-3">
         <Tooltip>
           <TooltipTrigger asChild>
             <button
