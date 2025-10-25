@@ -35,16 +35,17 @@ const Index = () => {
       <BackToTop />
       
       {/* Hero Section */}
-      <section id="inicio" className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50 z-10" />
+      <section id="inicio" className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-purple-900 via-pink-800 to-orange-700">
         <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          className="absolute inset-0 w-full h-full"
           style={{
             backgroundImage: "url('/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png')",
             backgroundSize: 'cover',
-            backgroundPosition: 'center center'
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat'
           }}
         />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40 z-10" />
         
         {/* Continuous Falling Confetti */}
         <ConfettiFalling />
