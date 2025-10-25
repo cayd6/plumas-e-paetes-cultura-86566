@@ -102,6 +102,11 @@ const translations: Translations = {
     descricaoCarnaval: "Grande desfile e celebração da cultura popular",
     festivalCultural: "Festival Cultural",
     descricaoFestival: "Semana de arte, cultura e economia criativa",
+    heroSubtitulo: "Transformando a sociedade brasileira por meio da economia criativa",
+    quemSomosTexto1: "Criado em 2005 com o intuito de reconhecer e valorizar os artistas anônimos do carnaval carioca, amplificando as suas vozes e intermediando a ascensão de suas carreiras profissionais, o Instituto Plumas & Paetês Cultural logo se tornou muito maior do que a premiação carnavalesca que lhe deu origem.",
+    quemSomosTexto2: "Mantendo a sua premissa inicial, de iluminar os bastidores da economia criativa, estimulando a renda de seus fazedores e democratizando o acesso à arte por eles produzida, o Plumas & Paetês percebeu que podia mais e decidiu ampliar o seu alcance, produzindo uma série de eventos e projetos culturais em diversas regiões do país.",
+    projetosProdutosEventos: "Projetos, Produtos e Eventos",
+    projetosProdutosEventosDesc: "Conheça as principais iniciativas desenvolvidas pelo Instituto ao longo de duas décadas de atuação",
   },
   en: {
     inicio: "Home",
@@ -193,6 +198,11 @@ const translations: Translations = {
     descricaoCarnaval: "Grand parade and celebration of popular culture",
     festivalCultural: "Cultural Festival",
     descricaoFestival: "Week of art, culture and creative economy",
+    heroSubtitulo: "Transforming Brazilian society through the creative economy",
+    quemSomosTexto1: "Created in 2005 with the aim of recognizing and valuing the anonymous artists of Rio's carnival, amplifying their voices and facilitating their professional advancement, the Instituto Plumas & Paetês Cultural soon became much more than the carnival award that gave it origin.",
+    quemSomosTexto2: "Maintaining its initial premise of illuminating the backstage of the creative economy, stimulating the income of its creators and democratizing access to the art they produce, Plumas & Paetês realized it could do more and decided to expand its reach, producing a series of cultural events and projects in various regions of the country.",
+    projetosProdutosEventos: "Projects, Products and Events", 
+    projetosProdutosEventosDesc: "Discover the main initiatives developed by the Institute over two decades of activity",
   },
 };
 

@@ -6,8 +6,9 @@ import MissionCards from "@/components/MissionCards";
 import BackToTop from "@/components/BackToTop";
 import { ArrowRight, Instagram, Facebook, Mail, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
-
+import { useLanguage } from "@/contexts/LanguageContext";
 const Index = () => {
+  const { translate } = useLanguage();
   const [headerBg, setHeaderBg] = useState(false);
 
   useEffect(() => {
@@ -91,7 +92,7 @@ const Index = () => {
               Instituto Plumas & Paetês Cultural
             </h1>
             <p className="text-xl md:text-2xl text-white/95 mb-10 animate-fade-in font-light max-w-3xl mx-auto">
-              Transformando a sociedade brasileira por meio da economia criativa
+              {translate('heroSubtitulo')}
             </p>
           </div>
         </div>
@@ -104,13 +105,13 @@ const Index = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">Quem Somos</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">{translate('quemSomos')}</h2>
             <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
               <p>
-                Criado em 2005 com o intuito de reconhecer e valorizar os artistas anônimos do carnaval carioca, amplificando as suas vozes e intermediando a ascensão de suas carreiras profissionais, o Instituto Plumas & Paetês Cultural logo se tornou muito maior do que a premiação carnavalesca que lhe deu origem.
+                {translate('quemSomosTexto1')}
               </p>
               <p>
-                Mantendo a sua premissa inicial, de iluminar os bastidores da economia criativa, estimulando a renda de seus fazedores e democratizando o acesso à arte por eles produzida, o Plumas & Paetês percebeu que podia mais e decidiu ampliar o seu alcance, produzindo uma série de eventos e projetos culturais em diversas regiões do país.
+                {translate('quemSomosTexto2')}
               </p>
               <p>
                 Incansável em sua missão de transformar a sociedade brasileira por meio da cultura, o Instituto desenvolveu, ao longo das duas últimas décadas, uma série de ações, dentre as quais se destacam a coordenação de eventos artísticos e de promoção da diversidade cultural (realizados no Museu do Amanhã, no Hotel Vila Galé, na Cidade do Samba, etc.), a elaboração de livro e revistas, o desenvolvimento de Oficinas de Capacitação e Gestão Artística, a Produção de espetáculos teatrais/musicais, a Coordenação de corpo de jurados dos desfiles das escolas de samba do Rio de Janeiro (RJ) e Vitória (ES), a confecção da coroa de Rei Momo e demais acessórios da Corte Momesca das cidades do Rio de Janeiro, Niterói, Maricá e Cruz Alta (RS) e a atuação na elaboração de projetos de lei voltados à economia criativa.
@@ -127,9 +128,9 @@ const Index = () => {
       <section id="projetos" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Projetos, Produtos e Eventos</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">{translate('projetosProdutosEventos')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Conheça as principais iniciativas desenvolvidas pelo Instituto ao longo de duas décadas de atuação
+              {translate('projetosProdutosEventosDesc')}
             </p>
           </div>
           
