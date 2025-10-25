@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import AnniversaryBanner from "@/components/AnniversaryBanner";
+import ConfettiFalling from "@/components/ConfettiFalling";
 import MissionCards from "@/components/MissionCards";
 import StatsCounter from "@/components/StatsCounter";
 import PartnersCarousel from "@/components/PartnersCarousel";
@@ -44,6 +45,9 @@ const Index = () => {
             backgroundPosition: 'center center'
           }}
         />
+        
+        {/* Continuous Falling Confetti */}
+        <ConfettiFalling />
         
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-5xl mx-auto text-center">
