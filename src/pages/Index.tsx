@@ -21,40 +21,40 @@ const Index = () => {
 
   const projects = [
     {
-      title: "Prêmio Plumas & Paetês Cultural",
-      description: "Criado em 2005, celebra os profissionais que atuam nos bastidores da produção, criação e cobertura dos desfiles das escolas de samba do Rio de Janeiro. Mais de 1000 troféus distribuídos a mais de 1400 premiados em 51 categorias profissionais.",
+      title: translate('project1Title'),
+      description: translate('project1Desc'),
     },
     {
-      title: "Oficinas de Capacitação e Gestão Artísticas",
-      description: "Desde 2008 o Instituto ministra oficinas de formação e gestão artística, com atuação nas cidades do Rio de Janeiro e Brasília.",
+      title: translate('project2Title'),
+      description: translate('project2Desc'),
     },
     {
-      title: "Revista Plumas e Paetês Cultural",
-      description: "Publicação anual lançada em 2010 que exalta os artistas e a história do carnaval carioca. De circulação gratuita, com tiragem anual de 5000 exemplares.",
+      title: translate('project3Title'),
+      description: translate('project3Desc'),
     },
     {
-      title: "Produção de Espetáculos Musicais",
-      description: "A partir de 2012, produz espetáculos teatrais/musicais retratando a vida e obra de homenageados como Elza Soares, Chiquinha Gonzaga, Rainhas do Rádio e Donga.",
+      title: translate('project4Title'),
+      description: translate('project4Desc'),
     },
     {
-      title: "Coroa do Rei Momo",
-      description: "Desde 2014 é responsável pela confecção da coroa do Rei Momo e curadoria dos acessórios temáticos da corte nas cidades do Rio de Janeiro, Niterói, Maricá e Cruz Alta (RS).",
+      title: translate('project5Title'),
+      description: translate('project5Desc'),
     },
     {
-      title: "Júri de Carnaval",
-      description: "Desde 2015 coordena o corpo de jurados dos desfiles das escolas de samba dos grupos Especial e Acesso de Vitória (ES), e das séries A, B, C e D do Rio de Janeiro.",
+      title: translate('project6Title'),
+      description: translate('project6Desc'),
     },
     {
-      title: "Busto do Mestre Monarco",
-      description: "Em 2016, instalou o busto do compositor Monarco na quadra da Portela, um trabalho do artista Vinicius Vaitsmann.",
+      title: translate('project7Title'),
+      description: translate('project7Desc'),
     },
     {
-      title: "Livro '90 Anos de Braços Abertos para os Grandes Eventos'",
-      description: "Publicação de 2021 que celebrou os 90 anos da estátua do Cristo Redentor, tendo o Instituto como proponente do projeto.",
+      title: translate('project8Title'),
+      description: translate('project8Desc'),
     },
     {
-      title: "Projetos de Lei",
-      description: "Atuou junto ao deputado estadual Noel de Carvalho e ao vereador Marcio Ribeiro para elaboração das leis 9.950/2023 (estadual) e 8167/2023 (municipal), estabelecendo o dia 28 de setembro como o dia do Profissional da Economia Criativa de Carnaval.",
+      title: translate('project9Title'),
+      description: translate('project9Desc'),
     },
   ];
   
@@ -153,17 +153,17 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Faça Parte da Transformação Cultural
+              {translate('ctaTitle')}
             </h2>
             <p className="text-xl md:text-2xl mb-10 text-white/95">
-              Junte-se a nós na missão de valorizar a cultura brasileira
+              {translate('ctaSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
                 href="/contato"
                 className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-carnival-purple bg-white rounded-full hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-2xl"
               >
-                Entre em Contato
+                {translate('entrarContato')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </div>
@@ -179,16 +179,16 @@ const Index = () => {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-carnival-gold">Instituto Plumas & Paetês Cultural</h3>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Transformando a sociedade brasileira por meio da economia criativa desde 2005.
+                {translate('footerAbout')}
               </p>
               <p className="text-gray-400 text-sm">
-                CNPJ: 11.985.110/0001-76
+                {translate('cnpj')}: 11.985.110/0001-76
               </p>
             </div>
 
             {/* Column 2: Contact */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Contato</h3>
+              <h3 className="text-lg font-semibold mb-4">{translate('faleConosco')}</h3>
               <div className="space-y-3 text-gray-400">
                 <p className="flex items-start">
                   <Mail size={18} className="mr-2 mt-1 flex-shrink-0" />
@@ -215,7 +215,7 @@ const Index = () => {
 
             {/* Column 3: Social Media */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Siga-nos</h3>
+              <h3 className="text-lg font-semibold mb-4">{translate('redesSociais')}</h3>
               <div className="flex gap-4 mb-6">
                 <a 
                   href="https://www.instagram.com/plumasepaetescultural/" 
@@ -237,7 +237,7 @@ const Index = () => {
                 </a>
               </div>
               <p className="text-gray-400 text-sm">
-                Acompanhe nossos eventos e bastidores
+                {translate('followEventsCaption')}
               </p>
             </div>
           </div>
@@ -246,11 +246,11 @@ const Index = () => {
           <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-gray-400 text-sm">
-                &copy; 2025 Instituto Plumas e Paetês Cultural. Todos os direitos reservados.
+                &copy; 2025 Instituto Plumas e Paetês Cultural. {translate('direitosReservados')}
               </p>
               <div className="flex gap-6 text-sm text-gray-400">
-                <a href="#" className="hover:text-carnival-gold transition-colors">Política de Privacidade</a>
-                <a href="#" className="hover:text-carnival-gold transition-colors">Termos de Uso</a>
+                <a href="#" className="hover:text-carnival-gold transition-colors">{translate('privacyPolicy')}</a>
+                <a href="#" className="hover:text-carnival-gold transition-colors">{translate('termsOfUse')}</a>
               </div>
             </div>
           </div>
