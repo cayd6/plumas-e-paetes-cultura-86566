@@ -35,6 +35,30 @@ const slides: BannerSlide[] = [
     descriptionPt: "Duas décadas de cultura, arte e inclusão social",
     descriptionEn: "Two decades of culture, art and social inclusion",
     link: "/sobre"
+  },
+  {
+    image: "/lovable-uploads/premio-20-poster-1.png",
+    titlePt: "20º Prêmio Plumas & Paetês Cultural",
+    titleEn: "20th Plumas & Paetês Cultural Award",
+    descriptionPt: "Troféu em homenagem à Maria Augusta (in memoriam) - 10 de Novembro",
+    descriptionEn: "Trophy in honor of Maria Augusta (in memoriam) - November 10th",
+    link: "/edicoes"
+  },
+  {
+    image: "/lovable-uploads/premio-20-poster-2.png",
+    titlePt: "Homenagem à Maria Augusta",
+    titleEn: "Tribute to Maria Augusta",
+    descriptionPt: "Teatro Carlos Gomes - Segunda às 18h",
+    descriptionEn: "Carlos Gomes Theater - Monday at 6pm",
+    link: "/edicoes"
+  },
+  {
+    image: "/lovable-uploads/premio-20-poster-3.png",
+    titlePt: "20º Prêmio - 10 de Novembro",
+    titleEn: "20th Award - November 10th",
+    descriptionPt: "Praça Tiradentes - Centro, Rio de Janeiro",
+    descriptionEn: "Tiradentes Square - Downtown, Rio de Janeiro",
+    link: "/edicoes"
   }
 ];
 
