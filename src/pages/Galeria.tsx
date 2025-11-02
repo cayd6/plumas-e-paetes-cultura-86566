@@ -74,7 +74,7 @@ const Galeria = () => {
       
       {/* Hero Banner */}
       <div className="pt-20">
-        <GalleryHeroBanner />
+        <GalleryHeroBanner selectedYear={selectedYear} />
       </div>
 
       {/* Filters */}

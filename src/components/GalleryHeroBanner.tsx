@@ -8,53 +8,70 @@ interface BannerSlide {
   titleEn: string;
   descriptionPt: string;
   descriptionEn: string;
+  year?: string;
 }
 
-const slides: BannerSlide[] = [
+interface GalleryHeroBannerProps {
+  selectedYear?: string;
+}
+
+const allSlides: BannerSlide[] = [
   {
     image: "/lovable-uploads/edicao-2005-robert-clovis.jpg",
     titlePt: "1ª Edição 2005 - Homenagem a Clovis Bornay",
     titleEn: "1st Edition 2005 - Tribute to Clovis Bornay",
     descriptionPt: "O início de uma história de reconhecimento ao carnaval",
-    descriptionEn: "The beginning of a story of carnival recognition"
+    descriptionEn: "The beginning of a story of carnival recognition",
+    year: "2005"
+  },
+  {
+    image: "/lovable-uploads/edicao-2005-marcela-xango.jpg",
+    titlePt: "Momentos Históricos 2005",
+    titleEn: "2005 Historical Moments",
+    descriptionPt: "Registros preciosos de nossa trajetória cultural",
+    descriptionEn: "Precious records of our cultural journey",
+    year: "2005"
   },
   {
     image: "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
     titlePt: "Cerimônia de Premiação 2024",
     titleEn: "2024 Award Ceremony",
     descriptionPt: "Uma noite inesquecível de reconhecimento artístico",
-    descriptionEn: "An unforgettable night of artistic recognition"
+    descriptionEn: "An unforgettable night of artistic recognition",
+    year: "2024"
   },
   {
     image: "/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png",
     titlePt: "19º Prêmio Plumas & Paetês",
     titleEn: "19th Plumas & Paetês Award",
     descriptionPt: "Celebrando os talentos do carnaval brasileiro",
-    descriptionEn: "Celebrating Brazilian carnival talents"
-  },
-  {
-    image: "/lovable-uploads/edicao-2005-marcela-xango.jpg",
-    titlePt: "Momentos Históricos",
-    titleEn: "Historical Moments",
-    descriptionPt: "Registros preciosos de nossa trajetória cultural",
-    descriptionEn: "Precious records of our cultural journey"
+    descriptionEn: "Celebrating Brazilian carnival talents",
+    year: "2024"
   }
 ];
 
-const GalleryHeroBanner = () => {
+const GalleryHeroBanner = ({ selectedYear = "todos" }: GalleryHeroBannerProps) => {
   const { language } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
+  const slides = selectedYear === "todos" 
+    ? allSlides 
+    : allSlides.filter(slide => slide.year === selectedYear);
+
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    setCurrentSlide(0);
+  }, [selectedYear]);
+
+  useEffect(() => {
+    if (!isAutoPlaying || slides.length === 0) return;
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, slides.length]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -75,6 +92,10 @@ const GalleryHeroBanner = () => {
   };
 
   const currentSlideData = slides[currentSlide];
+
+  if (slides.length === 0) {
+    return null;
+  }
 
   return (
     <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden group">
