@@ -1,16 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
-import SEO from "@/components/SEO";
+import { Mail, Phone, MapPin, Instagram, Facebook, Send } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Instagram, Facebook, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contato = () => {
-  const { translate } = useLanguage();
+  const { translate, language } = useLanguage();
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
+
+  useEffect(() => {
+    // Load Leaflet CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(link);
+
+    // Load Leaflet JS
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.onload = () => setMapLoaded(true);
+    document.body.appendChild(script);
+
+    return () => {
+      document.head.removeChild(link);
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!mapLoaded) return;
+
+    // @ts-ignore - Leaflet is loaded dynamically
+    const L = window.L;
+    
+    const map = L.map('map').setView([-22.9068, -43.1729], 13);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add marker for Instituto location
+    const marker = L.marker([-22.9068, -43.1729]).addTo(map);
+    marker.bindPopup('<b>Instituto Plumas & Paetês Cultural</b><br>Rio de Janeiro, RJ').openPopup();
+
+    return () => {
+      map.remove();
+    };
+  }, [mapLoaded]);
+
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -46,13 +89,13 @@ const Contato = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO 
-        title="Contato | Instituto Plumas e Paetês Cultural"
-        description="Entre em contato conosco. Estamos prontos para ouvir você e construir projetos culturais incríveis juntos."
-        keywords="contato, instituto cultural, fale conosco, parcerias, projetos culturais"
+        title={translate("contato")}
+        description={translate("faleConosco")}
+        keywords="contato, instituto plumas paetês, rio de janeiro"
       />
       <Navigation />
-      <Breadcrumbs />
       <LanguageControls />
+      <Breadcrumbs />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-ppc-purple to-ppc-magenta">
@@ -241,7 +284,70 @@ const Contato = () => {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Map Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              {language === 'pt' ? 'Nossa Localização' : 'Our Location'}
+            </h2>
+            <p className="text-xl text-gray-600">
+              {language === 'pt' 
+                ? 'Venha nos visitar no Rio de Janeiro'
+                : 'Come visit us in Rio de Janeiro'}
+            </p>
+          </div>
+          
+          <div className="max-w-5xl mx-auto">
+            <div id="map" className="w-full h-96 rounded-2xl shadow-2xl overflow-hidden"></div>
+            
+            <div className="mt-8 bg-gradient-to-br from-carnival-purple to-carnival-magenta rounded-2xl p-8 text-white">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex items-start gap-4">
+                  <MapPin className="flex-shrink-0 mt-1" size={24} />
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">
+                      {language === 'pt' ? 'Endereço' : 'Address'}
+                    </h4>
+                    <p className="text-white/90">Rio de Janeiro, RJ<br />Brasil</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <Phone className="flex-shrink-0 mt-1" size={24} />
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">
+                      {language === 'pt' ? 'Telefone' : 'Phone'}
+                    </h4>
+                    <a 
+                      href="https://wa.me/5521989392920"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/90 hover:text-white transition-colors"
+                    >
+                      +55 21 98939-2920
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <Mail className="flex-shrink-0 mt-1" size={24} />
+                  <div>
+                    <h4 className="font-bold text-lg mb-1">E-mail</h4>
+                    <a 
+                      href="mailto:contato@institutoplumasepaetescultural.com"
+                      className="text-white/90 hover:text-white transition-colors break-all"
+                    >
+                      contato@institutoplumasepaetescultural.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

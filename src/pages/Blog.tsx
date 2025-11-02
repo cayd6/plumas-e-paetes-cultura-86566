@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Calendar, User, Tag, ArrowRight, Search, Instagram, Facebook, Mail, Phone } from "lucide-react";
+import { Calendar, User, Tag, ArrowRight, Search } from "lucide-react";
 
 const Blog = () => {
   const { translate, language } = useLanguage();
@@ -107,8 +110,16 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title={translate("blog")}
+        description={language === 'pt' 
+          ? "Notícias, análises e histórias do mundo do carnaval e da cultura popular"
+          : "News, analysis and stories from the world of carnival and popular culture"}
+        keywords="blog, notícias, carnaval, cultura, eventos"
+      />
       <Navigation />
       <LanguageControls />
+      <Breadcrumbs />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 carnival-gradient overflow-hidden">
@@ -276,64 +287,7 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
-                <li><a href="/sobre" className="text-gray-400 hover:text-white transition-colors">{translate("sobre")}</a></li>
-                <li><a href="/edicoes" className="text-gray-400 hover:text-white transition-colors">{translate("edicoes")}</a></li>
-                <li><a href="/contato" className="text-gray-400 hover:text-white transition-colors">{translate("contato")}</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("transformandoVidas")}
-              </p>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("cnpj")}: 11.985.110/0001-76
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a 
-                  href="https://www.instagram.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Instagram size={24} />
-                </a>
-                <a 
-                  href="https://www.facebook.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Facebook size={24} />
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
-              <div className="space-y-2 text-gray-400">
-                <p className="flex items-center">
-                  <Mail size={18} className="mr-2" />
-                  contato@institutoplumasepaetescultural.com
-                </p>
-                <p className="flex items-center">
-                  <Phone size={18} className="mr-2" />
-                  +55 21 98939-2920
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Instituto Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

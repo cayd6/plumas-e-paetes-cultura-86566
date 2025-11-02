@@ -1,11 +1,17 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
-import { ArrowRight, Award, Trophy, Star, Calendar, Users, Instagram, Facebook, Mail, Phone } from "lucide-react";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
+import { ArrowRight, Award, Trophy, Star, Calendar, Users, Phone, Filter } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
 const EdicoesEnhanced = () => {
   const { translate, language } = useLanguage();
+  const [selectedYear, setSelectedYear] = useState<string>("all");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const categories = [
     { 
@@ -40,7 +46,7 @@ const EdicoesEnhanced = () => {
     },
   ];
 
-  const winners = [
+  const allWinners = [
     {
       year: '2024',
       school: 'Vila Isabel',
@@ -62,7 +68,44 @@ const EdicoesEnhanced = () => {
       winner: 'João Santos',
       image: '/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png'
     },
+    {
+      year: '2023',
+      school: 'Salgueiro',
+      category: language === 'pt' ? 'Melhor Alegoria' : 'Best Float',
+      winner: 'Ana Paula Costa',
+      image: '/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png'
+    },
+    {
+      year: '2023',
+      school: 'Portela',
+      category: language === 'pt' ? 'Melhor Passista' : 'Best Samba Dancer',
+      winner: 'Pedro Oliveira',
+      image: '/lovable-uploads/2f3ac4c5-4b19-4824-844f-58a4e3f24a02.png'
+    },
+    {
+      year: '2022',
+      school: 'Grande Rio',
+      category: language === 'pt' ? 'Design de Iluminação' : 'Lighting Design',
+      winner: 'Luiz Fernando',
+      image: '/lovable-uploads/7d37df1b-46e4-421f-a18a-3e24655fdf28.png'
+    },
   ];
+
+  const years = ["all", "2024", "2023", "2022"];
+  const filterCategories = [
+    "all",
+    language === 'pt' ? 'Melhor Passista' : 'Best Samba Dancer',
+    language === 'pt' ? 'Melhor Comissão de Frente' : 'Best Opening Commission',
+    language === 'pt' ? 'Melhor Fantasia' : 'Best Costume',
+    language === 'pt' ? 'Melhor Alegoria' : 'Best Float',
+    language === 'pt' ? 'Design de Iluminação' : 'Lighting Design',
+  ];
+
+  const filteredWinners = allWinners.filter(winner => {
+    const yearMatch = selectedYear === "all" || winner.year === selectedYear;
+    const categoryMatch = selectedCategory === "all" || winner.category === selectedCategory;
+    return yearMatch && categoryMatch;
+  });
 
   const editions = [
     { edition: '20ª', year: '2025', status: language === 'pt' ? 'Próxima' : 'Upcoming' },
@@ -75,8 +118,14 @@ const EdicoesEnhanced = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title={translate("premioPlumas")}
+        description={translate("premioDesc")}
+        keywords="prêmio plumas paetês, carnaval, premiação, cultura"
+      />
       <Navigation />
       <LanguageControls />
+      <Breadcrumbs />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-ppc-purple via-ppc-magenta to-ppc-orange overflow-hidden">
@@ -153,15 +202,65 @@ const EdicoesEnhanced = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">{translate("vencedoresAnteriores")}</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 mb-8">
               {language === 'pt' 
                 ? 'Celebrando os talentos que brilharam em edições passadas'
                 : 'Celebrating the talents that shone in past editions'}
             </p>
+            
+            {/* Filters */}
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-center mb-12">
+              <div className="flex items-center gap-2">
+                <Filter className="text-carnival-purple" size={20} />
+                <span className="font-semibold text-gray-700">
+                  {language === 'pt' ? 'Filtrar por:' : 'Filter by:'}
+                </span>
+              </div>
+              
+              {/* Year filter */}
+              <div className="flex flex-wrap gap-2">
+                {years.map(year => (
+                  <button
+                    key={year}
+                    onClick={() => setSelectedYear(year)}
+                    className={`px-4 py-2 rounded-full font-semibold transition-all ${
+                      selectedYear === year
+                        ? 'bg-carnival-purple text-white shadow-lg'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {year === "all" ? (language === 'pt' ? 'Todos os Anos' : 'All Years') : year}
+                  </button>
+                ))}
+              </div>
+              
+              {/* Category filter */}
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="px-4 py-2 rounded-full border-2 border-gray-200 focus:border-carnival-purple focus:outline-none font-semibold text-gray-700 bg-white"
+              >
+                {filterCategories.map(cat => (
+                  <option key={cat} value={cat}>
+                    {cat === "all" ? (language === 'pt' ? 'Todas as Categorias' : 'All Categories') : cat}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
           
+          {/* Winners grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {winners.map((winner, index) => (
+            {filteredWinners.length === 0 ? (
+              <div className="col-span-full text-center py-12">
+                <p className="text-xl text-gray-500">
+                  {language === 'pt' 
+                    ? 'Nenhum vencedor encontrado com os filtros selecionados'
+                    : 'No winners found with the selected filters'}
+                </p>
+              </div>
+            ) : (
+              filteredWinners.map((winner, index) => (
               <div 
                 key={index}
                 className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
@@ -185,7 +284,8 @@ const EdicoesEnhanced = () => {
                   </div>
                 </div>
               </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -249,64 +349,7 @@ const EdicoesEnhanced = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
-                <li><a href="/edicoes" className="text-gray-400 hover:text-white transition-colors">{translate("edicoes")}</a></li>
-                <li><a href="/galeria" className="text-gray-400 hover:text-white transition-colors">{translate("galeria")}</a></li>
-                <li><a href="/contato" className="text-gray-400 hover:text-white transition-colors">{translate("contato")}</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("transformandoVidas")}
-              </p>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("cnpj")}: 11.985.110/0001-76
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a 
-                  href="https://www.instagram.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Instagram size={24} />
-                </a>
-                <a 
-                  href="https://www.facebook.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Facebook size={24} />
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
-              <div className="space-y-2 text-gray-400">
-                <p className="flex items-center">
-                  <Mail size={18} className="mr-2" />
-                  contato@institutoplumasepaetescultural.com
-                </p>
-                <p className="flex items-center">
-                  <Phone size={18} className="mr-2" />
-                  +55 21 98939-2920
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Instituto Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

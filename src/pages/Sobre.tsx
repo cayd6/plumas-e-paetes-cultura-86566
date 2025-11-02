@@ -5,6 +5,8 @@ import LanguageControls from "@/components/LanguageControls";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import Timeline from "@/components/Timeline";
+import Testimonials from "@/components/Testimonials";
 import carnivalHeroBg from "@/assets/carnival-hero-bg.jpg";
 import carnivalArtisan from "@/assets/carnival-artisan.jpg";
 import carnivalPattern from "@/assets/carnival-pattern.jpg";
@@ -514,6 +516,50 @@ const Sobre = () => {
               ))}
             </CarouselContent>
           </Carousel>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section 
+        id="timeline" 
+        className={`py-20 px-4 bg-white transition-all duration-1000 ${
+          isVisible('timeline') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+              {language === 'pt' ? 'Nossa História' : 'Our History'}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {language === 'pt' 
+                ? 'Duas décadas de dedicação à cultura carnavalesca brasileira'
+                : 'Two decades of dedication to Brazilian carnival culture'}
+            </p>
+          </div>
+          <Timeline />
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section 
+        id="testimonials" 
+        className={`py-20 px-4 bg-gray-50 transition-all duration-1000 ${
+          isVisible('testimonials') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+              {language === 'pt' ? 'Depoimentos' : 'Testimonials'}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {language === 'pt' 
+                ? 'O que dizem nossos parceiros e premiados'
+                : 'What our partners and award winners say'}
+            </p>
+          </div>
+          <Testimonials />
         </div>
       </section>
 
