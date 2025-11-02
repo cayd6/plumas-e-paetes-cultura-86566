@@ -59,46 +59,6 @@ const slides: BannerSlide[] = [
     descriptionPt: "Praça Tiradentes - Centro, Rio de Janeiro",
     descriptionEn: "Tiradentes Square - Downtown, Rio de Janeiro",
     link: "/edicoes"
-  },
-  {
-    image: "/lovable-uploads/edicao-2005-robert-clovis.jpg",
-    titlePt: "1ª Edição 2005 - Homenagem a Clovis Bornay",
-    titleEn: "1st Edition 2005 - Tribute to Clovis Bornay",
-    descriptionPt: "O início de uma história de reconhecimento ao carnaval",
-    descriptionEn: "The beginning of a story of carnival recognition",
-    link: "/edicoes"
-  },
-  {
-    image: "/lovable-uploads/edicao-2005-trofeu.jpg",
-    titlePt: "Troféu Plumas de Destaque 2005",
-    titleEn: "2005 Outstanding Feathers Trophy",
-    descriptionPt: "Carnaval Carioca 2005 - GRES São Clemente",
-    descriptionEn: "Rio Carnival 2005 - GRES São Clemente",
-    link: "/edicoes"
-  },
-  {
-    image: "/lovable-uploads/edicao-2005-marcela-xango.jpg",
-    titlePt: "Premiação 2005 - Fantasia de Destaque",
-    titleEn: "2005 Award - Outstanding Costume",
-    descriptionPt: "Reconhecendo a arte e criatividade do carnaval",
-    descriptionEn: "Recognizing carnival art and creativity",
-    link: "/edicoes"
-  },
-  {
-    image: "/lovable-uploads/edicao-2005-m-leroy.jpg",
-    titlePt: "Momentos Especiais da 1ª Edição",
-    titleEn: "Special Moments from 1st Edition",
-    descriptionPt: "Celebrando os talentos do carnaval carioca",
-    descriptionEn: "Celebrating Rio carnival talents",
-    link: "/edicoes"
-  },
-  {
-    image: "/lovable-uploads/edicao-2005-tania.jpg",
-    titlePt: "Premiados 2005",
-    titleEn: "2005 Award Winners",
-    descriptionPt: "Uma noite inesquecível de reconhecimento",
-    descriptionEn: "An unforgettable night of recognition",
-    link: "/edicoes"
   }
 ];
 
