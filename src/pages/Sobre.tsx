@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import carnivalHeroBg from "@/assets/carnival-hero-bg.jpg";
 import carnivalArtisan from "@/assets/carnival-artisan.jpg";
-import awardsCeremony from "@/assets/awards-ceremony.jpg";
 import carnivalPattern from "@/assets/carnival-pattern.jpg";
 import { 
   Users, 
@@ -81,8 +83,14 @@ const Sobre = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Sobre | Instituto Plumas e Paetês Cultural"
+        description="Conheça a história de 20 anos do Instituto Plumas e Paetês Cultural transformando vidas através da cultura, arte e economia criativa."
+        keywords="sobre, história, instituto cultural, missão, visão, valores, carnaval, 20 anos"
+      />
       <Navigation />
       <div className="pt-20">
+        <Breadcrumbs />
         <LanguageControls />
       </div>
       
@@ -534,7 +542,7 @@ const Sobre = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
             <div className="lg:w-1/2">
               <img
-                src={awardsCeremony}
+                src="/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png"
                 alt="Cerimônia de premiação"
                 className="w-full h-80 object-cover rounded-2xl shadow-2xl"
               />
@@ -705,80 +713,7 @@ const Sobre = () => {
       </section>
       
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
-                <li><a href="/edicoes" className="text-gray-400 hover:text-white transition-colors">{translate("edicoes")}</a></li>
-                <li><a href="/revistas" className="text-gray-400 hover:text-white transition-colors">{translate("revistas")}</a></li>
-                <li><a href="/eventos" className="text-gray-400 hover:text-white transition-colors">{translate("eventos")}</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("transformandoVidas")}
-              </p>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("cnpj")}: 11.985.110/0001-76
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a 
-                  href="https://www.instagram.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Instagram size={24} />
-                </a>
-                <a 
-                  href="https://www.facebook.com/plumasepaetescultural" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Facebook size={24} />
-                </a>
-              </div>
-              <p className="text-gray-400 text-center mt-2">
-                {language === 'pt' 
-                  ? 'Siga-nos nas redes sociais para ficar por dentro das novidades!' 
-                  : 'Follow us on social media to stay up to date!'}
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
-              <div className="space-y-2 text-gray-400">
-                <p className="flex items-center">
-                  <Mail size={18} className="mr-2" />
-                  <a 
-                    href="mailto:contato@plumasepaetescultural.com" 
-                    className="hover:text-white transition-colors"
-                  >
-                    contato@plumasepaetescultural.com
-                  </a>
-                </p>
-                <p className="flex items-center">
-                  <Phone size={18} className="mr-2" />
-                  <a 
-                    href="https://wa.me/5521989392920" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    +55 21 98939-2920
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Instituto Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Instagram, Facebook, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -42,7 +45,13 @@ const Contato = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Contato | Instituto Plumas e Paetês Cultural"
+        description="Entre em contato conosco. Estamos prontos para ouvir você e construir projetos culturais incríveis juntos."
+        keywords="contato, instituto cultural, fale conosco, parcerias, projetos culturais"
+      />
       <Navigation />
+      <Breadcrumbs />
       <LanguageControls />
       
       {/* Hero Section */}
@@ -233,39 +242,7 @@ const Contato = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
-                <li><a href="/sobre" className="text-gray-400 hover:text-white transition-colors">{translate("sobre")}</a></li>
-                <li><a href="/edicoes" className="text-gray-400 hover:text-white transition-colors">{translate("edicoes")}</a></li>
-                <li><a href="/galeria" className="text-gray-400 hover:text-white transition-colors">{translate("galeria")}</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("transformandoVidas")}
-              </p>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("cnpj")}: 11.985.110/0001-76
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
-              <div className="space-y-2 text-gray-400">
-                <p>contato@institutoplumasepaetescultural.com</p>
-                <p>+55 21 98939-2920</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Instituto Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

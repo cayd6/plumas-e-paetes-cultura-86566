@@ -19,10 +19,18 @@ const Navigation = () => {
   }, []);
 
   // Padrão institucional: links sempre com cor do tema (escuro sobre fundo claro)
-  const linkClass = 'text-foreground';
+  // Check if link is active
+  const isActive = (path: string) => location.pathname === path;
+  
+  const linkClass = (path: string) => {
+    const base = 'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200';
+    return isActive(path)
+      ? `${base} bg-carnival-purple text-white`
+      : `${base} text-foreground hover:bg-gray-100`;
+  };
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200 transition-all duration-500">
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200 transition-all duration-500" role="navigation" aria-label="Navegação principal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
           {/* Logo e Nome */}
@@ -46,50 +54,58 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-2">
             <Link 
               to="/" 
-              className={`px-3 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
+              className={linkClass('/')}
+              aria-current={isActive('/') ? 'page' : undefined}
             >
               {translate('inicio')}
             </Link>
             <Link 
               to="/sobre" 
-              className={`px-3 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
+              className={linkClass('/sobre')}
+              aria-current={isActive('/sobre') ? 'page' : undefined}
             >
               {translate('quemSomos')}
             </Link>
             <Link 
               to="/edicoes" 
-              className={`px-3 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200 relative group`}
+              className={`${linkClass('/edicoes')} relative group`}
+              aria-current={isActive('/edicoes') ? 'page' : undefined}
             >
               {translate('premioPlumas')}
-              <span className="absolute top-1 right-1 w-2 h-2 bg-carnival-gold rounded-full animate-pulse"></span>
+              <span className="absolute top-1 right-1 w-2 h-2 bg-carnival-gold rounded-full animate-pulse" aria-label="Novidade"></span>
             </Link>
             <Link 
               to="/revista" 
-              className={`px-3 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
+              className={linkClass('/revista')}
+              aria-current={isActive('/revista') ? 'page' : undefined}
             >
               {translate('revista')}
             </Link>
             <Link 
               to="/producao" 
-              className={`px-3 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
+              className={linkClass('/producao')}
+              aria-current={isActive('/producao') ? 'page' : undefined}
             >
               {translate('producaoEventos')}
             </Link>
             <Link 
               to="/galeria" 
-              className={`px-3 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
+              className={linkClass('/galeria')}
+              aria-current={isActive('/galeria') ? 'page' : undefined}
             >
               {translate('galeria')}
             </Link>
             <Link 
               to="/blog" 
-              className={`px-3 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
+              className={linkClass('/blog')}
+              aria-current={isActive('/blog') ? 'page' : undefined}
             >
               {translate('blog')}
             </Link>
             <Link 
               to="/contato" 
-              className={`px-3 py-2 rounded-lg text-sm font-medium ${linkClass} hover:bg-gray-100 transition-all duration-200`}
+              className={linkClass('/contato')}
+              aria-current={isActive('/contato') ? 'page' : undefined}
             >
               {translate('contato')}
             </Link>
@@ -99,6 +115,8 @@ const Navigation = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`text-foreground hover:text-carnival-purple transition-colors`}
+              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

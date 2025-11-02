@@ -1,13 +1,18 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
+import ImageModal from "@/components/ImageModal";
+import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Instagram, Facebook, Mail, Phone } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 const Galeria = () => {
   const { translate } = useLanguage();
   const [selectedYear, setSelectedYear] = useState("todos");
   const [selectedType, setSelectedType] = useState("todos");
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const photos = [
     { id: 1, src: "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png", year: "2024", type: "desfile", title: "Desfile Carnaval 2024" },
@@ -24,9 +29,34 @@ const Galeria = () => {
     return true;
   });
 
+  const handleImageClick = (index: number) => {
+    const filteredIndex = filteredPhotos.findIndex(p => p.id === filteredPhotos[index].id);
+    setSelectedImage(filteredIndex);
+  };
+
+  const handleCloseModal = () => setSelectedImage(null);
+  
+  const handleNextImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage + 1) % filteredPhotos.length);
+    }
+  };
+  
+  const handlePreviousImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage - 1 + filteredPhotos.length) % filteredPhotos.length);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Galeria de Fotos | Instituto Plumas e Paetês Cultural"
+        description="Confira momentos especiais dos nossos eventos culturais, desfiles, premiações e oficinas."
+        keywords="galeria, fotos, eventos culturais, carnaval, premiações, oficinas"
+      />
       <Navigation />
+      <Breadcrumbs />
       <LanguageControls />
       
       {/* Hero Section */}
@@ -74,19 +104,21 @@ const Galeria = () => {
         </div>
       </section>
 
-      {/* Photo Grid */}
+      {/* Photo Grid - Masonry Style */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPhotos.map((photo) => (
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            {filteredPhotos.map((photo, index) => (
               <div
                 key={photo.id}
-                className="group relative aspect-square overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                onClick={() => handleImageClick(index)}
+                className="group relative break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer mb-6"
               >
                 <img
                   src={photo.src}
                   alt={photo.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -97,8 +129,27 @@ const Galeria = () => {
               </div>
             ))}
           </div>
+
+          {filteredPhotos.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">{translate("nenhumaFotoEncontrada")}</p>
+            </div>
+          )}
         </div>
       </section>
+
+      {/* Image Modal */}
+      {selectedImage !== null && (
+        <ImageModal
+          isOpen={selectedImage !== null}
+          onClose={handleCloseModal}
+          image={filteredPhotos[selectedImage]}
+          onNext={handleNextImage}
+          onPrevious={handlePreviousImage}
+          hasNext={selectedImage < filteredPhotos.length - 1}
+          hasPrevious={selectedImage > 0}
+        />
+      )}
 
       {/* Instagram CTA */}
       <section className="py-20 bg-gradient-to-br from-ppc-magenta to-ppc-orange">
@@ -122,75 +173,7 @@ const Galeria = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
-                <li><a href="/edicoes" className="text-gray-400 hover:text-white transition-colors">{translate("edicoes")}</a></li>
-                <li><a href="/galeria" className="text-gray-400 hover:text-white transition-colors">{translate("galeria")}</a></li>
-                <li><a href="/contato" className="text-gray-400 hover:text-white transition-colors">{translate("contato")}</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("transformandoVidas")}
-              </p>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("cnpj")}: 11.985.110/0001-76
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a 
-                  href="https://www.instagram.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Instagram size={24} />
-                </a>
-                <a 
-                  href="https://www.facebook.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Facebook size={24} />
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
-              <div className="space-y-2 text-gray-400">
-                <p className="flex items-center">
-                  <Mail size={18} className="mr-2" />
-                  <a 
-                    href="mailto:contato@institutoplumasepaetescultural.com" 
-                    className="hover:text-white transition-colors"
-                  >
-                    contato@institutoplumasepaetescultural.com
-                  </a>
-                </p>
-                <p className="flex items-center">
-                  <Phone size={18} className="mr-2" />
-                  <a 
-                    href="https://wa.me/5521989392920" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    +55 21 98939-2920
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Instituto Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

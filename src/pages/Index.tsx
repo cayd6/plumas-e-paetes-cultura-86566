@@ -4,7 +4,10 @@ import AnniversaryButton from "@/components/AnniversaryButton";
 import ConfettiFalling from "@/components/ConfettiFalling";
 import MissionCards from "@/components/MissionCards";
 import BackToTop from "@/components/BackToTop";
-import { ArrowRight, Instagram, Facebook, Mail, Phone } from "lucide-react";
+import Footer from "@/components/Footer";
+import HeroBanner from "@/components/HeroBanner";
+import SEO from "@/components/SEO";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 const Index = () => {
@@ -60,6 +63,11 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-white">
+      <SEO 
+        title="Instituto Plumas e Paetês Cultural | Transformando Vidas pela Cultura"
+        description="Há 20 anos valorizando artistas e promovendo a cultura popular brasileira através do carnaval, oficinas culturais e projetos sociais."
+        keywords="instituto cultural, carnaval, plumas e paetês, cultura brasileira, economia criativa, arte popular, prêmio carnaval, Rio de Janeiro"
+      />
       <Navigation />
       <LanguageControls />
       <BackToTop />
@@ -97,6 +105,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Highlights Banner */}
+      <HeroBanner />
 
       {/* Mission/Vision/Values Section */}
       <MissionCards />
@@ -171,91 +182,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer - Clean and Minimal */}
-      <footer className="bg-gray-950 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            {/* Column 1: About */}
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-carnival-gold">Instituto Plumas & Paetês Cultural</h3>
-              <p className="text-gray-400 leading-relaxed mb-4">
-                {translate('footerAbout')}
-              </p>
-              <p className="text-gray-400 text-sm">
-                {translate('cnpj')}: 11.985.110/0001-76
-              </p>
-            </div>
-
-            {/* Column 2: Contact */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate('faleConosco')}</h3>
-              <div className="space-y-3 text-gray-400">
-                <p className="flex items-start">
-                  <Mail size={18} className="mr-2 mt-1 flex-shrink-0" />
-                  <a 
-                    href="mailto:contato@institutoplumasepaetescultural.com" 
-                    className="hover:text-carnival-gold transition-colors break-all"
-                  >
-                    contato@institutoplumasepaetescultural.com
-                  </a>
-                </p>
-                <p className="flex items-center">
-                  <Phone size={18} className="mr-2 flex-shrink-0" />
-                  <a 
-                    href="https://wa.me/5521989392920" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:text-carnival-gold transition-colors"
-                  >
-                    +55 21 98939-2920
-                  </a>
-                </p>
-              </div>
-            </div>
-
-            {/* Column 3: Social Media */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate('redesSociais')}</h3>
-              <div className="flex gap-4 mb-6">
-                <a 
-                  href="https://www.instagram.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white/10 rounded-full hover:bg-carnival-magenta transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={24} />
-                </a>
-                <a 
-                  href="https://www.facebook.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white/10 rounded-full hover:bg-carnival-purple transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={24} />
-                </a>
-              </div>
-              <p className="text-gray-400 text-sm">
-                {translate('followEventsCaption')}
-              </p>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="border-t border-gray-800 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
-                &copy; 2025 Instituto Plumas e Paetês Cultural. {translate('direitosReservados')}
-              </p>
-              <div className="flex gap-6 text-sm text-gray-400">
-                <a href="#" className="hover:text-carnival-gold transition-colors">{translate('privacyPolicy')}</a>
-                <a href="#" className="hover:text-carnival-gold transition-colors">{translate('termsOfUse')}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
