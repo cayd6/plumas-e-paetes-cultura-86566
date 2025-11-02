@@ -40,7 +40,7 @@ const Navigation = () => {
               alt="Instituto Plumas e Paetês Cultural"
               className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="hidden md:block font-bold text-lg text-foreground whitespace-nowrap transition-colors duration-300 group-hover:text-carnival-purple">
+            <span className="font-bold text-sm sm:text-base lg:text-lg text-foreground transition-colors duration-300 group-hover:text-carnival-purple">
               Instituto Plumas & Paetês Cultural
             </span>
           </Link>
