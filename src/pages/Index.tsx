@@ -106,11 +106,11 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Highlights Banner */}
-      <HeroBanner />
-
       {/* Mission/Vision/Values Section */}
       <MissionCards />
+
+      {/* Highlights Banner */}
+      <HeroBanner />
 
       {/* Quem Somos Section */}
       <section className="py-20 bg-gray-50">
