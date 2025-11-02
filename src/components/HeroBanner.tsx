@@ -99,7 +99,7 @@ const HeroBanner = () => {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section className="relative w-full h-[300px] md:h-[400px] overflow-hidden group">
+    <section className="relative w-full h-[400px] md:h-[600px] overflow-hidden group">
       {/* Slides */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
@@ -110,10 +110,10 @@ const HeroBanner = () => {
             }`}
           >
             <div
-              className="w-full h-full bg-cover bg-center"
+              className="w-full h-full bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />
             </div>
           </div>
         ))}
