@@ -174,9 +174,14 @@ const Footer = () => {
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
-              &copy; 2025 Instituto Plumas e Paetês Cultural. {translate('direitosReservados')}
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-gray-400 text-sm">
+                &copy; 2025 Instituto Plumas e Paetês Cultural. {translate('direitosReservados')}
+              </p>
+              <p className="text-gray-500 text-xs mt-1">
+                Desenvolvido por Machado Dev
+              </p>
+            </div>
             <div className="flex gap-6 text-sm">
               <Link 
                 to="/politica-privacidade" 
