@@ -40,14 +40,9 @@ const Navigation = () => {
               alt="Instituto Plumas e Paetês Cultural"
               className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="hidden lg:block">
-              <div className={`font-bold text-base leading-tight ${linkClass} transition-colors duration-300`}>
-                Instituto Plumas & Paetês
-              </div>
-              <div className="text-xs font-medium text-muted-foreground transition-colors duration-300">
-                Cultural
-              </div>
-            </div>
+            <span className="hidden lg:block font-bold text-lg text-foreground whitespace-nowrap transition-colors duration-300 group-hover:text-carnival-purple">
+              Instituto Plumas & Paetês Cultural
+            </span>
           </Link>
           
           {/* Desktop Navigation */}
