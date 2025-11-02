@@ -30,6 +30,10 @@ const Galeria = () => {
     { id: 12, src: "/lovable-uploads/edicao-2005-ronaldo-barros.jpg", year: "2005", type: "desfile", title: "Desfile 2005 - Ronaldo Barros" },
     { id: 13, src: "/lovable-uploads/edicao-2005-sandro.jpg", year: "2005", type: "premiacao", title: "Premiação 2005 - Sandro" },
     { id: 14, src: "/lovable-uploads/edicao-2005-trofeu.jpg", year: "2005", type: "premiacao", title: "Troféu Plumas de Destaque 2005" },
+    { id: 15, src: "/lovable-uploads/edicao-2005-louzada.jpg", year: "2005", type: "premiacao", title: "Equipe Louzada - Edição 2005" },
+    { id: 16, src: "/lovable-uploads/edicao-2005-clovis-bornay.jpg", year: "2005", type: "premiacao", title: "Clovis Bornay - Homenageado 2005" },
+    { id: 17, src: "/lovable-uploads/edicao-2005-eduardo-leal.jpg", year: "2005", type: "premiacao", title: "Eduardo Leal - Mangueira 2005" },
+    { id: 18, src: "/lovable-uploads/edicao-2005-jarf-trofeus.jpg", year: "2005", type: "premiacao", title: "JARF e os Troféus 2005" },
   ];
 
   const filteredPhotos = photos.filter(photo => {
