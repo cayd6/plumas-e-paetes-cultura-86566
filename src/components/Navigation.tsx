@@ -48,13 +48,6 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-2">
             <Link 
-              to="/" 
-              className={linkClass('/')}
-              aria-current={isActive('/') ? 'page' : undefined}
-            >
-              {translate('inicio')}
-            </Link>
-            <Link 
               to="/sobre" 
               className={linkClass('/sobre')}
               aria-current={isActive('/sobre') ? 'page' : undefined}
