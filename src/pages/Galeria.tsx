@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import ImageModal from "@/components/ImageModal";
 import SEO from "@/components/SEO";
+import GalleryHeroBanner from "@/components/GalleryHeroBanner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Instagram } from "lucide-react";
 
@@ -21,6 +22,14 @@ const Galeria = () => {
     { id: 4, src: "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png", year: "2024", type: "oficina", title: "Oficina de Fantasias" },
     { id: 5, src: "/lovable-uploads/2f3ac4c5-4b19-4824-844f-58a4e3f24a02.png", year: "2023", type: "desfile", title: "Carnaval de Rua 2023" },
     { id: 6, src: "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", year: "2023", type: "oficina", title: "Oficina de Percussão" },
+    { id: 7, src: "/lovable-uploads/edicao-2005-robert-clovis.jpg", year: "2005", type: "premiacao", title: "1ª Edição 2005 - Homenagem a Clovis Bornay" },
+    { id: 8, src: "/lovable-uploads/edicao-2005-loia-zeza.jpg", year: "2005", type: "premiacao", title: "Premiados 2005 - Loia e Zeza" },
+    { id: 9, src: "/lovable-uploads/edicao-2005-m-leroy.jpg", year: "2005", type: "premiacao", title: "Premiação 2005 - Fantasia de Destaque" },
+    { id: 10, src: "/lovable-uploads/edicao-2005-marcela-xango.jpg", year: "2005", type: "premiacao", title: "Premiados 2005 - Marcela e Xangô" },
+    { id: 11, src: "/lovable-uploads/edicao-2005-tania.jpg", year: "2005", type: "premiacao", title: "Cerimônia de Premiação 2005" },
+    { id: 12, src: "/lovable-uploads/edicao-2005-ronaldo-barros.jpg", year: "2005", type: "desfile", title: "Desfile 2005 - Ronaldo Barros" },
+    { id: 13, src: "/lovable-uploads/edicao-2005-sandro.jpg", year: "2005", type: "premiacao", title: "Premiação 2005 - Sandro" },
+    { id: 14, src: "/lovable-uploads/edicao-2005-trofeu.jpg", year: "2005", type: "premiacao", title: "Troféu Plumas de Destaque 2005" },
   ];
 
   const filteredPhotos = photos.filter(photo => {
@@ -59,19 +68,10 @@ const Galeria = () => {
       <Breadcrumbs />
       <LanguageControls />
       
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-ppc-purple to-ppc-magenta">
-        <div className="container mx-auto px-4">
-          <div className="text-center text-white">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-slide-up">
-              {translate("galeriaFotos")}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-              Momentos especiais capturados em nossos eventos culturais
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Hero Banner */}
+      <div className="pt-20">
+        <GalleryHeroBanner />
+      </div>
 
       {/* Filters */}
       <section className="py-8 bg-white shadow-sm sticky top-20 z-10">
@@ -89,6 +89,7 @@ const Galeria = () => {
               <option value="2024">2024</option>
               <option value="2023">2023</option>
               <option value="2022">2022</option>
+              <option value="2005">2005</option>
             </select>
             <select
               value={selectedType}
