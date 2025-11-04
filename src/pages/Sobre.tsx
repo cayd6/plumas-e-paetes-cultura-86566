@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import carnivalHeroBg from "@/assets/carnival-hero-bg.jpg";
 import carnivalArtisan from "@/assets/carnival-artisan.jpg";
 import carnivalPattern from "@/assets/carnival-pattern.jpg";
+import joseAntonio from "@/assets/jose-antonio.jpg";
 import { 
   Users, 
   Star, 
@@ -380,7 +381,7 @@ const Sobre = () => {
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative h-64 md:h-auto">
                   <img
-                    src="/lovable-uploads/7d37df1b-46e4-421f-a18a-3e24655fdf28.png"
+                    src={joseAntonio}
                     alt="José Antonio Rodrigues Filho"
                     className="w-full h-full object-cover"
                   />
