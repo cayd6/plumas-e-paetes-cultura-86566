@@ -34,6 +34,26 @@ const Galeria = () => {
     { id: 16, src: "/lovable-uploads/edicao-2005-clovis-bornay.jpg", year: "2005", type: "premiacao", title: "Clovis Bornay - Homenageado 2005" },
     { id: 17, src: "/lovable-uploads/edicao-2005-eduardo-leal.jpg", year: "2005", type: "premiacao", title: "Eduardo Leal - Mangueira 2005" },
     { id: 18, src: "/lovable-uploads/edicao-2005-jarf-trofeus.jpg", year: "2005", type: "premiacao", title: "JARF e os Troféus 2005" },
+    { id: 19, src: "/lovable-uploads/premio-2025-01.jpg", year: "2025", type: "premiacao", title: "20º Prêmio Plumas & Paetês - 2025" },
+    { id: 20, src: "/lovable-uploads/premio-2025-02.jpg", year: "2025", type: "premiacao", title: "Cerimônia de Premiação 2025" },
+    { id: 21, src: "/lovable-uploads/premio-2025-03.jpg", year: "2025", type: "premiacao", title: "Premiados 2025" },
+    { id: 22, src: "/lovable-uploads/premio-2025-04.jpg", year: "2025", type: "premiacao", title: "Troféu Plumas 2025" },
+    { id: 23, src: "/lovable-uploads/premio-2025-05.jpg", year: "2025", type: "premiacao", title: "Evento 20º Prêmio Plumas & Paetês" },
+    { id: 24, src: "/lovable-uploads/premio-2025-06.jpg", year: "2025", type: "premiacao", title: "Apresentação Cultural 2025" },
+    { id: 25, src: "/lovable-uploads/premio-2025-07.jpg", year: "2025", type: "premiacao", title: "Performance 20º Prêmio" },
+    { id: 26, src: "/lovable-uploads/premio-2025-08.jpg", year: "2025", type: "premiacao", title: "Dança Cultural 2025" },
+    { id: 27, src: "/lovable-uploads/premio-2025-09.jpg", year: "2025", type: "premiacao", title: "Show 20º Prêmio Plumas & Paetês" },
+    { id: 28, src: "/lovable-uploads/premio-2025-10.jpg", year: "2025", type: "premiacao", title: "Grupo de Dança 2025" },
+    { id: 29, src: "/lovable-uploads/premio-2025-11.jpg", year: "2025", type: "premiacao", title: "Performance Artística 2025" },
+    { id: 30, src: "/lovable-uploads/premio-2025-12.jpg", year: "2025", type: "premiacao", title: "Espetáculo Cultural 2025" },
+    { id: 31, src: "/lovable-uploads/premio-2025-13.jpg", year: "2025", type: "premiacao", title: "Apresentação de Dança 2025" },
+    { id: 32, src: "/lovable-uploads/premio-2025-14.jpg", year: "2025", type: "premiacao", title: "Ballet Cultural 2025" },
+    { id: 33, src: "/lovable-uploads/premio-2025-15.jpg", year: "2025", type: "premiacao", title: "Coreografia 20º Prêmio" },
+    { id: 34, src: "/lovable-uploads/premio-2025-16.jpg", year: "2025", type: "premiacao", title: "Grupo Artístico 2025" },
+    { id: 35, src: "/lovable-uploads/premio-2025-17.jpg", year: "2025", type: "premiacao", title: "Apresentação Musical 2025" },
+    { id: 36, src: "/lovable-uploads/premio-2025-18.jpg", year: "2025", type: "premiacao", title: "Performance Musical 2025" },
+    { id: 37, src: "/lovable-uploads/premio-2025-19.jpg", year: "2025", type: "premiacao", title: "Espetáculo de Dança 2025" },
+    { id: 38, src: "/lovable-uploads/premio-2025-20.jpg", year: "2025", type: "premiacao", title: "Celebração 20 Anos - Prêmio Plumas & Paetês" },
   ];
 
   const filteredPhotos = photos.filter(photo => {
@@ -90,6 +110,7 @@ const Galeria = () => {
               className="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ppc-purple focus:border-transparent"
             >
               <option value="todos">{translate("ano")} - Todos</option>
+              <option value="2025">2025</option>
               <option value="2024">2024</option>
               <option value="2023">2023</option>
               <option value="2022">2022</option>
