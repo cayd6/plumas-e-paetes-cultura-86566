@@ -17,6 +17,14 @@ interface GalleryHeroBannerProps {
 
 const allSlides: BannerSlide[] = [
   {
+    image: "/lovable-uploads/premio-2025-02.jpg",
+    titlePt: "20º Prêmio Plumas & Paetês - 2025",
+    titleEn: "20th Plumas & Paetês Award - 2025",
+    descriptionPt: "Celebrando 20 anos de reconhecimento ao carnaval brasileiro",
+    descriptionEn: "Celebrating 20 years of Brazilian carnival recognition",
+    year: "2025"
+  },
+  {
     image: "/lovable-uploads/edicao-2005-robert-clovis.jpg",
     titlePt: "1ª Edição 2005 - Homenagem a Clovis Bornay",
     titleEn: "1st Edition 2005 - Tribute to Clovis Bornay",
