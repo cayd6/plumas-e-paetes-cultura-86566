@@ -1,1 +1,4 @@
 project_id = "bdlurlsqtprapankcgqh"
+
+[functions.migrate-gallery-photos]
+verify_jwt = false
