@@ -24,54 +24,6 @@ const Galeria = () => {
 
   const filteredPhotos = photos || [];
 
-  // OLD STATIC DATA - MIGRATED TO DATABASE
-  /*const photos = [
-    { id: 1, src: "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png", year: "2024", type: "desfile", title: "Desfile Carnaval 2024" },
-    { id: 2, src: "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png", year: "2024", type: "premiacao", title: "Cerimônia de Premiação" },
-    { id: 3, src: "/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png", year: "2024", type: "premiacao", title: "19º Prêmio Plumas & Paetês" },
-    { id: 4, src: "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png", year: "2024", type: "oficina", title: "Oficina de Fantasias" },
-    { id: 5, src: "/lovable-uploads/2f3ac4c5-4b19-4824-844f-58a4e3f24a02.png", year: "2023", type: "desfile", title: "Carnaval de Rua 2023" },
-    { id: 6, src: "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png", year: "2023", type: "oficina", title: "Oficina de Percussão" },
-    { id: 7, src: "/lovable-uploads/edicao-2005-robert-clovis.jpg", year: "2005", type: "premiacao", title: "1ª Edição 2005 - Homenagem a Clovis Bornay" },
-    { id: 8, src: "/lovable-uploads/edicao-2005-loia-zeza.jpg", year: "2005", type: "premiacao", title: "Premiados 2005 - Loia e Zeza" },
-    { id: 9, src: "/lovable-uploads/edicao-2005-m-leroy.jpg", year: "2005", type: "premiacao", title: "Premiação 2005 - Fantasia de Destaque" },
-    { id: 10, src: "/lovable-uploads/edicao-2005-marcela-xango.jpg", year: "2005", type: "premiacao", title: "Premiados 2005 - Marcela e Xangô" },
-    { id: 11, src: "/lovable-uploads/edicao-2005-tania.jpg", year: "2005", type: "premiacao", title: "Cerimônia de Premiação 2005" },
-    { id: 12, src: "/lovable-uploads/edicao-2005-ronaldo-barros.jpg", year: "2005", type: "desfile", title: "Desfile 2005 - Ronaldo Barros" },
-    { id: 13, src: "/lovable-uploads/edicao-2005-sandro.jpg", year: "2005", type: "premiacao", title: "Premiação 2005 - Sandro" },
-    { id: 14, src: "/lovable-uploads/edicao-2005-trofeu.jpg", year: "2005", type: "premiacao", title: "Troféu Plumas de Destaque 2005" },
-    { id: 15, src: "/lovable-uploads/edicao-2005-louzada.jpg", year: "2005", type: "premiacao", title: "Equipe Louzada - Edição 2005" },
-    { id: 16, src: "/lovable-uploads/edicao-2005-clovis-bornay.jpg", year: "2005", type: "premiacao", title: "Clovis Bornay - Homenageado 2005" },
-    { id: 17, src: "/lovable-uploads/edicao-2005-eduardo-leal.jpg", year: "2005", type: "premiacao", title: "Eduardo Leal - Mangueira 2005" },
-    { id: 18, src: "/lovable-uploads/edicao-2005-jarf-trofeus.jpg", year: "2005", type: "premiacao", title: "JARF e os Troféus 2005" },
-    { id: 19, src: "/lovable-uploads/premio-2025-01.jpg", year: "2025", type: "premiacao", title: "20º Prêmio Plumas & Paetês - 2025" },
-    { id: 20, src: "/lovable-uploads/premio-2025-02.jpg", year: "2025", type: "premiacao", title: "Cerimônia de Premiação 2025" },
-    { id: 21, src: "/lovable-uploads/premio-2025-03.jpg", year: "2025", type: "premiacao", title: "Premiados 2025" },
-    { id: 22, src: "/lovable-uploads/premio-2025-04.jpg", year: "2025", type: "premiacao", title: "Troféu Plumas 2025" },
-    { id: 23, src: "/lovable-uploads/premio-2025-05.jpg", year: "2025", type: "premiacao", title: "Evento 20º Prêmio Plumas & Paetês" },
-    { id: 24, src: "/lovable-uploads/premio-2025-06.jpg", year: "2025", type: "premiacao", title: "Apresentação Cultural 2025" },
-    { id: 25, src: "/lovable-uploads/premio-2025-07.jpg", year: "2025", type: "premiacao", title: "Performance 20º Prêmio" },
-    { id: 26, src: "/lovable-uploads/premio-2025-08.jpg", year: "2025", type: "premiacao", title: "Dança Cultural 2025" },
-    { id: 27, src: "/lovable-uploads/premio-2025-09.jpg", year: "2025", type: "premiacao", title: "Show 20º Prêmio Plumas & Paetês" },
-    { id: 28, src: "/lovable-uploads/premio-2025-10.jpg", year: "2025", type: "premiacao", title: "Grupo de Dança 2025" },
-    { id: 29, src: "/lovable-uploads/premio-2025-11.jpg", year: "2025", type: "premiacao", title: "Performance Artística 2025" },
-    { id: 30, src: "/lovable-uploads/premio-2025-12.jpg", year: "2025", type: "premiacao", title: "Espetáculo Cultural 2025" },
-    { id: 31, src: "/lovable-uploads/premio-2025-13.jpg", year: "2025", type: "premiacao", title: "Apresentação de Dança 2025" },
-    { id: 32, src: "/lovable-uploads/premio-2025-14.jpg", year: "2025", type: "premiacao", title: "Ballet Cultural 2025" },
-    { id: 33, src: "/lovable-uploads/premio-2025-15.jpg", year: "2025", type: "premiacao", title: "Coreografia 20º Prêmio" },
-    { id: 34, src: "/lovable-uploads/premio-2025-16.jpg", year: "2025", type: "premiacao", title: "Grupo Artístico 2025" },
-    { id: 35, src: "/lovable-uploads/premio-2025-17.jpg", year: "2025", type: "premiacao", title: "Apresentação Musical 2025" },
-    { id: 36, src: "/lovable-uploads/premio-2025-18.jpg", year: "2025", type: "premiacao", title: "Performance Musical 2025" },
-    { id: 37, src: "/lovable-uploads/premio-2025-19.jpg", year: "2025", type: "premiacao", title: "Espetáculo de Dança 2025" },
-    { id: 38, src: "/lovable-uploads/premio-2025-20.jpg", year: "2025", type: "premiacao", title: "Celebração 20 Anos - Prêmio Plumas & Paetês" },
-  ];
-
-  const filteredPhotos = photos.filter(photo => {
-    if (selectedYear !== "todos" && photo.year !== selectedYear) return false;
-    if (selectedType !== "todos" && photo.type !== selectedType) return false;
-    return true;
-  });
-
   const handleImageClick = (index: number) => {
     const filteredIndex = filteredPhotos.findIndex(p => p.id === filteredPhotos[index].id);
     setSelectedImage(filteredIndex);
@@ -151,8 +103,9 @@ const Galeria = () => {
                 className="group relative break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer mb-6"
               >
                 <img
-                  src={photo.src}
+                  src={photo.image_url}
                   alt={photo.title}
+                  style={{ transform: `rotate(${photo.rotation || 0}deg)` }}
                   className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"
                 />
@@ -179,7 +132,10 @@ const Galeria = () => {
         <ImageModal
           isOpen={selectedImage !== null}
           onClose={handleCloseModal}
-          image={filteredPhotos[selectedImage]}
+          image={{
+            ...filteredPhotos[selectedImage],
+            src: filteredPhotos[selectedImage].image_url
+          }}
           onNext={handleNextImage}
           onPrevious={handlePreviousImage}
           hasNext={selectedImage < filteredPhotos.length - 1}
