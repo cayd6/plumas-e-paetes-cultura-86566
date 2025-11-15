@@ -17,7 +17,8 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signIn, user, isAdmin } = useAuth();
+  const [isSignUp, setIsSignUp] = useState(false);
+  const { signIn, signUp, user, isAdmin } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -45,22 +46,41 @@ export default function Login() {
 
     setLoading(true);
     
-    const { error } = await signIn(email, password);
-    
-    if (error) {
-      toast({
-        variant: 'destructive',
-        title: 'Erro ao fazer login',
-        description: error.message === 'Invalid login credentials'
-          ? 'Email ou senha incorretos'
-          : error.message,
-      });
-      setLoading(false);
+    if (isSignUp) {
+      const { error } = await signUp(email, password);
+      
+      if (error) {
+        toast({
+          variant: 'destructive',
+          title: 'Erro ao criar conta',
+          description: error.message,
+        });
+        setLoading(false);
+      } else {
+        toast({
+          title: 'Conta criada com sucesso!',
+          description: 'Agora você precisa adicionar o role de admin. Copie seu User ID e siga as instruções.',
+        });
+        setLoading(false);
+      }
     } else {
-      toast({
-        title: 'Login realizado com sucesso!',
-        description: 'Redirecionando para o painel admin...',
-      });
+      const { error } = await signIn(email, password);
+      
+      if (error) {
+        toast({
+          variant: 'destructive',
+          title: 'Erro ao fazer login',
+          description: error.message === 'Invalid login credentials'
+            ? 'Email ou senha incorretos'
+            : error.message,
+        });
+        setLoading(false);
+      } else {
+        toast({
+          title: 'Login realizado com sucesso!',
+          description: 'Redirecionando para o painel admin...',
+        });
+      }
     }
   };
 
@@ -72,7 +92,7 @@ export default function Login() {
             Painel Administrativo
           </CardTitle>
           <CardDescription className="text-center">
-            Entre com suas credenciais de administrador
+            {isSignUp ? 'Crie sua conta de administrador' : 'Entre com suas credenciais de administrador'}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -104,8 +124,17 @@ export default function Login() {
               className="w-full"
               disabled={loading}
             >
-              {loading ? 'Entrando...' : 'Entrar'}
+              {loading ? (isSignUp ? 'Criando...' : 'Entrando...') : (isSignUp ? 'Criar Conta' : 'Entrar')}
             </Button>
+            <div className="text-center mt-4">
+              <button
+                type="button"
+                onClick={() => setIsSignUp(!isSignUp)}
+                className="text-sm text-primary hover:underline"
+              >
+                {isSignUp ? 'Já tem conta? Fazer login' : 'Não tem conta? Criar conta'}
+              </button>
+            </div>
           </form>
         </CardContent>
       </Card>
