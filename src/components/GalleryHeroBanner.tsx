@@ -99,11 +99,11 @@ const GalleryHeroBanner = ({ selectedYear = "todos" }: GalleryHeroBannerProps) =
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
-  const currentSlideData = slides[currentSlide];
-
   if (slides.length === 0) {
     return null;
   }
+
+  const currentSlideData = slides[currentSlide];
 
   return (
     <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden group">
