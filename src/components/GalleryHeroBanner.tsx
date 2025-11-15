@@ -103,7 +103,8 @@ const GalleryHeroBanner = ({ selectedYear = "todos" }: GalleryHeroBannerProps) =
     return null;
   }
 
-  const currentSlideData = slides[currentSlide];
+  const safeIndex = Math.min(Math.max(currentSlide, 0), slides.length - 1);
+  const currentSlideData = slides[safeIndex];
 
   return (
     <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden group">
@@ -113,7 +114,7 @@ const GalleryHeroBanner = ({ selectedYear = "todos" }: GalleryHeroBannerProps) =
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
+              index === safeIndex ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <div
@@ -163,7 +164,7 @@ const GalleryHeroBanner = ({ selectedYear = "todos" }: GalleryHeroBannerProps) =
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentSlide
+              index === safeIndex
                 ? 'bg-carnival-gold w-8'
                 : 'bg-white/50 hover:bg-white/70'
             }`}
