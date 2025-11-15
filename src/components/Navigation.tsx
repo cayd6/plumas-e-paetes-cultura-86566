@@ -1,14 +1,17 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut, Shield } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { translate } = useLanguage();
   const location = useLocation();
+  const { user, isAdmin, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,6 +100,27 @@ const Navigation = () => {
             >
               {translate('contato')}
             </Link>
+            
+            {user && isAdmin && (
+              <>
+                <Link 
+                  to="/admin/galeria" 
+                  className="px-3 py-2 rounded-lg text-sm font-medium bg-carnival-gold text-white hover:bg-carnival-gold/90 transition-all duration-200 flex items-center gap-1"
+                >
+                  <Shield className="h-4 w-4" />
+                  Admin
+                </Link>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={signOut}
+                  className="text-sm"
+                >
+                  <LogOut className="h-4 w-4 mr-1" />
+                  Sair
+                </Button>
+              </>
+            )}
           </div>
 
           <div className="md:hidden">

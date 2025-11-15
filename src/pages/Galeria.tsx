@@ -8,14 +8,24 @@ import SEO from "@/components/SEO";
 import GalleryHeroBanner from "@/components/GalleryHeroBanner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Instagram } from "lucide-react";
+import { useGalleryPhotos } from "@/hooks/useGalleryPhotos";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Galeria = () => {
   const { translate } = useLanguage();
   const [selectedYear, setSelectedYear] = useState("todos");
   const [selectedType, setSelectedType] = useState("todos");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  
+  const { data: photos, isLoading, error } = useGalleryPhotos(
+    selectedYear === 'todos' ? undefined : selectedYear,
+    selectedType === 'todos' ? undefined : selectedType
+  );
 
-  const photos = [
+  const filteredPhotos = photos || [];
+
+  // OLD STATIC DATA - MIGRATED TO DATABASE
+  /*const photos = [
     { id: 1, src: "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png", year: "2024", type: "desfile", title: "Desfile Carnaval 2024" },
     { id: 2, src: "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png", year: "2024", type: "premiacao", title: "Cerimônia de Premiação" },
     { id: 3, src: "/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png", year: "2024", type: "premiacao", title: "19º Prêmio Plumas & Paetês" },
