@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   DndContext,
   closestCenter,
@@ -140,6 +140,15 @@ export const AdminGalleryGrid = ({ photos }: AdminGalleryGridProps) => {
   };
 
   const handleRotate = (photo: GalleryPhoto) => {
+    const newRotation = (photo.rotation + 90) % 360;
+    
+    // Update local state immediately for instant visual feedback
+    setItems(prevItems =>
+      prevItems.map(item =>
+        item.id === photo.id ? { ...item, rotation: newRotation } : item
+      )
+    );
+    
     rotatePhoto.mutate({ id: photo.id, currentRotation: photo.rotation });
   };
 
@@ -154,9 +163,9 @@ export const AdminGalleryGrid = ({ photos }: AdminGalleryGridProps) => {
   };
 
   // Update items when photos prop changes
-  useState(() => {
+  useEffect(() => {
     setItems(photos);
-  });
+  }, [photos]);
 
   if (photos.length === 0) {
     return (
