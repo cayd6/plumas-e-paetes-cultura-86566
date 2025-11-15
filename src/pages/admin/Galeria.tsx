@@ -10,14 +10,26 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
+
+const loginSchema = z.object({
+  email: z.string().email('Email inválido'),
+  password: z.string().min(6, 'A senha deve ter no mínimo 6 caracteres'),
+});
 
 export default function AdminGaleria() {
   const [selectedYear, setSelectedYear] = useState('todos');
   const [selectedType, setSelectedType] = useState('todos');
   const [searchTerm, setSearchTerm] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const { data: photos, isLoading } = useGalleryPhotos(selectedYear, selectedType);
-  const { signOut } = useAuth();
+  const { signOut, signIn, user, isAdmin, loading: authLoading } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const filteredPhotos = photos?.filter(photo =>
     photo.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -32,6 +44,114 @@ export default function AdminGaleria() {
     { value: 'outros', label: 'Outros' },
   ];
 
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const validation = loginSchema.safeParse({ email, password });
+    
+    if (!validation.success) {
+      const firstError = validation.error.errors[0];
+      toast({
+        variant: 'destructive',
+        title: 'Erro de validação',
+        description: firstError.message,
+      });
+      return;
+    }
+
+    setLoading(true);
+    
+    const { error } = await signIn(email, password);
+    
+    if (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Erro ao fazer login',
+        description: error.message === 'Invalid login credentials'
+          ? 'Email ou senha incorretos'
+          : error.message,
+      });
+      setLoading(false);
+    } else {
+      toast({
+        title: 'Login realizado com sucesso!',
+        description: 'Bem-vindo ao painel administrativo.',
+      });
+    }
+  };
+
+  // Loading state
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-carnival-purple to-carnival-blue">
+        <div className="text-white text-xl">Carregando...</div>
+      </div>
+    );
+  }
+
+  // Not authenticated - show login form
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-carnival-purple to-carnival-blue p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader className="space-y-2">
+            <CardTitle className="text-2xl font-bold text-center">
+              Painel Administrativo
+            </CardTitle>
+            <CardDescription className="text-center">
+              Entre com suas credenciais de administrador
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="admin@exemplo.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="password">Senha</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={loading}
+              >
+                {loading ? 'Entrando...' : 'Entrar'}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  // Authenticated but not admin - show access denied
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-carnival-purple to-carnival-blue">
+        <div className="text-white text-xl text-center p-4">
+          Acesso negado. Você não tem permissão de administrador.
+        </div>
+      </div>
+    );
+  }
+
+  // Authenticated and is admin - show admin panel
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b bg-card">

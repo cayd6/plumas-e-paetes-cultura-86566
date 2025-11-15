@@ -22,7 +22,6 @@ import Sobre from "./pages/Sobre";
 import Galeria from "./pages/Galeria";
 import Contato from "./pages/Contato";
 import NotFound from "./pages/NotFound";
-import AdminLogin from "./pages/admin/Login";
 import AdminGaleria from "./pages/admin/Galeria";
 
 const queryClient = new QueryClient();
@@ -49,12 +48,7 @@ const App = () => (
               <Route path="/eventos" element={<Eventos />} />
               <Route path="/noticias" element={<Noticias />} />
               <Route path="/contato" element={<Contato />} />
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin/galeria" element={
-                <ProtectedRoute>
-                  <AdminGaleria />
-                </ProtectedRoute>
-              } />
+              <Route path="/admin" element={<AdminGaleria />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <WhatsAppButton />
