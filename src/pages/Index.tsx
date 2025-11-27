@@ -112,6 +112,29 @@ const Index = () => {
       {/* Highlights Banner */}
       <HeroBanner />
 
+      {/* Video Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              {translate('conhecaNossaHistoria')}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {translate('videoDescricao')}
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <iframe
+              src="https://www.youtube.com/embed/IwJrey-jnjI?start=4923"
+              title="Instituto Plumas e Paetês Cultural"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full aspect-video rounded-2xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Quem Somos Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
