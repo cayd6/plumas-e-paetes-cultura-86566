@@ -146,6 +146,8 @@ const translations: Translations = {
     termsOfUse: "Termos de Uso",
     nenhumaFotoEncontrada: "Nenhuma foto encontrada",
     footerAbout: "Transformando a sociedade brasileira através da cultura e economia criativa, valorizando artistas e promovendo a arte popular desde 2005.",
+    conhecaNossaHistoria: "Conheça Nossa História",
+    videoDescricao: "Assista ao vídeo e descubra mais sobre nossa trajetória de 20 anos transformando vidas através da cultura",
   },
   en: {
     inicio: "Home",
@@ -281,6 +283,8 @@ const translations: Translations = {
     termsOfUse: "Terms of Use",
     nenhumaFotoEncontrada: "No photos found",
     footerAbout: "Transforming Brazilian society through culture and creative economy, valuing artists and promoting popular art since 2005.",
+    conhecaNossaHistoria: "Discover Our Story",
+    videoDescricao: "Watch the video and discover more about our 20-year journey transforming lives through culture",
   },
 };
 
