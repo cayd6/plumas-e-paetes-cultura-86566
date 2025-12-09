@@ -56,6 +56,48 @@ export type Database = {
         }
         Relationships: []
       }
+      gallery_videos: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          display_order: number
+          id: string
+          thumbnail_url: string | null
+          title: string
+          type: string
+          updated_at: string | null
+          video_url: string
+          year: string
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          display_order?: number
+          id?: string
+          thumbnail_url?: string | null
+          title: string
+          type?: string
+          updated_at?: string | null
+          video_url: string
+          year: string
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          display_order?: number
+          id?: string
+          thumbnail_url?: string | null
+          title?: string
+          type?: string
+          updated_at?: string | null
+          video_url?: string
+          year?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
