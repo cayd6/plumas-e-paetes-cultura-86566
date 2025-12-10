@@ -26,8 +26,9 @@ export default function AdminGaleria() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
   const { data: photos, isLoading } = useGalleryPhotos(selectedYear, selectedType);
-  const { signOut, signIn, user, isAdmin, loading: authLoading } = useAuth();
+  const { signOut, signIn, signUp, user, isAdmin, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -44,7 +45,7 @@ export default function AdminGaleria() {
     { value: 'outros', label: 'Outros' },
   ];
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const validation = loginSchema.safeParse({ email, password });
@@ -61,22 +62,44 @@ export default function AdminGaleria() {
 
     setLoading(true);
     
-    const { error } = await signIn(email, password);
-    
-    if (error) {
-      toast({
-        variant: 'destructive',
-        title: 'Erro ao fazer login',
-        description: error.message === 'Invalid login credentials'
-          ? 'Email ou senha incorretos'
-          : error.message,
-      });
-      setLoading(false);
+    if (isSignUp) {
+      const { error } = await signUp(email, password);
+      
+      if (error) {
+        toast({
+          variant: 'destructive',
+          title: 'Erro ao criar conta',
+          description: error.message === 'User already registered'
+            ? 'Este email já está cadastrado'
+            : error.message,
+        });
+        setLoading(false);
+      } else {
+        toast({
+          title: 'Conta criada com sucesso!',
+          description: 'Entre com suas credenciais para acessar.',
+        });
+        setIsSignUp(false);
+        setLoading(false);
+      }
     } else {
-      toast({
-        title: 'Login realizado com sucesso!',
-        description: 'Bem-vindo ao painel administrativo.',
-      });
+      const { error } = await signIn(email, password);
+      
+      if (error) {
+        toast({
+          variant: 'destructive',
+          title: 'Erro ao fazer login',
+          description: error.message === 'Invalid login credentials'
+            ? 'Email ou senha incorretos'
+            : error.message,
+        });
+        setLoading(false);
+      } else {
+        toast({
+          title: 'Login realizado com sucesso!',
+          description: 'Bem-vindo ao painel administrativo.',
+        });
+      }
     }
   };
 
@@ -89,7 +112,7 @@ export default function AdminGaleria() {
     );
   }
 
-  // Not authenticated - show login form
+  // Not authenticated - show login/signup form
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-carnival-purple to-carnival-blue p-4">
@@ -99,11 +122,13 @@ export default function AdminGaleria() {
               Painel Administrativo
             </CardTitle>
             <CardDescription className="text-center">
-              Entre com suas credenciais de administrador
+              {isSignUp 
+                ? 'Crie sua conta para acessar' 
+                : 'Entre com suas credenciais de administrador'}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -131,9 +156,36 @@ export default function AdminGaleria() {
                 className="w-full"
                 disabled={loading}
               >
-                {loading ? 'Entrando...' : 'Entrar'}
+                {loading 
+                  ? (isSignUp ? 'Criando conta...' : 'Entrando...') 
+                  : (isSignUp ? 'Criar Conta' : 'Entrar')}
               </Button>
             </form>
+            <div className="mt-4 text-center text-sm">
+              {isSignUp ? (
+                <p>
+                  Já tem uma conta?{' '}
+                  <button
+                    type="button"
+                    onClick={() => setIsSignUp(false)}
+                    className="text-primary hover:underline font-medium"
+                  >
+                    Fazer login
+                  </button>
+                </p>
+              ) : (
+                <p>
+                  Não tem uma conta?{' '}
+                  <button
+                    type="button"
+                    onClick={() => setIsSignUp(true)}
+                    className="text-primary hover:underline font-medium"
+                  >
+                    Criar conta
+                  </button>
+                </p>
+              )}
+            </div>
           </CardContent>
         </Card>
       </div>
