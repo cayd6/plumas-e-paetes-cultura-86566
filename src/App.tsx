@@ -20,6 +20,9 @@ import Galeria from "./pages/Galeria";
 import Contato from "./pages/Contato";
 import NotFound from "./pages/NotFound";
 import AdminGaleria from "./pages/admin/Galeria";
+import AdminVideos from "./pages/admin/Videos";
+import AdminBanners from "./pages/admin/Banners";
+import AdminSettings from "./pages/admin/Settings";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +46,9 @@ const App = () => (
               <Route path="/noticias" element={<Noticias />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/admin" element={<AdminGaleria />} />
+              <Route path="/admin/videos" element={<AdminVideos />} />
+              <Route path="/admin/banners" element={<AdminBanners />} />
+              <Route path="/admin/configuracoes" element={<AdminSettings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <WhatsAppButton />
