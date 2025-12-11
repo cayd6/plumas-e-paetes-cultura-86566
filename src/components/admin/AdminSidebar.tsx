@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { Images, Video, Layout, Settings, Home, LogOut } from 'lucide-react';
+import { Images, Video, Layout, Settings, Home, LogOut, Trophy, Users, Briefcase, FileText, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
@@ -8,6 +8,11 @@ const navItems = [
   { to: '/admin', icon: Images, label: 'Fotos', exact: true },
   { to: '/admin/videos', icon: Video, label: 'Vídeos' },
   { to: '/admin/banners', icon: Layout, label: 'Banners' },
+  { to: '/admin/premio', icon: Trophy, label: 'Prêmio Plumas' },
+  { to: '/admin/sobre', icon: Users, label: 'Quem Somos' },
+  { to: '/admin/producao', icon: Briefcase, label: 'Produção' },
+  { to: '/admin/blog', icon: FileText, label: 'Blog' },
+  { to: '/admin/revista', icon: BookOpen, label: 'Revista' },
   { to: '/admin/configuracoes', icon: Settings, label: 'Configurações' },
 ];
 
