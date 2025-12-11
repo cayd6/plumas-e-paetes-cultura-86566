@@ -275,26 +275,19 @@ const PlumasEmNumeros = () => {
         </div>
 
         {/* Images Gallery */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="rounded-2xl overflow-hidden shadow-2xl bg-white/5">
             <img 
               src="/lovable-uploads/plumas-recordes-1.jpg" 
               alt="Plumas e Paetês Recordes"
-              className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+              className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
             />
           </div>
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
+          <div className="rounded-2xl overflow-hidden shadow-2xl bg-white/5">
             <img 
               src="/lovable-uploads/plumas-recordes-2.jpg" 
               alt="Premiados Plumas e Paetês"
-              className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-2xl">
-            <img 
-              src="/lovable-uploads/plumas-recordes-3.png" 
-              alt="Estatísticas Plumas e Paetês"
-              className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+              className="w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
             />
           </div>
         </div>
