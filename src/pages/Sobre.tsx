@@ -121,7 +121,7 @@ const Sobre = () => {
               <>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-yellow to-ppc-orange">Transformando</span>
                 <br />
-                <span className="text-white">o Brasil pela</span>
+                <span className="text-white">O Brasil pela</span>
                 <br />
                 <span className="text-ppc-yellow font-extrabold">Cultura</span>
               </>
