@@ -121,25 +121,33 @@ const Sobre = () => {
               <>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-yellow to-ppc-orange">Transformando</span>
                 <br />
-                <span className="text-white">a sociedade pela</span>
+                <span className="text-white">o Brasil pela</span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-magenta to-ppc-purple">economia criativa</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-magenta to-ppc-purple">Cultura</span>
               </>
             ) : (
               <>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-yellow to-ppc-orange">Transforming</span>
                 <br />
-                <span className="text-white">society through</span>
+                <span className="text-white">Brazil through</span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-magenta to-ppc-purple">creative economy</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-magenta to-ppc-purple">Culture</span>
               </>
             )}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in font-light">
-            {language === 'pt' 
-              ? 'Desde 2005 valorizando os artistas e a riqueza cultural brasileira através do carnaval e da arte popular' 
-              : 'Since 2005 valuing Brazilian artists and cultural richness through carnival and popular art'}
-          </p>
+          
+          {/* Quote Block */}
+          <div className="relative max-w-4xl mx-auto animate-fade-in">
+            <div className="relative bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border-l-4 border-gradient-to-b from-ppc-yellow to-ppc-magenta" style={{ borderLeftColor: '#F59E0B' }}>
+              <div className="absolute -top-4 -left-2 text-6xl md:text-8xl text-ppc-yellow/30 font-serif leading-none">"</div>
+              <p className="text-lg md:text-xl lg:text-2xl text-white/95 italic font-light leading-relaxed relative z-10">
+                {language === 'pt' 
+                  ? 'Acreditamos que a transformação da sociedade brasileira se dará pela cultura. Por sua diversidade e riqueza cultural, o carnaval é, sem dúvida, um reflexo da multiplicidade de expressões e pensamentos de uma sociedade, tornando-se um agente importante para a democratização do conhecimento na Economia Criativa.'
+                  : 'We believe that the transformation of Brazilian society will come through culture. Due to its diversity and cultural richness, carnival is undoubtedly a reflection of the multiplicity of expressions and thoughts of a society, becoming an important agent for the democratization of knowledge in the Creative Economy.'}
+              </p>
+              <div className="absolute -bottom-4 -right-2 text-6xl md:text-8xl text-ppc-yellow/30 font-serif leading-none rotate-180">"</div>
+            </div>
+          </div>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
             <button className="px-8 py-4 bg-gradient-to-r from-ppc-purple to-ppc-magenta text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-ppc-purple/50 transition-all duration-300 transform hover:-translate-y-1">
               {language === 'pt' ? 'Nossos Projetos' : 'Our Projects'}
