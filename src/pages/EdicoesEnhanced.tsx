@@ -35,16 +35,16 @@ const EdicoesEnhanced = () => {
 
   // Prêmios Especiais (Special Awards)
   const specialAwards = [
-    { name: 'Assessor de Imprensa', special: false },
-    { name: 'Assessor de Marketing', special: false },
-    { name: 'Fotógrafo', special: false },
-    { name: 'Gestor de Mídias', special: false },
-    { name: 'Jornalista', special: false },
-    { name: 'Roteirista de Vídeos', special: false },
-    { name: 'Sapateiro', special: false },
-    { name: '"Eu Sou o Samba"', special: true },
-    { name: '"Vem de Lá"', special: true },
-    { name: 'Personalidade do Carnaval', special: true },
+    'Assessor de Imprensa',
+    'Assessor de Marketing',
+    'Fotógrafo',
+    'Gestor de Mídias',
+    'Jornalista',
+    'Roteirista de Vídeos',
+    'Sapateiro',
+    '"Eu Sou o Samba"',
+    '"Vem de Lá"',
+    'Personalidade do Carnaval',
   ];
 
   const allWinners = [
@@ -182,7 +182,7 @@ const EdicoesEnhanced = () => {
                 : 'Celebrating excellence in all areas of Rio\'s carnival'}
             </p>
             <p className="text-lg text-ppc-purple font-semibold">
-              {language === 'pt' ? '49 Categorias Premiadas' : '49 Award Categories'}
+              {language === 'pt' ? '52 Categorias Premiadas' : '52 Award Categories'}
             </p>
           </div>
           
@@ -201,7 +201,7 @@ const EdicoesEnhanced = () => {
           </div>
 
           {/* Special Awards Section */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-ppc-yellow to-ppc-orange rounded-full mb-4">
               <Star className="w-5 h-5 text-white" />
               <span className="text-white font-semibold">
@@ -210,19 +210,14 @@ const EdicoesEnhanced = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3">
             {specialAwards.map((award, index) => (
               <div 
                 key={index}
-                className={`p-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 ${
-                  award.special 
-                    ? 'bg-gradient-to-br from-ppc-yellow via-ppc-orange to-ppc-magenta text-white shadow-lg hover:shadow-xl' 
-                    : 'bg-white border-2 border-gray-100 hover:border-ppc-purple/30 shadow-md hover:shadow-lg'
-                }`}
+                className="px-4 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-ppc-orange/30 group cursor-default"
               >
-                {award.special && <Trophy className="w-6 h-6 mx-auto mb-2" />}
-                <span className={`text-sm font-semibold ${award.special ? 'text-white' : 'text-gray-700'}`}>
-                  {award.name}
+                <span className="text-sm font-medium text-gray-700 group-hover:text-ppc-orange transition-colors">
+                  {award}
                 </span>
               </div>
             ))}
