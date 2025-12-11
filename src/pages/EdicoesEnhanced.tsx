@@ -14,37 +14,37 @@ const EdicoesEnhanced = () => {
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  const categories = [
-    { 
-      icon: Award, 
-      title: language === 'pt' ? 'Melhor Passista' : 'Best Samba Dancer',
-      description: language === 'pt' ? 'Reconhecimento aos melhores passistas do carnaval' : 'Recognition of the best carnival dancers'
-    },
-    { 
-      icon: Trophy, 
-      title: language === 'pt' ? 'Destaques de Performance' : 'Performance Highlights',
-      description: language === 'pt' ? 'Premiação para performances memoráveis' : 'Awards for memorable performances'
-    },
-    { 
-      icon: Star, 
-      title: language === 'pt' ? 'Design de Iluminação' : 'Lighting Design',
-      description: language === 'pt' ? 'Reconhecimento da excelência técnica' : 'Recognition of technical excellence'
-    },
-    { 
-      icon: Users, 
-      title: language === 'pt' ? 'Melhor Comissão de Frente' : 'Best Opening Commission',
-      description: language === 'pt' ? 'Premiando a abertura mais impactante' : 'Awarding the most impactful opening'
-    },
-    { 
-      icon: Award, 
-      title: language === 'pt' ? 'Melhor Fantasia' : 'Best Costume',
-      description: language === 'pt' ? 'Criatividade e técnica em fantasias' : 'Creativity and technique in costumes'
-    },
-    { 
-      icon: Trophy, 
-      title: language === 'pt' ? 'Melhor Alegoria' : 'Best Float',
-      description: language === 'pt' ? 'Excelência em carros alegóricos' : 'Excellence in parade floats'
-    },
+  // Categorias Premiadas (Main Categories)
+  const mainCategories = [
+    'Aderecista', 'Aramista', 'Artesão', 'Artista Plástico', 
+    'Assistente de Carnavalesco', 'Assistente de Coreógrafo',
+    'Batedor de Placas de Acetato', 'Bordadeira', 'Carnavalesco', 
+    'Carpinteiro', 'Chapeleiro', 'Compositor',
+    'Coreógrafo de Comissão de Frente', 'Coreógrafo de Alas', 'Coreógrafo de Alegorias',
+    'Costureira', 'Desenhista', 'Designer Gráfico',
+    'Destaque de Luxo Masculino', 'Destaque de Luxo Feminino', 'Destaque Performático',
+    'Diretor de Carnaval', 'Diretor de Harmonia', 'Diretor de Bateria', 
+    'Diretor de Barracão', 'Diretor Artístico', 'Diretor Musical', 'Diretor de Passistas',
+    'Empastelador', 'Escultor de Isopor', 'Escultor de Espuma', 
+    'Escultor de Formas e Movimento', 'Estilista', 'Ferreiro', 
+    'Figurinista', 'Gestor de Ateliê', 'Iluminador', 'Intérprete',
+    'Laminador', 'Maquiador Artístico', 'Mestre de Bateria', 'Mestre Sala',
+    'Modelista', 'Passista', 'Pesquisador', 'Pintor de Arte',
+    'Porta Bandeira', 'Projetista', 'Vidraceiro'
+  ];
+
+  // Prêmios Especiais (Special Awards)
+  const specialAwards = [
+    { name: 'Assessor de Imprensa', special: false },
+    { name: 'Assessor de Marketing', special: false },
+    { name: 'Fotógrafo', special: false },
+    { name: 'Gestor de Mídias', special: false },
+    { name: 'Jornalista', special: false },
+    { name: 'Roteirista de Vídeos', special: false },
+    { name: 'Sapateiro', special: false },
+    { name: '"Eu Sou o Samba"', special: true },
+    { name: '"Vem de Lá"', special: true },
+    { name: 'Personalidade do Carnaval', special: true },
   ];
 
   const allWinners = [
@@ -173,28 +173,57 @@ const EdicoesEnhanced = () => {
       {/* Categories Section */}
       <section id="categories" className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          {/* Main Categories */}
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">{translate("categoriasPremio")}</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
               {language === 'pt' 
                 ? 'Celebrando a excelência em todas as áreas do carnaval carioca'
                 : 'Celebrating excellence in all areas of Rio\'s carnival'}
             </p>
+            <p className="text-lg text-ppc-purple font-semibold">
+              {language === 'pt' ? '49 Categorias Premiadas' : '49 Award Categories'}
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category, index) => (
+          {/* Main Categories Grid */}
+          <div className="flex flex-wrap justify-center gap-3 mb-16">
+            {mainCategories.map((category, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2"
+                className="px-4 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-ppc-purple/30 group cursor-default"
               >
-                <div className="p-8">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-ppc-purple to-ppc-magenta flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <category.icon className="text-white" size={32} />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900">{category.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{category.description}</p>
-                </div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-ppc-purple transition-colors">
+                  {category}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Special Awards Section */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-ppc-yellow to-ppc-orange rounded-full mb-4">
+              <Star className="w-5 h-5 text-white" />
+              <span className="text-white font-semibold">
+                {language === 'pt' ? 'Prêmios Especiais' : 'Special Awards'}
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            {specialAwards.map((award, index) => (
+              <div 
+                key={index}
+                className={`p-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 ${
+                  award.special 
+                    ? 'bg-gradient-to-br from-ppc-yellow via-ppc-orange to-ppc-magenta text-white shadow-lg hover:shadow-xl' 
+                    : 'bg-white border-2 border-gray-100 hover:border-ppc-purple/30 shadow-md hover:shadow-lg'
+                }`}
+              >
+                {award.special && <Trophy className="w-6 h-6 mx-auto mb-2" />}
+                <span className={`text-sm font-semibold ${award.special ? 'text-white' : 'text-gray-700'}`}>
+                  {award.name}
+                </span>
               </div>
             ))}
           </div>
