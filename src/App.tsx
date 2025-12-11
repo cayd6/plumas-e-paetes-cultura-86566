@@ -23,6 +23,11 @@ import AdminGaleria from "./pages/admin/Galeria";
 import AdminVideos from "./pages/admin/Videos";
 import AdminBanners from "./pages/admin/Banners";
 import AdminSettings from "./pages/admin/Settings";
+import AdminPremio from "./pages/admin/Premio";
+import SobreAdmin from "./pages/admin/SobreAdmin";
+import ProducaoAdmin from "./pages/admin/ProducaoAdmin";
+import BlogAdmin from "./pages/admin/BlogAdmin";
+import RevistaAdmin from "./pages/admin/RevistaAdmin";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +53,11 @@ const App = () => (
               <Route path="/admin" element={<AdminGaleria />} />
               <Route path="/admin/videos" element={<AdminVideos />} />
               <Route path="/admin/banners" element={<AdminBanners />} />
+              <Route path="/admin/premio" element={<AdminPremio />} />
+              <Route path="/admin/sobre" element={<SobreAdmin />} />
+              <Route path="/admin/producao" element={<ProducaoAdmin />} />
+              <Route path="/admin/blog" element={<BlogAdmin />} />
+              <Route path="/admin/revista" element={<RevistaAdmin />} />
               <Route path="/admin/configuracoes" element={<AdminSettings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
