@@ -338,8 +338,8 @@ const EdicoesEnhanced = () => {
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             {language === 'pt' 
-              ? 'Participe da 20ª edição do Prêmio Plumas & Paetês e celebre a cultura do carnaval'
-              : 'Participate in the 20th edition of the Plumas & Paetês Award and celebrate carnival culture'}
+              ? 'Participe da 20ª edição do Prêmio Plumas & Paetês Cultural e celebre a cultura do carnaval'
+              : 'Participate in the 20th edition of the Plumas & Paetês Cultural Award and celebrate carnival culture'}
           </p>
           <a
             href="https://wa.me/5521989392920"

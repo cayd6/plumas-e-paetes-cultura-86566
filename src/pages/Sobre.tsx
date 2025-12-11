@@ -409,8 +409,8 @@ const Sobre = () => {
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-6">
                     {language === 'pt' 
-                      ? 'Visionário e apaixonado pela cultura popular brasileira, José Antonio fundou o Instituto em 2005 com o objetivo de dar visibilidade aos artífices anônimos do carnaval carioca. Sua dedicação transformou o Prêmio Plumas & Paetês em uma das premiações mais respeitadas do segmento carnavalesco.'
-                      : 'Visionary and passionate about Brazilian popular culture, José Antonio founded the Institute in 2005 with the goal of giving visibility to the anonymous artisans of Rio\'s carnival. His dedication transformed the Plumas & Paetês Award into one of the most respected awards in the carnival segment.'}
+                      ? 'Visionário e apaixonado pela cultura popular brasileira, José Antonio fundou o Instituto em 2005 com o objetivo de dar visibilidade aos artífices anônimos do carnaval carioca. Sua dedicação transformou o Prêmio Plumas & Paetês Cultural em uma das premiações mais respeitadas do segmento carnavalesco.'
+                      : 'Visionary and passionate about Brazilian popular culture, José Antonio founded the Institute in 2005 with the goal of giving visibility to the anonymous artisans of Rio\'s carnival. His dedication transformed the Plumas & Paetês Cultural Award into one of the most respected awards in the carnival segment.'}
                   </p>
                   <div className="flex gap-4">
                     <a
