@@ -255,3 +255,19 @@ export function useAwardMutations() {
     deleteCuriosity,
   };
 }
+
+// Combined hook for reading all award data
+export function useAwardData() {
+  const { data: stats = [], isLoading: statsLoading } = useAwardStats();
+  const { data: professionals = [], isLoading: professionalsLoading } = useAwardProfessionals();
+  const { data: schools = [], isLoading: schoolsLoading } = useAwardSchools();
+  const { data: curiosities = [], isLoading: curiositiesLoading } = useAwardCuriosities();
+
+  return {
+    stats,
+    professionals,
+    schools,
+    curiosities,
+    isLoading: statsLoading || professionalsLoading || schoolsLoading || curiositiesLoading,
+  };
+}
