@@ -4,6 +4,7 @@ import LanguageControls from "@/components/LanguageControls";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
+import PlumasEmNumeros from "@/components/PlumasEmNumeros";
 import { ArrowRight, Award, Trophy, Star, Calendar, Users, Phone, Filter } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
@@ -165,6 +166,9 @@ const EdicoesEnhanced = () => {
           </div>
         </div>
       </section>
+
+      {/* Plumas em Números Section */}
+      <PlumasEmNumeros />
 
       {/* Categories Section */}
       <section id="categories" className="py-20">
