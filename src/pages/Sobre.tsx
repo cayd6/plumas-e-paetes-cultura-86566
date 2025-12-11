@@ -123,7 +123,7 @@ const Sobre = () => {
                 <br />
                 <span className="text-white">o Brasil pela</span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-magenta to-ppc-purple">Cultura</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-yellow to-ppc-orange">Cultura</span>
               </>
             ) : (
               <>
@@ -131,7 +131,7 @@ const Sobre = () => {
                 <br />
                 <span className="text-white">Brazil through</span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-magenta to-ppc-purple">Culture</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-ppc-yellow to-ppc-orange">Culture</span>
               </>
             )}
           </h1>
