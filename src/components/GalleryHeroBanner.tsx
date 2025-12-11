@@ -18,8 +18,8 @@ interface GalleryHeroBannerProps {
 const allSlides: BannerSlide[] = [
   {
     image: "/lovable-uploads/premio-2025-02.jpg",
-    titlePt: "20º Prêmio Plumas & Paetês - 2025",
-    titleEn: "20th Plumas & Paetês Award - 2025",
+    titlePt: "20º Prêmio Plumas & Paetês Cultural - 2025",
+    titleEn: "20th Plumas & Paetês Cultural Award - 2025",
     descriptionPt: "Celebrando 20 anos de reconhecimento ao carnaval brasileiro",
     descriptionEn: "Celebrating 20 years of Brazilian carnival recognition",
     year: "2025"
@@ -50,8 +50,8 @@ const allSlides: BannerSlide[] = [
   },
   {
     image: "/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png",
-    titlePt: "19º Prêmio Plumas & Paetês",
-    titleEn: "19th Plumas & Paetês Award",
+    titlePt: "19º Prêmio Plumas & Paetês Cultural",
+    titleEn: "19th Plumas & Paetês Cultural Award",
     descriptionPt: "Celebrando os talentos do carnaval brasileiro",
     descriptionEn: "Celebrating Brazilian carnival talents",
     year: "2024"

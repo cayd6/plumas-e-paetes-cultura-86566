@@ -14,8 +14,8 @@ interface BannerSlide {
 const slides: BannerSlide[] = [
   {
     image: "/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png",
-    titlePt: "19º Prêmio Plumas & Paetês",
-    titleEn: "19th Plumas & Paetês Award",
+    titlePt: "19º Prêmio Plumas & Paetês Cultural",
+    titleEn: "19th Plumas & Paetês Cultural Award",
     descriptionPt: "Celebrando os talentos do carnaval brasileiro",
     descriptionEn: "Celebrating Brazilian carnival talents",
     link: "/edicoes"
