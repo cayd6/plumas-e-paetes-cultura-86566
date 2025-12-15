@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ImageModal from "@/components/ImageModal";
 import SEO from "@/components/SEO";
 import GalleryHeroBanner from "@/components/GalleryHeroBanner";
+import OptimizedImage from "@/components/OptimizedImage";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Instagram, Camera, Video } from "lucide-react";
 import { useGalleryPhotos } from "@/hooks/useGalleryPhotos";
@@ -171,12 +172,12 @@ const Galeria = () => {
                             onClick={() => handleImageClick(index)}
                             className="group relative break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer mb-6"
                           >
-                            <img
+                            <OptimizedImage
                               src={photo.image_url}
                               alt={photo.title}
                               style={{ transform: `rotate(${photo.rotation || 0}deg)` }}
-                              className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
-                              loading="lazy"
+                              className="w-full h-auto min-h-[200px] group-hover:scale-110 transition-transform duration-500"
+                              priority={index < 6}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               <div className="absolute bottom-0 left-0 right-0 p-6">

@@ -1,9 +1,11 @@
 import { Play } from 'lucide-react';
 import { GalleryVideo } from '@/hooks/useGalleryVideos';
+import OptimizedImage from './OptimizedImage';
 
 interface VideoCardProps {
   video: GalleryVideo;
   onClick: () => void;
+  priority?: boolean;
 }
 
 // Extract video ID from Google Drive URL
@@ -15,7 +17,7 @@ const getGoogleDriveThumbnail = (url: string): string => {
   return '/placeholder.svg';
 };
 
-export const VideoCard = ({ video, onClick }: VideoCardProps) => {
+export const VideoCard = ({ video, onClick, priority = false }: VideoCardProps) => {
   const thumbnailUrl = video.thumbnail_url || getGoogleDriveThumbnail(video.video_url);
 
   return (
@@ -24,11 +26,11 @@ export const VideoCard = ({ video, onClick }: VideoCardProps) => {
       className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer bg-card"
     >
       <div className="aspect-video relative">
-        <img
+        <OptimizedImage
           src={thumbnailUrl}
           alt={video.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="lazy"
+          className="w-full h-full"
+          priority={priority}
           onError={(e) => {
             (e.target as HTMLImageElement).src = '/placeholder.svg';
           }}
