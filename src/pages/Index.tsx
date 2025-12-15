@@ -80,7 +80,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `url('/lovable-uploads/hero-background.jpg?v=${Date.now()}')`,
+            backgroundImage: `url('/lovable-uploads/hero-background.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat'
@@ -129,6 +129,7 @@ const Index = () => {
               title="Instituto Plumas e Paetês Cultural"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              loading="lazy"
               className="w-full aspect-video rounded-2xl shadow-2xl"
             />
           </div>
