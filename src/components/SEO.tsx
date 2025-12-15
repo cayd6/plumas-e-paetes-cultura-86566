@@ -17,7 +17,7 @@ const SEO = ({
   keywords = "instituto cultural, carnaval, plumas e paetês, cultura brasileira, economia criativa, arte popular, prêmio carnaval"
 }: SEOProps) => {
   const location = useLocation();
-  const siteUrl = "https://plumaspaetes.cultural.br";
+  const siteUrl = "https://plumasepaetescultural.org";
   const fullUrl = `${siteUrl}${location.pathname}`;
 
   useEffect(() => {
