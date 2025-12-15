@@ -1,0 +1,12 @@
+# Instituto Plumas e Paetês Cultural
+# https://plumasepaetescultural.org
+
+User-agent: *
+Allow: /
+
+# Bloquear páginas administrativas
+Disallow: /admin
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://plumasepaetescultural.org/sitemap.xml
