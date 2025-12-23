@@ -1,7 +1,11 @@
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Sparkles, Award, Users, Lightbulb, CheckCircle, ArrowRight, Instagram, Facebook, Mail, Phone } from "lucide-react";
+import { Sparkles, Award, Users, Lightbulb, CheckCircle, ArrowRight } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Producao = () => {
   const { translate, language } = useLanguage();
@@ -85,9 +89,15 @@ const Producao = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-muted/30">
+      <SEO 
+        title="Produção de Eventos | Instituto Plumas e Paetês Cultural"
+        description="Produção de eventos culturais, consultoria em economia criativa e assessoria técnica para escolas de samba e agremiações carnavalescas no Rio de Janeiro."
+        keywords="produção de eventos, eventos culturais, consultoria carnaval, economia criativa, escolas de samba, Rio de Janeiro"
+      />
       <Navigation />
       <LanguageControls />
+      <Breadcrumbs />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 carnival-gradient overflow-hidden">
@@ -98,15 +108,15 @@ const Producao = () => {
           }} />
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center text-white">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 animate-slide-up">
+          <div className="text-center text-primary-foreground">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-foreground/20 backdrop-blur-sm rounded-full mb-6 animate-slide-up">
               <Sparkles className="w-5 h-5" />
               <span className="font-semibold">{translate("producaoEventos")}</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-slide-up">
               {language === 'pt' ? 'Produção de Eventos' : 'Event Production'}
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in">
+            <p className="text-lg md:text-xl text-primary-foreground/90 max-w-3xl mx-auto animate-fade-in">
               {language === 'pt'
                 ? "Transformamos ideias em experiências culturais inesquecíveis"
                 : "We transform ideas into unforgettable cultural experiences"}
@@ -116,161 +126,108 @@ const Producao = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">{translate("nossosServicos")}</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              {translate("nossosServicos")}
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               {language === 'pt'
                 ? "Soluções completas para produção cultural e eventos de excelência"
                 : "Complete solutions for cultural production and excellence events"}
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {services.map((service, index) => (
-              <div 
+              <Card 
                 key={index}
-                className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-border"
               >
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-carnival-purple to-carnival-magenta flex items-center justify-center mb-6">
-                  <service.icon className="text-white" size={32} />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-carnival-green flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <CardHeader>
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <service.icon className="text-primary-foreground" size={28} />
+                  </div>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardDescription className="text-base">{service.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-muted-foreground">
+                        <CheckCircle className="w-4 h-4 text-[hsl(142,76%,36%)] flex-shrink-0" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">{translate("portfolio")}</h2>
-            <p className="text-xl text-gray-600">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              {translate("portfolio")}
+            </h2>
+            <p className="text-lg text-muted-foreground">
               {language === 'pt'
                 ? "Conheça alguns dos projetos que realizamos com excelência"
                 : "Discover some of the projects we've accomplished with excellence"}
             </p>
           </div>
           
-          <div className="space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {portfolio.map((project, index) => (
-              <div 
-                key={index}
-                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center bg-gray-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow`}
-              >
-                <div className="lg:w-1/2 aspect-video lg:aspect-square">
+              <Card key={index} className="overflow-hidden group hover:shadow-xl transition-all duration-300">
+                <div className="aspect-video overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
-                <div className="lg:w-1/2 p-8 lg:p-12">
-                  <div className="inline-block px-4 py-1 bg-carnival-gold/20 text-carnival-purple font-semibold rounded-full mb-4">
+                <CardHeader>
+                  <div className="inline-block px-3 py-1 bg-secondary/20 text-primary text-sm font-semibold rounded-full mb-2 w-fit">
                     {project.year}
                   </div>
-                  <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-              </div>
+                  <CardTitle className="text-lg">{project.title}</CardTitle>
+                  <CardDescription>{project.description}</CardDescription>
+                </CardHeader>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 carnival-gradient">
+      <section className="py-16 md:py-20 carnival-gradient">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
             {language === 'pt' ? 'Vamos Criar Juntos?' : 'Let\'s Create Together?'}
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
             {language === 'pt'
               ? "Entre em contato e descubra como podemos transformar seu projeto em realidade"
               : "Get in touch and discover how we can turn your project into reality"}
           </p>
           <a
             href="/contato"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-white text-carnival-magenta rounded-full hover:bg-white/90 transition-colors font-bold text-lg shadow-2xl"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-background text-primary rounded-full hover:bg-background/90 transition-colors font-bold text-lg shadow-2xl"
           >
             {translate("entrarContato")}
-            <ArrowRight size={24} />
+            <ArrowRight size={20} />
           </a>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("linksRapidos")}</h3>
-              <ul className="space-y-2">
-                <li><a href="/" className="text-gray-400 hover:text-white transition-colors">{translate("inicio")}</a></li>
-                <li><a href="/sobre" className="text-gray-400 hover:text-white transition-colors">{translate("sobre")}</a></li>
-                <li><a href="/edicoes" className="text-gray-400 hover:text-white transition-colors">{translate("edicoes")}</a></li>
-                <li><a href="/contato" className="text-gray-400 hover:text-white transition-colors">{translate("contato")}</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("transformandoVidas")}
-              </p>
-              <p className="text-gray-400 text-center mb-4">
-                {translate("cnpj")}: 11.985.110/0001-76
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a 
-                  href="https://www.instagram.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Instagram size={24} />
-                </a>
-                <a 
-                  href="https://www.facebook.com/plumasepaetescultural/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Facebook size={24} />
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">{translate("contato")}</h3>
-              <div className="space-y-2 text-gray-400">
-                <p className="flex items-center">
-                  <Mail size={18} className="mr-2" />
-                  contato@institutoplumasepaetescultural.com
-                </p>
-                <p className="flex items-center">
-                  <Phone size={18} className="mr-2" />
-                  +55 21 98939-2920
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Instituto Plumas e Paetês Cultural. {translate("direitosReservados")}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
