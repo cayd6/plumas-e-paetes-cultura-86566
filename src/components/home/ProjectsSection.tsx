@@ -1,65 +1,70 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import ProjectCard from "./ProjectCard";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { 
+  Trophy, 
+  GraduationCap, 
+  BookOpen, 
+  Music, 
+  Crown,
+  Scale
+} from "lucide-react";
+
+interface ProjectItem {
+  titleKey: string;
+  summaryPt: string;
+  summaryEn: string;
+  link: string;
+  icon: React.ReactNode;
+}
 
 const ProjectsSection = () => {
   const { translate, language } = useLanguage();
 
-  const projectCategories = {
-    premios: [
-      {
-        title: translate('project1Title'),
-        description: translate('project1Desc'),
-      },
-    ],
-    capacitacao: [
-      {
-        title: translate('project2Title'),
-        description: translate('project2Desc'),
-      },
-    ],
-    publicacoes: [
-      {
-        title: translate('project3Title'),
-        description: translate('project3Desc'),
-      },
-      {
-        title: translate('project8Title'),
-        description: translate('project8Desc'),
-      },
-    ],
-    producao: [
-      {
-        title: translate('project4Title'),
-        description: translate('project4Desc'),
-      },
-      {
-        title: translate('project5Title'),
-        description: translate('project5Desc'),
-      },
-      {
-        title: translate('project6Title'),
-        description: translate('project6Desc'),
-      },
-    ],
-    patrimonio: [
-      {
-        title: translate('project7Title'),
-        description: translate('project7Desc'),
-      },
-      {
-        title: translate('project9Title'),
-        description: translate('project9Desc'),
-      },
-    ],
-  };
-
-  const allProjects = [
-    ...projectCategories.premios,
-    ...projectCategories.capacitacao,
-    ...projectCategories.publicacoes,
-    ...projectCategories.producao,
-    ...projectCategories.patrimonio,
+  const projects: ProjectItem[] = [
+    {
+      titleKey: 'project1Title',
+      summaryPt: 'Celebra os profissionais dos bastidores do carnaval carioca desde 2005.',
+      summaryEn: 'Celebrates Rio carnival backstage professionals since 2005.',
+      link: '/premio',
+      icon: <Trophy className="h-8 w-8" />
+    },
+    {
+      titleKey: 'project2Title',
+      summaryPt: 'Oficinas de formação e gestão artística no Rio de Janeiro e Brasília.',
+      summaryEn: 'Training and artistic management workshops in Rio de Janeiro and Brasília.',
+      link: '/sobre',
+      icon: <GraduationCap className="h-8 w-8" />
+    },
+    {
+      titleKey: 'project3Title',
+      summaryPt: 'Publicação anual gratuita com 5.000 exemplares desde 2010.',
+      summaryEn: 'Free annual publication with 5,000 copies since 2010.',
+      link: '/revista',
+      icon: <BookOpen className="h-8 w-8" />
+    },
+    {
+      titleKey: 'project4Title',
+      summaryPt: 'Espetáculos sobre Elza Soares, Chiquinha Gonzaga, Donga e outros.',
+      summaryEn: 'Shows about Elza Soares, Chiquinha Gonzaga, Donga and others.',
+      link: '/producao',
+      icon: <Music className="h-8 w-8" />
+    },
+    {
+      titleKey: 'project5Title',
+      summaryPt: 'Confecção da coroa do Rei Momo em Rio, Niterói, Maricá e Cruz Alta.',
+      summaryEn: 'Crafting King Momo\'s crown in Rio, Niterói, Maricá and Cruz Alta.',
+      link: '/producao',
+      icon: <Crown className="h-8 w-8" />
+    },
+    {
+      titleKey: 'project9Title',
+      summaryPt: 'Leis estadual e municipal para o Dia do Profissional da Economia Criativa.',
+      summaryEn: 'State and municipal laws for Creative Economy Professional Day.',
+      link: '/sobre',
+      icon: <Scale className="h-8 w-8" />
+    },
   ];
 
   return (
@@ -74,70 +79,38 @@ const ProjectsSection = () => {
           </p>
         </div>
         
-        {/* Desktop: Tabs */}
-        <div className="hidden md:block">
-          <Tabs defaultValue="todos" className="max-w-6xl mx-auto">
-            <TabsList className="flex flex-wrap justify-center mb-8 bg-muted/50 p-1 rounded-full">
-              <TabsTrigger value="todos" className="rounded-full px-6">
-                {language === 'pt' ? 'Todos' : 'All'}
-              </TabsTrigger>
-              <TabsTrigger value="premios" className="rounded-full px-6">
-                {language === 'pt' ? 'Prêmios' : 'Awards'}
-              </TabsTrigger>
-              <TabsTrigger value="publicacoes" className="rounded-full px-6">
-                {language === 'pt' ? 'Publicações' : 'Publications'}
-              </TabsTrigger>
-              <TabsTrigger value="producao" className="rounded-full px-6">
-                {language === 'pt' ? 'Produção' : 'Production'}
-              </TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="todos">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {allProjects.map((project, index) => (
-                  <ProjectCard
-                    key={index}
-                    title={project.title}
-                    description={project.description}
-                  />
-                ))}
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="premios">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projectCategories.premios.map((project, index) => (
-                  <ProjectCard key={index} title={project.title} description={project.description} />
-                ))}
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="publicacoes">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projectCategories.publicacoes.map((project, index) => (
-                  <ProjectCard key={index} title={project.title} description={project.description} />
-                ))}
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="producao">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[...projectCategories.producao, ...projectCategories.patrimonio].map((project, index) => (
-                  <ProjectCard key={index} title={project.title} description={project.description} />
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-        
-        {/* Mobile: Simple grid */}
-        <div className="md:hidden grid grid-cols-1 gap-4">
-          {allProjects.slice(0, 6).map((project, index) => (
-            <ProjectCard
-              key={index}
-              title={project.title}
-              description={project.description}
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {projects.map((project, index) => (
+            <Card 
+              key={index} 
+              className="group border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 bg-card"
+            >
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                    {project.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                      {translate(project.titleKey)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                      {language === 'pt' ? project.summaryPt : project.summaryEn}
+                    </p>
+                    <Button 
+                      asChild 
+                      variant="outline" 
+                      size="sm"
+                      className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors"
+                    >
+                      <Link to={project.link}>
+                        {translate('saibaMais')}
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
