@@ -1,4 +1,4 @@
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnniversaryButton from "@/components/AnniversaryButton";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -21,7 +21,7 @@ const HeroSection = () => {
           backgroundRepeat: 'no-repeat'
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
       
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
@@ -31,28 +31,47 @@ const HeroSection = () => {
             <AnniversaryButton />
           </div>
           
-          {/* H1 - Main Title */}
+          {/* H1 - Main Title with Benefit */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 text-primary-foreground animate-fade-in leading-tight">
-            Instituto Plumas & Paetês Cultural
+            {language === 'pt' ? (
+              <>
+                <span className="text-secondary">Transformando</span> vidas
+                <br className="hidden sm:block" />
+                <span className="block sm:inline"> pela </span>
+                <span className="text-secondary">cultura</span>
+              </>
+            ) : (
+              <>
+                <span className="text-secondary">Transforming</span> lives
+                <br className="hidden sm:block" />
+                <span className="block sm:inline"> through </span>
+                <span className="text-secondary">culture</span>
+              </>
+            )}
           </h1>
           
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-8 md:mb-10 animate-fade-in font-light max-w-3xl px-4">
-            {language === 'pt' 
-              ? 'Transformando a sociedade brasileira por meio da economia criativa. Há 20 anos valorizando os artistas do carnaval carioca.' 
-              : 'Transforming Brazilian society through the creative economy. For 20 years valuing the artists of Rio\'s carnival.'}
+          {/* Subtitle with Institute Name */}
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-4 animate-fade-in font-medium">
+            Instituto Plumas & Paetês Cultural
           </p>
           
-          {/* CTA Buttons - Mobile optimized */}
+          {/* Description */}
+          <p className="text-sm sm:text-base md:text-lg text-primary-foreground/80 mb-8 md:mb-10 animate-fade-in font-light max-w-2xl px-4">
+            {language === 'pt' 
+              ? 'Há 20 anos valorizando artistas e promovendo a economia criativa do carnaval carioca.' 
+              : 'For 20 years valuing artists and promoting the creative economy of Rio\'s carnival.'}
+          </p>
+          
+          {/* CTA Buttons - Clear actions */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center animate-fade-in">
             <Button
               asChild
               size="lg"
               className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full shadow-xl hover:scale-105 transition-all duration-300"
             >
-              <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5521989392920" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
-                {language === 'pt' ? 'Fale Conosco' : 'Contact Us'}
+                {language === 'pt' ? 'Quero Apoiar' : 'I Want to Support'}
               </a>
             </Button>
             <Button
@@ -61,9 +80,9 @@ const HeroSection = () => {
               size="lg"
               className="border-2 border-primary-foreground/30 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 font-semibold text-base md:text-lg px-6 md:px-8 py-5 md:py-6 rounded-full backdrop-blur-sm transition-all duration-300"
             >
-              <a href="/sobre">
-                {language === 'pt' ? 'Conheça o Instituto' : 'About Us'}
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <a href="/contato">
+                <MapPin className="mr-2 h-5 w-5" />
+                {language === 'pt' ? 'Levar para Minha Cidade' : 'Bring to My City'}
               </a>
             </Button>
           </div>
