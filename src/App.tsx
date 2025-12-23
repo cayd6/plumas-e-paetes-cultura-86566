@@ -42,6 +42,8 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/sobre" element={<Sobre />} />
+              <Route path="/projetos" element={<Index />} /> {/* Redirects to home projects section */}
+              <Route path="/premio" element={<EdicoesEnhanced />} />
               <Route path="/edicoes" element={<EdicoesEnhanced />} />
               <Route path="/revista" element={<Revista />} />
               <Route path="/producao" element={<Producao />} />

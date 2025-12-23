@@ -87,11 +87,11 @@ const Contato = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-muted/30">
       <SEO 
-        title={translate("contato")}
-        description={translate("faleConosco")}
-        keywords="contato, instituto plumas paetês, rio de janeiro"
+        title="Contato | Instituto Plumas e Paetês Cultural"
+        description="Entre em contato com o Instituto Plumas e Paetês Cultural. Fale conosco sobre projetos culturais, parcerias e iniciativas de economia criativa no Rio de Janeiro."
+        keywords="contato, instituto plumas paetês, Rio de Janeiro, projetos culturais, parcerias, economia criativa, carnaval carioca"
       />
       <Navigation />
       <LanguageControls />

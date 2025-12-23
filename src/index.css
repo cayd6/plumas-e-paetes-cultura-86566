@@ -175,20 +175,27 @@
   }
 }
 
-/* Custom scrollbar */
+/* Modern scrollbar styling */
+@supports (scrollbar-width: thin) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: hsl(var(--muted));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8B5CF6;
+  background: hsl(var(--primary));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D946EF;
+  background: hsl(var(--accent));
 }
