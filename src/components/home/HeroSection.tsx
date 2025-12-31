@@ -1,10 +1,12 @@
-import { ArrowRight, MessageCircle, MapPin } from "lucide-react";
+import { MessageCircle, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnniversaryButton from "@/components/AnniversaryButton";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useHeroBanner } from "@/hooks/useHeroBanner";
 
 const HeroSection = () => {
   const { language } = useLanguage();
+  const { data: heroImage } = useHeroBanner();
 
   return (
     <section 
@@ -15,7 +17,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 w-full h-full"
         style={{
-          backgroundImage: `url('/lovable-uploads/hero-background.jpg')`,
+          backgroundImage: `url('${heroImage || '/lovable-uploads/hero-background.jpg'}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat'
