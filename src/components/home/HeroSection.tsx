@@ -21,7 +21,7 @@ const HeroSection = () => {
           className="w-full h-full object-contain object-center"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
       
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
