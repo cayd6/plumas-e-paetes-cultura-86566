@@ -33,29 +33,10 @@ const HeroSection = () => {
             <AnniversaryButton />
           </div>
           
-          {/* H1 - Main Title with Benefit */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 text-primary-foreground animate-fade-in leading-tight">
-            {language === 'pt' ? (
-              <>
-                <span className="text-secondary">Transformando</span> vidas
-                <br className="hidden sm:block" />
-                <span className="block sm:inline"> pela </span>
-                <span className="text-secondary">cultura</span>
-              </>
-            ) : (
-              <>
-                <span className="text-secondary">Transforming</span> lives
-                <br className="hidden sm:block" />
-                <span className="block sm:inline"> through </span>
-                <span className="text-secondary">culture</span>
-              </>
-            )}
+          {/* H1 - Institute Name */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 text-primary-foreground animate-fade-in leading-tight">
+            Instituto <span className="text-secondary">Plumas & Paetês</span> Cultural
           </h1>
-          
-          {/* Subtitle with Institute Name */}
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-4 animate-fade-in font-medium">
-            Instituto Plumas & Paetês Cultural
-          </p>
           
           {/* Description */}
           <p className="text-sm sm:text-base md:text-lg text-primary-foreground/80 mb-8 md:mb-10 animate-fade-in font-light max-w-2xl px-4">
