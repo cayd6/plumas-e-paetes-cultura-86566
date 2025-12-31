@@ -14,15 +14,13 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background */}
-      <div 
-        className="absolute inset-0 w-full h-full"
-        style={{
-          backgroundImage: `url('${heroImage || '/lovable-uploads/hero-background.jpg'}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      />
+      <div className="absolute inset-0 w-full h-full bg-black">
+        <img 
+          src={heroImage || '/lovable-uploads/hero-background.jpg'}
+          alt="Instituto Plumas & Paetês Cultural"
+          className="w-full h-full object-contain object-center"
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
       
       {/* Content */}
