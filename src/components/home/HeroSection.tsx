@@ -31,7 +31,7 @@ const HeroSection = () => {
         <img 
           src={heroImage || '/lovable-uploads/hero-background.jpg'}
           alt="Instituto Plumas & Paetês Cultural"
-          className="max-w-full max-h-[50vh] object-contain animate-fade-in"
+          className="max-w-full max-h-[65vh] object-contain animate-fade-in"
         />
       </div>
       
