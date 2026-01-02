@@ -14,7 +14,7 @@ const HeroSection = () => {
       className="relative min-h-screen flex flex-col bg-black"
     >
       {/* Top Zone - Badge + Title */}
-      <div className="flex flex-col items-center justify-center pt-24 pb-6 px-4 z-10">
+      <div className="flex flex-col items-center justify-center pt-20 pb-3 px-4 z-10">
         {/* Anniversary Badge */}
         <div className="mb-4 animate-fade-in">
           <AnniversaryButton />
@@ -36,7 +36,7 @@ const HeroSection = () => {
       </div>
       
       {/* Bottom Zone - Description + CTA */}
-      <div className="flex flex-col items-center justify-center pb-12 pt-6 px-4 z-10">
+      <div className="flex flex-col items-center justify-center pb-8 pt-3 px-4 z-10">
         {/* Description */}
         <p className="text-sm sm:text-base md:text-lg text-primary-foreground/80 mb-6 animate-fade-in font-light max-w-2xl text-center">
           {language === 'pt' 
