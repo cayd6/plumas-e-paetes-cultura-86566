@@ -13,7 +13,7 @@ const Index = lazy(() => import("./pages/Index"));
 const EdicoesEnhanced = lazy(() => import("@/features/award").then(m => ({ default: m.AwardPage })));
 const Revista = lazy(() => import("@/features/magazine").then(m => ({ default: m.MagazinePage })));
 const Producao = lazy(() => import("./pages/Producao"));
-const Blog = lazy(() => import("./pages/Blog"));
+const Blog = lazy(() => import("@/features/blog").then(m => ({ default: m.BlogPage })));
 const Eventos = lazy(() => import("./pages/Eventos"));
 const Noticias = lazy(() => import("./pages/Noticias"));
 const Sobre = lazy(() => import("./pages/Sobre"));
@@ -29,7 +29,7 @@ const AdminSettings = lazy(() => import("./pages/admin/Settings"));
 const AdminPremio = lazy(() => import("@/features/award").then(m => ({ default: m.AwardAdminPage })));
 const SobreAdmin = lazy(() => import("./pages/admin/SobreAdmin"));
 const ProducaoAdmin = lazy(() => import("./pages/admin/ProducaoAdmin"));
-const BlogAdmin = lazy(() => import("./pages/admin/BlogAdmin"));
+const BlogAdmin = lazy(() => import("@/features/blog").then(m => ({ default: m.BlogAdminPage })));
 const RevistaAdmin = lazy(() => import("@/features/magazine").then(m => ({ default: m.MagazineAdminPage })));
 
 const queryClient = new QueryClient();
