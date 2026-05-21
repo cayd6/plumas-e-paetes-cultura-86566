@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { AdminGate } from "@/components/AdminGate";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 // Public pages — code split per route
