@@ -43,6 +43,44 @@
     <!-- DNS Prefetch for external resources -->
     <link rel="dns-prefetch" href="https://www.youtube.com" />
     <link rel="dns-prefetch" href="https://drive.google.com" />
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Instituto Plumas e Paetês Cultural",
+      "url": "https://plumasepaetescultural.org/",
+      "logo": "https://plumasepaetescultural.org/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png",
+      "sameAs": [
+        "https://www.instagram.com/plumasepaetescultural/",
+        "https://www.facebook.com/plumasepaetescultural/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-21-98939-2920",
+        "contactType": "customer service",
+        "email": "contato@plumasepaetescultural.com",
+        "areaServed": "BR",
+        "availableLanguage": ["Portuguese"]
+      }
+    }
+    </script>
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Instituto Plumas e Paetês Cultural",
+      "url": "https://plumasepaetescultural.org/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://plumasepaetescultural.org/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
 
   <body>
