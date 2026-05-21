@@ -13,7 +13,7 @@ import {
   useAboutMutations,
   TimelineEvent,
   Testimonial
-} from '@/hooks/useAboutData';
+} from '../hooks/useAboutData';
 import {
   Dialog,
   DialogContent,

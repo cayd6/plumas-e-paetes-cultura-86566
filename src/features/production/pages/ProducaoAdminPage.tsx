@@ -13,7 +13,7 @@ import {
   useProducaoMutations,
   Service,
   PortfolioProject
-} from '@/hooks/useProducaoData';
+} from '../hooks/useProducaoData';
 import {
   Dialog,
   DialogContent,

@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
-import { useGalleryPhotos } from '@/hooks/useGalleryPhotos';
+import { useGalleryPhotos } from '../hooks/useGalleryPhotos';
 import { AdminGalleryGrid } from '@/components/admin/AdminGalleryGrid';
 import { PhotoUploadForm } from '@/components/admin/PhotoUploadForm';
 
