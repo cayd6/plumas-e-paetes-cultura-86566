@@ -15,7 +15,7 @@ import {
   AwardProfessional,
   AwardSchool,
   AwardCuriosity
-} from '@/hooks/useAwardData';
+} from '../hooks/useAwardData';
 import {
   Dialog,
   DialogContent,

@@ -10,7 +10,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 // Public pages — code split per route
 const Index = lazy(() => import("./pages/Index"));
-const EdicoesEnhanced = lazy(() => import("./pages/EdicoesEnhanced"));
+const EdicoesEnhanced = lazy(() => import("@/features/award").then(m => ({ default: m.AwardPage })));
 const Revista = lazy(() => import("./pages/Revista"));
 const Producao = lazy(() => import("./pages/Producao"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -26,7 +26,7 @@ const AdminGaleria = lazy(() => import("./pages/admin/Galeria"));
 const AdminVideos = lazy(() => import("./pages/admin/Videos"));
 const AdminBanners = lazy(() => import("./pages/admin/Banners"));
 const AdminSettings = lazy(() => import("./pages/admin/Settings"));
-const AdminPremio = lazy(() => import("./pages/admin/Premio"));
+const AdminPremio = lazy(() => import("@/features/award").then(m => ({ default: m.AwardAdminPage })));
 const SobreAdmin = lazy(() => import("./pages/admin/SobreAdmin"));
 const ProducaoAdmin = lazy(() => import("./pages/admin/ProducaoAdmin"));
 const BlogAdmin = lazy(() => import("./pages/admin/BlogAdmin"));
