@@ -70,12 +70,19 @@ const ProjectsSection = () => {
   return (
     <section id="projetos" className="py-16 md:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            {translate('projetosProdutosEventos')}
+            {language === 'pt' ? 'Projetos, produtos e experiências culturais' : 'Cultural projects, products and experiences'}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            {translate('projetosProdutosEventosDesc')}
+          <p className="text-lg text-muted-foreground mb-3">
+            {language === 'pt' 
+              ? 'Do palco à avenida, da sala de ensaio à sala de aula, desenvolvemos projetos que conectam formação, memória, produção e circulação cultural, sempre com o carnaval como eixo central.' 
+              : 'From the stage to the avenue, from rehearsal rooms to classrooms, we develop projects connecting training, memory, production and cultural circulation, always with carnival at the core.'}
+          </p>
+          <p className="text-sm md:text-base text-muted-foreground italic">
+            {language === 'pt' 
+              ? 'Conheça alguns dos espetáculos, ações e iniciativas que já foram apresentados em diferentes cidades do Brasil.' 
+              : 'Discover some of the shows, actions and initiatives presented in different cities of Brazil.'}
           </p>
         </div>
         

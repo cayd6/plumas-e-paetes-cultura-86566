@@ -40,14 +40,14 @@ const TestimonialsSection = () => {
   return (
     <section className="py-16 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            {language === 'pt' ? 'Depoimentos' : 'Testimonials'}
+            {language === 'pt' ? 'Vozes do carnaval sobre o Instituto' : 'Carnival voices about the Institute'}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground">
             {language === 'pt' 
-              ? 'O que dizem os artistas e parceiros sobre nosso trabalho'
-              : 'What artists and partners say about our work'}
+              ? 'Quem vive o carnaval nos bastidores sabe o impacto que o reconhecimento e a memória têm na vida de cada profissional. Veja o que alguns parceiros e fazedores falam sobre o nosso trabalho.'
+              : 'Those who experience carnival behind the scenes know the impact recognition and memory have on every professional\'s life.'}
           </p>
         </div>
         
