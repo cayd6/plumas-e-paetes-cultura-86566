@@ -15,6 +15,30 @@ const Contato = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
+    // LocalBusiness JSON-LD for contact page
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.id = 'contact-localbusiness-jsonld';
+    ld.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Instituto Plumas e Paetês Cultural",
+      "image": "https://plumasepaetescultural.org/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png",
+      "url": "https://plumasepaetescultural.org/contato",
+      "telephone": "+55-21-98939-2920",
+      "email": "contato@plumasepaetescultural.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rio de Janeiro",
+        "addressRegion": "RJ",
+        "addressCountry": "BR"
+      }
+    });
+    document.head.appendChild(ld);
+    return () => { ld.remove(); };
+  }, []);
+
+  useEffect(() => {
     // Load Leaflet CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
