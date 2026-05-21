@@ -282,4 +282,4 @@ const MagazinePage = () => {
   );
 };
 
-export default Revista;
+export default MagazinePage;
