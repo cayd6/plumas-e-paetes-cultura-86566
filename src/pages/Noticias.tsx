@@ -1,6 +1,7 @@
 
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Instagram, Facebook, Mail, Phone } from "lucide-react";
 
@@ -9,6 +10,11 @@ const Noticias = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Notícias | Instituto Plumas e Paetês Cultural"
+        description="Acompanhe as últimas notícias do Instituto Plumas e Paetês Cultural: carnaval, cultura popular, projetos sociais e economia criativa."
+        keywords="notícias instituto plumas e paetês, novidades carnaval, cultura brasileira"
+      />
       <Navigation />
       <LanguageControls />
       <div className="pt-32 pb-16">

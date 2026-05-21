@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import SEO from "@/components/SEO";
@@ -107,6 +107,33 @@ const Blog = () => {
 
   const featuredPost = posts.find(post => post.featured);
   const regularPosts = filteredPosts.filter(post => !post.featured);
+
+  useEffect(() => {
+    const ld = {
+      "@context": "https://schema.org",
+      "@graph": posts.map((p) => ({
+        "@type": "Article",
+        headline: p.title,
+        description: p.excerpt,
+        image: `https://plumas-e-paetes-cultura-86566.lovable.app${p.image}`,
+        datePublished: p.date,
+        author: { "@type": "Person", name: p.author },
+        publisher: {
+          "@type": "Organization",
+          name: "Instituto Plumas e Paetês Cultural",
+          logo: { "@type": "ImageObject", url: "https://plumas-e-paetes-cultura-86566.lovable.app/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png" },
+        },
+      })),
+    };
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "blog-jsonld";
+    script.text = JSON.stringify(ld);
+    document.head.appendChild(script);
+    return () => {
+      document.getElementById("blog-jsonld")?.remove();
+    };
+  }, [language]);
 
   return (
     <div className="min-h-screen bg-gray-50">
