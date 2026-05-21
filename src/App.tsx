@@ -26,7 +26,7 @@ const AdminGaleria = lazy(() => import("./pages/admin/Galeria"));
 const AdminVideos = lazy(() => import("./pages/admin/Videos"));
 const AdminBanners = lazy(() => import("./pages/admin/Banners"));
 const AdminSettings = lazy(() => import("./pages/admin/Settings"));
-const AdminPremio = lazy(() => import("./pages/admin/Premio"));
+const AdminPremio = lazy(() => import("@/features/award").then(m => ({ default: m.AwardAdminPage })));
 const SobreAdmin = lazy(() => import("./pages/admin/SobreAdmin"));
 const ProducaoAdmin = lazy(() => import("./pages/admin/ProducaoAdmin"));
 const BlogAdmin = lazy(() => import("./pages/admin/BlogAdmin"));
