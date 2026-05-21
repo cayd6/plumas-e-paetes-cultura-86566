@@ -11,7 +11,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 // Public pages — code split per route
 const Index = lazy(() => import("./pages/Index"));
 const EdicoesEnhanced = lazy(() => import("@/features/award").then(m => ({ default: m.AwardPage })));
-const Revista = lazy(() => import("./pages/Revista"));
+const Revista = lazy(() => import("@/features/magazine").then(m => ({ default: m.MagazinePage })));
 const Producao = lazy(() => import("./pages/Producao"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Eventos = lazy(() => import("./pages/Eventos"));
@@ -30,7 +30,7 @@ const AdminPremio = lazy(() => import("@/features/award").then(m => ({ default: 
 const SobreAdmin = lazy(() => import("./pages/admin/SobreAdmin"));
 const ProducaoAdmin = lazy(() => import("./pages/admin/ProducaoAdmin"));
 const BlogAdmin = lazy(() => import("./pages/admin/BlogAdmin"));
-const RevistaAdmin = lazy(() => import("./pages/admin/RevistaAdmin"));
+const RevistaAdmin = lazy(() => import("@/features/magazine").then(m => ({ default: m.MagazineAdminPage })));
 
 const queryClient = new QueryClient();
 

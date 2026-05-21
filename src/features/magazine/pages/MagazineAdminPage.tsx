@@ -10,7 +10,7 @@ import {
   useMagazineEditions,
   useMagazineMutations,
   MagazineEdition
-} from '@/hooks/useMagazineData';
+} from '../hooks/useMagazineData';
 import {
   Dialog,
   DialogContent,
