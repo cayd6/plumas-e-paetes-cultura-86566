@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
 import SEO from "@/components/SEO";
@@ -9,49 +9,98 @@ import { BookOpen, Download, Eye, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useMagazineEditions } from "../hooks/useMagazineData";
 
-const Revista = () => {
+interface MagazineView {
+  year: string;
+  edition: string;
+  cover: string;
+  title: string;
+  description: string;
+  pages: number;
+}
+
+const FALLBACK_MAGAZINES_PT: MagazineView[] = [
+  {
+    year: "2024",
+    edition: "19ª Edição",
+    cover: "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png",
+    title: "Carnaval 2024 - O Retorno Triunfal",
+    description: "Edição especial destacando os grandes momentos do Carnaval 2024.",
+    pages: 120,
+  },
+  {
+    year: "2023",
+    edition: "18ª Edição",
+    cover: "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
+    title: "Os Artífices do Carnaval",
+    description: "Homenagem aos mestres da cultura popular.",
+    pages: 98,
+  },
+  {
+    year: "2023",
+    edition: "17ª Edição",
+    cover: "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png",
+    title: "Economia Criativa no Carnaval",
+    description: "Análise do impacto econômico do carnaval.",
+    pages: 86,
+  },
+];
+
+const FALLBACK_MAGAZINES_EN: MagazineView[] = [
+  {
+    year: "2024",
+    edition: "19th Edition",
+    cover: "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png",
+    title: "Carnival 2024 - The Triumphant Return",
+    description: "Special edition highlighting the great moments of Carnival 2024.",
+    pages: 120,
+  },
+  {
+    year: "2023",
+    edition: "18th Edition",
+    cover: "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
+    title: "The Carnival Artisans",
+    description: "Tribute to the masters of popular culture.",
+    pages: 98,
+  },
+  {
+    year: "2023",
+    edition: "17th Edition",
+    cover: "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png",
+    title: "Creative Economy in Carnival",
+    description: "Analysis of the economic impact of carnival.",
+    pages: 86,
+  },
+];
+
+const MagazinePage = () => {
   const { translate, language } = useLanguage();
   const [selectedYear, setSelectedYear] = useState("all");
+  const { data: editions } = useMagazineEditions();
 
-  const magazines = [
-    {
-      year: "2024",
-      edition: "19ª Edição",
-      cover: "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png",
-      title: language === 'pt' ? "Carnaval 2024 - O Retorno Triunfal" : "Carnival 2024 - The Triumphant Return",
-      description: language === 'pt' 
-        ? "Edição especial destacando os grandes momentos do Carnaval 2024."
-        : "Special edition highlighting the great moments of Carnival 2024.",
-      pages: 120,
-    },
-    {
-      year: "2023",
-      edition: "18ª Edição",
-      cover: "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
-      title: language === 'pt' ? "Os Artífices do Carnaval" : "The Carnival Artisans",
-      description: language === 'pt'
-        ? "Homenagem aos mestres da cultura popular."
-        : "Tribute to the masters of popular culture.",
-      pages: 98,
-    },
-    {
-      year: "2023",
-      edition: "17ª Edição",
-      cover: "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png",
-      title: language === 'pt' ? "Economia Criativa no Carnaval" : "Creative Economy in Carnival",
-      description: language === 'pt'
-        ? "Análise do impacto econômico do carnaval."
-        : "Analysis of the economic impact of carnival.",
-      pages: 86,
-    },
-  ];
+  const magazines: MagazineView[] = useMemo(() => {
+    if (editions && editions.length > 0) {
+      return editions.map((e) => ({
+        year: e.year,
+        edition: language === "pt" ? e.title_pt : e.title_en,
+        cover: e.cover_url ?? "/placeholder.svg",
+        title: language === "pt" ? e.title_pt : e.title_en,
+        description:
+          (language === "pt" ? e.description_pt : e.description_en) ?? "",
+        pages: e.pages?.length ?? 0,
+      }));
+    }
+    return language === "pt" ? FALLBACK_MAGAZINES_PT : FALLBACK_MAGAZINES_EN;
+  }, [editions, language]);
 
-  const filteredMagazines = selectedYear === "all" 
-    ? magazines 
-    : magazines.filter(m => m.year === selectedYear);
+  const filteredMagazines =
+    selectedYear === "all"
+      ? magazines
+      : magazines.filter((m) => m.year === selectedYear);
 
-  const years = ["all", ...Array.from(new Set(magazines.map(m => m.year)))];
+  const years = ["all", ...Array.from(new Set(magazines.map((m) => m.year)))];
+
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -233,4 +282,4 @@ const Revista = () => {
   );
 };
 
-export default Revista;
+export default MagazinePage;
