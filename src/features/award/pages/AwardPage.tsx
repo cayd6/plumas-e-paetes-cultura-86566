@@ -5,7 +5,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import LanguageControls from '@/components/LanguageControls';
-import PlumasEmNumeros from '@/components/PlumasEmNumeros';
+import PlumasEmNumeros from '../components/PlumasEmNumeros';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';

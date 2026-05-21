@@ -1,7 +1,7 @@
 import { Trophy, Users, Award, Star, Medal, School, Sparkles, Building2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
-import { useAwardData } from "@/hooks/useAwardData";
+import { useAwardData } from "../hooks/useAwardData";
 
 const AnimatedNumber = ({ end, suffix = "" }: { end: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
