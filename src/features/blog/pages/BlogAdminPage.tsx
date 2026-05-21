@@ -14,7 +14,7 @@ import {
   useBlogMutations,
   BlogCategory,
   BlogPost
-} from '@/hooks/useBlogData';
+} from '../hooks/useBlogData';
 import {
   Dialog,
   DialogContent,
