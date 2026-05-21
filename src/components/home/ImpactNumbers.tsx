@@ -9,10 +9,12 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 20, labelPt: "Anos de História", labelEn: "Years of History" },
-  { value: 1400, suffix: "+", labelPt: "Artistas Premiados", labelEn: "Artists Awarded" },
-  { value: 51, labelPt: "Categorias Profissionais", labelEn: "Professional Categories" },
-  { value: 1000, suffix: "+", labelPt: "Troféus Distribuídos", labelEn: "Trophies Awarded" },
+  { value: 20, suffix: "+", labelPt: "Anos de atuação", labelEn: "Years of activity" },
+  { value: 1400, suffix: "+", labelPt: "Profissionais reconhecidos", labelEn: "Professionals recognized" },
+  { value: 10, suffix: "+", labelPt: "Cidades e territórios", labelEn: "Cities and territories" },
+  { value: 19, labelPt: "Edições do Prêmio", labelEn: "Award editions" },
+  { value: 15, suffix: "+", labelPt: "Publicações editadas", labelEn: "Publications edited" },
+  { value: 30, suffix: "+", labelPt: "Projetos e espetáculos", labelEn: "Projects and shows" },
 ];
 
 const AnimatedNumber = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
@@ -68,16 +70,16 @@ const ImpactNumbers = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            {language === 'pt' ? 'Impacto em Números' : 'Impact in Numbers'}
+            {language === 'pt' ? 'Impacto em números' : 'Impact in numbers'}
           </h2>
-          <p className="text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-primary-foreground/80 max-w-3xl mx-auto">
             {language === 'pt' 
-              ? 'Duas décadas de transformação cultural e reconhecimento artístico' 
-              : 'Two decades of cultural transformation and artistic recognition'}
+              ? 'Ao longo de duas décadas, o Instituto Plumas & Paetês Cultural vem construindo uma rede de reconhecimento, memória e oportunidades para quem faz o carnaval nos bastidores.' 
+              : 'Over two decades, Instituto Plumas & Paetês Cultural has been building a network of recognition, memory and opportunities for those who make carnival behind the scenes.'}
           </p>
         </div>
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
             <div 
               key={index}

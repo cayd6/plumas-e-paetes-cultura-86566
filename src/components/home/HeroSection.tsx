@@ -37,10 +37,15 @@ const HeroSection = () => {
           </h1>
           
           {/* Description */}
-          <p className="text-sm sm:text-base md:text-lg text-primary-foreground/80 mb-8 md:mb-10 animate-fade-in font-light max-w-2xl px-4">
+          <p className="text-sm sm:text-base md:text-lg text-primary-foreground/90 mb-4 animate-fade-in font-light max-w-3xl px-4 leading-relaxed">
             {language === 'pt' 
-              ? 'Há 20 anos valorizando artistas e promovendo a economia criativa do carnaval carioca.' 
-              : 'For 20 years valuing artists and promoting the creative economy of Rio\'s carnival.'}
+              ? 'Há mais de 20 anos registrando, valorizando e conectando os fazedores do carnaval carioca e de todo o Brasil, transformando bastidores em patrimônio cultural e economia criativa.' 
+              : 'For over 20 years documenting, valuing and connecting the makers of Rio\'s carnival and across Brazil, turning backstage work into cultural heritage and creative economy.'}
+          </p>
+          <p className="text-sm md:text-base text-primary-foreground/75 mb-8 md:mb-10 animate-fade-in italic max-w-2xl px-4">
+            {language === 'pt' 
+              ? 'Prêmio, revista, formação, produção de espetáculos e memória viva dos profissionais que fazem o maior espetáculo da Terra acontecer.' 
+              : 'Award, magazine, training, show production and living memory of the professionals who make the greatest show on Earth happen.'}
           </p>
           
           {/* CTA Buttons - Clear actions */}
