@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { AdminGate } from "@/components/AdminGate";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 // Public pages — code split per route
@@ -66,15 +67,16 @@ const App = () => (
                 <Route path="/eventos" element={<Eventos />} />
                 <Route path="/noticias" element={<Noticias />} />
                 <Route path="/contato" element={<Contato />} />
-                <Route path="/admin" element={<AdminGaleria />} />
-                <Route path="/admin/videos" element={<AdminVideos />} />
-                <Route path="/admin/banners" element={<AdminBanners />} />
-                <Route path="/admin/premio" element={<AdminPremio />} />
-                <Route path="/admin/sobre" element={<SobreAdmin />} />
-                <Route path="/admin/producao" element={<ProducaoAdmin />} />
-                <Route path="/admin/blog" element={<BlogAdmin />} />
-                <Route path="/admin/revista" element={<RevistaAdmin />} />
-                <Route path="/admin/configuracoes" element={<AdminSettings />} />
+                <Route path="/admin" element={<AdminGate><AdminGaleria /></AdminGate>} />
+                <Route path="/admin/videos" element={<AdminGate><AdminVideos /></AdminGate>} />
+                <Route path="/admin/banners" element={<AdminGate><AdminBanners /></AdminGate>} />
+                <Route path="/admin/premio" element={<AdminGate><AdminPremio /></AdminGate>} />
+                <Route path="/admin/sobre" element={<AdminGate><SobreAdmin /></AdminGate>} />
+                <Route path="/admin/producao" element={<AdminGate><ProducaoAdmin /></AdminGate>} />
+                <Route path="/admin/blog" element={<AdminGate><BlogAdmin /></AdminGate>} />
+                <Route path="/admin/revista" element={<AdminGate><RevistaAdmin /></AdminGate>} />
+                <Route path="/admin/configuracoes" element={<AdminGate><AdminSettings /></AdminGate>} />
+
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
