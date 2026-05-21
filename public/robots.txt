@@ -1,5 +1,4 @@
 # Instituto Plumas e Paetês Cultural
-# https://plumasepaetescultural.org
 
 User-agent: *
 Allow: /
@@ -9,4 +8,4 @@ Disallow: /admin
 Disallow: /admin/
 
 # Sitemap
-Sitemap: https://plumasepaetescultural.org/sitemap.xml
+Sitemap: https://plumas-e-paetes-cultura-86566.lovable.app/sitemap.xml
