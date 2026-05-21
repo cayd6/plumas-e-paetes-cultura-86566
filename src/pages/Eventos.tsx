@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import LanguageControls from "@/components/LanguageControls";
+import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Instagram, Facebook, Mail, Phone } from "lucide-react";
 
@@ -10,6 +12,7 @@ const Eventos = () => {
       id: 1,
       titulo: translate("carnaval2024"),
       data: "10-13 Fevereiro, 2024",
+      startDate: "2024-02-10",
       imagem: "https://source.unsplash.com/random/1200x800/?carnival,parade",
       descricao: translate("descricaoCarnaval"),
       video: "https://www.youtube.com/embed/your-video-id"
@@ -18,13 +21,46 @@ const Eventos = () => {
       id: 2,
       titulo: translate("festivalCultural"),
       data: "15 Janeiro, 2024",
+      startDate: "2024-01-15",
       imagem: "https://source.unsplash.com/random/1200x800/?carnival,festival",
       descricao: translate("descricaoFestival"),
     },
   ];
 
+  useEffect(() => {
+    const ld = {
+      "@context": "https://schema.org",
+      "@graph": eventos.map((e) => ({
+        "@type": "Event",
+        name: e.titulo,
+        startDate: e.startDate,
+        description: e.descricao,
+        image: e.imagem,
+        location: {
+          "@type": "Place",
+          name: "Rio de Janeiro",
+          address: { "@type": "PostalAddress", addressLocality: "Rio de Janeiro", addressCountry: "BR" },
+        },
+        organizer: { "@type": "Organization", name: "Instituto Plumas e Paetês Cultural" },
+      })),
+    };
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.text = JSON.stringify(ld);
+    script.id = "eventos-jsonld";
+    document.head.appendChild(script);
+    return () => {
+      document.getElementById("eventos-jsonld")?.remove();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Eventos | Instituto Plumas e Paetês Cultural"
+        description="Confira os eventos do Instituto Plumas e Paetês Cultural: carnaval, festivais culturais e celebrações da cultura popular brasileira."
+        keywords="eventos carnaval, festival cultural, instituto plumas e paetês"
+      />
       <Navigation />
       <LanguageControls />
       <div className="pt-24 pb-16">
