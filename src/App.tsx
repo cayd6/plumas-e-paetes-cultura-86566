@@ -58,17 +58,7 @@ const App = () => (
                 <Route path="/eventos" element={<Eventos />} />
                 <Route path="/noticias" element={<Noticias />} />
                 <Route path="/contato" element={<Contato />} />
-                <Route path="/admin" element={<AdminGate><Outlet /></AdminGate>}>
-                  <Route index element={<AdminGaleria />} />
-                  <Route path="videos" element={<AdminVideos />} />
-                  <Route path="banners" element={<AdminBanners />} />
-                  <Route path="premio" element={<AdminPremio />} />
-                  <Route path="sobre" element={<SobreAdmin />} />
-                  <Route path="producao" element={<ProducaoAdmin />} />
-                  <Route path="blog" element={<BlogAdmin />} />
-                  <Route path="revista" element={<RevistaAdmin />} />
-                  <Route path="configuracoes" element={<AdminSettings />} />
-                </Route>
+                <Route path="/admin" element={<AdminPanel />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
