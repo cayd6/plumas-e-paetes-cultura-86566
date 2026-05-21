@@ -323,12 +323,18 @@ interface LanguageProviderProps {
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
   const [language, setLanguage] = useState<Language>("pt");
 
-  const translate = (key: string): string => {
-    return translations[language][key] || key;
-  };
+  const translate = useCallback(
+    (key: string): string => translations[language]?.[key] || key,
+    [language]
+  );
+
+  const value = useMemo(
+    () => ({ language, setLanguage, translate }),
+    [language, translate]
+  );
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, translate }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );
