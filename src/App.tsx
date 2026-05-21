@@ -12,23 +12,23 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 const Index = lazy(() => import("./pages/Index"));
 const EdicoesEnhanced = lazy(() => import("@/features/award").then(m => ({ default: m.AwardPage })));
 const Revista = lazy(() => import("@/features/magazine").then(m => ({ default: m.MagazinePage })));
-const Producao = lazy(() => import("./pages/Producao"));
+const Producao = lazy(() => import("@/features/production").then(m => ({ default: m.ProducaoPage })));
 const Blog = lazy(() => import("@/features/blog").then(m => ({ default: m.BlogPage })));
-const Eventos = lazy(() => import("./pages/Eventos"));
-const Noticias = lazy(() => import("./pages/Noticias"));
-const Sobre = lazy(() => import("./pages/Sobre"));
-const Galeria = lazy(() => import("./pages/Galeria"));
-const Contato = lazy(() => import("./pages/Contato"));
+const Eventos = lazy(() => import("@/features/events").then(m => ({ default: m.EventosPage })));
+const Noticias = lazy(() => import("@/features/news").then(m => ({ default: m.NoticiasPage })));
+const Sobre = lazy(() => import("@/features/about").then(m => ({ default: m.SobrePage })));
+const Galeria = lazy(() => import("@/features/gallery").then(m => ({ default: m.GaleriaPage })));
+const Contato = lazy(() => import("@/features/contact").then(m => ({ default: m.ContatoPage })));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Admin pages — separate chunk, only loaded for staff
-const AdminGaleria = lazy(() => import("./pages/admin/Galeria"));
-const AdminVideos = lazy(() => import("./pages/admin/Videos"));
-const AdminBanners = lazy(() => import("./pages/admin/Banners"));
+const AdminGaleria = lazy(() => import("@/features/gallery").then(m => ({ default: m.GaleriaAdminPage })));
+const AdminVideos = lazy(() => import("@/features/gallery").then(m => ({ default: m.VideosAdminPage })));
+const AdminBanners = lazy(() => import("@/features/banners").then(m => ({ default: m.BannersAdminPage })));
 const AdminSettings = lazy(() => import("./pages/admin/Settings"));
 const AdminPremio = lazy(() => import("@/features/award").then(m => ({ default: m.AwardAdminPage })));
-const SobreAdmin = lazy(() => import("./pages/admin/SobreAdmin"));
-const ProducaoAdmin = lazy(() => import("./pages/admin/ProducaoAdmin"));
+const SobreAdmin = lazy(() => import("@/features/about").then(m => ({ default: m.SobreAdminPage })));
+const ProducaoAdmin = lazy(() => import("@/features/production").then(m => ({ default: m.ProducaoAdminPage })));
 const BlogAdmin = lazy(() => import("@/features/blog").then(m => ({ default: m.BlogAdminPage })));
 const RevistaAdmin = lazy(() => import("@/features/magazine").then(m => ({ default: m.MagazineAdminPage })));
 
