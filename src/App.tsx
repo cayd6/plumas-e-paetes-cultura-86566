@@ -67,15 +67,17 @@ const App = () => (
                 <Route path="/eventos" element={<Eventos />} />
                 <Route path="/noticias" element={<Noticias />} />
                 <Route path="/contato" element={<Contato />} />
-                <Route path="/admin" element={<AdminGate><AdminGaleria /></AdminGate>} />
-                <Route path="/admin/videos" element={<AdminGate><AdminVideos /></AdminGate>} />
-                <Route path="/admin/banners" element={<AdminGate><AdminBanners /></AdminGate>} />
-                <Route path="/admin/premio" element={<AdminGate><AdminPremio /></AdminGate>} />
-                <Route path="/admin/sobre" element={<AdminGate><SobreAdmin /></AdminGate>} />
-                <Route path="/admin/producao" element={<AdminGate><ProducaoAdmin /></AdminGate>} />
-                <Route path="/admin/blog" element={<AdminGate><BlogAdmin /></AdminGate>} />
-                <Route path="/admin/revista" element={<AdminGate><RevistaAdmin /></AdminGate>} />
-                <Route path="/admin/configuracoes" element={<AdminGate><AdminSettings /></AdminGate>} />
+                <Route path="/admin" element={<AdminGate><Outlet /></AdminGate>}>
+                  <Route index element={<AdminGaleria />} />
+                  <Route path="videos" element={<AdminVideos />} />
+                  <Route path="banners" element={<AdminBanners />} />
+                  <Route path="premio" element={<AdminPremio />} />
+                  <Route path="sobre" element={<SobreAdmin />} />
+                  <Route path="producao" element={<ProducaoAdmin />} />
+                  <Route path="blog" element={<BlogAdmin />} />
+                  <Route path="revista" element={<RevistaAdmin />} />
+                  <Route path="configuracoes" element={<AdminSettings />} />
+                </Route>
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
