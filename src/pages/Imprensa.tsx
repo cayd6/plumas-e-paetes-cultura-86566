@@ -128,7 +128,7 @@ const Imprensa = () => {
                         size="sm"
                         asChild
                         className="mt-4 self-start"
-                        onClick={() => trackCTA("press_asset_download", a.title, a.file_url, { asset_type: a.type })}
+                        onClick={() => trackCTA("press_asset_download", a.title, a.file_url, { category: "press", asset_type: a.type })}
                       >
                         <a href={a.file_url} target="_blank" rel="noopener noreferrer">
                           <Download className="h-4 w-4 mr-2" />
@@ -151,7 +151,7 @@ const Imprensa = () => {
             <Button
               asChild
               size="lg"
-              onClick={() => trackCTA("press_contact", "Falar com a assessoria", "mailto:imprensa@plumasepaetes.com.br")}
+              onClick={() => trackCTA("press_contact", "Falar com a assessoria", "mailto:imprensa@plumasepaetes.com.br", { category: "press" })}
             >
               <a href="mailto:imprensa@plumasepaetes.com.br">
                 <Mail className="h-4 w-4 mr-2" />

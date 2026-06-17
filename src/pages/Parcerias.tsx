@@ -122,7 +122,7 @@ const Parcerias = () => {
                   asChild
                   variant="outline"
                   className="mt-6 self-start"
-                  onClick={() => trackCTA(a.id, a.cta, "/contato")}
+                  onClick={() => trackCTA(a.id, a.cta, "/contato", { category: "partnership" })}
                 >
                   <Link to="/contato">
                     {a.cta} <ArrowRight className="ml-2 h-4 w-4" />
@@ -189,7 +189,7 @@ const Parcerias = () => {
               asChild
               size="lg"
               variant="secondary"
-              onClick={() => trackCTA("partnership_main", "Falar com o Instituto", "/contato")}
+              onClick={() => trackCTA("partnership_main", "Falar com o Instituto", "/contato", { category: "partnership" })}
             >
               <Link to="/contato">
                 {t("Falar com o Instituto", "Talk to the Institute")} <ArrowRight className="ml-2 h-4 w-4" />

@@ -363,8 +363,10 @@ export type Database = {
           id: string
           image_url: string | null
           name: string
+          published_at: string | null
           role: string | null
           role_en: string | null
+          status: string
           updated_at: string
           year: number | null
         }
@@ -381,8 +383,10 @@ export type Database = {
           id?: string
           image_url?: string | null
           name: string
+          published_at?: string | null
           role?: string | null
           role_en?: string | null
+          status?: string
           updated_at?: string
           year?: number | null
         }
@@ -399,8 +403,10 @@ export type Database = {
           id?: string
           image_url?: string | null
           name?: string
+          published_at?: string | null
           role?: string | null
           role_en?: string | null
+          status?: string
           updated_at?: string
           year?: number | null
         }
@@ -415,6 +421,8 @@ export type Database = {
           display_order: number
           id: string
           pages: string[] | null
+          published_at: string | null
+          status: string
           title_en: string
           title_pt: string
           updated_at: string
@@ -428,6 +436,8 @@ export type Database = {
           display_order?: number
           id?: string
           pages?: string[] | null
+          published_at?: string | null
+          status?: string
           title_en: string
           title_pt: string
           updated_at?: string
@@ -441,6 +451,8 @@ export type Database = {
           display_order?: number
           id?: string
           pages?: string[] | null
+          published_at?: string | null
+          status?: string
           title_en?: string
           title_pt?: string
           updated_at?: string
@@ -458,6 +470,8 @@ export type Database = {
           id: string
           logo_url: string | null
           name: string
+          published_at: string | null
+          status: string
           type: string
           updated_at: string
           website_url: string | null
@@ -471,6 +485,8 @@ export type Database = {
           id?: string
           logo_url?: string | null
           name: string
+          published_at?: string | null
+          status?: string
           type: string
           updated_at?: string
           website_url?: string | null
@@ -484,6 +500,8 @@ export type Database = {
           id?: string
           logo_url?: string | null
           name?: string
+          published_at?: string | null
+          status?: string
           type?: string
           updated_at?: string
           website_url?: string | null
@@ -498,6 +516,8 @@ export type Database = {
           display_order: number
           id: string
           image_url: string | null
+          published_at: string | null
+          status: string
           title_en: string
           title_pt: string
           updated_at: string
@@ -510,6 +530,8 @@ export type Database = {
           display_order?: number
           id?: string
           image_url?: string | null
+          published_at?: string | null
+          status?: string
           title_en: string
           title_pt: string
           updated_at?: string
@@ -522,6 +544,8 @@ export type Database = {
           display_order?: number
           id?: string
           image_url?: string | null
+          published_at?: string | null
+          status?: string
           title_en?: string
           title_pt?: string
           updated_at?: string
@@ -538,6 +562,8 @@ export type Database = {
           display_order: number
           file_url: string | null
           id: string
+          published_at: string | null
+          status: string
           thumbnail_url: string | null
           title: string
           title_en: string | null
@@ -552,6 +578,8 @@ export type Database = {
           display_order?: number
           file_url?: string | null
           id?: string
+          published_at?: string | null
+          status?: string
           thumbnail_url?: string | null
           title: string
           title_en?: string | null
@@ -566,6 +594,8 @@ export type Database = {
           display_order?: number
           file_url?: string | null
           id?: string
+          published_at?: string | null
+          status?: string
           thumbnail_url?: string | null
           title?: string
           title_en?: string | null
@@ -707,10 +737,12 @@ export type Database = {
           id: string
           image_url: string | null
           name: string
+          published_at: string | null
           quote_en: string
           quote_pt: string
           role_en: string
           role_pt: string
+          status: string
           updated_at: string
         }
         Insert: {
@@ -719,10 +751,12 @@ export type Database = {
           id?: string
           image_url?: string | null
           name: string
+          published_at?: string | null
           quote_en: string
           quote_pt: string
           role_en: string
           role_pt: string
+          status?: string
           updated_at?: string
         }
         Update: {
@@ -731,10 +765,12 @@ export type Database = {
           id?: string
           image_url?: string | null
           name?: string
+          published_at?: string | null
           quote_en?: string
           quote_pt?: string
           role_en?: string
           role_pt?: string
+          status?: string
           updated_at?: string
         }
         Relationships: []
@@ -747,6 +783,8 @@ export type Database = {
           display_order: number
           id: string
           image_url: string | null
+          published_at: string | null
+          status: string
           title_en: string
           title_pt: string
           updated_at: string
@@ -759,6 +797,8 @@ export type Database = {
           display_order?: number
           id?: string
           image_url?: string | null
+          published_at?: string | null
+          status?: string
           title_en: string
           title_pt: string
           updated_at?: string
@@ -771,6 +811,8 @@ export type Database = {
           display_order?: number
           id?: string
           image_url?: string | null
+          published_at?: string | null
+          status?: string
           title_en?: string
           title_pt?: string
           updated_at?: string
