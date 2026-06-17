@@ -21,9 +21,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Instituto Plumas e Paetês Cultural — Memória viva do carnaval"
+        title="Instituto Plumas & Paetês Cultural — Memória viva do carnaval"
         description="Há mais de 20 anos registrando, premiando e formando os profissionais que fazem o carnaval brasileiro acontecer."
-        keywords="instituto plumas e paetês cultural, prêmio plumas e paetês, carnaval carioca, memória do carnaval, economia criativa, cultura brasileira"
+        keywords="instituto plumas & paetês cultural, prêmio plumas & paetês, carnaval carioca, memória do carnaval, economia criativa, cultura brasileira"
       />
 
       <Navigation />
