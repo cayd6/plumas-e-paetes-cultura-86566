@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const { translate } = useLanguage();
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gray-950 text-white">
