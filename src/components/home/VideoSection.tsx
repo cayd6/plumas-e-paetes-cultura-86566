@@ -15,7 +15,7 @@ const VideoSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            {language === 'pt' ? '20 anos de Plumas & Paetês Culturais' : '20 years of Plumas & Paetês Culturais'}
+            {language === 'pt' ? '20 anos de Plumas & Paetês Cultural' : '20 years of Plumas & Paetês Cultural'}
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mb-4">
             {language === 'pt' 
