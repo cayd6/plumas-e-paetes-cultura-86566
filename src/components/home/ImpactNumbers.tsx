@@ -85,7 +85,7 @@ const ImpactNumbers = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20">
-          <dl className={`grid grid-cols-2 md:grid-cols-3 ${visible.length >= 4 ? 'lg:grid-cols-' + Math.min(visible.length, 6) : ''} divide-x divide-primary-foreground/15`}>
+          <dl className={`grid grid-cols-2 md:grid-cols-3 ${visible.length >= 6 ? 'lg:grid-cols-6' : visible.length === 5 ? 'lg:grid-cols-5' : visible.length === 4 ? 'lg:grid-cols-4' : ''} divide-x divide-primary-foreground/15`}>
             {visible.map((stat) => (
               <div key={stat.id} className="py-8 px-4 first:pl-0">
                 <dd>
