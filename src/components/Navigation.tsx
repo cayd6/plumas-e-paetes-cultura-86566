@@ -1,30 +1,23 @@
-
 import { useState, useEffect } from 'react';
-import { Menu, X, LogOut, Shield } from 'lucide-react';
+import { Menu, X, LogOut, Shield, Globe, Minus, Plus } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { translate } = useLanguage();
+  const [fontSize, setFontSize] = useState(16);
+  const { translate, language, setLanguage } = useLanguage();
   const location = useLocation();
   const { user, isAdmin, signOut } = useAuth();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    document.documentElement.style.fontSize = `${fontSize}px`;
+  }, [fontSize]);
 
-  // Padrão institucional: links sempre com cor do tema (escuro sobre fundo claro)
-  // Check if link is active
   const isActive = (path: string) => location.pathname === path;
-  
+
   const linkClass = (path: string) => {
     const base = 'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200';
     return isActive(path)
@@ -32,123 +25,175 @@ const Navigation = () => {
       : `${base} text-foreground hover:bg-gray-100`;
   };
 
+  const toggleLanguage = () => setLanguage(language === 'pt' ? 'en' : 'pt');
+  const decFont = () => setFontSize((s) => Math.max(12, s - 2));
+  const incFont = () => setFontSize((s) => Math.min(24, s + 2));
+
+  // 7 itens institucionais
+  const navItems: Array<{ to: string; labelKey: string; badge?: boolean }> = [
+    { to: '/sobre', labelKey: 'quemSomos' },
+    { to: '/premio', labelKey: 'premioPlumas', badge: true },
+    { to: '/revista', labelKey: 'revista' },
+    { to: '/producao', labelKey: 'producaoEventos' },
+    { to: '/galeria', labelKey: 'galeria' },
+    { to: '/blog', labelKey: 'blog' },
+    { to: '/contato', labelKey: 'contato' },
+  ];
+
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200 transition-all duration-500" role="navigation" aria-label="Navegação principal">
+    <nav
+      className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-xl shadow-sm border-b border-gray-200"
+      role="navigation"
+      aria-label={language === 'pt' ? 'Navegação principal' : 'Main navigation'}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
-          {/* Logo e Nome */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <img 
+          <Link to="/" className="flex items-center space-x-3 group min-w-0">
+            <img
               src="/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png"
               alt="Instituto Plumas e Paetês Cultural"
-              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-9 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="font-bold text-sm sm:text-base lg:text-lg text-foreground transition-colors duration-300 group-hover:text-carnival-purple">
-              Instituto Plumas & Paetês Cultural
+            <span className="hidden sm:inline font-serif font-semibold text-sm lg:text-base text-foreground truncate group-hover:text-carnival-purple transition-colors">
+              Instituto Plumas &amp; Paetês Cultural
             </span>
           </Link>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
-            <Link 
-              to="/sobre" 
-              className={linkClass('/sobre')}
-              aria-current={isActive('/sobre') ? 'page' : undefined}
-            >
-              {translate('quemSomos')}
-            </Link>
-            <Link 
-              to="/edicoes" 
-              className={`${linkClass('/edicoes')} relative group`}
-              aria-current={isActive('/edicoes') ? 'page' : undefined}
-            >
-              {translate('premioPlumas')}
-              <span className="absolute top-1 right-1 w-2 h-2 bg-carnival-gold rounded-full animate-pulse" aria-label="Novidade"></span>
-            </Link>
-            <Link 
-              to="/revista" 
-              className={linkClass('/revista')}
-              aria-current={isActive('/revista') ? 'page' : undefined}
-            >
-              {translate('revista')}
-            </Link>
-            <Link 
-              to="/producao" 
-              className={linkClass('/producao')}
-              aria-current={isActive('/producao') ? 'page' : undefined}
-            >
-              {translate('producaoEventos')}
-            </Link>
-            <Link 
-              to="/galeria" 
-              className={linkClass('/galeria')}
-              aria-current={isActive('/galeria') ? 'page' : undefined}
-            >
-              {translate('galeria')}
-            </Link>
-            <Link 
-              to="/blog" 
-              className={linkClass('/blog')}
-              aria-current={isActive('/blog') ? 'page' : undefined}
-            >
-              {translate('blog')}
-            </Link>
-            <Link 
-              to="/contato" 
-              className={linkClass('/contato')}
-              aria-current={isActive('/contato') ? 'page' : undefined}
-            >
-              {translate('contato')}
-            </Link>
-            
+
+          {/* Desktop nav */}
+          <div className="hidden lg:flex items-center space-x-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`${linkClass(item.to)} ${item.badge ? 'relative' : ''}`}
+                aria-current={isActive(item.to) ? 'page' : undefined}
+              >
+                {translate(item.labelKey)}
+                {item.badge && (
+                  <span
+                    className="absolute top-1 right-1 w-2 h-2 bg-carnival-gold rounded-full animate-pulse"
+                    aria-label={language === 'pt' ? 'Novidade' : 'New'}
+                  />
+                )}
+              </Link>
+            ))}
+
+            {/* Controles utilitários: idioma + zoom */}
+            <div className="flex items-center gap-1 ml-2 pl-2 border-l border-gray-200">
+              <button
+                type="button"
+                onClick={toggleLanguage}
+                aria-label={translate('trocarIdioma')}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold text-foreground hover:bg-gray-100 transition-colors"
+              >
+                <Globe size={14} />
+                {language.toUpperCase()}
+              </button>
+              <button
+                type="button"
+                onClick={decFont}
+                aria-label={translate('diminuirFonte')}
+                className="w-7 h-7 flex items-center justify-center rounded-md text-foreground hover:bg-gray-100"
+              >
+                <Minus size={14} />
+              </button>
+              <button
+                type="button"
+                onClick={incFont}
+                aria-label={translate('aumentarFonte')}
+                className="w-7 h-7 flex items-center justify-center rounded-md text-foreground hover:bg-gray-100"
+              >
+                <Plus size={14} />
+              </button>
+            </div>
+
             {user && isAdmin && (
-              <>
-                <Link 
-                  to="/admin/galeria" 
-                  className="px-3 py-2 rounded-lg text-sm font-medium bg-carnival-gold text-white hover:bg-carnival-gold/90 transition-all duration-200 flex items-center gap-1"
+              <div className="flex items-center gap-1 ml-2 pl-2 border-l border-gray-200">
+                <Link
+                  to="/admin"
+                  className="px-3 py-2 rounded-lg text-sm font-medium bg-carnival-gold text-white hover:bg-carnival-gold/90 transition-all flex items-center gap-1"
                 >
                   <Shield className="h-4 w-4" />
                   Admin
                 </Link>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={signOut}
-                  className="text-sm"
-                >
+                <Button variant="ghost" size="sm" onClick={signOut} className="text-sm">
                   <LogOut className="h-4 w-4 mr-1" />
-                  Sair
+                  {language === 'pt' ? 'Sair' : 'Sign out'}
                 </Button>
-              </>
+              </div>
             )}
           </div>
 
-          <div className="md:hidden">
+          {/* Mobile controls */}
+          <div className="flex items-center gap-1 lg:hidden">
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`text-foreground hover:text-carnival-purple transition-colors`}
-              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-              aria-expanded={isMobileMenuOpen}
+              type="button"
+              onClick={toggleLanguage}
+              aria-label={translate('trocarIdioma')}
+              className="flex items-center gap-1 px-2 py-1.5 rounded-md text-xs font-semibold text-foreground hover:bg-gray-100"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <Globe size={14} />
+              {language.toUpperCase()}
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen((v) => !v)}
+              aria-label={isMobileMenuOpen ? (language === 'pt' ? 'Fechar menu' : 'Close menu') : (language === 'pt' ? 'Abrir menu' : 'Open menu')}
+              aria-expanded={isMobileMenuOpen}
+              className="p-2 text-foreground hover:text-carnival-purple transition-colors"
+            >
+              {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden fixed top-14 left-0 right-0 bg-white shadow-2xl z-50 transition-all duration-300 border-t border-gray-200 ${
-        isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-      }`}>
-        <div className="px-4 pt-4 pb-6 space-y-2 max-h-[calc(100vh-5rem)] overflow-y-auto">
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block px-5 py-3.5 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium text-base">{translate('inicio')}</Link>
-          <Link to="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="block px-5 py-3.5 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium text-base">{translate('quemSomos')}</Link>
-          <Link to="/edicoes" onClick={() => setIsMobileMenuOpen(false)} className="block px-5 py-3.5 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium text-base">{translate('premioPlumas')}</Link>
-          <Link to="/revista" onClick={() => setIsMobileMenuOpen(false)} className="block px-5 py-3.5 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium text-base">{translate('revista')}</Link>
-          <Link to="/producao" onClick={() => setIsMobileMenuOpen(false)} className="block px-5 py-3.5 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium text-base">{translate('producaoEventos')}</Link>
-          <Link to="/galeria" onClick={() => setIsMobileMenuOpen(false)} className="block px-5 py-3.5 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium text-base">{translate('galeria')}</Link>
-          <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-5 py-3.5 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium text-base">{translate('blog')}</Link>
-          <Link to="/contato" onClick={() => setIsMobileMenuOpen(false)} className="block px-5 py-3.5 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg transition-all duration-200 font-medium text-base">{translate('contato')}</Link>
+      <div
+        className={`lg:hidden fixed top-14 left-0 right-0 bg-white shadow-2xl border-t border-gray-200 transition-all duration-300 ${
+          isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="px-4 pt-4 pb-6 space-y-1.5 max-h-[calc(100vh-5rem)] overflow-y-auto">
+          <Link
+            to="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block px-5 py-3 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg font-medium"
+          >
+            {translate('inicio')}
+          </Link>
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block px-5 py-3 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg font-medium"
+            >
+              {translate(item.labelKey)}
+            </Link>
+          ))}
+
+          <div className="flex items-center justify-end gap-2 pt-3 mt-3 border-t border-gray-200">
+            <span className="text-xs text-muted-foreground mr-auto">
+              {language === 'pt' ? 'Tamanho do texto' : 'Text size'}
+            </span>
+            <button
+              type="button"
+              onClick={decFont}
+              aria-label={translate('diminuirFonte')}
+              className="w-9 h-9 flex items-center justify-center rounded-md border border-gray-200 hover:bg-gray-100"
+            >
+              <Minus size={16} />
+            </button>
+            <button
+              type="button"
+              onClick={incFont}
+              aria-label={translate('aumentarFonte')}
+              className="w-9 h-9 flex items-center justify-center rounded-md border border-gray-200 hover:bg-gray-100"
+            >
+              <Plus size={16} />
+            </button>
+          </div>
         </div>
       </div>
     </nav>

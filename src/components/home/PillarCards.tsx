@@ -1,107 +1,86 @@
-import { Archive, GraduationCap, Theater, Landmark, ArrowRight } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
-
-interface PillarCardProps {
-  icon: React.ReactNode;
-  title: string;
-  summary: string;
-  colorClass: string;
-}
-
-const PillarCard = ({ icon, title, summary, colorClass }: PillarCardProps) => {
-  const { language } = useLanguage();
-  
-  return (
-    <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-card">
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${colorClass}`} />
-      <CardHeader className="relative z-10 pb-2">
-        <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 ${colorClass}`}>
-          {icon}
-        </div>
-        <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-          {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="relative z-10">
-        <CardDescription className="text-muted-foreground text-base leading-relaxed mb-4">
-          {summary}
-        </CardDescription>
-        <Link 
-          to="/sobre" 
-          className="inline-flex items-center text-primary font-medium text-sm hover:gap-2 transition-all duration-300 gap-1"
-        >
-          {language === 'pt' ? 'Ler mais' : 'Read more'}
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      </CardContent>
-    </Card>
-  );
-};
 
 const PillarCards = () => {
   const { language } = useLanguage();
 
   const pillars = [
     {
-      icon: <Archive className="h-7 w-7 text-primary-foreground" />,
-      title: language === 'pt' ? 'Memória e reconhecimento' : 'Memory and recognition',
-      summary: language === 'pt' 
-        ? 'Valorizamos trajetórias, histórias e contribuições dos profissionais que constroem o carnaval, registrando e premiando seus trabalhos.'
-        : 'We honor the journeys, stories and contributions of the professionals who build carnival, documenting and awarding their work.',
-      colorClass: 'bg-gradient-to-br from-primary to-accent',
+      titlePt: 'Memória e reconhecimento',
+      titleEn: 'Memory and recognition',
+      descPt: 'Registramos trajetórias e premiamos os profissionais que constroem o carnaval, transformando bastidores em patrimônio cultural.',
+      descEn: 'We document journeys and honor the professionals who build carnival, turning backstage work into cultural heritage.',
+      link: '/premio',
     },
     {
-      icon: <GraduationCap className="h-7 w-7 text-primary-foreground" />,
-      title: language === 'pt' ? 'Formação e futuro' : 'Training and future',
-      summary: language === 'pt'
-        ? 'Promovemos ações formativas que fortalecem a cadeia produtiva do carnaval e abrem caminhos para novas gerações de fazedores.'
-        : 'We promote training initiatives that strengthen the carnival production chain and open paths for new generations of makers.',
-      colorClass: 'bg-gradient-to-br from-secondary to-accent',
+      titlePt: 'Formação e futuro',
+      titleEn: 'Training and future',
+      descPt: 'Promovemos oficinas e capacitações que fortalecem a cadeia produtiva do carnaval e abrem caminhos para novas gerações.',
+      descEn: 'We run workshops and training that strengthen the carnival production chain and open paths for new generations.',
+      link: '/sobre',
     },
     {
-      icon: <Theater className="h-7 w-7 text-primary-foreground" />,
-      title: language === 'pt' ? 'Produção cultural' : 'Cultural production',
-      summary: language === 'pt'
-        ? 'Levamos projetos, espetáculos e experiências relacionadas ao carnaval para palcos, espaços culturais e territórios diversos.'
-        : 'We bring carnival-related projects, shows and experiences to stages, cultural venues and diverse territories.',
-      colorClass: 'bg-gradient-to-br from-accent to-primary',
+      titlePt: 'Produção cultural',
+      titleEn: 'Cultural production',
+      descPt: 'Levamos espetáculos, projetos e experiências do carnaval a palcos e territórios em todo o país.',
+      descEn: 'We bring carnival-related shows, projects and experiences to stages and territories nationwide.',
+      link: '/producao',
     },
     {
-      icon: <Landmark className="h-7 w-7 text-primary-foreground" />,
-      title: language === 'pt' ? 'Articulação e incidência' : 'Advocacy and engagement',
-      summary: language === 'pt'
-        ? 'Dialogamos com instituições públicas e privadas para ampliar o reconhecimento do carnaval como patrimônio cultural e motor da economia criativa.'
-        : 'We engage with public and private institutions to expand recognition of carnival as cultural heritage and a driver of the creative economy.',
-      colorClass: 'bg-gradient-to-br from-primary to-secondary',
+      titlePt: 'Articulação e incidência',
+      titleEn: 'Advocacy and engagement',
+      descPt: 'Dialogamos com instituições públicas e privadas para reconhecer o carnaval como patrimônio e motor da economia criativa.',
+      descEn: 'We engage public and private institutions to recognize carnival as heritage and driver of the creative economy.',
+      link: '/sobre',
     },
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-muted/30">
+    <section className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {language === 'pt' ? 'Os pilares que norteiam nossa atuação com o carnaval' : 'The pillars that guide our work with carnival'}
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            {language === 'pt' 
-              ? 'Atuamos na interseção entre memória, reconhecimento, formação e produção cultural, sempre com foco em quem construiu o carnaval por trás do desfile.' 
-              : 'We work at the intersection of memory, recognition, training and cultural production, always focused on those who built carnival behind the parade.'}
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {pillars.map((pillar, index) => (
-            <PillarCard
-              key={index}
-              icon={pillar.icon}
-              title={pillar.title}
-              summary={pillar.summary}
-              colorClass={pillar.colorClass}
-            />
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          {/* Coluna editorial à esquerda */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28 self-start">
+            <p className="uppercase tracking-[0.25em] text-xs text-primary mb-4 font-medium">
+              {language === 'pt' ? '— Pilares institucionais' : '— Institutional pillars'}
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6 leading-[1.05] tracking-tight">
+              {language === 'pt'
+                ? 'Quatro frentes que iluminam quem faz o carnaval.'
+                : 'Four fronts shining a light on those who make carnival.'}
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {language === 'pt'
+                ? 'Atuamos na interseção entre memória, reconhecimento, formação e produção cultural — sempre com foco nos fazedores por trás do desfile.'
+                : 'We work at the intersection of memory, recognition, training and cultural production — always focused on the makers behind the parade.'}
+            </p>
+          </div>
+
+          {/* Lista numerada editorial */}
+          <ol className="lg:col-span-7 divide-y divide-border border-t border-border">
+            {pillars.map((p, i) => (
+              <li key={i} className="group">
+                <Link
+                  to={p.link}
+                  className="flex gap-6 md:gap-8 py-8 md:py-10 hover:bg-muted/30 transition-colors -mx-4 px-4 rounded-md"
+                >
+                  <span className="font-serif text-3xl md:text-4xl text-primary/40 group-hover:text-primary transition-colors tabular-nums shrink-0 w-12">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors flex items-center gap-3 leading-tight">
+                      {language === 'pt' ? p.titlePt : p.titleEn}
+                      <ArrowUpRight className="h-5 w-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                    </h3>
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                      {language === 'pt' ? p.descPt : p.descEn}
+                    </p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

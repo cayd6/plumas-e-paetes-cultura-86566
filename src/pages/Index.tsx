@@ -1,17 +1,17 @@
 import Navigation from "@/components/Navigation";
-import LanguageControls from "@/components/LanguageControls";
-import ConfettiFalling from "@/components/ConfettiFalling";
 import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
-import HeroBanner from "@/components/HeroBanner";
+import ConfettiFalling from "@/components/ConfettiFalling";
 import SEO from "@/components/SEO";
 
-// Home page sections
+// Home — ordem editorial:
+// 1 hero · 2 impacto · 3 pilares · 4 prêmio · 5 revista+documentário ·
+// 6 projetos · 7 parceiros · 8 vozes · 9 parceria/contato · 10 footer
 import HeroSection from "@/components/home/HeroSection";
-import PillarCards from "@/components/home/PillarCards";
 import ImpactNumbers from "@/components/home/ImpactNumbers";
-import RecognitionsSection from "@/components/home/RecognitionsSection";
-import VideoSection from "@/components/home/VideoSection";
+import PillarCards from "@/components/home/PillarCards";
+import AwardFeatureSection from "@/components/home/AwardFeatureSection";
+import MagazineDocSection from "@/components/home/MagazineDocSection";
 import ProjectsSection from "@/components/home/ProjectsSection";
 import PartnersSection from "@/components/home/PartnersSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -20,46 +20,25 @@ import CTASection from "@/components/home/CTASection";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
-        title="Instituto Plumas e Paetês Cultural | Transformando Vidas pela Cultura"
-        description="Há 20 anos valorizando artistas e promovendo a cultura popular brasileira através do carnaval, oficinas culturais e projetos sociais no Rio de Janeiro."
-        keywords="instituto cultural, carnaval carioca, plumas e paetês, cultura brasileira, economia criativa, arte popular, prêmio carnaval, Rio de Janeiro"
+      <SEO
+        title="Instituto Plumas e Paetês Cultural — Memória viva do carnaval"
+        description="Há mais de 20 anos registrando, premiando e formando os profissionais que fazem o carnaval brasileiro acontecer."
+        keywords="instituto plumas e paetês cultural, prêmio plumas e paetês, carnaval carioca, memória do carnaval, economia criativa, cultura brasileira"
       />
-      
+
       <Navigation />
-      <LanguageControls />
       <BackToTop />
       <ConfettiFalling />
-      
+
       <main>
-        {/* Hero - H1 principal com benefício */}
         <HeroSection />
-        
-        {/* Faixa de Reconhecimentos */}
-        <RecognitionsSection />
-        
-        {/* Pilares: Missão, Visão, Valores em cards */}
-        <PillarCards />
-        
-        {/* Impacto em Números */}
         <ImpactNumbers />
-        
-        {/* Vídeo institucional com thumbnail */}
-        <VideoSection />
-        
-        {/* Banner de destaques */}
-        <HeroBanner />
-        
-        {/* Projetos - Cards padronizados */}
+        <PillarCards />
+        <AwardFeatureSection />
+        <MagazineDocSection />
         <ProjectsSection />
-        
-        {/* Parceiros e Apoiadores */}
         <PartnersSection />
-        
-        {/* Depoimentos */}
         <TestimonialsSection />
-        
-        {/* CTA Final com públicos */}
         <CTASection />
       </main>
 
