@@ -26,6 +26,8 @@ const Parcerias = lazy(() => import("./pages/Parcerias"));
 
 // Single admin route — internal tabs, no sub-URLs
 const AdminPanel = lazy(() => import("./pages/admin/AdminPanel"));
+const TrackingQA = lazy(() => import("./pages/admin/TrackingQA"));
+const SeoQA = lazy(() => import("./pages/admin/SeoQA"));
 
 const queryClient = new QueryClient();
 
@@ -65,6 +67,8 @@ const App = () => (
                 <Route path="/imprensa" element={<Imprensa />} />
                 <Route path="/parcerias" element={<Parcerias />} />
                 <Route path="/admin" element={<AdminPanel />} />
+                <Route path="/admin/qa/tracking" element={<TrackingQA />} />
+                <Route path="/admin/qa/seo" element={<SeoQA />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
