@@ -37,7 +37,7 @@ const VideoSection = () => {
                 <div className="relative aspect-video">
                   <img
                     src={thumbnailUrl}
-                    alt={language === 'pt' ? 'Vídeo institucional do Instituto Plumas e Paetês Cultural' : 'Institutional video of Instituto Plumas e Paetês Cultural'}
+                    alt={language === 'pt' ? 'Vídeo institucional do Instituto Plumas & Paetês Cultural' : 'Institutional video of Instituto Plumas & Paetês Cultural'}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
