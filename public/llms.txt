@@ -8,7 +8,7 @@
 - [Sobre](/sobre): Missão, visão, valores e história do Instituto.
 - [Prêmio Plumas & Paetês Cultural](/premio): Edições do prêmio que valoriza os profissionais do carnaval.
 - [Edições](/edicoes): Histórico completo das edições do prêmio.
-- [Revista](/revista): Revista Plumas e Paetês Cultural e edições anteriores.
+- [Revista](/revista): Revista Plumas & Paetês Cultural e edições anteriores.
 - [Produção](/producao): Produção de espetáculos musicais e eventos culturais.
 - [Galeria](/galeria): Fotos e vídeos de eventos e projetos.
 - [Blog](/blog): Artigos e conteúdos sobre cultura e carnaval.
