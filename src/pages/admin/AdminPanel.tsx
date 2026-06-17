@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from 'react';
-import { Images, Video, Layout, Settings, Home, LogOut, Trophy, Users, Briefcase, FileText, BookOpen, Menu, X } from 'lucide-react';
+import { Images, Video, Layout, Settings, Home, LogOut, Trophy, Users, Briefcase, FileText, BookOpen, Menu, X, Archive } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { AdminGate } from '@/components/AdminGate';
 import { useAuth } from '@/contexts/AuthContext';
