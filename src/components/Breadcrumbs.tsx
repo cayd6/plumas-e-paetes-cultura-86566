@@ -30,6 +30,10 @@ const Breadcrumbs = () => {
     contato: translate("contato"),
     eventos: translate("eventos"),
     noticias: translate("noticias"),
+    memoria: "Memória",
+    imprensa: "Imprensa",
+    parcerias: "Parcerias",
+    premio: translate("premioPlumas"),
   };
 
   return (

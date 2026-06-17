@@ -20,6 +20,9 @@ const Sobre = lazy(() => import("@/features/about").then(m => ({ default: m.Sobr
 const Galeria = lazy(() => import("@/features/gallery").then(m => ({ default: m.GaleriaPage })));
 const Contato = lazy(() => import("@/features/contact").then(m => ({ default: m.ContatoPage })));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Memoria = lazy(() => import("./pages/Memoria"));
+const Imprensa = lazy(() => import("./pages/Imprensa"));
+const Parcerias = lazy(() => import("./pages/Parcerias"));
 
 // Single admin route — internal tabs, no sub-URLs
 const AdminPanel = lazy(() => import("./pages/admin/AdminPanel"));
@@ -58,6 +61,9 @@ const App = () => (
                 <Route path="/eventos" element={<Eventos />} />
                 <Route path="/noticias" element={<Noticias />} />
                 <Route path="/contato" element={<Contato />} />
+                <Route path="/memoria" element={<Memoria />} />
+                <Route path="/imprensa" element={<Imprensa />} />
+                <Route path="/parcerias" element={<Parcerias />} />
                 <Route path="/admin" element={<AdminPanel />} />
 
                 <Route path="*" element={<NotFound />} />
