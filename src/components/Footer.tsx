@@ -91,8 +91,23 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/contato" 
+                <Link to="/memoria" className="text-gray-400 hover:text-carnival-gold transition-colors flex items-center gap-2">
+                  Memória
+                </Link>
+              </li>
+              <li>
+                <Link to="/parcerias" className="text-gray-400 hover:text-carnival-gold transition-colors flex items-center gap-2">
+                  Parcerias
+                </Link>
+              </li>
+              <li>
+                <Link to="/imprensa" className="text-gray-400 hover:text-carnival-gold transition-colors flex items-center gap-2">
+                  Imprensa
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contato"
                   className="text-gray-400 hover:text-carnival-gold transition-colors flex items-center gap-2"
                 >
                   {translate('contato')}
