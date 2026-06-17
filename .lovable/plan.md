@@ -1,152 +1,91 @@
+## Phase 4 — Editorial Governance, Bulk Ops & QA
 
-# Reorganização Institucional — Instituto Plumas & Paetês Cultural
+Preserves Phase 1–3 baseline (hero image/animations, serif headings, header language controls, homepage hierarchy, /memoria /imprensa /parcerias, admin panel, real impact numbers, PageSEO + tracking).
 
-Objetivo: elevar o site a padrão de instituição cultural editorial (memória, autoridade, parceria), preservando 100% a foto e os efeitos/animações do hero atual. Tudo CMS-driven e bilíngue PT/EN.
+---
 
-## 1. Princípios de design (guardrails)
+### 1. Draft / Publish workflow (DB)
 
-- **Mantido intocado**: imagem `hero-background.jpg`, overlays/gradiente, `animate-fade-in`, badge de aniversário, scroll indicator, `ConfettiFalling`.
-- **Banido**: 3 colunas com ícone-círculo repetidas, centralização total, "AI-look" roxo/branco genérico.
-- **Tom**: editorial, quente, cultural — tipografia serifada para títulos editoriais (Playfair/DM Serif) + sans atual para corpo; uso de filetes, numeração de seções, eyebrow labels ("01 — Memória", "02 — Prêmio"), assimetria, imagens grandes com legenda tipo revista.
-- **Sem alterar** paleta, logo, cores institucionais.
+Single migration adding editorial status to key collections:
 
-## 2. Homepage — nova arquitetura (ordem definitiva)
+- Add `status text not null default 'draft' check (status in ('draft','published','archived'))` and `published_at timestamptz` to:
+  - `honored_people`, `partners`, `press_kit_assets`, `blog_posts`, `magazine_editions`, `testimonials`, `portfolio_projects`, `timeline_events`
+- Backfill existing rows → `status='published'`, `published_at = coalesce(created_at, now())`
+- Update **public-read RLS policies** on each table to require `status='published'` for anon; keep admin policies unchanged so editors see all rows
+- Indexes on `(status, published_at desc)` for fast listing
 
-```text
-┌─ 1. HERO (inalterado visualmente) ── copy enxuto
-│    • Removidos os 2 parágrafos longos → 1 frase-manifesto + 1 linha de subtítulo
-│    • CTAs: "Conheça o Instituto" (primário) + "Apoiar" (secundário, WhatsApp)
-│    • Badge 20 anos mantido
-│
-├─ 2. FAIXA DE IMPACTO (números reais ou skeleton "em curadoria")
-│    • 4 métricas em layout horizontal editorial (não cards isolados)
-│    • Fallback: se valor=0 no CMS → mostra label "+ de 20 anos" ou esconde
-│    • Tabela `award_stats` já existe — vincular
-│
-├─ 3. PILARES INSTITUCIONAIS (Memória · Reconhecimento · Formação · Produção)
-│    • Layout editorial split: imagem grande à esquerda + 4 entradas numeradas à direita
-│    • SEM cards iguais com ícone-círculo
-│
-├─ 4. PRÊMIO PLUMAS & PAETÊS — seção destaque
-│    • Bloco "magazine cover": foto histórica + selo "20 edições" + última edição em destaque + link "Arquivo de edições"
-│    • Lista lateral: últimos homenageados (chips clicáveis → modal)
-│
-├─ 5. REVISTA & DOCUMENTÁRIO
-│    • Capa da revista mais recente + 3 capas anteriores em miniatura + CTA "Biblioteca digital"
-│    • Player do vídeo institucional (YouTube embed mantido)
-│
-├─ 6. PROJETOS & PRODUÇÃO (carrossel editorial, 1 destaque + 2 secundários)
-│
-├─ 7. PARCEIROS E APOIADORES (faixa em escala de cinza, agrupados por categoria: Institucionais · Patrocinadores · Mídia · Apoio)
-│
-├─ 8. VOZES (depoimentos em formato editorial — pull quote grande, 1 por vez, com nome/cargo/foto, não grid)
-│
-├─ 9. CTA DE PARCERIA (split 60/40)
-│    • Esquerda: "Leve o Plumas para sua cidade / Seja patrocinador / Imprensa"
-│    • Direita: form curto ou 3 botões segmentados
-│
-└─ 10. FOOTER (newsletter PT/EN + sitemap + redes + selo CNPJ + idioma)
-```
+No grants change (tables already grant-correct).
 
-Removidos da home: `HeroBanner` duplicado, `RecognitionsSection` solta (vira faixa fina logo abaixo do hero ou integra ao item 3).
+### 2. CSV bulk import/export (admin only)
 
-## 3. Novas páginas / navegação
+New file `src/lib/csv.ts` with tiny dependency-free parse/serialize (RFC4180-ish) + zod row schemas.
 
-Navegação principal (≤7 itens):
+In `src/pages/admin/MemoryAssetsAdmin.tsx`:
+- Per-tab **Export CSV** button → downloads current filtered rows with all PT/EN fields + status
+- Per-tab **Import CSV** button → file picker → preview dialog (valid / invalid rows, dedup by `slug` or `name`) → batch upsert via supabase client
+- Supported: `honored_people`, `partners` (press_kit_assets stays manual — files involved)
 
-`Instituto` · `Prêmio` · `Revista` · `Memória` · `Produção` · `Imprensa` · `Contato`
+### 3. Admin list QA improvements
 
-Novas páginas a criar (rotas + placeholders CMS-ready):
+In the Memory/Press admin:
+- Sortable columns (year, name, updated_at, status)
+- Status badge column (draft / published / archived) + inline status toggle
+- **Language completeness** indicator: PT ✓ / EN ✓ chips per row, computed from required `*_en` fields
+- Search box (already partially present — extend to all tabs)
+- Filter chips: status, language completeness, year/category where applicable
+- Bulk select + bulk publish / unpublish / delete
 
-| Rota | Função |
-|---|---|
-| `/instituto` (renomeia `/sobre`) | história, missão, **timeline**, equipe, conselho |
-| `/premio` | já existe — adicionar **arquivo de edições filtrável** (ano, categoria, cidade, homenageado) |
-| `/premio/edicoes/:ano` | página de edição individual (SEO Event) |
-| `/revista` | biblioteca digital com filtros (ano, tema) |
-| `/revista/:slug` | leitor/visualizador de edição (SEO Article) |
-| `/memoria` | **arquivo searchável** (pessoas, projetos, categorias, cidades, anos) |
-| `/memoria/pessoa/:slug` | perfil de homenageado |
-| `/producao` | já existe — reforçar cases |
-| `/imprensa` | **media kit**: logos, fotos hi-res, releases, contatos, bio (PT/EN) |
-| `/parcerias` | propostas para patrocinadores, prefeituras, instituições |
-| `/blog` | mantido — adicionar categorias e autor |
+Shared component: `src/components/admin/EditorialTable.tsx` to keep all three tabs consistent.
 
-## 4. Modelo de conteúdo (CMS — extensões ao schema existente)
+### 4. Tracking QA layer
 
-Tabelas já existentes a reaproveitar: `about_content`, `award_*`, `gallery_*`, `magazine_editions`, `site_banners`, `site_settings`, `testimonials`, `timeline_events`, `portfolio_projects`, `blog_*`.
+`src/lib/tracking.ts`:
+- Export typed `CtaClickEvent` schema enforcing snake_case `cta_id`, `cta_category` union, and auto-injected `page_lang` (from `LanguageContext`) + `page_path`
+- Dev-only `validateCtaEvent()` that warns on missing/invalid fields
+- `window.__lovableTrackingDebug = true` toggle to log every event
 
-Adicionar:
+New `src/pages/admin/TrackingQA.tsx` (route `/admin/qa/tracking`):
+- Enables debug mode
+- Live table of `dataLayer` events captured this session
+- Per-event validation status (✓ / warnings)
+- "Replay last event" + copy-as-JSON for spec confirmation
 
-- `home_sections` — toggle/ordem/visibilidade por seção da home
-- `honored_people` — homenageados (nome, slug, edição, categoria, cidade, bio_pt, bio_en, foto, links)
-- `partners` — (nome, logo, categoria: institucional/patrocinador/midia/apoio, url, ordem, ativo)
-- `press_kit_assets` — (titulo_pt, titulo_en, tipo: logo/foto/release/bio, arquivo, idioma)
-- `pages_seo` — overrides de title/description/og por rota (PT e EN)
-- Coluna `content_en` em todas as tabelas textuais que ainda só têm PT (`about_content`, `award_*`, `magazine_editions`, `blog_posts`, `testimonials`, `timeline_events`)
+Audit pass: grep all `trackCtaClick(` call sites, ensure each uses snake_case ids and a typed category. Fix any drift.
 
-Todas as tabelas seguem regra `GRANT` + RLS (leitura pública, escrita só `admin` via `has_role`).
+### 5. SEO consistency automation
 
-## 5. Internacionalização PT/EN
+`scripts/seo-audit.ts` (Node, run via `tsx`):
+- Walks `src/App.tsx` route table → for each route renders the page server-side via a lightweight regex/AST scan of the source file looking for `<PageSEO ...>` usage
+- Reports per route: title present, description present, og image, JSON-LD, canonical strategy
+- Outputs `seo-audit.json` + console summary; non-zero exit on missing required fields
 
-- `LanguageContext` já existe — expandir para ler campos `*_pt`/`*_en` de toda tabela
-- Hook utilitário `useLocalizedField(row, field)` → retorna `row[`${field}_${lang}`] || row[`${field}_pt`]`
-- URL strategy: prefixo `/en/*` opcional (fase 2); fase 1 = toggle client-side persistido
-- `<html lang>` dinâmico via `react-helmet-async`
-- Botão idioma migrado de `LanguageControls` flutuante para dentro do header (resolve overlap já identificado)
+`src/pages/admin/SeoQA.tsx` (route `/admin/qa/seo`):
+- Loads `seo-audit.json` (built at dev start) and DB-driven dynamic routes (blog posts, magazine editions)
+- Flags rows missing title/description/og/canonical or with duplicate titles across routes
+- Read-only dashboard; does not mutate `PageSEO`
 
-## 6. SEO
+### 6. Refinement-only UI pass (homepage trust signals)
 
-- Adicionar `react-helmet-async` + provider
-- Schemas JSON-LD por rota:
-  - sitewide: `Organization` (em `index.html`)
-  - `/premio/edicoes/:ano` → `Event`
-  - `/revista/:slug` → `Article`
-  - `/memoria/pessoa/:slug` → `Person`
-  - vídeo institucional → `VideoObject`
-  - todas as rotas internas → `BreadcrumbList`
-- `sitemap.xml` dinâmico (gerado a partir das tabelas CMS via edge function)
-- `<title>` < 60 chars, `description` < 160, canonical e og:url auto-referenciais por rota PT e EN
+ONLY presentational tweaks — no hierarchy/hero changes:
+- `ImpactNumbers.tsx`: tighten vertical rhythm, ensure consistent label casing, add `aria-live="polite"` on counters
+- `PartnersSection.tsx`: equalize logo cell heights, add subtle divider between "Institucionais" / "Poder público"
+- `TestimonialsSection.tsx`: align attribution block, add quote-mark glyph (serif), unify pagination dots with other sections
+- `RecognitionsSection.tsx` (if present in hierarchy): spacing parity with siblings
 
-## 7. Acessibilidade
+No edits to `HeroSection.tsx`, navigation, language controls, or section ordering in `Index.tsx`.
 
-- 1 `<h1>` por página, hierarquia H2/H3 correta
-- `alt` obrigatório em todas as imagens via campo CMS `alt_pt`/`alt_en`
-- Skip-link "Pular para conteúdo"
-- Foco visível em todos os interativos, contraste AA validado
-- Botão WhatsApp com `aria-label` e área mínima 44×44
+---
 
-## 8. Tracking de CTAs (analytics-ready)
+### Out of scope (kept as-is)
 
-- Componente `<TrackedLink event="..." />` wrapper que dispara `window.dataLayer.push` (GA4/GTM-ready)
-- Eventos padronizados: `cta_hero_support`, `cta_partnership`, `cta_press_kit`, `magazine_open`, `edition_open`, `lang_switch`
+- Hero, animations, serif headings, language-controls location
+- Homepage section order
+- PageSEO API surface
+- Existing admin auth model
 
-## 9. Componente-a-componente
+### Technical notes
 
-| Componente atual | Ação |
-|---|---|
-| `HeroSection` | manter visual, encurtar copy, trocar CTAs |
-| `ImpactNumbers` | reformatar em faixa horizontal editorial, integrar `award_stats`, fallback elegante para 0 |
-| `PillarCards` | refazer como split image+lista numerada |
-| `RecognitionsSection` | fundir em faixa fina sob hero |
-| `HeroBanner` | remover da home (passa a viver em `/premio`) |
-| `VideoSection` | manter, integrar a seção 5 |
-| `ProjectsSection` | virar carrossel 1+2 editorial |
-| `PartnersSection` | agrupar por categoria CMS |
-| `TestimonialsSection` | pull quote editorial single-item com paginação |
-| `CTASection` | virar split 60/40 com 3 públicos |
-| `LanguageControls` | mover para Navigation, remover flutuante |
-| `Navigation` | reduzir para 7 itens, melhorar mobile (sheet lateral) |
-| `Footer` | adicionar newsletter, seletor idioma, CNPJ |
-
-## 10. Fases de entrega sugeridas
-
-1. **Fase 1 (esta)** — homepage reorganizada + hero copy + LanguageControls no header + componentes editoriais novos + fallback de métricas. Sem migrations.
-2. **Fase 2** — migrations: `honored_people`, `partners`, `press_kit_assets`, `home_sections`, `pages_seo` + colunas `*_en`.
-3. **Fase 3** — novas rotas (`/memoria`, `/imprensa`, `/parcerias`, `/premio/edicoes/:ano`) + react-helmet-async + JSON-LD + sitemap dinâmico + tracking.
-
-## Decisões que preciso confirmar antes de implementar
-
-1. Confirmar fonte editorial para títulos (sugestão: **Playfair Display** ou **DM Serif Display**).
-2. Confirmar copy curto do hero (sugestão PT): *"Memória viva do carnaval brasileiro."* + *"Há 20 anos registrando, premiando e formando quem faz o maior espetáculo da Terra."*
-3. Posso começar pela **Fase 1** (apenas frontend, sem migrations) e depois abrir migrations em PRs separadas?
+- Migration is additive + RLS-tightening; existing pages keep working because old rows are backfilled to `published`
+- CSV import uses `supabase.upsert(..., { onConflict: 'slug' })` (or `name` where slug absent)
+- Tracking schema is enforced via TypeScript only — no runtime breakage in prod
+- SEO audit is a script + admin dashboard, not a build blocker
