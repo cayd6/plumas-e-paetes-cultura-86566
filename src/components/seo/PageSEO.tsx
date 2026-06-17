@@ -30,6 +30,9 @@ const PageSEO = ({
   const fullTitle = title.includes("Plumas") ? title : `${title} | Instituto Plumas & Paetês Cultural`;
   const ldArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
+  const ogLocale = lang === "en" ? "en_US" : "pt_BR";
+  const ogLocaleAlt = lang === "en" ? "pt_BR" : "en_US";
+
   return (
     <Helmet htmlAttributes={{ lang }}>
       <title>{fullTitle}</title>
@@ -44,11 +47,14 @@ const PageSEO = ({
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Instituto Plumas & Paetês Cultural" />
+      <meta property="og:locale" content={ogLocale} />
+      <meta property="og:locale:alternate" content={ogLocaleAlt} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:url" content={url} />
 
       {ldArray.map((ld, i) => (
         <script key={i} type="application/ld+json">
