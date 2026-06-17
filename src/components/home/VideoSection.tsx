@@ -68,7 +68,7 @@ const VideoSection = () => {
             ) : (
               <iframe
                 src={`https://www.youtube.com/embed/${videoId}?start=${startTime}&autoplay=1`}
-                title={language === 'pt' ? 'Instituto Plumas e Paetês Cultural - Nossa História' : 'Instituto Plumas e Paetês Cultural - Our Story'}
+                title={language === 'pt' ? 'Instituto Plumas & Paetês Cultural - Nossa História' : 'Instituto Plumas & Paetês Cultural - Our Story'}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full aspect-video"
