@@ -48,7 +48,7 @@ const SEO = ({
     updateMetaTag('og:image', `${siteUrl}${image}`, true);
     updateMetaTag('og:url', fullUrl, true);
     updateMetaTag('og:type', type, true);
-    updateMetaTag('og:site_name', 'Instituto Plumas e Paetês Cultural', true);
+    updateMetaTag('og:site_name', 'Instituto Plumas & Paetês Cultural', true);
 
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image', true);
