@@ -15,10 +15,11 @@ const ProducaoAdmin = lazy(() => import('@/features/production').then(m => ({ de
 const BlogAdmin = lazy(() => import('@/features/blog').then(m => ({ default: m.BlogAdminPage })));
 const RevistaAdmin = lazy(() => import('@/features/magazine').then(m => ({ default: m.MagazineAdminPage })));
 const AdminSettings = lazy(() => import('./Settings'));
+const MemoryAssetsAdmin = lazy(() => import('./MemoryAssetsAdmin'));
 
 type SectionKey =
   | 'fotos' | 'videos' | 'banners' | 'premio' | 'sobre'
-  | 'producao' | 'blog' | 'revista' | 'configuracoes';
+  | 'producao' | 'blog' | 'revista' | 'memoria' | 'configuracoes';
 
 const sections: { key: SectionKey; label: string; icon: typeof Images; Component: React.LazyExoticComponent<React.ComponentType> }[] = [
   { key: 'fotos', label: 'Fotos', icon: Images, Component: AdminGaleria },
@@ -29,6 +30,7 @@ const sections: { key: SectionKey; label: string; icon: typeof Images; Component
   { key: 'producao', label: 'Produção', icon: Briefcase, Component: ProducaoAdmin },
   { key: 'blog', label: 'Blog', icon: FileText, Component: BlogAdmin },
   { key: 'revista', label: 'Revista', icon: BookOpen, Component: RevistaAdmin },
+  { key: 'memoria', label: 'Memória & Imprensa', icon: Archive, Component: MemoryAssetsAdmin },
   { key: 'configuracoes', label: 'Configurações', icon: Settings, Component: AdminSettings },
 ];
 
