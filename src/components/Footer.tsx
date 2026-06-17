@@ -16,7 +16,7 @@ const Footer = () => {
             <div className="flex items-center gap-3 mb-6">
               <img 
                 src="/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png"
-                alt="Instituto Plumas e Paetês Cultural"
+                alt="Instituto Plumas & Paetês Cultural"
                 className="h-12 w-auto"
               />
             </div>
@@ -53,10 +53,18 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="/edicoes" 
+                  to="/premio" 
                   className="text-gray-400 hover:text-carnival-gold transition-colors flex items-center gap-2"
                 >
                   {translate('premioPlumas')}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/edicoes" 
+                  className="text-gray-400 hover:text-carnival-gold transition-colors flex items-center gap-2"
+                >
+                  {translate('edicoes') !== 'edicoes' ? translate('edicoes') : 'Edições'}
                 </Link>
               </li>
               <li>

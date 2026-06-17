@@ -11,8 +11,8 @@ const AwardFeatureSection = () => {
   const { language } = useLanguage();
 
   const honored = [
-    'Maria Augusta', 'Joãosinho Trinta', 'Lana Rhodes', 'Dona Ivone Lara',
-    'Monarco', 'Elza Soares', 'Chiquinha Gonzaga', 'Donga',
+    'Maria Augusta', 'Joãosinho Trinta', 'Dona Ivone Lara', 'Monarco',
+    'Elza Soares', 'Chiquinha Gonzaga', 'Donga', 'Beth Carvalho',
   ];
 
   return (

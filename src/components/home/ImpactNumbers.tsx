@@ -14,30 +14,46 @@ interface StatRow {
 
 const AnimatedNumber = ({ target }: { target: number }) => {
   const [count, setCount] = useState(0);
-  const [done, setDone] = useState(false);
+  const startedRef = useRef(false);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !done) {
-          setDone(true);
-          const duration = 1600;
-          const steps = 50;
-          const inc = target / steps;
-          let cur = 0;
-          const t = setInterval(() => {
-            cur += inc;
-            if (cur >= target) { setCount(target); clearInterval(t); }
-            else setCount(Math.floor(cur));
-          }, duration / steps);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [target, done]);
+    if (!target || target <= 0) return;
+    const start = () => {
+      if (startedRef.current) return;
+      startedRef.current = true;
+      const duration = 1600;
+      const steps = 50;
+      const inc = target / steps;
+      let cur = 0;
+      const t = setInterval(() => {
+        cur += inc;
+        if (cur >= target) { setCount(target); clearInterval(t); }
+        else setCount(Math.floor(cur));
+      }, duration / steps);
+    };
+
+    // Safety fallback: if the observer never fires (off-screen,
+    // reduced-motion, or unsupported), reveal the real value.
+    const fallback = window.setTimeout(() => {
+      if (!startedRef.current) {
+        startedRef.current = true;
+        setCount(target);
+      }
+    }, 2500);
+
+    let obs: IntersectionObserver | null = null;
+    if (typeof IntersectionObserver !== "undefined" && ref.current) {
+      obs = new IntersectionObserver(
+        (entries) => { if (entries.some((e) => e.isIntersecting)) start(); },
+        { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+      );
+      obs.observe(ref.current);
+    } else {
+      start();
+    }
+    return () => { obs?.disconnect(); clearTimeout(fallback); };
+  }, [target]);
 
   return <span ref={ref} className="tabular-nums">{count.toLocaleString('pt-BR')}</span>;
 };
@@ -91,13 +107,16 @@ const ImpactNumbers = () => {
           >
             {visible.map((stat) => (
               <div key={stat.id} className="py-8 px-4 first:pl-0">
+                <dt className="sr-only">
+                  {language === 'pt' ? stat.label_pt : stat.label_en}
+                </dt>
                 <dd>
                   <div className="font-serif text-4xl md:text-5xl text-secondary mb-3 font-semibold">
                     <AnimatedNumber target={stat.value} />
                   </div>
-                  <dt className="text-xs uppercase tracking-wider text-primary-foreground/85 leading-snug">
+                  <p aria-hidden="true" className="text-xs uppercase tracking-wider text-primary-foreground/85 leading-snug">
                     {language === 'pt' ? stat.label_pt : stat.label_en}
-                  </dt>
+                  </p>
                 </dd>
               </div>
             ))}
