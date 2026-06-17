@@ -10,7 +10,7 @@ interface SEOProps {
 }
 
 const SEO = ({ 
-  title = "Instituto Plumas e Paetês Cultural",
+  title = "Instituto Plumas & Paetês Cultural",
   description = "Transformando a sociedade brasileira através da economia criativa, valorizando artistas e promovendo a cultura popular desde 2005",
   image = "/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png",
   type = "website",
