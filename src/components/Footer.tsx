@@ -192,7 +192,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                &copy; 2025 Instituto Plumas e Paetês Cultural. {translate('direitosReservados')}
+                &copy; {currentYear} Instituto Plumas & Paetês Cultural. {translate('direitosReservados')}
               </p>
               <p className="text-gray-500 text-xs mt-1">
                 Desenvolvido por Machado Dev
