@@ -69,7 +69,7 @@ function AdminPanelInner() {
       )}>
         <div className="p-4 border-b">
           <h2 className="font-bold text-lg">Painel Admin</h2>
-          <p className="text-sm text-muted-foreground">Instituto Plumas e Paetês</p>
+          <p className="text-sm text-muted-foreground">Instituto Plumas &amp; Paetês</p>
         </div>
 
         <nav className="flex-1 p-4 space-y-1">
