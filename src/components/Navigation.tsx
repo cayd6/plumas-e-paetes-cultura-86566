@@ -51,7 +51,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-3 group min-w-0">
             <img
               src="/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png"
-              alt="Instituto Plumas e Paetês Cultural"
+              alt="Instituto Plumas &amp; Paetês Cultural"
               className="h-9 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
             <span className="hidden sm:inline font-serif font-semibold text-sm lg:text-base text-foreground truncate group-hover:text-carnival-purple transition-colors">

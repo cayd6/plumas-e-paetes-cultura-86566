@@ -15,7 +15,7 @@ const VideoSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            {language === 'pt' ? '20 anos de Plumas & Paetês Culturais' : '20 years of Plumas & Paetês Culturais'}
+            {language === 'pt' ? '20 anos de Plumas & Paetês Cultural' : '20 years of Plumas & Paetês Cultural'}
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mb-4">
             {language === 'pt' 
@@ -37,7 +37,7 @@ const VideoSection = () => {
                 <div className="relative aspect-video">
                   <img
                     src={thumbnailUrl}
-                    alt={language === 'pt' ? 'Vídeo institucional do Instituto Plumas e Paetês Cultural' : 'Institutional video of Instituto Plumas e Paetês Cultural'}
+                    alt={language === 'pt' ? 'Vídeo institucional do Instituto Plumas & Paetês Cultural' : 'Institutional video of Instituto Plumas & Paetês Cultural'}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -68,7 +68,7 @@ const VideoSection = () => {
             ) : (
               <iframe
                 src={`https://www.youtube.com/embed/${videoId}?start=${startTime}&autoplay=1`}
-                title={language === 'pt' ? 'Instituto Plumas e Paetês Cultural - Nossa História' : 'Instituto Plumas e Paetês Cultural - Our Story'}
+                title={language === 'pt' ? 'Instituto Plumas & Paetês Cultural - Nossa História' : 'Instituto Plumas & Paetês Cultural - Our Story'}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full aspect-video"

@@ -1,4 +1,4 @@
-# Instituto Plumas e Paetês Cultural
+# Instituto Plumas & Paetês Cultural
 
 User-agent: *
 Allow: /
