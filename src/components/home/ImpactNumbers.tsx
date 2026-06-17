@@ -85,14 +85,17 @@ const ImpactNumbers = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20">
-          <dl className={`grid grid-cols-2 md:grid-cols-3 ${visible.length >= 6 ? 'lg:grid-cols-6' : visible.length === 5 ? 'lg:grid-cols-5' : visible.length === 4 ? 'lg:grid-cols-4' : ''} divide-x divide-primary-foreground/15`}>
+          <dl
+            aria-live="polite"
+            className={`grid grid-cols-2 md:grid-cols-3 ${visible.length >= 6 ? 'lg:grid-cols-6' : visible.length === 5 ? 'lg:grid-cols-5' : visible.length === 4 ? 'lg:grid-cols-4' : ''} divide-x divide-primary-foreground/15`}
+          >
             {visible.map((stat) => (
               <div key={stat.id} className="py-8 px-4 first:pl-0">
                 <dd>
                   <div className="font-serif text-4xl md:text-5xl text-secondary mb-3 font-semibold">
                     <AnimatedNumber target={stat.value} />
                   </div>
-                  <dt className="text-sm text-primary-foreground/85 leading-snug">
+                  <dt className="text-xs uppercase tracking-wider text-primary-foreground/85 leading-snug">
                     {language === 'pt' ? stat.label_pt : stat.label_en}
                   </dt>
                 </dd>
