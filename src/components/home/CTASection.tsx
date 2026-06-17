@@ -1,5 +1,6 @@
-import { ArrowRight, Heart, Building, Users, Music } from "lucide-react";
+import { ArrowRight, Building, Users, Music, Newspaper } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const CTASection = () => {
@@ -8,81 +9,101 @@ const CTASection = () => {
   const audiences = [
     {
       icon: <Building className="h-5 w-5" />,
-      label: language === 'pt' ? 'Para empresas' : 'For companies',
-      desc: language === 'pt'
-        ? 'Desenvolvemos projetos culturais, ações de relacionamento, conteúdos e experiências compatíveis à sua marca e ao território do carnaval.'
-        : 'We develop cultural projects, engagement actions, content and experiences aligned with your brand and the carnival territory.',
+      labelPt: 'Empresas e patrocinadores',
+      labelEn: 'Companies and sponsors',
+      ctaPt: 'Proposta de patrocínio',
+      ctaEn: 'Sponsorship proposal',
+      href: '/contato',
     },
     {
       icon: <Users className="h-5 w-5" />,
-      label: language === 'pt' ? 'Para o poder público' : 'For public agencies',
-      desc: language === 'pt'
-        ? 'Atuamos em parceria com prefeituras, secretarias, instituições de cultura e educação para fortalecer a cultura popular e a economia criativa.'
-        : 'We partner with city halls, secretariats, culture and education institutions to strengthen popular culture and the creative economy.',
+      labelPt: 'Prefeituras e instituições',
+      labelEn: 'City halls and institutions',
+      ctaPt: 'Levar para minha cidade',
+      ctaEn: 'Bring to my city',
+      href: '/contato',
     },
     {
       icon: <Music className="h-5 w-5" />,
-      label: language === 'pt' ? 'Para escolas de samba' : 'For samba schools',
-      desc: language === 'pt'
-        ? 'Criamos pontes, projetos e ações que fortalecem os fazedores, preservam memórias e ampliam oportunidades.'
-        : 'We build bridges, projects and actions that strengthen makers, preserve memories and expand opportunities.',
+      labelPt: 'Escolas de samba',
+      labelEn: 'Samba schools',
+      ctaPt: 'Falar com o Instituto',
+      ctaEn: 'Talk to the Institute',
+      href: '/contato',
+    },
+    {
+      icon: <Newspaper className="h-5 w-5" />,
+      labelPt: 'Imprensa e mídia',
+      labelEn: 'Press and media',
+      ctaPt: 'Media kit',
+      ctaEn: 'Press kit',
+      href: '/contato',
     },
   ];
 
   return (
-    <section className="py-16 md:py-20 carnival-gradient">
+    <section className="py-20 md:py-28 carnival-gradient text-primary-foreground">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <Heart className="h-12 w-12 mx-auto mb-6 text-primary-foreground/80" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary-foreground">
-            {language === 'pt' ? 'Vamos construir juntos o futuro do carnaval' : 'Let\'s build the future of carnival together'}
-          </h2>
-          <p className="text-lg md:text-xl mb-10 text-primary-foreground/90 max-w-3xl mx-auto">
-            {language === 'pt' 
-              ? 'Seja apoiando projetos, levando nossas iniciativas para sua cidade, contratando espetáculos ou desenvolvendo ações em parceria, o Instituto Plumas & Paetês Cultural está pronto para dialogar com você.' 
-              : 'Whether supporting projects, bringing our initiatives to your city, hiring shows or developing joint actions, Instituto Plumas & Paetês Cultural is ready to talk with you.'}
-          </p>
-          
-          {/* Audiences with descriptions */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 text-left">
-            {audiences.map((audience, index) => (
-              <div 
-                key={index}
-                className="p-5 bg-primary-foreground/10 backdrop-blur-sm rounded-2xl border border-primary-foreground/10"
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* 60% — manifesto */}
+          <div className="lg:col-span-7">
+            <p className="uppercase tracking-[0.25em] text-xs text-secondary mb-4 font-medium">
+              {language === 'pt' ? '— Parcerias' : '— Partnerships'}
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-[1.05] tracking-tight">
+              {language === 'pt'
+                ? 'Construa com o Instituto a próxima década do carnaval.'
+                : 'Build the next decade of carnival with the Institute.'}
+            </h2>
+            <p className="text-lg md:text-xl text-primary-foreground/85 leading-relaxed mb-8 max-w-2xl">
+              {language === 'pt'
+                ? 'Patrocínio, projetos culturais para cidades, produção de espetáculos, programas formativos e propostas editoriais — estamos prontos para co-criar.'
+                : 'Sponsorship, cultural projects for cities, show production, training programs and editorial proposals — we are ready to co-create.'}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button asChild size="lg" className="bg-background text-primary hover:bg-background/90 font-semibold rounded-full px-7">
+                <Link to="/contato">
+                  {language === 'pt' ? 'Iniciar uma parceria' : 'Start a partnership'}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-2 border-primary-foreground/30 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 font-semibold rounded-full px-7"
               >
-                <div className="flex items-center gap-2 mb-2 text-primary-foreground font-semibold">
-                  {audience.icon}
-                  <span>{audience.label}</span>
-                </div>
-                <p className="text-sm text-primary-foreground/85 leading-relaxed">
-                  {audience.desc}
-                </p>
-              </div>
+                <a href="https://wa.me/5521989392920" target="_blank" rel="noopener noreferrer">
+                  {language === 'pt' ? 'WhatsApp direto' : 'Direct WhatsApp'}
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* 40% — públicos segmentados */}
+          <ul className="lg:col-span-5 divide-y divide-primary-foreground/20 border-y border-primary-foreground/20">
+            {audiences.map((a, i) => (
+              <li key={i}>
+                <Link
+                  to={a.href}
+                  className="flex items-center gap-4 py-5 group hover:pl-2 transition-all"
+                >
+                  <span className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-secondary shrink-0">
+                    {a.icon}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-primary-foreground leading-tight">
+                      {language === 'pt' ? a.labelPt : a.labelEn}
+                    </p>
+                    <p className="text-sm text-primary-foreground/70">
+                      {language === 'pt' ? a.ctaPt : a.ctaEn}
+                    </p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 text-primary-foreground/60 group-hover:text-secondary group-hover:translate-x-1 transition-all" />
+                </Link>
+              </li>
             ))}
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-background text-primary hover:bg-background/90 font-bold text-lg px-8 py-6 rounded-full shadow-2xl hover:scale-105 transition-all duration-300"
-            >
-              <a href="/contato">
-                {language === 'pt' ? 'Falar com o Instituto' : 'Talk to the Institute'}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-2 border-primary-foreground/30 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 font-semibold text-lg px-8 py-6 rounded-full transition-all duration-300"
-            >
-              <a href="https://wa.me/5521989392920" target="_blank" rel="noopener noreferrer">
-                {language === 'pt' ? 'Chamar no WhatsApp' : 'Message on WhatsApp'}
-              </a>
-            </Button>
-          </div>
+          </ul>
         </div>
       </div>
     </section>

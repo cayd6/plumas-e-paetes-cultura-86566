@@ -1,6 +1,6 @@
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Card, CardContent } from "@/components/ui/card";
-import { Quote } from "lucide-react";
 
 interface Testimonial {
   quotePt: string;
@@ -12,65 +12,79 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quotePt: "O Prêmio Plumas e Paetês é fundamental para reconhecer o trabalho dos artistas anônimos que fazem o carnaval acontecer.",
-    quoteEn: "The Plumas e Paetês Award is fundamental to recognizing the work of anonymous artists who make carnival happen.",
+    quotePt: "O Prêmio Plumas & Paetês é fundamental para reconhecer o trabalho dos artistas anônimos que fazem o carnaval acontecer.",
+    quoteEn: "The Plumas & Paetês Award is fundamental to recognizing the work of anonymous artists who make carnival happen.",
     name: "Maria Augusta",
-    rolePt: "Carnavalesca Homenageada",
-    roleEn: "Honored Carnival Designer",
+    rolePt: "Carnavalesca homenageada",
+    roleEn: "Honored carnival designer",
   },
   {
-    quotePt: "O Instituto transformou minha vida profissional, me dando visibilidade e oportunidades únicas.",
-    quoteEn: "The Institute transformed my professional life, giving me visibility and unique opportunities.",
+    quotePt: "O Instituto transformou minha vida profissional, me dando visibilidade e oportunidades únicas dentro da economia criativa.",
+    quoteEn: "The Institute transformed my professional life, giving me visibility and unique opportunities within the creative economy.",
     name: "João Silva",
-    rolePt: "Artesão Premiado",
-    roleEn: "Award-winning Artisan",
+    rolePt: "Artesão premiado",
+    roleEn: "Award-winning artisan",
   },
   {
-    quotePt: "As oficinas de capacitação são essenciais para a formação de novos profissionais da economia criativa.",
-    quoteEn: "The training workshops are essential for forming new professionals in the creative economy.",
+    quotePt: "As oficinas de capacitação são essenciais para a formação de novos profissionais da economia criativa do carnaval.",
+    quoteEn: "The training workshops are essential for forming new professionals in the carnival creative economy.",
     name: "Ana Santos",
-    rolePt: "Produtora Cultural",
-    roleEn: "Cultural Producer",
+    rolePt: "Produtora cultural",
+    roleEn: "Cultural producer",
   },
 ];
 
 const TestimonialsSection = () => {
   const { language } = useLanguage();
+  const [index, setIndex] = useState(0);
+  const t = testimonials[index];
+
+  const go = (dir: 1 | -1) =>
+    setIndex((i) => (i + dir + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-16 md:py-20 bg-muted/30">
+    <section className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            {language === 'pt' ? 'Vozes do carnaval sobre o Instituto' : 'Carnival voices about the Institute'}
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            {language === 'pt' 
-              ? 'Quem vive o carnaval nos bastidores sabe o impacto que o reconhecimento e a memória têm na vida de cada profissional. Veja o que alguns parceiros e fazedores falam sobre o nosso trabalho.'
-              : 'Those who experience carnival behind the scenes know the impact recognition and memory have on every professional\'s life.'}
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <Card 
-              key={index}
-              className="bg-card border-border/50 hover:shadow-lg transition-all duration-300"
+        <p className="uppercase tracking-[0.25em] text-xs text-primary mb-4 font-medium text-center">
+          {language === 'pt' ? '— Vozes do carnaval' : '— Carnival voices'}
+        </p>
+
+        <div className="max-w-4xl mx-auto text-center">
+          <Quote className="h-12 w-12 mx-auto mb-8 text-primary/30" aria-hidden="true" />
+          <blockquote
+            key={index}
+            className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground leading-snug mb-10 animate-fade-in"
+          >
+            &ldquo;{language === 'pt' ? t.quotePt : t.quoteEn}&rdquo;
+          </blockquote>
+          <div className="mb-10">
+            <p className="font-semibold text-foreground text-lg">{t.name}</p>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider">
+              {language === 'pt' ? t.rolePt : t.roleEn}
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label={language === 'pt' ? 'Depoimento anterior' : 'Previous testimonial'}
+              className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
             >
-              <CardContent className="pt-6">
-                <Quote className="h-8 w-8 text-primary/30 mb-4" />
-                <blockquote className="text-muted-foreground leading-relaxed mb-6 italic">
-                  "{language === 'pt' ? testimonial.quotePt : testimonial.quoteEn}"
-                </blockquote>
-                <div className="border-t border-border pt-4">
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {language === 'pt' ? testimonial.rolePt : testimonial.roleEn}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <span className="text-sm tabular-nums text-muted-foreground">
+              {String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+            </span>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label={language === 'pt' ? 'Próximo depoimento' : 'Next testimonial'}
+              className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
