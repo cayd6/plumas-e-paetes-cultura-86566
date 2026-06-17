@@ -16,27 +16,36 @@ export type Database = {
     Tables: {
       about_content: {
         Row: {
+          content_en: string | null
           created_at: string
           id: string
           key: string
+          subtitle_en: string | null
+          title_en: string | null
           type: string
           updated_at: string
           value_en: string
           value_pt: string
         }
         Insert: {
+          content_en?: string | null
           created_at?: string
           id?: string
           key: string
+          subtitle_en?: string | null
+          title_en?: string | null
           type?: string
           updated_at?: string
           value_en?: string
           value_pt?: string
         }
         Update: {
+          content_en?: string | null
           created_at?: string
           id?: string
           key?: string
+          subtitle_en?: string | null
+          title_en?: string | null
           type?: string
           updated_at?: string
           value_en?: string
@@ -46,30 +55,36 @@ export type Database = {
       }
       award_curiosities: {
         Row: {
+          content_en: string | null
           created_at: string
           display_order: number
           icon: string
           id: string
           text_en: string
           text_pt: string
+          title_en: string | null
           updated_at: string
         }
         Insert: {
+          content_en?: string | null
           created_at?: string
           display_order?: number
           icon?: string
           id?: string
           text_en: string
           text_pt: string
+          title_en?: string | null
           updated_at?: string
         }
         Update: {
+          content_en?: string | null
           created_at?: string
           display_order?: number
           icon?: string
           id?: string
           text_en?: string
           text_pt?: string
+          title_en?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -164,6 +179,7 @@ export type Database = {
       blog_categories: {
         Row: {
           created_at: string
+          description_en: string | null
           id: string
           name_en: string
           name_pt: string
@@ -171,6 +187,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          description_en?: string | null
           id?: string
           name_en: string
           name_pt: string
@@ -178,6 +195,7 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          description_en?: string | null
           id?: string
           name_en?: string
           name_pt?: string
@@ -331,6 +349,63 @@ export type Database = {
         }
         Relationships: []
       }
+      honored_people: {
+        Row: {
+          active: boolean
+          category: string
+          city: string | null
+          created_at: string
+          description: string | null
+          description_en: string | null
+          display_order: number
+          edition_number: number | null
+          featured: boolean
+          id: string
+          image_url: string | null
+          name: string
+          role: string | null
+          role_en: string | null
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          active?: boolean
+          category: string
+          city?: string | null
+          created_at?: string
+          description?: string | null
+          description_en?: string | null
+          display_order?: number
+          edition_number?: number | null
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          name: string
+          role?: string | null
+          role_en?: string | null
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          active?: boolean
+          category?: string
+          city?: string | null
+          created_at?: string
+          description?: string | null
+          description_en?: string | null
+          display_order?: number
+          edition_number?: number | null
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          name?: string
+          role?: string | null
+          role_en?: string | null
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
       magazine_editions: {
         Row: {
           cover_url: string | null
@@ -373,6 +448,48 @@ export type Database = {
         }
         Relationships: []
       }
+      partners: {
+        Row: {
+          active: boolean
+          created_at: string
+          description: string | null
+          description_en: string | null
+          display_order: number
+          id: string
+          logo_url: string | null
+          name: string
+          type: string
+          updated_at: string
+          website_url: string | null
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          description?: string | null
+          description_en?: string | null
+          display_order?: number
+          id?: string
+          logo_url?: string | null
+          name: string
+          type: string
+          updated_at?: string
+          website_url?: string | null
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          description?: string | null
+          description_en?: string | null
+          display_order?: number
+          id?: string
+          logo_url?: string | null
+          name?: string
+          type?: string
+          updated_at?: string
+          website_url?: string | null
+        }
+        Relationships: []
+      }
       portfolio_projects: {
         Row: {
           created_at: string
@@ -409,6 +526,51 @@ export type Database = {
           title_pt?: string
           updated_at?: string
           year?: string
+        }
+        Relationships: []
+      }
+      press_kit_assets: {
+        Row: {
+          active: boolean
+          created_at: string
+          description: string | null
+          description_en: string | null
+          display_order: number
+          file_url: string | null
+          id: string
+          thumbnail_url: string | null
+          title: string
+          title_en: string | null
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          description?: string | null
+          description_en?: string | null
+          display_order?: number
+          file_url?: string | null
+          id?: string
+          thumbnail_url?: string | null
+          title: string
+          title_en?: string | null
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          description?: string | null
+          description_en?: string | null
+          display_order?: number
+          file_url?: string | null
+          id?: string
+          thumbnail_url?: string | null
+          title?: string
+          title_en?: string | null
+          type?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -466,6 +628,7 @@ export type Database = {
           is_active: boolean
           link: string | null
           storage_path: string | null
+          subtitle_en: string | null
           title_en: string
           title_pt: string
           updated_at: string
@@ -481,6 +644,7 @@ export type Database = {
           is_active?: boolean
           link?: string | null
           storage_path?: string | null
+          subtitle_en?: string | null
           title_en?: string
           title_pt?: string
           updated_at?: string
@@ -496,6 +660,7 @@ export type Database = {
           is_active?: boolean
           link?: string | null
           storage_path?: string | null
+          subtitle_en?: string | null
           title_en?: string
           title_pt?: string
           updated_at?: string
