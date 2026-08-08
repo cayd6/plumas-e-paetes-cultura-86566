@@ -32,6 +32,27 @@ const testimonials: Testimonial[] = [
     rolePt: "Produtora cultural",
     roleEn: "Cultural producer",
   },
+  {
+    quotePt: "Pela primeira vez, alguém olhou para quem constrói o desfile por trás das alegorias e disse: esse trabalho importa.",
+    quoteEn: "For the first time, someone looked at those who build the parade behind the floats and said: this work matters.",
+    name: "Roberto Pereira",
+    rolePt: "Aderecista homenageado",
+    roleEn: "Honored prop maker",
+  },
+  {
+    quotePt: "O diploma do Prêmio abriu portas. Hoje, meu ateliê atende escolas que antes eu nem sonhava.",
+    quoteEn: "The Award diploma opened doors. Today, my studio serves samba schools I never even dreamed of.",
+    name: "Luciana Rodrigues",
+    rolePt: "Costureira premiada",
+    roleEn: "Award-winning seamstress",
+  },
+  {
+    quotePt: "Ser homenageado pelo Plumas é receber o reconhecimento de uma vida inteira dedicada ao samba e à bateria.",
+    quoteEn: "Being honored by Plumas is receiving recognition for a lifetime devoted to samba and the drum section.",
+    name: "Carlos Gomes",
+    rolePt: "Mestre de bateria homenageado",
+    roleEn: "Honored drum master",
+  },
 ];
 
 const TestimonialsSection = () => {

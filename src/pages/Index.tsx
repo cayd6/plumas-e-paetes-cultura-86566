@@ -14,6 +14,7 @@ import AwardFeatureSection from "@/components/home/AwardFeatureSection";
 import MagazineDocSection from "@/components/home/MagazineDocSection";
 import ProjectsSection from "@/components/home/ProjectsSection";
 import PartnersSection from "@/components/home/PartnersSection";
+import ImpactLegacySection from "@/components/home/ImpactLegacySection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import CTASection from "@/components/home/CTASection";
 
@@ -38,6 +39,7 @@ const Index = () => {
         <MagazineDocSection />
         <ProjectsSection />
         <PartnersSection />
+        <ImpactLegacySection />
         <TestimonialsSection />
         <CTASection />
       </main>

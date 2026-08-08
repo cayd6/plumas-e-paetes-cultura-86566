@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Play, BookOpen } from "lucide-react";
+import { ArrowRight, Play, BookOpen, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -14,6 +14,9 @@ const MagazineDocSection = () => {
   const videoId = "IwJrey-jnjI";
   const startTime = 4923;
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
+  // TODO: substituir pelo link externo das revistas (Drive/OneDrive) quando disponível
+  const revistaPdfUrl = "";
 
   const archive = [2023, 2022, 2021];
 
@@ -62,13 +65,23 @@ const MagazineDocSection = () => {
                 ? 'Publicação anual desde 2010 — circulação gratuita, conteúdo editorial sobre os fazedores do carnaval brasileiro.'
                 : 'Annual publication since 2010 — free circulation, editorial content on the makers of Brazilian carnival.'}
             </p>
-            <Button asChild variant="outline" className="rounded-full">
-              <Link to="/revista">
-                <BookOpen className="mr-2 h-4 w-4" />
-                {language === 'pt' ? 'Biblioteca digital' : 'Digital library'}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild variant="outline" className="rounded-full">
+                <Link to="/revista">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  {language === 'pt' ? 'Biblioteca digital' : 'Digital library'}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              {revistaPdfUrl && (
+                <Button asChild className="rounded-full">
+                  <a href={revistaPdfUrl} target="_blank" rel="noopener noreferrer">
+                    <Download className="mr-2 h-4 w-4" />
+                    {language === 'pt' ? 'Baixar Revista em PDF' : 'Download magazine PDF'}
+                  </a>
+                </Button>
+              )}
+            </div>
           </div>
 
           {/* Documentário */}
