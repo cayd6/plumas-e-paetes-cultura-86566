@@ -64,7 +64,7 @@ export function SettingsForm() {
 
   const groupedSettings = {
     youtube: settings?.filter(s => s.key.startsWith('youtube')) || [],
-    social: settings?.filter(s => ['instagram_url', 'facebook_url'].includes(s.key)) || [],
+    social: settings?.filter(s => ['instagram_url', 'facebook_url', 'instagram_followers'].includes(s.key)) || [],
     contact: settings?.filter(s => ['whatsapp_number', 'contact_email', 'address'].includes(s.key)) || [],
   };
 

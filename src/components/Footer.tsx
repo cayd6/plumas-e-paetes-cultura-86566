@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 
 const Footer = () => {
   const { translate, language } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const { data: instagramFollowers } = useSiteSetting('instagram_followers');
+  const followers = instagramFollowers?.value || '20.3k';
 
   return (
     <footer className="bg-gray-950 text-white">
@@ -187,7 +190,7 @@ const Footer = () => {
             </div>
             <div className="bg-white/5 rounded-lg p-4">
               <p className="text-center text-sm text-gray-400">
-                <strong className="text-carnival-gold">19.6k</strong> {translate('seguidores')}
+                <strong className="text-carnival-gold">{followers}</strong> {translate('seguidores')}
               </p>
             </div>
           </div>
