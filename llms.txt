@@ -1,0 +1,17 @@
+# Instituto Plumas & Paetês Cultural
+
+> Instituto cultural com mais de 20 anos valorizando artistas e promovendo a cultura popular brasileira através do carnaval, oficinas e projetos sociais no Rio de Janeiro.
+
+## Pages
+
+- [Início](/): Apresentação do Instituto, projetos e reconhecimentos.
+- [Sobre](/sobre): Missão, visão, valores e história do Instituto.
+- [Prêmio Plumas & Paetês Cultural](/premio): Edições do prêmio que valoriza os profissionais do carnaval.
+- [Edições](/edicoes): Histórico completo das edições do prêmio.
+- [Revista](/revista): Revista Plumas & Paetês Cultural e edições anteriores.
+- [Produção](/producao): Produção de espetáculos musicais e eventos culturais.
+- [Galeria](/galeria): Fotos e vídeos de eventos e projetos.
+- [Blog](/blog): Artigos e conteúdos sobre cultura e carnaval.
+- [Eventos](/eventos): Próximos eventos e edições anteriores.
+- [Notícias](/noticias): Últimas notícias do Instituto.
+- [Contato](/contato): Fale conosco, endereço e redes sociais.
