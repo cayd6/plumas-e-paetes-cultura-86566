@@ -20,7 +20,7 @@ interface AuditReport {
   routes: RouteAudit[];
 }
 
-const ORIGIN = "https://plumas-e-paetes-cultura-86566.lovable.app";
+const ORIGIN = "https://institutoplumasepaetescultural.org";
 
 export default function SeoQA() {
   const [report, setReport] = useState<AuditReport | null>(null);

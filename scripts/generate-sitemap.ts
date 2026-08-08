@@ -3,7 +3,7 @@
 import { writeFileSync } from "fs";
 import { resolve } from "path";
 
-const BASE_URL = "https://plumas-e-paetes-cultura-86566.lovable.app";
+const BASE_URL = "https://institutoplumasepaetescultural.org";
 
 interface SitemapEntry {
   path: string;

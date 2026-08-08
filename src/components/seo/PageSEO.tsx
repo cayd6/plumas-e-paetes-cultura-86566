@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
-const SITE_URL = "https://plumas-e-paetes-cultura-86566.lovable.app";
+const SITE_URL = "https://institutoplumasepaetescultural.org";
 const DEFAULT_IMAGE = `${SITE_URL}/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png`;
 
 interface PageSEOProps {

@@ -13,7 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trackCTA } from "@/lib/tracking";
 
-const SITE_URL = "https://plumas-e-paetes-cultura-86566.lovable.app";
+const SITE_URL = "https://institutoplumasepaetescultural.org";
 
 type ContentType = "all" | "people" | "editions";
 

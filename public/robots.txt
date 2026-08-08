@@ -8,4 +8,4 @@ Disallow: /admin
 Disallow: /admin/
 
 # Sitemap
-Sitemap: https://plumas-e-paetes-cultura-86566.lovable.app/sitemap.xml
+Sitemap: https://institutoplumasepaetescultural.org/sitemap.xml

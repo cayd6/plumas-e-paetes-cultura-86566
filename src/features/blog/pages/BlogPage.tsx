@@ -115,13 +115,13 @@ const Blog = () => {
         "@type": "Article",
         headline: p.title,
         description: p.excerpt,
-        image: `https://plumas-e-paetes-cultura-86566.lovable.app${p.image}`,
+        image: `https://institutoplumasepaetescultural.org${p.image}`,
         datePublished: p.date,
         author: { "@type": "Person", name: p.author },
         publisher: {
           "@type": "Organization",
           name: "Instituto Plumas e Paetês Cultural",
-          logo: { "@type": "ImageObject", url: "https://plumas-e-paetes-cultura-86566.lovable.app/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png" },
+          logo: { "@type": "ImageObject", url: "https://institutoplumasepaetescultural.org/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png" },
         },
       })),
     };

@@ -11,7 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trackCTA } from "@/lib/tracking";
 
-const SITE_URL = "https://plumas-e-paetes-cultura-86566.lovable.app";
+const SITE_URL = "https://institutoplumasepaetescultural.org";
 
 const groups = [
   { key: "institutional", icon: <Building2 className="h-5 w-5" />, pt: "Institucionais", en: "Institutional" },
