@@ -56,9 +56,19 @@ const HeroSection = () => {
               size="lg"
               className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold text-base md:text-lg px-7 md:px-8 py-5 md:py-6 rounded-full shadow-xl hover:scale-105 transition-all duration-300"
             >
-              <a href="/sobre">
-                {language === 'pt' ? 'Conheça o Instituto' : 'About the Institute'}
+              <a href="/premio">
+                {language === 'pt' ? 'Conheça o Prêmio' : 'Meet the Award'}
                 <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-2 border-primary-foreground/30 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 font-semibold text-base md:text-lg px-7 md:px-8 py-5 md:py-6 rounded-full backdrop-blur-sm transition-all duration-300"
+            >
+              <a href="/revista">
+                {language === 'pt' ? 'Leia a Revista Digital' : 'Read the Digital Magazine'}
               </a>
             </Button>
             <Button

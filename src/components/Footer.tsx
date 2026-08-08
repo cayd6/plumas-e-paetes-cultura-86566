@@ -3,7 +3,7 @@ import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
-  const { translate } = useLanguage();
+  const { translate, language } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -219,6 +219,59 @@ const Footer = () => {
               >
                 {translate('termsOfUse')}
               </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Seals / Recognition */}
+      <div className="border-t border-gray-800 bg-gray-900">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+            <p className="text-xs uppercase tracking-wider text-gray-500 lg:w-56 shrink-0">
+              {language === 'pt' ? 'Chancelas e reconhecimentos' : 'Seals and recognition'}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {[
+                {
+                  labelPt: 'Chancelado pela OEI',
+                  labelEn: 'Endorsed by OEI',
+                  detailPt: 'Organização dos Estados Ibero-americanos',
+                  detailEn: 'Organization of Ibero-American States',
+                  href: 'https://oei.int/',
+                },
+                {
+                  labelPt: 'Diploma Heloneida Studart',
+                  labelEn: 'Heloneida Studart Award',
+                  detailPt: 'Comissão de Cultura da ALERJ',
+                  detailEn: 'ALERJ Culture Commission',
+                  href: '/sobre',
+                },
+                {
+                  labelPt: '20 anos de carnaval',
+                  labelEn: '20 years of carnival',
+                  detailPt: 'Patrimônio imaterial preservado desde 2005',
+                  detailEn: 'Intangible heritage preserved since 2005',
+                  href: '/premio',
+                },
+              ].map((s) => (
+                <a
+                  key={s.labelPt}
+                  href={s.href}
+                  target={s.href.startsWith('http') ? '_blank' : undefined}
+                  rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="group inline-flex items-center gap-3 px-5 py-3 rounded-lg bg-white/5 border border-gray-700 hover:border-carnival-gold hover:bg-white/10 transition-all"
+                >
+                  <div>
+                    <p className="text-sm font-semibold text-white group-hover:text-carnival-gold transition-colors">
+                      {language === 'pt' ? s.labelPt : s.labelEn}
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      {language === 'pt' ? s.detailPt : s.detailEn}
+                    </p>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </div>

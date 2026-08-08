@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, LogOut, Shield, Globe, Minus, Plus } from 'lucide-react';
+import { Menu, X, LogOut, Shield, Globe, Minus, Plus, ChevronDown, Home } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
@@ -29,16 +29,43 @@ const Navigation = () => {
   const decFont = () => setFontSize((s) => Math.max(12, s - 2));
   const incFont = () => setFontSize((s) => Math.min(24, s + 2));
 
-  // 7 itens institucionais
-  const navItems: Array<{ to: string; labelKey: string; badge?: boolean }> = [
-    { to: '/sobre', labelKey: 'quemSomos' },
-    { to: '/premio', labelKey: 'premioPlumas', badge: true },
-    { to: '/revista', labelKey: 'revista' },
-    { to: '/producao', labelKey: 'producaoEventos' },
-    { to: '/galeria', labelKey: 'galeria' },
-    { to: '/blog', labelKey: 'blog' },
-    { to: '/contato', labelKey: 'contato' },
+  // Itens agrupados: dropdowns para reduzir o número de links na linha
+  interface NavGroupItem {
+    to: string;
+    labelKey: string;
+    badge?: boolean;
+  }
+  interface NavGroup {
+    key: string;
+    labelKey: string;
+    href?: string;
+    badge?: boolean;
+    children?: NavGroupItem[];
+  }
+
+  const navGroups: NavGroup[] = [
+    {
+      key: 'institucional',
+      labelKey: 'institucional',
+      children: [
+        { to: '/sobre', labelKey: 'quemSomos' },
+        { to: '/premio', labelKey: 'premioPlumas', badge: true },
+      ],
+    },
+    {
+      key: 'midia',
+      labelKey: 'midiaAcervo',
+      children: [
+        { to: '/revista', labelKey: 'revista' },
+        { to: '/galeria', labelKey: 'galeria' },
+        { to: '/blog', labelKey: 'blog' },
+      ],
+    },
+    { key: 'producao', labelKey: 'producaoEventos', href: '/producao' },
+    { key: 'contato', labelKey: 'contato', href: '/contato' },
   ];
+
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
 
   return (
     <nav
@@ -48,35 +75,77 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-2">
-          <Link to="/" className="flex items-center space-x-3 group min-w-0">
+          <Link to="/" className="flex items-center space-x-3 group min-w-0 flex-shrink-0 max-w-[70vw]">
             <img
               src="/lovable-uploads/71229f5b-e539-4525-8145-9fa3f9c26b00.png"
               alt="Instituto Plumas &amp; Paetês Cultural"
               className="h-9 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="hidden sm:inline font-serif font-semibold text-sm lg:text-base text-foreground truncate group-hover:text-carnival-purple transition-colors">
-              Instituto Plumas &amp; Paetês Cultural
+            <span className="hidden sm:inline font-serif font-semibold text-sm lg:text-base text-foreground whitespace-nowrap group-hover:text-carnival-purple transition-colors">
+              Instituto Plumas &amp; Paetês
             </span>
           </Link>
 
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={`${linkClass(item.to)} ${item.badge ? 'relative' : ''}`}
-                aria-current={isActive(item.to) ? 'page' : undefined}
-              >
-                {translate(item.labelKey)}
-                {item.badge && (
-                  <span
-                    className="absolute top-1 right-1 w-2 h-2 bg-carnival-gold rounded-full animate-pulse"
-                    aria-label={language === 'pt' ? 'Novidade' : 'New'}
-                  />
-                )}
-              </Link>
-            ))}
+            {navGroups.map((group) =>
+              group.children ? (
+                <div
+                  key={group.key}
+                  className="relative"
+                  onMouseEnter={() => setOpenGroup(group.key)}
+                  onMouseLeave={() => setOpenGroup(null)}
+                >
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-foreground hover:bg-gray-100"
+                    aria-haspopup="true"
+                    aria-expanded={openGroup === group.key}
+                  >
+                    {translate(group.labelKey)}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${openGroup === group.key ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  <div
+                    className={`absolute left-0 top-full pt-1 w-64 transition-all duration-200 origin-top ${
+                      openGroup === group.key
+                        ? 'opacity-100 translate-y-0 pointer-events-auto'
+                        : 'opacity-0 -translate-y-1 pointer-events-none'
+                    }`}
+                  >
+                    <div className="bg-white rounded-xl shadow-xl border border-gray-200 py-2">
+                      {group.children.map((item) => (
+                        <Link
+                          key={item.to}
+                          to={item.to}
+                          className={`flex items-center justify-between px-4 py-2.5 text-sm font-medium transition-colors ${
+                            isActive(item.to)
+                              ? 'bg-carnival-purple text-white'
+                              : 'text-foreground hover:bg-gray-50 hover:text-carnival-purple'
+                          }`}
+                          aria-current={isActive(item.to) ? 'page' : undefined}
+                        >
+                          {translate(item.labelKey)}
+                          {item.badge && (
+                            <span className="w-2 h-2 bg-carnival-gold rounded-full animate-pulse" aria-label={language === 'pt' ? 'Novidade' : 'New'} />
+                          )}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={group.key}
+                  to={group.href || '/'}
+                  className={`${linkClass(group.href || '/')} ${group.badge ? 'relative' : ''}`}
+                  aria-current={isActive(group.href || '/') ? 'page' : undefined}
+                >
+                  {translate(group.labelKey)}
+                </Link>
+              )
+            )}
 
             {/* Controles utilitários: idioma + zoom */}
             <div className="flex items-center gap-1 ml-2 pl-2 border-l border-gray-200">
@@ -158,20 +227,39 @@ const Navigation = () => {
           <Link
             to="/"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="block px-5 py-3 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg font-medium"
+            className="flex items-center gap-2 px-5 py-3 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg font-medium"
           >
+            <Home className="h-4 w-4" />
             {translate('inicio')}
           </Link>
-          {navItems.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-5 py-3 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg font-medium"
-            >
-              {translate(item.labelKey)}
-            </Link>
-          ))}
+          {navGroups.map((group) =>
+            group.children ? (
+              <div key={group.key} className="space-y-1">
+                <p className="px-5 pt-2 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  {translate(group.labelKey)}
+                </p>
+                {group.children.map((item) => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-5 py-3 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg font-medium"
+                  >
+                    {translate(item.labelKey)}
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <Link
+                key={group.key}
+                to={group.href || '/'}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-5 py-3 text-gray-900 bg-gray-50 hover:bg-carnival-purple hover:text-white rounded-lg font-medium"
+              >
+                {translate(group.labelKey)}
+              </Link>
+            )
+          )}
 
           <div className="flex items-center justify-end gap-2 pt-3 mt-3 border-t border-gray-200">
             <span className="text-xs text-muted-foreground mr-auto">

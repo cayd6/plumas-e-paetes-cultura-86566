@@ -14,6 +14,8 @@ interface Translations {
 const translations: Translations = {
   pt: {
     inicio: "Início",
+    institucional: "Institucional",
+    midiaAcervo: "Mídia & Acervo",
     projetos: "Projetos",
     projetosDesc: "Transformando vidas através da arte e cultura",
     sobre: "Sobre",
@@ -156,6 +158,8 @@ const translations: Translations = {
   },
   en: {
     inicio: "Home",
+    institucional: "Institutional",
+    midiaAcervo: "Media & Archive",
     projetos: "Projects",
     projetosDesc: "Transforming lives through art and culture",
     sobre: "About",
