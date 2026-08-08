@@ -4,89 +4,42 @@ import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Sparkles, Award, Users, Lightbulb, CheckCircle, ArrowRight } from "lucide-react";
+import { Sparkles, Award, Users, Lightbulb, CheckCircle, ArrowRight, Star, Briefcase, Camera, Palette, Film, PenTool, Music } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useServices, usePortfolioProjects } from "../hooks/useProducaoData";
+
+const iconMap: Record<string, any> = {
+  Sparkles,
+  Award,
+  Users,
+  Lightbulb,
+  Briefcase,
+  Camera,
+  Palette,
+  Film,
+  PenTool,
+  Music,
+  Star,
+};
 
 const Producao = () => {
   const { translate, language } = useLanguage();
+  const { data: dbServices = [], isLoading: loadingServices } = useServices();
+  const { data: dbProjects = [], isLoading: loadingProjects } = usePortfolioProjects();
 
-  const services = [
-    {
-      icon: Sparkles,
-      title: language === 'pt' ? 'Produção de Eventos Culturais' : 'Cultural Event Production',
-      description: language === 'pt'
-        ? 'Planejamento e execução de eventos culturais de grande porte, desde o conceito até a realização.'
-        : 'Planning and execution of large-scale cultural events, from concept to completion.',
-      features: [
-        language === 'pt' ? 'Gestão completa do evento' : 'Complete event management',
-        language === 'pt' ? 'Coordenação de equipes' : 'Team coordination',
-        language === 'pt' ? 'Produção técnica e artística' : 'Technical and artistic production',
-      ]
-    },
-    {
-      icon: Award,
-      title: language === 'pt' ? 'Consultoria em Economia Criativa' : 'Creative Economy Consulting',
-      description: language === 'pt'
-        ? 'Desenvolvimento de projetos culturais sustentáveis e estratégias para economia criativa.'
-        : 'Development of sustainable cultural projects and strategies for creative economy.',
-      features: [
-        language === 'pt' ? 'Planejamento estratégico' : 'Strategic planning',
-        language === 'pt' ? 'Captação de recursos' : 'Fundraising',
-        language === 'pt' ? 'Gestão de projetos culturais' : 'Cultural project management',
-      ]
-    },
-    {
-      icon: Users,
-      title: language === 'pt' ? 'Consultoria Técnica em Carnaval' : 'Carnival Technical Consulting',
-      description: language === 'pt'
-        ? 'Assessoria especializada para escolas de samba, blocos e agremiações carnavalescas.'
-        : 'Specialized consulting for samba schools, carnival blocks and associations.',
-      features: [
-        language === 'pt' ? 'Análise técnica de desfiles' : 'Technical parade analysis',
-        language === 'pt' ? 'Formação de equipes' : 'Team training',
-        language === 'pt' ? 'Estratégias competitivas' : 'Competitive strategies',
-      ]
-    },
-    {
-      icon: Lightbulb,
-      title: language === 'pt' ? 'Criação de Conteúdo Cultural' : 'Cultural Content Creation',
-      description: language === 'pt'
-        ? 'Produção de conteúdo editorial, fotográfico e audiovisual sobre cultura e carnaval.'
-        : 'Editorial, photographic and audiovisual content production about culture and carnival.',
-      features: [
-        language === 'pt' ? 'Fotografia profissional' : 'Professional photography',
-        language === 'pt' ? 'Produção de revista' : 'Magazine production',
-        language === 'pt' ? 'Cobertura de eventos' : 'Event coverage',
-      ]
-    },
-  ];
+  const services = dbServices.map((service) => ({
+    icon: iconMap[service.icon] || Star,
+    title: language === 'pt' ? service.title_pt : (service.title_en || service.title_pt),
+    description: language === 'pt' ? service.description_pt : (service.description_en || service.description_pt),
+    features: language === 'pt' ? (service.features_pt || []) : (service.features_en || service.features_pt || []),
+  }));
 
-  const portfolio = [
-    {
-      title: language === 'pt' ? 'Prêmio aos Artífices do Carnaval - 19ª Edição' : 'Carnival Artisan Award - 19th Edition',
-      year: '2024',
-      description: language === 'pt'
-        ? 'Produção completa da cerimônia de premiação com mais de 500 convidados.'
-        : 'Complete production of award ceremony with over 500 guests.',
-      image: '/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png',
-    },
-    {
-      title: language === 'pt' ? 'Festival de Cultura Popular' : 'Popular Culture Festival',
-      year: '2024',
-      description: language === 'pt'
-        ? 'Organização de festival com múltiplas atrações e oficinas culturais.'
-        : 'Organization of festival with multiple attractions and cultural workshops.',
-      image: '/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png',
-    },
-    {
-      title: language === 'pt' ? 'Consultoria Escola de Samba Vila Isabel' : 'Vila Isabel Samba School Consulting',
-      year: '2024',
-      description: language === 'pt'
-        ? 'Assessoria técnica e estratégica para o desfile campeão.'
-        : 'Technical and strategic consulting for the championship parade.',
-      image: '/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png',
-    },
-  ];
+  const portfolio = dbProjects.map((project) => ({
+    title: language === 'pt' ? project.title_pt : (project.title_en || project.title_pt),
+    year: project.year,
+    description: language === 'pt' ? project.description_pt : (project.description_en || project.description_pt),
+    image: project.image_url || '/placeholder.svg',
+  }));
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -139,6 +92,15 @@ const Producao = () => {
             </p>
           </div>
           
+          {loadingServices ? (
+            <div className="flex justify-center py-16">
+              <div className="h-10 w-10 rounded-full border-2 border-primary/30 border-t-primary animate-spin" role="status" aria-label="Carregando" />
+            </div>
+          ) : services.length === 0 ? (
+            <p className="text-center text-muted-foreground py-16">
+              {language === 'pt' ? 'Nenhum serviço cadastrado ainda.' : 'No services registered yet.'}
+            </p>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {services.map((service, index) => (
               <Card 
@@ -165,6 +127,7 @@ const Producao = () => {
               </Card>
             ))}
           </div>
+          )}
         </div>
       </section>
 
@@ -182,6 +145,15 @@ const Producao = () => {
             </p>
           </div>
           
+          {loadingProjects ? (
+            <div className="flex justify-center py-16">
+              <div className="h-10 w-10 rounded-full border-2 border-primary/30 border-t-primary animate-spin" role="status" aria-label="Carregando" />
+            </div>
+          ) : portfolio.length === 0 ? (
+            <p className="text-center text-muted-foreground py-16">
+              {language === 'pt' ? 'Nenhum projeto cadastrado ainda.' : 'No projects registered yet.'}
+            </p>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {portfolio.map((project, index) => (
               <Card key={index} className="overflow-hidden group hover:shadow-xl transition-all duration-300">
@@ -203,6 +175,7 @@ const Producao = () => {
               </Card>
             ))}
           </div>
+          )}
         </div>
       </section>
 

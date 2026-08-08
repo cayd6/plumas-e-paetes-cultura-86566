@@ -5,108 +5,48 @@ import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useBlogCategories, useBlogPosts } from "../hooks/useBlogData";
 import { Calendar, User, Tag, ArrowRight, Search } from "lucide-react";
 
 const Blog = () => {
   const { translate, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const { data: dbCategories = [] } = useBlogCategories();
+  const { data: dbPosts = [], isLoading } = useBlogPosts(true);
 
   const categories = [
     { id: "all", label: language === 'pt' ? "Todas" : "All" },
-    { id: "carnaval", label: "Carnaval" },
-    { id: "cultura", label: language === 'pt' ? "Cultura" : "Culture" },
-    { id: "economia", label: language === 'pt' ? "Economia Criativa" : "Creative Economy" },
-    { id: "eventos", label: language === 'pt' ? "Eventos" : "Events" },
+    ...dbCategories.map((cat) => ({
+      id: cat.id,
+      label: language === 'pt' ? cat.name_pt : (cat.name_en || cat.name_pt),
+    })),
   ];
 
-  const posts = [
-    {
-      id: 1,
-      title: language === 'pt' 
-        ? "Vila Isabel conquista o bicampeonato do Carnaval 2025" 
-        : "Vila Isabel wins back-to-back Carnival 2025 championship",
-      excerpt: language === 'pt'
-        ? "A escola de Niterói fez história ao conquistar seu segundo título consecutivo com o enredo sobre Maria Augusta, superando a concorrência com uma apresentação impecável."
-        : "The Niterói school made history by winning its second consecutive title with the plot about Maria Augusta, surpassing the competition with an impeccable presentation.",
-      date: "25 de Fevereiro, 2025",
-      author: "José Antonio Rodrigues",
-      category: "carnaval",
-      image: "/lovable-uploads/44299e4c-0b70-4e79-b05a-834616a0d285.png",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: language === 'pt'
-        ? "Bastidores: A confecção das fantasias vencedoras"
-        : "Behind the Scenes: The making of winning costumes",
-      excerpt: language === 'pt'
-        ? "Conheça os artesãos responsáveis pelas fantasias mais impressionantes do Carnaval 2025 e os segredos por trás de cada detalhe."
-        : "Meet the artisans responsible for the most impressive costumes of Carnival 2025 and the secrets behind each detail.",
-      date: "20 de Fevereiro, 2025",
-      author: "Maria Silva",
-      category: "cultura",
-      image: "/lovable-uploads/523c74c3-9c45-4d28-9528-2b3ef5e1618e.png",
-    },
-    {
-      id: 3,
-      title: language === 'pt'
-        ? "Economia do Carnaval: R$ 5 bilhões movimentados no Rio"
-        : "Carnival Economy: R$ 5 billion moved in Rio",
-      excerpt: language === 'pt'
-        ? "Análise completa do impacto econômico do Carnaval 2025 no Rio de Janeiro, mostrando números recordes de turismo e geração de empregos."
-        : "Complete analysis of the economic impact of Carnival 2025 in Rio de Janeiro, showing record numbers in tourism and job creation.",
-      date: "18 de Fevereiro, 2025",
-      author: "Carlos Mendes",
-      category: "economia",
-      image: "/lovable-uploads/d1598a64-ce27-4278-bf44-74265e961ce6.png",
-    },
-    {
-      id: 4,
-      title: language === 'pt'
-        ? "Beija-Flor emociona com homenagem à cultura nordestina"
-        : "Beija-Flor moves with tribute to northeastern culture",
-      excerpt: language === 'pt'
-        ? "A tradicional escola de Nilópolis apresentou um desfile memorável celebrando as raízes e tradições do Nordeste brasileiro."
-        : "The traditional Nilópolis school presented a memorable parade celebrating the roots and traditions of Northeast Brazil.",
-      date: "16 de Fevereiro, 2025",
-      author: "Ana Paula Costa",
-      category: "carnaval",
-      image: "/lovable-uploads/7e1ace30-f014-4a63-99fe-fe4c937e5695.png",
-    },
-    {
-      id: 5,
-      title: language === 'pt'
-        ? "Prêmio Plumas & Paetês 2025: Conheça os indicados"
-        : "Plumas & Paetês Award 2025: Meet the nominees",
-      excerpt: language === 'pt'
-        ? "Revelamos os finalistas das principais categorias da 20ª edição do prêmio que celebra os artífices do carnaval carioca."
-        : "We reveal the finalists in the main categories of the 20th edition of the award that celebrates Rio's carnival artisans.",
-      date: "10 de Fevereiro, 2025",
-      author: "José Antonio Rodrigues",
-      category: "eventos",
-      image: "/lovable-uploads/2f3ac4c5-4b19-4824-844f-58a4e3f24a02.png",
-    },
-    {
-      id: 6,
-      title: language === 'pt'
-        ? "Mangueira apresenta samba-enredo revolucionário"
-        : "Mangueira presents revolutionary samba plot",
-      excerpt: language === 'pt'
-        ? "A Verde e Rosa da Mangueira surpreende com composição que une tradição e modernidade, conquistando crítica e público."
-        : "The Green and Pink of Mangueira surprises with a composition that unites tradition and modernity, winning critics and audiences.",
-      date: "5 de Fevereiro, 2025",
-      author: "Pedro Oliveira",
-      category: "carnaval",
-      image: "/lovable-uploads/7ab7abcd-aa1f-4a9a-b39c-43fff9ff5ad7.png",
-    },
-  ];
+  const formatDate = (iso?: string | null) => {
+    if (!iso) return "";
+    return new Date(iso).toLocaleDateString(language === 'pt' ? 'pt-BR' : 'en-US', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+  };
+
+  const posts = dbPosts.map((post) => ({
+    id: post.id,
+    title: language === 'pt' ? post.title_pt : (post.title_en || post.title_pt),
+    excerpt: language === 'pt' ? (post.excerpt_pt || '') : (post.excerpt_en || post.excerpt_pt || ''),
+    date: formatDate(post.published_at || post.created_at),
+    author: post.author_name || "",
+    category: post.category_id || "",
+    image: post.image_url || "/placeholder.svg",
+  }));
 
   const filteredPosts = selectedCategory === "all" 
     ? posts 
     : posts.filter(post => post.category === selectedCategory);
 
-  const featuredPost = posts.find(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
+  const featuredPost = posts.find((p) => p.id === posts[0]?.id);
+  const regularPosts = filteredPosts.filter(post => !featuredPost || post.id !== featuredPost.id);
 
   useEffect(() => {
     const ld = {
@@ -247,6 +187,15 @@ const Blog = () => {
       {/* Blog Grid */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
+          {isLoading ? (
+            <div className="flex justify-center py-16">
+              <div className="h-10 w-10 rounded-full border-2 border-carnival-purple/30 border-t-carnival-purple animate-spin" role="status" aria-label="Carregando" />
+            </div>
+          ) : regularPosts.length === 0 ? (
+            <p className="text-center text-gray-500 py-16">
+              {language === 'pt' ? 'Nenhum artigo publicado ainda.' : 'No published articles yet.'}
+            </p>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularPosts.map((post) => (
               <article 
@@ -287,6 +236,7 @@ const Blog = () => {
               </article>
             ))}
           </div>
+          )}
         </div>
       </section>
 

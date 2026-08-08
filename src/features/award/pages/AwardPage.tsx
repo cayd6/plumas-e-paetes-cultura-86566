@@ -9,6 +9,9 @@ import PlumasEmNumeros from '../components/PlumasEmNumeros';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
+import { useAwardStats } from "../hooks/useAwardData";
 import { 
   Trophy, Star, Calendar, MapPin, Users, Award, Crown, 
   Sparkles, Heart, Target, Scale, Eye, Building,
@@ -17,6 +20,53 @@ import {
 
 const EdicoesEnhanced = () => {
   const { language } = useLanguage();
+
+  const { data: stats = [] } = useAwardStats();
+  const { data: honored = [] } = useQuery({
+    queryKey: ["honored_people", "award-page"],
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("honored_people")
+        .select("*")
+        .eq("active", true)
+        .order("edition_number", { ascending: false })
+        .order("year", { ascending: false })
+        .order("display_order");
+      return data ?? [];
+    },
+  });
+
+  const statOf = (keys: string[], labels: string[], fallback: number) => {
+    const s = stats.find((st) =>
+      keys.includes(st.key) ||
+      labels.some((l) => st.label_pt.toLowerCase().includes(l))
+    );
+    return s?.value ?? fallback;
+  };
+
+  const personalidadesHomenageadas = honored.length > 0
+    ? honored.map((p: any) => ({
+        edicao: p.edition_number ? `${p.edition_number}ª` : (p.year ? String(p.year) : ''),
+        ano: p.year ? String(p.year) : '',
+        nome: p.name,
+        titulo: language === 'pt' ? (p.role || '') : (p.role_en || p.role || ''),
+        resumo: language === 'pt' ? (p.description || '') : (p.description_en || p.description || ''),
+        biografiaCompleta: language === 'pt' ? (p.description || '') : (p.description_en || p.description || ''),
+        imagem: p.image_url || '/placeholder.svg',
+      }))
+    : fallbackPersonalidades;
+
+  const editions = honored.length > 0
+    ? honored.map((p: any, idx: number) => {
+        const isUpcoming = idx === 0 && p.year && Number(p.year) >= new Date().getFullYear();
+        return {
+          edition: p.edition_number ? `${p.edition_number}ª` : '',
+          year: p.year ? String(p.year) : '',
+          homenageado: p.name,
+          status: isUpcoming ? (language === 'pt' ? 'Próxima' : 'Next') : (language === 'pt' ? 'Realizada' : 'Completed'),
+        };
+      })
+    : fallbackEditions;
 
   const mainCategories = [
     'Aderecista', 'Alegoria', 'Alegorista', 'Artesão de Costeiro', 'Bordadeira',
@@ -36,7 +86,7 @@ const EdicoesEnhanced = () => {
     'Jornalista', 'Roteirista de Vídeos', 'Sapateiro', '"Eu Sou o Samba"', '"Vem de Lá"', 'Personalidade do Carnaval'
   ];
 
-  const personalidadesHomenageadas = [
+  const fallbackPersonalidades = [
     { edicao: '1ª', ano: '2005', nome: 'Clóvis Bornay', titulo: language === 'pt' ? 'Personalidade imortal do carnaval' : 'Immortal carnival personality', resumo: language === 'pt' ? 'Carnavalesco, destaque de luxo e idealizador do Baile de Gala do Theatro Municipal.' : 'Carnival designer and creator of the Municipal Theatre Gala Ball.', biografiaCompleta: language === 'pt' ? 'Clóvis Bornay (1916-2005) foi um museólogo, figurinista, carnavalesco e destaque de luxo brasileiro. Considerado uma das maiores personalidades do carnaval carioca, foi o idealizador do tradicional Baile de Gala do Theatro Municipal do Rio de Janeiro. Venceu o concurso de fantasias do baile por 25 vezes consecutivas.' : 'Clóvis Bornay (1916-2005) was a Brazilian museologist, costume designer and carnival artist. He won the costume contest 25 consecutive times.', imagem: '/lovable-uploads/edicao-2005-clovis-bornay.jpg' },
     { edicao: '2ª', ano: '2006', nome: 'Xangô da Mangueira', titulo: language === 'pt' ? 'Mestre da bateria verde e rosa' : 'Master of the green and pink drums', resumo: language === 'pt' ? 'Lendário mestre de bateria da Estação Primeira de Mangueira.' : 'Legendary drum master of Mangueira.', biografiaCompleta: language === 'pt' ? 'Xangô da Mangueira foi um dos mais respeitados mestres de bateria da história do carnaval carioca. Conduziu a bateria da Mangueira com maestria, criando o som característico da escola.' : 'Xangô da Mangueira was one of the most respected drum masters in carnival history.', imagem: '/lovable-uploads/edicao-2005-marcela-xango.jpg' },
     { edicao: '3ª', ano: '2007', nome: 'Braguinha', titulo: language === 'pt' ? 'O poeta das marchinhas' : 'The poet of carnival marches', resumo: language === 'pt' ? 'Compositor de clássicos como "Copacabana" e "Balancê".' : 'Composer of classics like "Copacabana".', biografiaCompleta: language === 'pt' ? 'João de Barro, conhecido como Braguinha (1907-2006), foi um dos maiores compositores da música popular brasileira. Suas marchinhas de carnaval se tornaram parte do patrimônio cultural brasileiro.' : 'Braguinha was one of the greatest composers of Brazilian popular music.', imagem: '/placeholder.svg' },
@@ -58,7 +108,7 @@ const EdicoesEnhanced = () => {
     { edicao: '19ª/20ª', ano: '2025', nome: 'Maria Augusta', titulo: language === 'pt' ? 'A dama do samba' : 'The lady of samba', resumo: language === 'pt' ? 'Compositora dedicada à preservação do samba.' : 'Composer dedicated to samba preservation.', biografiaCompleta: language === 'pt' ? 'Maria Augusta é uma das grandes damas do samba brasileiro, dedicada à preservação e divulgação do samba como patrimônio cultural.' : 'Maria Augusta is one of the great ladies of Brazilian samba.', imagem: '/placeholder.svg' }
   ];
 
-  const editions = [
+  const fallbackEditions = [
     { edition: '20ª', year: '2025', homenageado: 'Maria Augusta', status: language === 'pt' ? 'Próxima' : 'Next' },
     { edition: '19ª', year: '2024', homenageado: 'Noca da Portela', status: language === 'pt' ? 'Realizada' : 'Completed' },
     { edition: '17ª', year: '2022/2023', homenageado: 'Fernando Pamplona', status: language === 'pt' ? 'Realizada' : 'Completed' },
@@ -121,15 +171,15 @@ const EdicoesEnhanced = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               <div className="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20">
-                <div className="text-3xl font-bold text-ppc-yellow">1462</div>
+                <div className="text-3xl font-bold text-ppc-yellow">{statOf(['winners', 'laureados'], ['lauread', 'premiad'], 1462)}</div>
                 <div className="text-sm opacity-80">{language === 'pt' ? 'Laureados' : 'Laureates'}</div>
               </div>
               <div className="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20">
-                <div className="text-3xl font-bold text-ppc-yellow">52</div>
+                <div className="text-3xl font-bold text-ppc-yellow">{statOf(['categories', 'categorias'], ['categor'], 52)}</div>
                 <div className="text-sm opacity-80">{language === 'pt' ? 'Categorias' : 'Categories'}</div>
               </div>
               <div className="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20">
-                <div className="text-3xl font-bold text-ppc-yellow">20</div>
+                <div className="text-3xl font-bold text-ppc-yellow">{statOf(['editions', 'edicoes'], ['ediç'], 20)}</div>
                 <div className="text-sm opacity-80">{language === 'pt' ? 'Edições' : 'Editions'}</div>
               </div>
             </div>
